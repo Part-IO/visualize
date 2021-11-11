@@ -1,4 +1,4 @@
-import { InteractiveMap } from "./components/IntactiveMap";
+import InteractiveMap from "./components/IntactiveMap";
 
 function App() {
     return <InteractiveMap />;
