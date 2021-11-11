@@ -1,9 +1,7 @@
-const App: React.FC = () => {
-    return (
-        <div>
-            Hallo Lukas
-        </div>
-    )
+import { InteractiveMap } from "./components/IntactiveMap";
+
+function App() {
+    return <InteractiveMap />;
 }
 
 export default App;
