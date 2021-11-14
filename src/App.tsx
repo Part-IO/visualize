@@ -1,7 +1,9 @@
-import { InteractiveMap } from "./components/IntactiveMap";
+//import {InteractiveMap} from "./components/IntactiveMap";
+//import Demo from "./components/Demo";
+import ScrollComponent from "./components/ScrollComponent";
 
 function App() {
-    return <InteractiveMap />;
+    return <ScrollComponent />;
 }
 
 export default App;
