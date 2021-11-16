@@ -1,12 +1,11 @@
 import React, { PureComponent } from "react";
-import injectSheet from "react-jss";
 import { Scrollama, Step } from "react-scrollama";
 import "./Scroll.css";
 
 class Demo extends PureComponent {
     state = {
         data: 0,
-        steps: [10, 20, 30],
+        steps: [10, 20, 30, 40],
         progress: 0,
     };
 
@@ -25,11 +24,15 @@ class Demo extends PureComponent {
         this.setState({ progress });
     };
 
-    render() {
+    render(): JSX.Element {
         const { data, steps, progress } = this.state;
+
         return (
             <div>
                 <div className="graphicContainer">
+                    <div className="graphic">
+                        <p>{data}</p>
+                    </div>
                     <div className="scroller">
                         <Scrollama
                             onStepEnter={this.onStepEnter}
@@ -53,9 +56,6 @@ class Demo extends PureComponent {
                                 );
                             })}
                         </Scrollama>
-                    </div>
-                    <div className="graphic">
-                        <p>{data}</p>
                     </div>
                 </div>
             </div>
