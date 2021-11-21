@@ -25,29 +25,10 @@
 .graphic {
     flex-basis: 50%;
     position: sticky;
-    width: 96vh;
-    height: 96vh;
-    top: 2vh;
+    width: 80vh;
+    height: 80vh;
+    top: 18vh;
     display: flex;
     align-items: center;
     justify-content: center;
-}
-
-.graphic p {
-    font-size: 5rem;
-    font-weight: 700;
-    text-align: center;
-    color: #000;
-}
-
-.subhed {
-    max-width: 600px;
-    margin: 10px auto 15px;
-    font-size: 22rem;
-    line-height: 28px;
-    text-align: center;
-}
-
-.subhed a {
-    color: black;
 }

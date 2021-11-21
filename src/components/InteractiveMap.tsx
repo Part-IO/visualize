@@ -46,7 +46,14 @@ const InteractiveMap: () => JSX.Element = () => {
     };
 
     return (
-        <MapContainer zoom={7} style={{ height: "100vh", width: "100%" }} center={[48.7, 12]}>
+        <MapContainer
+            zoom={7}
+            style={{ height: "100%", width: "100%" }}
+            center={[48.7, 12]}
+            scrollWheelZoom={false}
+            dragging={false}
+            keyboard={false}
+        >
             <GeoJSON
                 style={defaultCountryStyle}
                 data={regierungsbezirke as GeoJsonObject}

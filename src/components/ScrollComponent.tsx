@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Scrollama, Step } from "react-scrollama";
-import "../style/Scroll.css";
+import "../style/ScrollComponent.css";
 
 interface IState {
     data: number;
@@ -8,7 +8,7 @@ interface IState {
     progress: number;
 }
 
-const ScrollComponent = (): JSX.Element => {
+const ScrollComponent = (props: { mapComponent: JSX.Element }): JSX.Element => {
     const initialState: IState = {
         data: 0,
         steps: [10, 20, 30, 40],
@@ -43,9 +43,7 @@ const ScrollComponent = (): JSX.Element => {
     return (
         <div>
             <div className="graphicContainer">
-                <div className="graphic">
-                    <p>{getState.data}</p>
-                </div>
+                <div className="graphic">{props.mapComponent}</div>
                 <div className="scroller">
                     <Scrollama
                         onStepEnter={onStepEnter}
@@ -53,6 +51,7 @@ const ScrollComponent = (): JSX.Element => {
                         progress
                         onStepProgress={onStepProgress}
                         offset="400px"
+                        debug
                     >
                         {getState.steps.map((value) => {
                             const isVisible = value === getState.data;
