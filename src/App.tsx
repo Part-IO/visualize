@@ -1,7 +1,8 @@
-import { InteractiveMap } from "./components/IntactiveMap";
+import ScrollComponent from "./components/ScrollComponent";
+import "./App.css";
 
-function App() {
-    return <InteractiveMap />;
+function App(): JSX.Element {
+    return <ScrollComponent />;
 }
 
 export default App;
