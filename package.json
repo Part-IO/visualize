@@ -3,6 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@sitecore-jss/sitecore-jss": "^19.0.0",
+    "@sitecore-jss/sitecore-jss-react": "^19.0.0",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
@@ -10,12 +12,13 @@
     "@types/jest": "^26.0.15",
     "@types/leaflet": "^1.7.5",
     "@types/node": "^12.0.0",
-    "@types/react": "^17.0.0",
+    "@types/react": "^17.0.34",
     "@types/react-dom": "^17.0.0",
     "leaflet": "^1.7.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-leaflet": "^3.2.2",
+    "react-jss": "^10.8.2",
     "react-scripts": "4.0.3",
     "react-scrollama": "^2.2.16",
     "typescript": "^4.4.4",
@@ -57,7 +60,7 @@
     "eslint-plugin-react-hooks": "^4.3.0",
     "husky": "^7.0.4",
     "lint-staged": "^11.2.6",
-    "prettier": "^2.4.1"
+    "prettier": "2.4.1"
   },
   "husky": {
     "hooks": {
