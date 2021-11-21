@@ -28,10 +28,6 @@
     width: 96vh;
     height: 96vh;
     top: 2vh;
-    /*Example Pictute in MapView*/
-    background-image: url("bayern_all.png");
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
     display: flex;
     align-items: center;
     justify-content: center;
