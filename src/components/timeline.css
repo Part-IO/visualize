@@ -1,0 +1,29 @@
+.timeline {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    padding-top: 56.25%; /* 1:1 Aspect Ratio */
+    position: relative;
+    background: rgb(0, 131, 0);
+    background: radial-gradient(
+            circle,
+            rgba(0, 131, 0, 1) 27%,
+            rgba(0, 153, 0, 1) 59%,
+            rgba(0, 245, 0, 1) 100%
+    );
+}
+
+.timeline .inner {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+}
+
+.timeline-nav {
+    font-family: 'Roboto', sans-serif;
+    padding: 1rem;
+    max-width: 500px;
+    margin: 0 auto;
+}
