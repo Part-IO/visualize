@@ -6,6 +6,7 @@ interface IState {
     data: number;
     steps: number[];
     progress: number;
+    
 }
 
 const ScrollComponent = (props: { mapComponent: JSX.Element }): JSX.Element => {
@@ -72,6 +73,7 @@ const ScrollComponent = (props: { mapComponent: JSX.Element }): JSX.Element => {
                 <div className="district" />
             </div>
             <div className="welcome" />
+            <div></div>
         </div>
     );
 };
