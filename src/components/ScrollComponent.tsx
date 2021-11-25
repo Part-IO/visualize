@@ -42,6 +42,7 @@ const ScrollComponent = (props: { mapComponent: JSX.Element }): JSX.Element => {
 
     return (
         <div>
+            <div className="welcome" />
             <div className="graphicContainer">
                 <div className="graphic">{props.mapComponent}</div>
                 <div className="scroller">
@@ -50,7 +51,7 @@ const ScrollComponent = (props: { mapComponent: JSX.Element }): JSX.Element => {
                         onStepExit={onStepExit}
                         progress
                         onStepProgress={onStepProgress}
-                        offset="400px"
+                        offset="0"
                         debug
                     >
                         {getState.steps.map((value) => {
@@ -68,7 +69,9 @@ const ScrollComponent = (props: { mapComponent: JSX.Element }): JSX.Element => {
                         })}
                     </Scrollama>
                 </div>
+                <div className="district" />
             </div>
+            <div className="welcome" />
         </div>
     );
 };
