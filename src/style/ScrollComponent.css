@@ -17,6 +17,7 @@
     height: 20vh;
     top: 0;
     position: sticky;
+    overflow: hidden;
 }
 
 .scroller {
@@ -40,7 +41,7 @@
 /* Fixed container*/
 .graphic {
     flex-basis: 40%;
-    top: 10vh;
+    top: 20vh;
     position: sticky;
     width: 80vh;
     height: 80vh;
@@ -50,9 +51,9 @@
 .district {
     background-color: aliceblue;
     flex-basis: 20%;
-    top: 10vh;
+    top: 0;
     position: sticky;
     width: 80vh;
-    height: 80vh;
+    height: 100vh;
     display: flex;
 }
