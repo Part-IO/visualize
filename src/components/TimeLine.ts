@@ -1,13 +1,12 @@
-$(".progress").each((_, progress) => {
-    const steps = $("> div.right > div", progress);
+document.querySelector(".progress").each((_, progress) => {
+    const steps = document.querySelector("> div.right > div", progress);
 
-    // @ts-ignore
-    steps.each((i, el) => $(el).mouseenter((e) => onHover(el)));
+    steps.each((i, el) => document.querySelector(el).mouseenter((e) => onHover(el)));
 
     const onHover = (el) => {
         steps.removeClass(["current", "prev"]);
         el.classList.add("current");
-        $(el).prevAll().slice(1).addClass("prev");
+        document.querySelector(el).prevAll().slice(1).classList.add("prev");
     };
 });
 
