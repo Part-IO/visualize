@@ -49,11 +49,10 @@
 }
 
 .district {
-    background-color: aliceblue;
     flex-basis: 20%;
-    top: 0;
+    top: 20vh;
     position: sticky;
     width: 80vh;
-    height: 100vh;
+    height: 80vh;
     display: flex;
 }

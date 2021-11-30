@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Scrollama, Step } from "react-scrollama";
+import TimelineComponent from "./TimelineComponent";
 import "../style/ScrollComponent.css";
 
 interface IState {
@@ -73,7 +74,9 @@ const ScrollComponent = (props: { mapComponent: JSX.Element }): JSX.Element => {
                             })}
                         </Scrollama>
                     </div>
-                    <div className="district" />
+                    <div className="district">
+                        <TimelineComponent />
+                    </div>
                 </div>
             </div>
             <div className="welcome" />
