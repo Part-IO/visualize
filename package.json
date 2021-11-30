@@ -2,6 +2,7 @@
   "name": "visualize",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://part-io.github.io/visualize",
   "dependencies": {
     "@sitecore-jss/sitecore-jss": "^19.0.0",
     "@sitecore-jss/sitecore-jss-react": "^19.0.0",
