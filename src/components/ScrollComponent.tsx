@@ -77,7 +77,9 @@ const ScrollComponent = (props: { mapComponent: JSX.Element }): JSX.Element => {
                             })}
                         </Scrollama>
                     </div>
-                    <div className="district" />
+                    <div className="district">
+                        <DistrictComponent />
+                    </div>
                 </div>
             </div>
             <div className="welcome" />

@@ -20,8 +20,8 @@ const DistrictComponent = (): JSX.Element => {
     };
 
     useEffect(() => {
-        const progressElement: HTMLDivElement = document.querySelector(".progress") as HTMLDivElement;
-        const label: HTMLDivElement = progressElement.querySelector(".left") as HTMLDivElement;
+        const progressElement: HTMLDivElement = document.querySelector(".tprogress") as HTMLDivElement;
+        const label: HTMLDivElement = progressElement.querySelector(".tleft") as HTMLDivElement;
         const steps: HTMLDivElement[] = [...(label.childNodes as NodeListOf<HTMLDivElement>)];
         steps.forEach((element: HTMLDivElement) =>
             element.addEventListener("mouseenter", () => {
@@ -31,10 +31,10 @@ const DistrictComponent = (): JSX.Element => {
     });
 
     return (
-        <div className={"outer"}>
-            <div className={"progress"}>
-                <div className={"left"}>
-                    <div className={"current"}>
+        <div className={"touter"}>
+            <div className={"tprogress"}>
+                <div className={"tleft"}>
+                    <div className={"tcurrent"}>
                         <p>1950</p>
                     </div>
                     <div>
@@ -59,8 +59,8 @@ const DistrictComponent = (): JSX.Element => {
                         <p>2020</p>
                     </div>
                 </div>
-                <div className={"right"}>
-                    <div className={"current"} />
+                <div className={"tright"}>
+                    <div className={"tcurrent"} />
                     <div />
                     <div />
                     <div />
