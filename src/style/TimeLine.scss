@@ -1,14 +1,12 @@
 .outer {
-  height: 80vh;
-  min-width: 20vw;
+  height: 20vh;
+  min-width: 100vw;
   display: flex;
 }
 
 .outer * {
   box-sizing: border-box;
 }
-
-//--
 
 .progress {
   $gap: 20px;
@@ -22,20 +20,19 @@
 
   display: inline-flex;
   height: 100%;
-  padding: 5vh 1vh;
+  padding: 9vh 8vw; //Todo je nach Anzahl der Attribute
 
   > div {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     color: $prev-color;
 
     &.left {
-      padding-right: $gap;
-      text-align: right;
+      text-align: left;
 
       // Line
       div {
-        width: 20vh;
+        width: 12vw; //Abhängig von Padding
 
         &.current {
           color: $current-color;
@@ -48,7 +45,7 @@
           }
 
           &:after {
-            height: 0%;
+            height: 0;
             transition: height 0.2s ease-out;
           }
 
@@ -60,8 +57,9 @@
               padding: -$bullet-radius * 0.5;
             }
 
-            &:after {
-              height: 0%;
+            &:after { //Linie die vorgezeichnet ist
+              height: 2%;
+              transform: translateX(-100%);
               transition: none;
             }
           }
@@ -72,9 +70,7 @@
           content: "";
           background: $strip-color;
           padding: $bullet-radius;
-          border-radius: 50%;
           position: absolute;
-          right: -$gap;
           top: $line-height/2;
           transform: translateX(50%) translateY(-50%);
           transition: padding 0.2s ease;
@@ -86,11 +82,10 @@
           background: $strip-color; //rgba(0, 0, 0, 0.6);
           border-radius: 2px;
           position: absolute;
-          right: -$gap;
+          right: -$gap/2; //Linie insgesamt verschieben
           top: $line-height/2;
-          height: 101%;
-          width: $line-thick;
-          transform: translateX(50%);
+          width: 100%;
+          height: $line-thick;
           transition: height 0.2s ease;
         }
       }
@@ -100,35 +95,29 @@
       padding-left: $gap;
 
       div {
-        &:last-of-type:after {
-          display: none;
-        }
 
         &:after {
           content: "";
-          background: fade_out($strip-color, 0.9); //rgba(0, 0, 0, 0.6);
+          background: fade_out($strip-color, 0.1); //rgba(0, 0, 0, 0.6);
           border-radius: 2px;
           position: absolute;
-          left: -$gap;
           top: $line-height/2;
-          height: 101%;
-          width: 1px;
-          transform: translateX(-50%);
+          width: 50px;
+          height: 10%;
         }
       }
     }
 
     div {
       flex: 1;
-      //outline: 1px solid rgba(0, 0, 0, 0.1);
       position: relative;
       line-height: $line-height;
       cursor: default;
       min-height: 30px;
+    }
 
-      &:last-of-type {
-        flex: 0;
-      }
+    &:last-of-type {
+      flex: 0;
     }
   }
 }

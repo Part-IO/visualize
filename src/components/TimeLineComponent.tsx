@@ -1,7 +1,7 @@
 import "../style/TimeLine.scss";
 import { useEffect } from "react";
 
-const TimelineComponent = (): JSX.Element => {
+const DistrictComponent = (): JSX.Element => {
     const prevAll = (element: HTMLDivElement): HTMLDivElement[] => {
         const result: HTMLDivElement[] = [];
 
@@ -34,16 +34,34 @@ const TimelineComponent = (): JSX.Element => {
         <div className={"outer"}>
             <div className={"progress"}>
                 <div className={"left"}>
-                    <div className={"current"}>Mittelfranken</div>
-                    <div>Niederbayern</div>
-                    <div>Oberbayern</div>
-                    <div>Oberfranken</div>
-                    <div>Oberpfalz</div>
-                    <div>Schwaben</div>
-                    <div>Unterfranken</div>
+                    <div className={"current"}>
+                        <p>1950</p>
+                    </div>
+                    <div>
+                        <p>1960</p>
+                    </div>
+                    <div>
+                        <p>1970</p>
+                    </div>
+                    <div>
+                        <p>1980</p>
+                    </div>
+                    <div>
+                        <p>1990</p>
+                    </div>
+                    <div>
+                        <p>2000</p>
+                    </div>
+                    <div>
+                        <p>2010</p>
+                    </div>
+                    <div>
+                        <p>2020</p>
+                    </div>
                 </div>
                 <div className={"right"}>
                     <div className={"current"} />
+                    <div />
                     <div />
                     <div />
                     <div />
@@ -56,4 +74,4 @@ const TimelineComponent = (): JSX.Element => {
     );
 };
 
-export default TimelineComponent;
+export default DistrictComponent;
