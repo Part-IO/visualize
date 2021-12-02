@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Scrollama, Step } from "react-scrollama";
-import "../style/ScrollComponent.css";
+import ScrollStepComponent from "./ScrollStepComponent";
+import "../style/ScrollComponent.scss";
 
 interface IState {
     data: number;
@@ -42,31 +43,39 @@ const ScrollComponent = (props: { mapComponent: JSX.Element }): JSX.Element => {
 
     return (
         <div>
-            <div className="graphicContainer">
-                <div className="graphic">{props.mapComponent}</div>
-                <div className="scroller">
-                    <Scrollama
-                        onStepEnter={onStepEnter}
-                        onStepExit={onStepExit}
-                        progress
-                        onStepProgress={onStepProgress}
-                        offset="400px"
-                        debug
-                    >
-                        {getState.steps.map((value) => {
-                            const isVisible = value === getState.data;
-                            const background = isVisible ? `rgba(44,127,184, ${getState.progress})` : "white";
-                            const visibility = isVisible ? "visible" : "hidden";
-                            return (
-                                <Step data={value} key={value}>
-                                    <div className="step" style={{ background }}>
-                                        <p>step value: {value}</p>
-                                        <p style={{ visibility }}>{Math.round(getState.progress * 1000) / 10 + "%"}</p>
-                                    </div>
-                                </Step>
-                            );
-                        })}
-                    </Scrollama>
+            <div id={"main-component"} style={{ display: "block" }}>
+                <div className="timeline" />
+                <div className="graphic-container">
+                    <div className="graphic">{props.mapComponent}</div>
+                    <div className="scroller">
+                        <Scrollama
+                            onStepEnter={onStepEnter}
+                            onStepExit={onStepExit}
+                            progress
+                            onStepProgress={onStepProgress}
+                            offset="0.2"
+                            debug
+                        >
+                            {getState.steps.map((value) => {
+                                const isVisible = value === getState.data;
+                                const background = isVisible ? `rgba(44,127,184, ${getState.progress})` : "white";
+                                const visibility = isVisible ? "visible" : "hidden";
+                                return (
+                                    <Step data={value} key={value}>
+                                        <div className="step" style={{ background }}>
+                                            <p>step value: {value}</p>
+                                            <p style={{ visibility }}>
+                                                {Math.round(getState.progress * 1000) / 10 + "%"}
+                                            </p>
+                                        </div>
+                                    </Step>
+                                );
+                            })}
+                        </Scrollama>
+                    </div>
+                    <div className="district">
+                        <ScrollStepComponent />
+                    </div>
                 </div>
             </div>
         </div>

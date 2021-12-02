@@ -23,5 +23,10 @@
   },
   "include": [
     "src"
-  ]
+  ],
+  /*Might be deleted
+  "typeRoots": [
+    "./src/typings",
+    "/node_modules/@types"
+  ]*/
 }
