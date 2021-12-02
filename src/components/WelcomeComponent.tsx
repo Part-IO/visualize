@@ -1,7 +1,7 @@
 import "../style/WelcomeComponent.scss";
 import { Link } from "react-scroll";
 
-const WelcomeComponent = () => {
+const WelcomeComponent = (): JSX.Element => {
     return (
         <div className={"welcome"}>
             <div className={"title-container"}>
