@@ -1,0 +1,144 @@
+.welcome {
+    background-image: url("../data/frauenkirche.jpg");
+    height: 100vh;
+    width: calc(100vw - (100vw - 100%));
+    background-size: cover;
+    position: relative;
+    $color: #000;
+
+    .title-container {
+        position: absolute;
+        top: 20%;
+        left: 50%;
+        transform: translateX(-50%);
+
+        .title {
+            text-align: center;
+            font-size: 10vw;
+            line-height: 0;
+            letter-spacing: 0.1em;
+            font-weight: 900;
+            margin: 6vw;
+            color: $color;
+        }
+
+        .subtitle {
+            text-align: center;
+            font-size: 3vw;
+            line-height: 0;
+            letter-spacing: 0.01em;
+            font-weight: 300;
+            color: $color;
+        }
+    }
+
+    .mouse-scroll {
+        position: absolute;
+        top: 80%;
+        left: 50%;
+        transform: translateX(-50%);
+        display: block;
+        z-index: 9999;
+        cursor: pointer;
+
+        span {
+            display: block;
+            width: 5px;
+            height: 5px;
+            -ms-transform: rotate(45deg);
+            -webkit-transform: rotate(45deg);
+            transform: rotate(45deg);
+            border-right: 2px solid $color;
+            border-bottom: 2px solid $color;
+            margin: 0 0 3px 9px;
+        }
+
+        .mouse {
+            height: 30px;
+            width: 20px;
+            border-radius: 12px;
+            -webkit-transform: none;
+            -ms-transform: none;
+            transform: none;
+            border: 2px solid $color;
+        }
+
+        .mouse-in {
+            height: 5px;
+            width: 2px;
+            display: block;
+            margin: 5px auto;
+            background: $color;
+            position: relative;
+            -webkit-animation: animated-mouse 1.2s ease infinite;
+            -moz-animation: animated-mouse 1.2s ease infinite;
+        }
+
+        .down-arrow-1 {
+            margin-top: 6px;
+            -webkit-animation: mouse-scroll 1s infinite;
+            -moz-animation: mouse-scroll 1s infinite;
+            -webkit-animation-delay: 0.1s;
+            -moz-animation-delay: 0.1s;
+            -webkit-animation-direction: alternate;
+        }
+        .down-arrow-2 {
+            -webkit-animation: mouse-scroll 1s infinite;
+            -moz-animation: mouse-scroll 1s infinite;
+            -webkit-animation-delay: 0.2s;
+            -moz-animation-delay: 0.2s;
+            -webkit-animation-direction: alternate;
+        }
+        .down-arrow-3 {
+            -webkit-animation: mouse-scroll 1s infinite;
+            -moz-animation: mouse-scroll 1s infinite;
+            -webkit-animation-delay: 0.3s;
+            -moz-animation-delay: 0.3s;
+            -webkit-animation-direction: alternate;
+        }
+    }
+
+    @-webkit-keyframes animated-mouse {
+        0% {
+            opacity: 1;
+            -webkit-transform: translateY(0);
+            -ms-transform: translateY(0);
+            transform: translateY(0);
+        }
+
+        100% {
+            opacity: 0;
+            -webkit-transform: translateY(6px);
+            -ms-transform: translateY(6px);
+            transform: translateY(6px);
+        }
+    }
+
+    @-webkit-keyframes mouse-scroll {
+        0% {
+            opacity: 1;
+        }
+
+        50% {
+            opacity: 0.5;
+        }
+
+        100% {
+            opacity: 1;
+        }
+    }
+
+    @keyframes mouse-scroll {
+        0% {
+            opacity: 0;
+        }
+
+        50% {
+            opacity: 0.5;
+        }
+
+        100% {
+            opacity: 1;
+        }
+    }
+}
