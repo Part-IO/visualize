@@ -1,7 +1,7 @@
-import "../style/TimeLine.scss";
+import "../style/ScrollStepComponent.scss";
 import { useEffect } from "react";
 
-const TimelineComponent = (): JSX.Element => {
+const ScrollStepComponent = (): JSX.Element => {
     const prevAll = (element: HTMLDivElement): HTMLDivElement[] => {
         const result: HTMLDivElement[] = [];
 
@@ -56,4 +56,4 @@ const TimelineComponent = (): JSX.Element => {
     );
 };
 
-export default TimelineComponent;
+export default ScrollStepComponent;

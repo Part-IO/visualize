@@ -1,14 +1,7 @@
-/*Just for full user-scroll-experience, will be deleted soon;*/
-.welcome {
-    background-color: darkgrey;
-    height: 100vh;
-    width: 100vw;
-}
-
-.graphicContainer {
-    /*padding: 10vh 2vh 10vh;*/
+.graphic-container {
     justify-content: space-between;
     display: flex;
+    width: calc(100vw - (100vw - 100%));
 }
 
 .timeline {
@@ -25,26 +18,25 @@
 }
 
 .step {
-    height: 50vh;
-    margin: 0 auto 3rem auto;
-    padding: 180px 0;
+    height: 76vh;
+    margin: 1vh auto 1vh auto;
+    padding: 1vh 1vw;
     border: 1px solid #333;
+
+    p {
+        text-align: center;
+        padding: 1rem;
+        font-size: 1.8rem;
+        margin: 0;
+    }
 }
 
-.step p {
-    text-align: center;
-    padding: 1rem;
-    font-size: 1.8rem;
-    margin: 0;
-}
-
-/* Fixed container*/
 .graphic {
+    padding: 1vh 1vw;
     flex-basis: 40%;
     top: 20vh;
     position: sticky;
-    width: 80vh;
-    height: 80vh;
+    height: 78vh;
     display: flex;
 }
 
@@ -52,7 +44,6 @@
     flex-basis: 20%;
     top: 20vh;
     position: sticky;
-    width: 80vh;
     height: 80vh;
     display: flex;
 }
