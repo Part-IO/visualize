@@ -1,25 +1,26 @@
 {
   "files": {
-    "main.css": "/visualize/static/css/main.f8b3d1ca.chunk.css",
-    "main.js": "/visualize/static/js/main.b05e9259.chunk.js",
-    "main.js.map": "/visualize/static/js/main.b05e9259.chunk.js.map",
-    "runtime-main.js": "/visualize/static/js/runtime-main.8902e69f.js",
-    "runtime-main.js.map": "/visualize/static/js/runtime-main.8902e69f.js.map",
+    "main.css": "/visualize/static/css/main.1001df47.chunk.css",
+    "main.js": "/visualize/static/js/main.3697a6f2.chunk.js",
+    "main.js.map": "/visualize/static/js/main.3697a6f2.chunk.js.map",
+    "runtime-main.js": "/visualize/static/js/runtime-main.8d9ccf62.js",
+    "runtime-main.js.map": "/visualize/static/js/runtime-main.8d9ccf62.js.map",
     "static/css/2.68ba508b.chunk.css": "/visualize/static/css/2.68ba508b.chunk.css",
-    "static/js/2.e9e4ccc1.chunk.js": "/visualize/static/js/2.e9e4ccc1.chunk.js",
-    "static/js/2.e9e4ccc1.chunk.js.map": "/visualize/static/js/2.e9e4ccc1.chunk.js.map",
-    "static/js/3.95a47cc4.chunk.js": "/visualize/static/js/3.95a47cc4.chunk.js",
-    "static/js/3.95a47cc4.chunk.js.map": "/visualize/static/js/3.95a47cc4.chunk.js.map",
+    "static/js/2.8a7a6fac.chunk.js": "/visualize/static/js/2.8a7a6fac.chunk.js",
+    "static/js/2.8a7a6fac.chunk.js.map": "/visualize/static/js/2.8a7a6fac.chunk.js.map",
+    "static/js/3.eda1916a.chunk.js": "/visualize/static/js/3.eda1916a.chunk.js",
+    "static/js/3.eda1916a.chunk.js.map": "/visualize/static/js/3.eda1916a.chunk.js.map",
     "index.html": "/visualize/index.html",
     "static/css/2.68ba508b.chunk.css.map": "/visualize/static/css/2.68ba508b.chunk.css.map",
-    "static/css/main.f8b3d1ca.chunk.css.map": "/visualize/static/css/main.f8b3d1ca.chunk.css.map",
-    "static/js/2.e9e4ccc1.chunk.js.LICENSE.txt": "/visualize/static/js/2.e9e4ccc1.chunk.js.LICENSE.txt"
+    "static/css/main.1001df47.chunk.css.map": "/visualize/static/css/main.1001df47.chunk.css.map",
+    "static/js/2.8a7a6fac.chunk.js.LICENSE.txt": "/visualize/static/js/2.8a7a6fac.chunk.js.LICENSE.txt",
+    "static/media/WelcomeComponent.scss": "/visualize/static/media/frauenkirche.4b96e6bf.jpg"
   },
   "entrypoints": [
-    "static/js/runtime-main.8902e69f.js",
+    "static/js/runtime-main.8d9ccf62.js",
     "static/css/2.68ba508b.chunk.css",
-    "static/js/2.e9e4ccc1.chunk.js",
-    "static/css/main.f8b3d1ca.chunk.css",
-    "static/js/main.b05e9259.chunk.js"
+    "static/js/2.8a7a6fac.chunk.js",
+    "static/css/main.1001df47.chunk.css",
+    "static/js/main.3697a6f2.chunk.js"
   ]
 }
