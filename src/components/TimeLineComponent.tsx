@@ -1,4 +1,4 @@
-import "../style/TimeLine.scss";
+import "../style/TimeLineComponent.scss";
 import { useEffect } from "react";
 
 const DistrictComponent = (): JSX.Element => {
@@ -20,8 +20,8 @@ const DistrictComponent = (): JSX.Element => {
     };
 
     useEffect(() => {
-        const progressElement: HTMLDivElement = document.querySelector(".tprogress") as HTMLDivElement;
-        const label: HTMLDivElement = progressElement.querySelector(".tleft") as HTMLDivElement;
+        const progressElement: HTMLDivElement = document.querySelector(".timeline-progress") as HTMLDivElement;
+        const label: HTMLDivElement = progressElement.querySelector(".below") as HTMLDivElement;
         const steps: HTMLDivElement[] = [...(label.childNodes as NodeListOf<HTMLDivElement>)];
         steps.forEach((element: HTMLDivElement) =>
             element.addEventListener("mouseenter", () => {
@@ -31,10 +31,10 @@ const DistrictComponent = (): JSX.Element => {
     });
 
     return (
-        <div className={"touter"}>
-            <div className={"tprogress"}>
-                <div className={"tleft"}>
-                    <div className={"tcurrent"}>
+        <div className={"timeline-outer"}>
+            <div className={"timeline-progress"}>
+                <div className={"below"}>
+                    <div className={"current"}>
                         <p>1950</p>
                     </div>
                     <div>
@@ -59,8 +59,8 @@ const DistrictComponent = (): JSX.Element => {
                         <p>2020</p>
                     </div>
                 </div>
-                <div className={"tright"}>
-                    <div className={"tcurrent"} />
+                <div className={"above"}>
+                    <div className={"current"} />
                     <div />
                     <div />
                     <div />

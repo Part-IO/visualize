@@ -1,16 +1,15 @@
-.outer {
-    height: 80vh;
-    min-width: 20vw;
+.timeline-outer {
+    height: 20vh;
+    min-width: 100vw;
     display: flex;
 }
 
-.outer * {
+.timeline-outer * {
     box-sizing: border-box;
+    display: flex;
 }
 
-//--
-
-.progress {
+.timeline-progress {
     $gap: 20px;
     $line-height: 20px;
     $bullet-radius: 5px;
@@ -21,27 +20,25 @@
     $prev-color: #333;
 
     display: inline-flex;
-    height: 100%;
-    padding: 5vh 1vh;
+    margin: auto;
 
     > div {
         display: flex;
-        flex-direction: column;
+        flex-direction: row;
         color: $prev-color;
 
-        &.left {
-            padding-right: $gap;
-            text-align: right;
+        &.below {
+            text-align: center;
+
 
             // Line
             div {
-                width: 20vh;
+                width: 10vw; //Abhängig von Padding
 
                 &.current {
                     color: $current-color;
                     font-weight: bold;
 
-                    //Animation Punkte
                     &:before {
                         background: $current-color;
                         padding: $bullet-radius * 2;
@@ -56,15 +53,15 @@
                     ~ div {
                         color: $next-color;
 
-                        //Zustand Punkte
                         &:before {
                             background: $next-color;
                             padding: -$bullet-radius * 0.5;
                         }
 
                         &:after {
-                            height: 0;
-                            transition: none;
+                            //Linie die vorgezeichnet ist
+                            height: 1px;
+                            transform: translateX(-100%);
                         }
                     }
                 }
@@ -74,50 +71,47 @@
                     content: "";
                     background: $strip-color;
                     padding: $bullet-radius;
-                    border-radius: 50%;
                     position: absolute;
-                    right: -$gap;
                     top: $line-height/2;
                     transform: translateX(50%) translateY(-50%);
                     transition: padding 0.2s ease;
                 }
 
-                // Line die sich bewegt
+                // Line
                 &:after {
                     content: "";
                     background: $strip-color; //rgba(0, 0, 0, 0.6);
                     border-radius: 2px;
                     position: absolute;
-                    right: -$gap;
+                    right: -$gap/2; //Linie insgesamt verschieben
                     top: $line-height/2;
-                    height: 101%;
-                    width: $line-thick;
-                    transform: translateX(50%);
+                    width: 101%;
+                    height: $line-thick;
                     transition: height 0.2s ease;
                 }
             }
         }
 
-        &.right {
+        &.above {
             padding-left: $gap;
 
             div {
-                &:last-of-type:after {
-                    display: none;
-                }
-
                 &:after {
+                    //Endlinie (Überlaufend) eigentlich TODO!
                     content: "";
-                    background: fade_out($strip-color, 0.9); //rgba(0, 0, 0, 0.6);
-                    border-radius: 2px;
+                    background: fade_out($strip-color, 0.1); //rgba(0, 0, 0, 0.6);
                     position: absolute;
-                    left: -$gap;
                     top: $line-height/2;
-                    height: 101%;
-                    width: 1px;
-                    transform: translateX(-50%);
+                    height: $line-thick/2;
+                    transform: translateX(-110%) translateY(-1000%);
+                    width: 250px;
                 }
             }
+            //Dreieck einfach dahinter
+            border-top: 10px solid transparent; /* skyblue */
+            border-right: 10px solid transparent; /* limegreen;  */
+            border-bottom: 10px solid transparent; /* orange; */
+            border-left: 10px solid black;
         }
 
         div {
