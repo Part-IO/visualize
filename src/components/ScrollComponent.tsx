@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { Scrollama, Step } from "react-scrollama";
-import DistrictComponent from "./ScrollStepComponent";
+import ScrollStepComponent from "./ScrollStepComponent";
+import "../style/ScrollComponent.scss";
 import TimeLineComponent from "./TimeLineComponent";
-import "../style/ScrollComponent.css";
 
 interface IState {
     data: number;
@@ -44,12 +44,11 @@ const ScrollComponent = (props: { mapComponent: JSX.Element }): JSX.Element => {
 
     return (
         <div>
-            <div className="welcome" />
             <div style={{ display: "block" }}>
                 <div className="timeline">
                     <TimeLineComponent />
                 </div>
-                <div className="graphicContainer">
+                <div className="graphic-container">
                     <div className="graphic">{props.mapComponent}</div>
                     <div className="scroller">
                         <Scrollama
@@ -78,11 +77,10 @@ const ScrollComponent = (props: { mapComponent: JSX.Element }): JSX.Element => {
                         </Scrollama>
                     </div>
                     <div className="district">
-                        <DistrictComponent />
+                        <ScrollStepComponent />
                     </div>
                 </div>
             </div>
-            <div className="welcome" />
         </div>
     );
 };

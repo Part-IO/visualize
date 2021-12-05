@@ -20,7 +20,7 @@
     $num-of-dots: 11;
 
     display: inline-flex;
-    width: 80%;
+    width: 91%;
     margin: auto;
 
     > div {
@@ -34,7 +34,7 @@
 
             // Line
             div {
-                width: 80vw / $num-of-dots;
+                width: 91vw / $num-of-dots;
 
                 p {
                     text-align: left;
@@ -116,7 +116,7 @@
                     background: fade_out($strip-color, 0.9); //rgba(0, 0, 0, 0.6);
                     border-radius: 2px;
                     position: absolute;
-                    width: 80vw;
+                    width: 91vw;
                     height: 1px;
                     transform: translateY(50%);
                 }
