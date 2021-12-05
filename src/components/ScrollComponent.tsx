@@ -1,4 +1,4 @@
-import { createRef, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Scrollama, Step } from "react-scrollama";
 import ScrollStepComponent from "./ScrollStepComponent";
 import "../style/ScrollComponent.scss";
