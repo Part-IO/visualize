@@ -8,8 +8,6 @@
     box-sizing: border-box;
 }
 
-//--
-
 .progress {
     $gap: 20px;
     $line-height: 20px;
@@ -41,7 +39,7 @@
                     color: $current-color;
                     font-weight: bold;
 
-                    //Animation Punkte
+                    //Animation Points
                     &:before {
                         background: $current-color;
                         padding: $bullet-radius * 2;
@@ -56,7 +54,7 @@
                     ~ div {
                         color: $next-color;
 
-                        //Zustand Punkte
+                        //State points
                         &:before {
                             background: $next-color;
                             padding: -$bullet-radius * 0.5;

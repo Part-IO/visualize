@@ -24,7 +24,7 @@ const DistrictComponent = (): JSX.Element => {
         const label: HTMLDivElement = progressElement.querySelector(".below") as HTMLDivElement;
         const steps: HTMLDivElement[] = [...(label.childNodes as NodeListOf<HTMLDivElement>)];
         steps.forEach((element: HTMLDivElement) =>
-            element.addEventListener("mouseenter", () => {
+            element.addEventListener("click", () => {
                 onHover(element, steps);
             })
         );
@@ -33,32 +33,6 @@ const DistrictComponent = (): JSX.Element => {
     return (
         <div className={"timeline-outer"}>
             <div className={"timeline-progress"}>
-                <div className={"below"}>
-                    <div className={"current"}>
-                        <p>1950</p>
-                    </div>
-                    <div>
-                        <p>1960</p>
-                    </div>
-                    <div>
-                        <p>1970</p>
-                    </div>
-                    <div>
-                        <p>1980</p>
-                    </div>
-                    <div>
-                        <p>1990</p>
-                    </div>
-                    <div>
-                        <p>2000</p>
-                    </div>
-                    <div>
-                        <p>2010</p>
-                    </div>
-                    <div>
-                        <p>2020</p>
-                    </div>
-                </div>
                 <div className={"above"}>
                     <div className={"current"} />
                     <div />
@@ -68,6 +42,44 @@ const DistrictComponent = (): JSX.Element => {
                     <div />
                     <div />
                     <div />
+                    <div />
+                    <div />
+                    <div />
+                </div>
+                <div className={"below"}>
+                    <div className={"current"}>
+                        <p>1980</p>
+                    </div>
+                    <div>
+                        <p>1984</p>
+                    </div>
+                    <div>
+                        <p>1988</p>
+                    </div>
+                    <div>
+                        <p>1992</p>
+                    </div>
+                    <div>
+                        <p>1996</p>
+                    </div>
+                    <div>
+                        <p>2000</p>
+                    </div>
+                    <div>
+                        <p>2004</p>
+                    </div>
+                    <div>
+                        <p>2008</p>
+                    </div>
+                    <div>
+                        <p>2012</p>
+                    </div>
+                    <div>
+                        <p>2016</p>
+                    </div>
+                    <div>
+                        <p>2020</p>
+                    </div>
                 </div>
             </div>
         </div>

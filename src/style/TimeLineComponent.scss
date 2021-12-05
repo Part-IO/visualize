@@ -6,7 +6,6 @@
 
 .timeline-outer * {
     box-sizing: border-box;
-    display: flex;
 }
 
 .timeline-progress {
@@ -18,8 +17,10 @@
     $next-color: #666;
     $current-color: #333;
     $prev-color: #333;
+    $num-of-dots: 11;
 
     display: inline-flex;
+    width: 80%;
     margin: auto;
 
     > div {
@@ -27,13 +28,22 @@
         flex-direction: row;
         color: $prev-color;
 
+        // Selected Line
         &.below {
-            text-align: center;
-
+            padding-top: $gap;
 
             // Line
             div {
-                width: 10vw; //Abhängig von Padding
+                width: 80vw / $num-of-dots;
+
+                p {
+                    text-align: left;
+                    align-content: end;
+                    position: absolute;
+                    margin: 0;
+                    padding: 0;
+                    left: -18px;
+                }
 
                 &.current {
                     color: $current-color;
@@ -41,13 +51,14 @@
 
                     &:before {
                         background: $current-color;
-                        padding: $bullet-radius * 2;
+                        padding: $bullet-radius * 2.5 2px;
+                        transform: translateY(-30%) translateX(-50%);
                         transition: all 0.2s 0.15s cubic-bezier(0.175, 0.885, 0.32, 2);
                     }
 
                     &:after {
-                        height: 0;
-                        transition: height 0.2s ease-out;
+                        width: 0;
+                        transition: all 0.2s ease-out;
                     }
 
                     ~ div {
@@ -60,8 +71,8 @@
 
                         &:after {
                             //Linie die vorgezeichnet ist
-                            height: 1px;
-                            transform: translateX(-100%);
+                            width: 0;
+                            transition: none;
                         }
                     }
                 }
@@ -70,11 +81,11 @@
                 &:before {
                     content: "";
                     background: $strip-color;
-                    padding: $bullet-radius;
+                    padding: $bullet-radius 1px;
                     position: absolute;
-                    top: $line-height/2;
-                    transform: translateX(50%) translateY(-50%);
-                    transition: padding 0.2s ease;
+                    top: -$gap;
+                    transform: translateX(-50%) translateY(-35%);
+                    transition: all 0.2s ease;
                 }
 
                 // Line
@@ -83,44 +94,39 @@
                     background: $strip-color; //rgba(0, 0, 0, 0.6);
                     border-radius: 2px;
                     position: absolute;
-                    right: -$gap/2; //Linie insgesamt verschieben
-                    top: $line-height/2;
+                    top: -$gap;
                     width: 101%;
                     height: $line-thick;
-                    transition: height 0.2s ease;
+                    transition: all 0.2s ease;
                 }
             }
         }
 
+        // Transparent Line
         &.above {
-            padding-left: $gap;
+            padding-bottom: $gap;
 
             div {
+                &:last-of-type:after {
+                    display: none;
+                }
+
                 &:after {
-                    //Endlinie (Überlaufend) eigentlich TODO!
                     content: "";
-                    background: fade_out($strip-color, 0.1); //rgba(0, 0, 0, 0.6);
+                    background: fade_out($strip-color, 0.9); //rgba(0, 0, 0, 0.6);
+                    border-radius: 2px;
                     position: absolute;
-                    top: $line-height/2;
-                    height: $line-thick/2;
-                    transform: translateX(-110%) translateY(-1000%);
-                    width: 250px;
+                    width: 80vw;
+                    height: 1px;
+                    transform: translateY(50%);
                 }
             }
-            //Dreieck einfach dahinter
-            border-top: 10px solid transparent; /* skyblue */
-            border-right: 10px solid transparent; /* limegreen;  */
-            border-bottom: 10px solid transparent; /* orange; */
-            border-left: 10px solid black;
         }
 
         div {
             flex: 1;
             position: relative;
-            line-height: $line-height;
             cursor: default;
-            min-height: 30px;
-
             &:last-of-type {
                 flex: 0;
             }

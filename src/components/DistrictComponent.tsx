@@ -24,7 +24,7 @@ const DistrictComponent = (): JSX.Element => {
         const label: HTMLDivElement = progressElement.querySelector(".left") as HTMLDivElement;
         const steps: HTMLDivElement[] = [...(label.childNodes as NodeListOf<HTMLDivElement>)];
         steps.forEach((element: HTMLDivElement) =>
-            element.addEventListener("mouseenter", () => {
+            element.addEventListener("click", () => {
                 onHover(element, steps);
             })
         );
