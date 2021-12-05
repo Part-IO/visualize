@@ -1,14 +1,8 @@
 import "../style/TimeLineComponent.scss";
 import { useEffect } from "react";
+import { prevAll } from "../utils/Helper";
 
 const DistrictComponent = (): JSX.Element => {
-    const prevAll = (element: HTMLDivElement): HTMLDivElement[] => {
-        const result: HTMLDivElement[] = [];
-
-        while ((element = element.previousElementSibling as HTMLDivElement)) result.push(element);
-        return result;
-    };
-
     const onHover = (el: HTMLDivElement, steps: HTMLDivElement[]): void => {
         steps.forEach((element: HTMLDivElement) => {
             element.classList.replace("current", "prev");
@@ -34,7 +28,7 @@ const DistrictComponent = (): JSX.Element => {
         <div className={"timeline-outer"}>
             <div className={"timeline-progress"}>
                 <div className={"above"}>
-                    <div className={"current"} />
+                    <div />
                     <div />
                     <div />
                     <div />

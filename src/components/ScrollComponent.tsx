@@ -1,35 +1,46 @@
-import { useState } from "react";
+import { createRef, useEffect, useState } from "react";
 import { Scrollama, Step } from "react-scrollama";
 import ScrollStepComponent from "./ScrollStepComponent";
 import "../style/ScrollComponent.scss";
 import TimeLineComponent from "./TimeLineComponent";
+import scroller, { ScrollerObserver } from "../utils/Scroller";
+import { districts } from "../utils/Helper";
 
 interface IState {
-    data: number;
-    steps: number[];
+    data: string;
+    steps: string[];
     progress: number;
 }
 
 const ScrollComponent = (props: { mapComponent: JSX.Element }): JSX.Element => {
     const initialState: IState = {
-        data: 0,
-        steps: [10, 20, 30, 40],
+        data: "",
+        steps: districts,
         progress: 0,
     };
 
     const [getState, setGetState] = useState<IState>(initialState);
 
+    const onStateChange: ScrollerObserver = (district: string) => {
+        setGetState((state: IState) => {
+            return { ...state, data: district };
+        });
+    };
+
+    useEffect(() => {
+        scroller.attach(onStateChange);
+        return () => scroller.detach(onStateChange);
+    });
+
     const onStepEnter = (e) => {
         const { data } = e;
-        setGetState((state: IState) => {
-            return { ...state, data: data };
-        });
+        scroller.onScrollStateChange(data);
     };
 
     const onStepExit = ({ direction, data }) => {
         if (direction === "up" && data === getState.steps[0]) {
             setGetState((state: IState) => {
-                return { ...state, data: 0 };
+                return { ...state, data: "" };
             });
         }
     };
@@ -40,12 +51,10 @@ const ScrollComponent = (props: { mapComponent: JSX.Element }): JSX.Element => {
         });
     };
 
-    console.log(getState);
-
     return (
         <div>
             <div id={"main-component"} style={{ display: "block" }}>
-                <div className="timeline">
+                <div id={"timeline-component"} className="timeline">
                     <TimeLineComponent />
                 </div>
                 <div className="graphic-container">
@@ -55,21 +64,15 @@ const ScrollComponent = (props: { mapComponent: JSX.Element }): JSX.Element => {
                             onStepEnter={onStepEnter}
                             onStepExit={onStepExit}
                             progress
+                            order
                             onStepProgress={onStepProgress}
-                            offset="0.2"
-                            debug
+                            offset="0.23"
                         >
-                            {getState.steps.map((value) => {
-                                const isVisible = value === getState.data;
-                                const background = isVisible ? `rgba(44,127,184, ${getState.progress})` : "white";
-                                const visibility = isVisible ? "visible" : "hidden";
+                            {getState.steps.map((value: string) => {
                                 return (
                                     <Step data={value} key={value}>
-                                        <div className="step" style={{ background }}>
-                                            <p>step value: {value}</p>
-                                            <p style={{ visibility }}>
-                                                {Math.round(getState.progress * 1000) / 10 + "%"}
-                                            </p>
+                                        <div id={value + "-view"} className={"step"}>
+                                            <p>{value}</p>
                                         </div>
                                     </Step>
                                 );
