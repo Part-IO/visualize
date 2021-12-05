@@ -1,4 +1,4 @@
-name: Lint code before Merge
+name: Chek Code
 
 # Controls when the workflow will run
 on:
