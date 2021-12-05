@@ -44,7 +44,7 @@ const ScrollComponent = (props: { mapComponent: JSX.Element }): JSX.Element => {
 
     return (
         <div>
-            <div style={{ display: "block" }}>
+            <div id={"main-component"} style={{ display: "block" }}>
                 <div className="timeline">
                     <TimeLineComponent />
                 </div>
