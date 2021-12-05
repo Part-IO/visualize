@@ -1,14 +1,14 @@
-.outer {
+.timeline-outer {
+    height: 20vh;
+    min-width: 100vw;
     display: flex;
 }
 
-.outer * {
+.timeline-outer * {
     box-sizing: border-box;
 }
 
-//--
-
-.progress {
+.timeline-progress {
     $gap: 20px;
     $line-height: 20px;
     $bullet-radius: 5px;
@@ -17,23 +17,33 @@
     $next-color: #666;
     $current-color: #333;
     $prev-color: #333;
+    $num-of-dots: 11;
 
     display: inline-flex;
-    height: 85%;
+    width: 91%;
     margin: auto;
 
     > div {
         display: flex;
-        flex-direction: column;
+        flex-direction: row;
         color: $prev-color;
 
-        &.left {
-            padding-right: $gap;
-            text-align: right;
+        // Selected Line
+        &.below {
+            padding-top: $gap;
 
             // Line
             div {
-                width: 20vh;
+                width: 91vw / $num-of-dots;
+
+                p {
+                    text-align: left;
+                    align-content: end;
+                    position: absolute;
+                    margin: 0;
+                    padding: 0;
+                    left: -18px;
+                }
 
                 &.current {
                     color: $current-color;
@@ -41,13 +51,14 @@
 
                     &:before {
                         background: $current-color;
-                        padding: $bullet-radius * 2;
+                        padding: $bullet-radius * 2.5 2px;
+                        transform: translateY(-30%) translateX(-50%);
                         transition: all 0.2s 0.15s cubic-bezier(0.175, 0.885, 0.32, 2);
                     }
 
                     &:after {
-                        height: 0;
-                        transition: height 0.2s ease-out;
+                        width: 0;
+                        transition: all 0.2s ease-out;
                     }
 
                     ~ div {
@@ -59,7 +70,8 @@
                         }
 
                         &:after {
-                            height: 0;
+                            //Linie die vorgezeichnet ist
+                            width: 0;
                             transition: none;
                         }
                     }
@@ -69,13 +81,11 @@
                 &:before {
                     content: "";
                     background: $strip-color;
-                    padding: $bullet-radius;
-                    border-radius: 50%;
+                    padding: $bullet-radius 1px;
                     position: absolute;
-                    right: -$gap;
-                    top: $line-height/2;
-                    transform: translateX(50%) translateY(-50%);
-                    transition: padding 0.2s ease;
+                    top: -$gap;
+                    transform: translateX(-50%) translateY(-35%);
+                    transition: all 0.2s ease;
                 }
 
                 // Line
@@ -84,18 +94,17 @@
                     background: $strip-color; //rgba(0, 0, 0, 0.6);
                     border-radius: 2px;
                     position: absolute;
-                    right: -$gap;
-                    top: $line-height/2;
-                    height: 101%;
-                    width: $line-thick;
-                    transform: translateX(50%);
-                    transition: height 0.2s ease;
+                    top: -$gap;
+                    width: 101%;
+                    height: $line-thick;
+                    transition: all 0.2s ease;
                 }
             }
         }
 
-        &.right {
-            padding-left: $gap;
+        // Transparent Line
+        &.above {
+            padding-bottom: $gap;
 
             div {
                 &:last-of-type:after {
@@ -107,23 +116,17 @@
                     background: fade_out($strip-color, 0.9); //rgba(0, 0, 0, 0.6);
                     border-radius: 2px;
                     position: absolute;
-                    left: -$gap;
-                    top: $line-height/2;
-                    height: 101%;
-                    width: 1px;
-                    transform: translateX(-50%);
+                    width: 91vw;
+                    height: 1px;
+                    transform: translateY(50%);
                 }
             }
         }
 
         div {
             flex: 1;
-            //outline: 1px solid rgba(0, 0, 0, 0.1);
             position: relative;
-            line-height: $line-height;
             cursor: default;
-            min-height: 30px;
-
             &:last-of-type {
                 flex: 0;
             }
