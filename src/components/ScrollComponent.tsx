@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Scrollama, Step } from "react-scrollama";
-import DistrictComponent from "./DistrictComponent";
+import DistrictComponent from "./ScrollStepComponent";
 import TimeLineComponent from "./TimeLineComponent";
 import "../style/ScrollComponent.css";
 

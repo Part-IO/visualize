@@ -1,7 +1,7 @@
-import "../style/District.scss";
+import "../style/ScrollStepComponent.scss";
 import { useEffect } from "react";
 
-const DistrictComponent = (): JSX.Element => {
+const ScrollStepComponent = (): JSX.Element => {
     const prevAll = (element: HTMLDivElement): HTMLDivElement[] => {
         const result: HTMLDivElement[] = [];
 
@@ -24,7 +24,7 @@ const DistrictComponent = (): JSX.Element => {
         const label: HTMLDivElement = progressElement.querySelector(".left") as HTMLDivElement;
         const steps: HTMLDivElement[] = [...(label.childNodes as NodeListOf<HTMLDivElement>)];
         steps.forEach((element: HTMLDivElement) =>
-            element.addEventListener("click", () => {
+            element.addEventListener("mouseenter", () => {
                 onHover(element, steps);
             })
         );
@@ -56,4 +56,4 @@ const DistrictComponent = (): JSX.Element => {
     );
 };
 
-export default DistrictComponent;
+export default ScrollStepComponent;

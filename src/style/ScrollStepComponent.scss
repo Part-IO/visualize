@@ -1,12 +1,12 @@
 .outer {
-    height: 80vh;
-    min-width: 20vw;
     display: flex;
 }
 
 .outer * {
     box-sizing: border-box;
 }
+
+//--
 
 .progress {
     $gap: 20px;
@@ -20,7 +20,7 @@
 
     display: inline-flex;
     height: 100%;
-    padding: 5vh 1vh;
+    padding: 2vh 1vw;
 
     > div {
         display: flex;
@@ -39,7 +39,6 @@
                     color: $current-color;
                     font-weight: bold;
 
-                    //Animation Points
                     &:before {
                         background: $current-color;
                         padding: $bullet-radius * 2;
@@ -54,7 +53,6 @@
                     ~ div {
                         color: $next-color;
 
-                        //State points
                         &:before {
                             background: $next-color;
                             padding: -$bullet-radius * 0.5;
@@ -80,7 +78,7 @@
                     transition: padding 0.2s ease;
                 }
 
-                // Line die sich bewegt
+                // Line
                 &:after {
                     content: "";
                     background: $strip-color; //rgba(0, 0, 0, 0.6);
@@ -120,6 +118,7 @@
 
         div {
             flex: 1;
+            //outline: 1px solid rgba(0, 0, 0, 0.1);
             position: relative;
             line-height: $line-height;
             cursor: default;
