@@ -54,11 +54,10 @@ const ScrollComponent = (props: { mapComponent: JSX.Element }): JSX.Element => {
     return (
         <div>
             <div id={"main-component"} style={{ display: "block" }}>
-                <div id={"timeline-component"} className="timeline">
-                    <TimeLineComponent />
-                </div>
                 <div className="graphic-container">
-                    <div className="graphic">{props.mapComponent}</div>
+                    <div className="district">
+                        <ScrollStepComponent />
+                    </div>
                     <div className="scroller">
                         <Scrollama
                             onStepEnter={onStepEnter}
@@ -79,9 +78,12 @@ const ScrollComponent = (props: { mapComponent: JSX.Element }): JSX.Element => {
                             })}
                         </Scrollama>
                     </div>
-                    <div className="district">
-                        <ScrollStepComponent />
+                    <div className="graphic">
+                        <div className="map">{props.mapComponent}</div>
                     </div>
+                </div>
+                <div id={"timeline-component"} className="timeline">
+                    <TimeLineComponent />
                 </div>
             </div>
         </div>
