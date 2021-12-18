@@ -3,6 +3,10 @@
 .settings/
 # ignore IntelliJ IDEA files
 .idea/
+*.iml
+
+# ignore jupyter files
+.ipynb_checkpoints/
 
 # dependencies
 /node_modules
