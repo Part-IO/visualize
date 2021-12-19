@@ -1,0 +1,11 @@
+name: dataviz
+channels:
+  - defaults
+dependencies:
+  - python=3.9
+  - pandas
+  - requests
+  - seaborn
+  - numpy
+  - matplotlib
+  - jupyter
