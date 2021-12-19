@@ -1,5 +1,6 @@
 import { Component } from "react";
 import Chart from "react-apexcharts";
+import { districts } from "../utils/Helper";
 
 class StackedBar extends Component<any, any> {
     constructor(props) {
@@ -39,7 +40,6 @@ class StackedBar extends Component<any, any> {
                 ],
                 chart: {
                     type: "bar",
-                    height: 350,
                     stacked: true,
                     stackType: "100%",
                 },
@@ -61,15 +61,7 @@ class StackedBar extends Component<any, any> {
                     // }
                 },
                 xaxis: {
-                    categories: [
-                        "R&D Engineering",
-                        "Devops",
-                        "Sales",
-                        "Marketing",
-                        "Accounting",
-                        "Finance",
-                        "Professional Services",
-                    ],
+                    categories: districts,
                 },
                 tooltip: {
                     y: {
@@ -90,10 +82,16 @@ class StackedBar extends Component<any, any> {
     render() {
         return (
             <div id="chart">
-                <Chart options={this.state.options} series={this.state.series} type="bar" height={350} />
+                <Chart
+                    options={this.state.options}
+                    series={this.state.series}
+                    type="bar"
+                    height={"400%"}
+                    width={"100%"}
+                />
             </div>
         );
     }
 }
-
+//Verstehe die heigth Anzeige leider nicht
 export default StackedBar;

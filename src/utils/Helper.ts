@@ -6,6 +6,7 @@ export const prevAll = (element: HTMLDivElement): HTMLDivElement[] => {
 };
 
 export const districts = [
+    "Bayern",
     "Mittelfranken",
     "Niederbayern",
     "Oberbayern",
@@ -14,3 +15,5 @@ export const districts = [
     "Schwaben",
     "Unterfranken",
 ];
+
+export const series = [];
