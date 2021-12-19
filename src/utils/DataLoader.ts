@@ -75,6 +75,10 @@ class DataLoader {
             })
         );
     };
+
+    GetAll = (): { [p: string | number]: IDataEntry[] } => {
+        return this.groupByName(data);
+    };
 }
 
 export default DataLoader;
