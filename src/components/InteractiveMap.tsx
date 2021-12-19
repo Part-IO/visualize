@@ -1,33 +1,14 @@
 import regierungsbezirke from "../data/regierungsbezirke.json";
-import { MapContainer, GeoJSON, useMap } from "react-leaflet";
+import { GeoJSON, MapContainer, useMap, LayersControl } from "react-leaflet";
 import { Feature, FeatureCollection } from "geojson";
-import { LatLngBoundsLiteral, Layer } from "leaflet";
+import L, { LatLngBoundsLiteral, Layer } from "leaflet";
 import "leaflet/dist/leaflet.css";
 import { useCallback, useState } from "react";
-import L from "leaflet";
-
-interface ICountryStyle {
-    fillColor: string;
-    fillOpacity: number;
-    color: string;
-    weight: number;
-}
+import DataLoader, { GroupBy, IDataEntry } from "../utils/DataLoader";
+import { Colors, getTint } from "../utils/Colors";
 
 const InteractiveMap: () => JSX.Element = () => {
     const [getGeoJson, setGeoJson] = useState(regierungsbezirke as FeatureCollection);
-
-    const defaultCountryStyle: ICountryStyle = {
-        fillColor: "red",
-        fillOpacity: 1,
-        color: "white",
-        weight: 1,
-    };
-    const selectedFeatureStyle: ICountryStyle = {
-        fillColor: "red",
-        fillOpacity: 1,
-        color: "white",
-        weight: 3,
-    };
 
     const getBoundingBox = (data): LatLngBoundsLiteral => {
         const b = { xMin: Infinity, xMax: -Infinity, yMin: Infinity, yMax: -Infinity };
@@ -90,29 +71,36 @@ const InteractiveMap: () => JSX.Element = () => {
         const onEachFeature = useCallback(
             (feature: Feature, layer: Layer): void => {
                 layer.on({
-                    click: () => {
-                        if ((feature.properties as { [p: string]: any }).selected) {
+                    click: (event) => {
+                        if ((feature.properties as { [p: string]: string | number | boolean | null }).selected) {
                             // unselect if click the same
                             //event.target.setStyle(defaultCountryStyle);
                             setFeaturePros(undefined);
                             const data = getGeoJson;
                             data.features.forEach((f: Feature) => {
-                                (f.properties as { [p: string]: any }).selected = false;
+                                (f.properties as { [p: string]: string | number | boolean | null }).selected = false;
                             });
                             setGeoJson(data);
                             const center = getBoundingBox(getGeoJson);
                             map.flyToBounds(center, { duration: 0.5, padding: [10, 10] });
+                            if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
+                                event.target.bringToBack();
+                            }
                         } else {
                             // Select if nothing is selected
                             //event.target.setStyle(selectedFeatureStyle);
                             setFeaturePros(feature);
                             const data = getGeoJson;
                             data.features.forEach((f: Feature) => {
-                                (f.properties as { [p: string]: any }).selected = f === feature;
+                                (f.properties as { [p: string]: string | number | boolean | null }).selected =
+                                    f === feature;
                             });
                             setGeoJson(data);
                             const center = getBoundingBox(feature);
                             map.flyToBounds(center, { duration: 0.5, padding: [10, 10] });
+                            if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
+                                event.target.bringToFront();
+                            }
                         }
                     },
                 });
@@ -120,22 +108,87 @@ const InteractiveMap: () => JSX.Element = () => {
             [map]
         );
 
+        function colorize(feature, relative = true) {
+            const currentDate = 1980;
+            const data: { [p: string]: IDataEntry[] } = new DataLoader(GroupBy.municipality).GetDistricts();
+
+            function parseDate(input) {
+                const parts = input.match(/(\d+)/g);
+                // note parts[1]-1
+                return new Date(parts[2], parts[1] - 1, parts[0]);
+            }
+
+            const usedAreaMinMax = () => {
+                const keys = Object.keys(data);
+                let minValue = Infinity;
+                let maxValue = -Infinity;
+                keys.forEach((key: string) => {
+                    const value = (
+                        data[key].find(
+                            (entry: IDataEntry) => parseDate(entry.date).getFullYear() === currentDate
+                        ) as IDataEntry
+                    ).used_area_percent;
+                    minValue = minValue > value ? value : minValue;
+                    maxValue = maxValue < value ? value : maxValue;
+                });
+                return [0, maxValue];
+            };
+
+            const [min, max] = relative ? usedAreaMinMax() : [0, 1];
+
+            const percentage: number = Math.round(
+                (((
+                    data[feature.properties.NAME_2].find(
+                        (entry: IDataEntry) => parseDate(entry.date).getFullYear() === currentDate
+                    ) as IDataEntry
+                ).used_area_percent -
+                    min) *
+                    100) /
+                    (max - min)
+            );
+
+            const color = getTint(Colors.Red, percentage);
+            return {
+                fillColor: color,
+                fillOpacity: 1,
+                color: "white",
+                weight: 1,
+            };
+        }
+
         return (
-            <>
-                <GeoJSON
-                    data={getGeoJson}
-                    style={(feature) => {
-                        if (featureProps) {
-                            return featureProps === feature
-                                ? selectedFeatureStyle
-                                : { ...selectedFeatureStyle, fillOpacity: 0.1 };
-                        } else {
-                            return selectedFeatureStyle;
-                        }
-                    }}
-                    onEachFeature={onEachFeature}
-                />
-            </>
+            <LayersControl position="topright">
+                <LayersControl.BaseLayer checked name={"100% -> Land mit dem höchsten Flächenverbrauch"}>
+                    <GeoJSON
+                        data={getGeoJson}
+                        style={(feature) => {
+                            if (featureProps) {
+                                return featureProps === feature
+                                    ? { ...colorize(feature), weight: 5, color: Colors.Blue }
+                                    : { ...colorize(feature), fillOpacity: 0.2 };
+                            } else {
+                                return colorize(feature);
+                            }
+                        }}
+                        onEachFeature={onEachFeature}
+                    />
+                </LayersControl.BaseLayer>
+                <LayersControl.BaseLayer name={"100% -> 100% FLächenverbrauch"}>
+                    <GeoJSON
+                        data={getGeoJson}
+                        style={(feature) => {
+                            if (featureProps) {
+                                return featureProps === feature
+                                    ? colorize(feature, false)
+                                    : { ...colorize(feature, false), fillOpacity: 0.7 };
+                            } else {
+                                return colorize(feature, false);
+                            }
+                        }}
+                        onEachFeature={onEachFeature}
+                    />
+                </LayersControl.BaseLayer>
+            </LayersControl>
         );
     }
 

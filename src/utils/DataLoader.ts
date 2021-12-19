@@ -1,6 +1,6 @@
 import data from "../data/data.json";
 
-interface IDataEntry {
+export interface IDataEntry {
     AGS: number;
     municipality: string;
     total: number;
@@ -39,6 +39,10 @@ class DataLoader {
         this.groupByName = this.groupBy(this.groupByKey);
     }
 
+    /**
+     * Group list of object base on keys
+     */
+
     private groupBy = (key: string) => (array: IDataEntry[]) =>
         array.reduce(
             (objectsByKeyValue, obj: IDataEntry) => ({
@@ -47,16 +51,24 @@ class DataLoader {
             }),
             {}
         );
+    /**
+     * Return the districts from the dataset as a grouped object
+     * @return  { [p: string | number]: IDataEntry[] }    Dictionary with grouped IDataEntry lists
+     */
 
-    GetDistricts = (): { [p: string | number]: IDataEntry } => {
+    GetDistricts = (): { [p: string | number]: IDataEntry[] } => {
         return this.groupByName(
             data.filter((entry: IDataEntry) => {
                 return entry.AGS.toString().length == 2;
             })
         );
     };
+    /**
+     * Return teh government districts from the dataset as a grouped object
+     * @return  { [p: string | number]: IDataEntry[] }    Dictionary with grouped IDataEntry lists
+     */
 
-    GetGovernmentDistricts = (): { [p: string | number]: IDataEntry } => {
+    GetGovernmentDistricts = (): { [p: string | number]: IDataEntry[] } => {
         return this.groupByName(
             data.filter((entry: IDataEntry) => {
                 return entry.AGS.toString().length == 4;
