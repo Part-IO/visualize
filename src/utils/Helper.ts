@@ -20,3 +20,8 @@ export const districts = [
     "Schwaben",
     "Unterfranken",
 ];
+
+export enum LayerTypes {
+    Regierungsbezirk,
+    Landkreis,
+}

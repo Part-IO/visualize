@@ -1,130 +1,65 @@
 import landkreise from "../data/landkreise.json";
-import { GeoJSON, LayersControl, MapContainer, useMap } from "react-leaflet";
+import regierungsbezirke from "../data/regierungsbezirke.json";
+import { GeoJSON, MapContainer, useMap } from "react-leaflet";
 import { Feature, FeatureCollection } from "geojson";
-import L, { LatLngBoundsLiteral, Layer, LayersControlEvent } from "leaflet";
+import L, { Browser, Layer } from "leaflet";
 import "leaflet/dist/leaflet.css";
-import { RefObject, useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { RefObject, useCallback, useMemo, useRef, useState } from "react";
 import DataLoader, { groupBy, GroupBy, IDataEntry } from "../utils/DataLoader";
 import { Colors, getTint } from "../utils/Colors";
+import { LayerTypes } from "../utils/Helper";
 
 const InteractiveMap: () => JSX.Element = () => {
-    const [getGeoJson] = useState(landkreise as FeatureCollection);
+    const [getRBGeoJson] = useState(regierungsbezirke as FeatureCollection);
 
-    const getBoundingBox = (data): LatLngBoundsLiteral => {
-        let coordinates, latitude, longitude;
-        const latList: number[] = [];
-        const longList: number[] = [];
-
-        // Loop through each "feature"
-        for (let i = 0; i < data.features.length; i++) {
-            coordinates = data.features[i].geometry.coordinates;
-
-            if (coordinates.length === 1) {
-                // It's only a single Polygon
-                // For each individual coordinate in this feature's coordinates...
-                for (let j = 0; j < coordinates[0].length; j++) {
-                    longitude = coordinates[0][j][0];
-                    latitude = coordinates[0][j][1];
-                    latList.push(latitude);
-                    longList.push(longitude);
-                }
-            } else {
-                // It's a MultiPolygon
-                // Loop through each coordinate set
-                for (let j = 0; j < coordinates.length; j++) {
-                    // For each individual coordinate in this coordinate set...
-                    for (let k = 0; k < coordinates[j][0].length; k++) {
-                        longitude = coordinates[j][0][k][0];
-                        latitude = coordinates[j][0][k][1];
-                        latList.push(latitude);
-                        longList.push(longitude);
-                    }
-                }
-            }
-        }
-
-        // Returns an object that contains the bounds of this GeoJSON data.
-        // The keys describe a box formed by the northwest (xMin, yMin) and southeast (xMax, yMax) coordinates.
-        return [
-            [latList.sort((a, c) => a - c)[0], longList.sort((a, c) => c - a)[0]],
-            [latList.sort((a, c) => c - a)[0], longList.sort((a, c) => a - c)[0]],
-        ] as LatLngBoundsLiteral;
-    };
-
-    const [getMapCenter] = useState(getBoundingBox(getGeoJson));
+    //const [getLKGeoJson] = useState(landkreise as FeatureCollection);
 
     function GeoContainer({ year }: { year: number }) {
         const geoJsonRef = useRef<L.GeoJSON>(null);
-        const geoJsonRefRelative = useRef<L.GeoJSON>(null);
         const map = useMap();
         const groupByAGSFunc = groupBy(GroupBy.AGS);
-        const [getData] = useState<{ [p: string | number]: IDataEntry[] }>(
+        const [getDataRB] = useState<{ [p: string | number]: IDataEntry[] }>(
+            groupByAGSFunc(new DataLoader(GroupBy.AGS).GetDistricts().getDataForYear(year))
+        );
+        const [getDataLK] = useState<{ [p: string | number]: IDataEntry[] }>(
             groupByAGSFunc(new DataLoader(GroupBy.AGS).GetGovernmentDistricts().getDataForYear(year))
         );
-        const [getRelative, setRelative] = useState<boolean>(true);
 
-        useEffect(() => {
-            map.on("baselayerchange", (event: LayersControlEvent) => {
-                switch (event.name) {
-                    case "100% -> Land mit dem höchsten Flächenverbrauch":
-                        setRelative(true);
-                        break;
-                    case "100% -> 100% FLächenverbrauch":
-                        setRelative(false);
-                        break;
-                }
-            });
-        }, [map]);
-
-        const [min, max] = useMemo(() => {
+        const [minRB, maxRB] = useMemo(() => {
             let minValue = Infinity;
             let maxValue = -Infinity;
-            Object.values(getData).forEach((dataEntry) => {
-                const value = dataEntry[0].used_area_percent;
-                minValue = minValue > value ? value : minValue;
-                maxValue = maxValue < value ? value : maxValue;
-            });
-            return [0, maxValue];
-        }, [getData]);
-
-        const lastClickedLayer = useRef<Layer>();
-
-        const onEachFeature = useCallback(
-            (feature: Feature, layer: Layer): void => {
-                layer.on({
-                    click: (event) => {
-                        if (lastClickedLayer) {
-                            (geoJsonRef as RefObject<L.GeoJSON>).current?.resetStyle(lastClickedLayer.current);
-                        }
-                        if (lastClickedLayer.current === layer) {
-                            (geoJsonRef as RefObject<L.GeoJSON>).current?.resetStyle(event.target);
-                            lastClickedLayer.current = undefined;
-                            map.flyToBounds(getMapCenter, { duration: 0.5, padding: [10, 10] });
-                            if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
-                                event.target.bringToFront();
-                            }
-                        } else {
-                            // Select if nothing is selected
-                            event.target.setStyle({
-                                ...event.target.style,
-                                weight: 5,
-                            });
-                            lastClickedLayer.current = layer;
-                            map.flyToBounds(event.target.getBounds(), { duration: 0.5, padding: [10, 10] });
-                            if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
-                                event.target.bringToFront();
-                            }
-                        }
-                    },
+            Object.values(getDataRB)
+                .flat(1)
+                .forEach((dataEntry) => {
+                    const value = dataEntry.used_area_percent;
+                    minValue = minValue > value ? value : minValue;
+                    maxValue = maxValue < value ? value : maxValue;
                 });
-            },
-            [map]
-        );
+            return [0, maxValue];
+        }, [getDataRB]);
+
+        const [minLK, maxLK] = useMemo(() => {
+            let minValue = Infinity;
+            let maxValue = -Infinity;
+            Object.values(getDataLK)
+                .flat(1)
+                .forEach((dataEntry) => {
+                    const value = dataEntry.used_area_percent;
+                    minValue = minValue > value ? value : minValue;
+                    maxValue = maxValue < value ? value : maxValue;
+                });
+            return [0, maxValue];
+        }, [getDataLK]);
+
         const colorize = useCallback(
-            (feature) => {
-                const [minValue, maxValue] = getRelative ? [min, max] : [0, 1];
+            (feature, layer = LayerTypes.Regierungsbezirk) => {
+                const getData: { [p: string | number]: IDataEntry[] } =
+                    layer === LayerTypes.Regierungsbezirk ? getDataRB : getDataLK;
+
                 const data = Object.values(getData).flat(1);
                 const AGS: number = parseInt(feature.properties.AGS);
+
+                const [minValue, maxValue] = layer === LayerTypes.Regierungsbezirk ? [minRB, maxRB] : [minLK, maxLK];
 
                 const percentage = Math.round(
                     (((data.find((dataEntry: IDataEntry) => dataEntry.AGS === AGS) as IDataEntry).used_area_percent -
@@ -137,32 +72,92 @@ const InteractiveMap: () => JSX.Element = () => {
                 return {
                     fillColor: color,
                     fillOpacity: 1,
-                    color: "white",
+                    color: Colors.White,
                     weight: 1,
                 };
             },
-            [getData, getRelative, max, min]
+            [getDataLK, getDataRB, minLK, minRB, maxLK, maxRB]
+        );
+
+        const lastClickedLayer = useRef<Layer>();
+        const lastDetailedLayerGroup = useRef<L.LayerGroup>();
+
+        const onEachFeature = useCallback(
+            (feature: Feature, layer: Layer, t: LayerTypes): void => {
+                layer.on({
+                    click: (event) => {
+                        const geoJsonMapObj: L.GeoJSON = (geoJsonRef as RefObject<L.GeoJSON>).current as L.GeoJSON;
+                        if (lastClickedLayer.current) {
+                            geoJsonMapObj.resetStyle(lastClickedLayer.current);
+                        }
+                        if (lastDetailedLayerGroup.current) {
+                            geoJsonMapObj.removeLayer(lastDetailedLayerGroup.current);
+                        }
+                        if (lastClickedLayer.current === layer || t === LayerTypes.Landkreis) {
+                            // Unselect if layer is clicked again
+                            map.flyToBounds(geoJsonMapObj.getBounds(), {
+                                duration: 0.5,
+                                easeLinearity: 0.1,
+                                padding: [10, 10],
+                                paddingBottomRight: [0, 20],
+                            });
+                            geoJsonMapObj.resetStyle(lastClickedLayer.current);
+                            lastClickedLayer.current = undefined;
+                            if (!Browser.ie && !Browser.opera && !Browser.edge) {
+                                event.target.bringToBack();
+                            }
+                        } else {
+                            if (t === LayerTypes.Regierungsbezirk) {
+                                // Select if nothing is selected
+                                lastClickedLayer.current = layer;
+                                map.flyToBounds(event.target.getBounds(), {
+                                    duration: 0.5,
+                                    padding: [50, 50],
+                                    easeLinearity: 0.1,
+                                });
+
+                                event.target.setStyle({
+                                    weight: 5,
+                                    color: Colors.Black,
+                                });
+
+                                const firstNum = parseInt(feature.properties?.AGS);
+                                const selectedLKData = landkreise.features.filter((f) => {
+                                    return Math.trunc(Number(f.properties.AGS) / 100) === firstNum;
+                                });
+                                const newGeoJsonLK = {
+                                    type: "FeatureCollection",
+                                    features: selectedLKData,
+                                };
+                                const newGeoJsonLayer = new L.GeoJSON(newGeoJsonLK as FeatureCollection, {
+                                    style: (fea) => colorize(fea, LayerTypes.Landkreis),
+                                    onEachFeature: (f, l) => onEachFeature(f, l, LayerTypes.Landkreis),
+                                });
+
+                                const layerGroup = new L.LayerGroup();
+                                layerGroup.addTo(geoJsonMapObj);
+                                layerGroup.addLayer(newGeoJsonLayer);
+                                lastDetailedLayerGroup.current = layerGroup;
+
+                                if (!Browser.ie && !Browser.opera && !Browser.edge) {
+                                    newGeoJsonLayer.bringToFront();
+                                }
+                            }
+                        }
+                    },
+                });
+            },
+
+            [map, colorize]
         );
 
         return (
-            <LayersControl position="topright">
-                <LayersControl.BaseLayer checked name={"100% -> Land mit dem höchsten Flächenverbrauch"}>
-                    <GeoJSON
-                        data={getGeoJson}
-                        onEachFeature={onEachFeature}
-                        style={(feature) => colorize(feature)}
-                        ref={geoJsonRefRelative}
-                    />
-                </LayersControl.BaseLayer>
-                <LayersControl.BaseLayer name={"100% -> 100% FLächenverbrauch"}>
-                    <GeoJSON
-                        data={getGeoJson}
-                        onEachFeature={onEachFeature}
-                        style={(feature) => colorize(feature)}
-                        ref={geoJsonRef}
-                    />
-                </LayersControl.BaseLayer>
-            </LayersControl>
+            <GeoJSON
+                data={getRBGeoJson}
+                onEachFeature={(l, f) => onEachFeature(l, f, LayerTypes.Regierungsbezirk)}
+                style={(feature) => colorize(feature)}
+                ref={geoJsonRef}
+            />
         );
     }
 
@@ -170,6 +165,8 @@ const InteractiveMap: () => JSX.Element = () => {
         <MapContainer
             zoomSnap={0}
             zoomDelta={0.25}
+            zoom={7.568811741111565}
+            center={[49.00380582838273, 11.407993529123203]}
             style={{
                 height: "100%",
                 width: "100%",
@@ -179,8 +176,7 @@ const InteractiveMap: () => JSX.Element = () => {
                 backgroundClip: "padding-box",
             }}
             whenCreated={(m: L.Map) => {
-                m.fitBounds(getMapCenter);
-                m.setMinZoom(m.getZoom());
+                m.fitBounds(m.getBounds(), { padding: [10, 10], paddingBottomRight: [0, 20] });
                 m.invalidateSize();
             }}
             zoomAnimation={true}
@@ -190,5 +186,4 @@ const InteractiveMap: () => JSX.Element = () => {
         </MapContainer>
     );
 };
-
 export default InteractiveMap;
