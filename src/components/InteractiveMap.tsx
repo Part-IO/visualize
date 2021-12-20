@@ -1,15 +1,14 @@
-import regierungsbezirke from "../data/regierungsbezirke.json";
 import landkreise from "../data/landkreise.json";
-import { GeoJSON, MapContainer, useMap, LayersControl } from "react-leaflet";
+import { GeoJSON, LayersControl, MapContainer, useMap } from "react-leaflet";
 import { Feature, FeatureCollection } from "geojson";
-import L, { LatLngBoundsLiteral, Layer } from "leaflet";
+import L, { LatLngBoundsLiteral, Layer, LayersControlEvent } from "leaflet";
 import "leaflet/dist/leaflet.css";
-import { useCallback, useState } from "react";
-import DataLoader, { GroupBy, IDataEntry } from "../utils/DataLoader";
+import { RefObject, useCallback, useEffect, useMemo, useRef, useState } from "react";
+import DataLoader, { groupBy, GroupBy, IDataEntry } from "../utils/DataLoader";
 import { Colors, getTint } from "../utils/Colors";
 
 const InteractiveMap: () => JSX.Element = () => {
-    const [getGeoJson, setGeoJson] = useState(landkreise as FeatureCollection);
+    const [getGeoJson] = useState(landkreise as FeatureCollection);
 
     const getBoundingBox = (data): LatLngBoundsLiteral => {
         let coordinates, latitude, longitude;
@@ -52,40 +51,66 @@ const InteractiveMap: () => JSX.Element = () => {
         ] as LatLngBoundsLiteral;
     };
 
-    function GeoContainer() {
+    const [getMapCenter] = useState(getBoundingBox(getGeoJson));
+
+    function GeoContainer({ year }: { year: number }) {
+        const geoJsonRef = useRef<L.GeoJSON>(null);
+        const geoJsonRefRelative = useRef<L.GeoJSON>(null);
         const map = useMap();
-        const [featureProps, setFeaturePros] = useState<Feature>();
+        const groupByAGSFunc = groupBy(GroupBy.AGS);
+        const [getData] = useState<{ [p: string | number]: IDataEntry[] }>(
+            groupByAGSFunc(new DataLoader(GroupBy.AGS).GetGovernmentDistricts().getDataForYear(year))
+        );
+        const [getRelative, setRelative] = useState<boolean>(true);
+
+        useEffect(() => {
+            map.on("baselayerchange", (event: LayersControlEvent) => {
+                switch (event.name) {
+                    case "100% -> Land mit dem höchsten Flächenverbrauch":
+                        setRelative(true);
+                        break;
+                    case "100% -> 100% FLächenverbrauch":
+                        setRelative(false);
+                        break;
+                }
+            });
+        }, [map]);
+
+        const [min, max] = useMemo(() => {
+            let minValue = Infinity;
+            let maxValue = -Infinity;
+            Object.values(getData).forEach((dataEntry) => {
+                const value = dataEntry[0].used_area_percent;
+                minValue = minValue > value ? value : minValue;
+                maxValue = maxValue < value ? value : maxValue;
+            });
+            return [0, maxValue];
+        }, [getData]);
+
+        const lastClickedLayer = useRef<Layer>();
 
         const onEachFeature = useCallback(
             (feature: Feature, layer: Layer): void => {
                 layer.on({
                     click: (event) => {
-                        if ((feature.properties as { [p: string]: string | number | boolean | null }).selected) {
-                            // unselect if click the same
-                            //event.target.setStyle(defaultCountryStyle);
-                            setFeaturePros(undefined);
-                            const data = getGeoJson;
-                            data.features.forEach((f: Feature) => {
-                                (f.properties as { [p: string]: string | number | boolean | null }).selected = false;
-                            });
-                            setGeoJson(data);
-                            const center = getBoundingBox(getGeoJson);
-                            map.flyToBounds(center, { duration: 0.5, padding: [10, 10] });
+                        if (lastClickedLayer) {
+                            (geoJsonRef as RefObject<L.GeoJSON>).current?.resetStyle(lastClickedLayer.current);
+                        }
+                        if (lastClickedLayer.current === layer) {
+                            (geoJsonRef as RefObject<L.GeoJSON>).current?.resetStyle(event.target);
+                            lastClickedLayer.current = undefined;
+                            map.flyToBounds(getMapCenter, { duration: 0.5, padding: [10, 10] });
                             if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
-                                event.target.bringToBack();
+                                event.target.bringToFront();
                             }
                         } else {
                             // Select if nothing is selected
-                            //event.target.setStyle(selectedFeatureStyle);
-                            setFeaturePros(feature);
-                            const data = getGeoJson;
-                            data.features.forEach((f: Feature) => {
-                                (f.properties as { [p: string]: string | number | boolean | null }).selected =
-                                    f === feature;
+                            event.target.setStyle({
+                                ...event.target.style,
+                                weight: 5,
                             });
-                            setGeoJson(data);
-                            const center = event.target.getBounds();
-                            map.flyToBounds(center, { duration: 0.5, padding: [10, 10] });
+                            lastClickedLayer.current = layer;
+                            map.flyToBounds(event.target.getBounds(), { duration: 0.5, padding: [10, 10] });
                             if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
                                 event.target.bringToFront();
                             }
@@ -95,85 +120,46 @@ const InteractiveMap: () => JSX.Element = () => {
             },
             [map]
         );
+        const colorize = useCallback(
+            (feature) => {
+                const [minValue, maxValue] = getRelative ? [min, max] : [0, 1];
+                const data = Object.values(getData).flat(1);
+                const AGS: number = parseInt(feature.properties.AGS);
 
-        function colorize(feature, relative = true) {
-            const currentDate = 1980;
-            const data: { [p: string]: IDataEntry[] } = new DataLoader(GroupBy.AGS).GetGovernmentDistricts();
+                const percentage = Math.round(
+                    (((data.find((dataEntry: IDataEntry) => dataEntry.AGS === AGS) as IDataEntry).used_area_percent -
+                        minValue) *
+                        100) /
+                        (maxValue - minValue)
+                );
 
-            function parseDate(input) {
-                const parts = input.match(/(\d+)/g);
-                // note parts[1]-1
-                return new Date(parts[2], parts[1] - 1, parts[0]);
-            }
-
-            const usedAreaMinMax = () => {
-                const keys: string[] = Object.keys(data);
-                let minValue = Infinity;
-                let maxValue = -Infinity;
-                keys.forEach((key: string) => {
-                    const value = (
-                        data[key].find(
-                            (entry: IDataEntry) => parseDate(entry.date).getFullYear() === currentDate
-                        ) as IDataEntry
-                    ).used_area_percent;
-                    minValue = minValue > value ? value : minValue;
-                    maxValue = maxValue < value ? value : maxValue;
-                });
-                return [0, maxValue];
-            };
-
-            const [min, max] = relative ? usedAreaMinMax() : [0, 1];
-
-            const percentage: number = Math.round(
-                (((
-                    data[parseInt(feature.properties.AGS).toString()].find(
-                        (entry: IDataEntry) => parseDate(entry.date).getFullYear() === currentDate
-                    ) as IDataEntry
-                ).used_area_percent -
-                    min) *
-                    100) /
-                    (max - min)
-            );
-
-            const color = getTint(Colors.Red, percentage);
-            return {
-                fillColor: color,
-                fillOpacity: 1,
-                color: "white",
-                weight: 1,
-            };
-        }
+                const color = getTint(Colors.Red, percentage);
+                return {
+                    fillColor: color,
+                    fillOpacity: 1,
+                    color: "white",
+                    weight: 1,
+                };
+            },
+            [getData, getRelative, max, min]
+        );
 
         return (
             <LayersControl position="topright">
                 <LayersControl.BaseLayer checked name={"100% -> Land mit dem höchsten Flächenverbrauch"}>
                     <GeoJSON
                         data={getGeoJson}
-                        style={(feature) => {
-                            if (featureProps) {
-                                return featureProps === feature
-                                    ? { ...colorize(feature), weight: 5, color: Colors.Black }
-                                    : { ...colorize(feature), fillOpacity: 0.2 };
-                            } else {
-                                return colorize(feature);
-                            }
-                        }}
                         onEachFeature={onEachFeature}
+                        style={(feature) => colorize(feature)}
+                        ref={geoJsonRefRelative}
                     />
                 </LayersControl.BaseLayer>
                 <LayersControl.BaseLayer name={"100% -> 100% FLächenverbrauch"}>
                     <GeoJSON
                         data={getGeoJson}
-                        style={(feature) => {
-                            if (featureProps) {
-                                return featureProps === feature
-                                    ? colorize(feature, false)
-                                    : { ...colorize(feature, false), fillOpacity: 0.7 };
-                            } else {
-                                return colorize(feature, false);
-                            }
-                        }}
                         onEachFeature={onEachFeature}
+                        style={(feature) => colorize(feature)}
+                        ref={geoJsonRef}
                     />
                 </LayersControl.BaseLayer>
             </LayersControl>
@@ -184,15 +170,23 @@ const InteractiveMap: () => JSX.Element = () => {
         <MapContainer
             zoomSnap={0}
             zoomDelta={0.25}
-            style={{ height: "100%", width: "100%" }}
+            style={{
+                height: "100%",
+                width: "100%",
+                background: Colors.White,
+                border: "2px solid rgba(0,0,0,0.2)",
+                borderRadius: "4px",
+                backgroundClip: "padding-box",
+            }}
             whenCreated={(m: L.Map) => {
-                const center = getBoundingBox(getGeoJson);
-                m.fitBounds(center);
+                m.fitBounds(getMapCenter);
+                m.setMinZoom(m.getZoom());
+                m.invalidateSize();
             }}
             zoomAnimation={true}
             fadeAnimation={true}
         >
-            <GeoContainer />
+            <GeoContainer year={1980} />
         </MapContainer>
     );
 };
