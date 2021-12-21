@@ -34,7 +34,7 @@ export const GroupBy = {
 
 export const groupBy =
     (key: string) =>
-    (array: IDataEntry[]): { [p: number]: any } =>
+    (array: IDataEntry[]): { [p: number]: IDataEntry[] } =>
         array.reduce(
             (objectsByKeyValue, obj: IDataEntry) => ({
                 ...objectsByKeyValue,
