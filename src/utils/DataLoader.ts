@@ -32,14 +32,16 @@ export const GroupBy = {
  * Group list of object base on keys
  */
 
-export const groupBy = (key: string) => (array: IDataEntry[]) =>
-    array.reduce(
-        (objectsByKeyValue, obj: IDataEntry) => ({
-            ...objectsByKeyValue,
-            [obj[key]]: (objectsByKeyValue[obj[key]] || []).concat(obj),
-        }),
-        {}
-    );
+export const groupBy =
+    (key: string) =>
+    (array: IDataEntry[]): { [p: number]: any } =>
+        array.reduce(
+            (objectsByKeyValue, obj: IDataEntry) => ({
+                ...objectsByKeyValue,
+                [obj[key]]: (objectsByKeyValue[obj[key]] || []).concat(obj),
+            }),
+            {}
+        );
 
 export type GroupByTypes = typeof GroupBy[keyof typeof GroupBy];
 
@@ -69,7 +71,7 @@ class DataLoader {
             return this.groupByKeyFunction(districts);
         };
 
-        const getDataForYear = (year: number) => {
+        const getDataForYear = (year: number): IDataEntry[] => {
             return this.GetDataForYear(year, districts);
         };
 
@@ -91,7 +93,7 @@ class DataLoader {
             return this.groupByKeyFunction(governmentDistricts);
         };
 
-        const getDataForYear = (year: number) => {
+        const getDataForYear = (year: number): IDataEntry[] => {
             return this.GetDataForYear(year, governmentDistricts);
         };
 

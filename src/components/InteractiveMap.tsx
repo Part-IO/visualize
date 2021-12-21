@@ -112,7 +112,7 @@ const InteractiveMap: () => JSX.Element = () => {
                                 lastClickedLayer.current = layer;
                                 map.flyToBounds(event.target.getBounds(), {
                                     duration: 0.5,
-                                    padding: [50, 50],
+                                    padding: [10, 10],
                                     easeLinearity: 0.1,
                                 });
 
@@ -165,7 +165,7 @@ const InteractiveMap: () => JSX.Element = () => {
         <MapContainer
             zoomSnap={0}
             zoomDelta={0.25}
-            zoom={7.568811741111565}
+            zoom={6.510095625452387}
             center={[49.00380582838273, 11.407993529123203]}
             style={{
                 height: "100%",
@@ -176,7 +176,7 @@ const InteractiveMap: () => JSX.Element = () => {
                 backgroundClip: "padding-box",
             }}
             whenCreated={(m: L.Map) => {
-                m.fitBounds(m.getBounds(), { padding: [10, 10], paddingBottomRight: [0, 20] });
+                m.fitBounds(m.getBounds());
                 m.invalidateSize();
             }}
             zoomAnimation={true}
