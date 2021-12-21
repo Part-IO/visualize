@@ -12,6 +12,8 @@ export enum Colors {
     TealBlue = "#5ac8fa",
     Blue = "#007aff",
     Green = "#4cd964",
+    Black = "#000000",
+    White = "#ffffff",
 }
 
 /**
@@ -23,5 +25,5 @@ export const getTint = (color: Colors, percentage: number): string => {
     const p = percentage < 1 ? percentage * 100 : percentage;
     const colorInst = colord(color);
     const redTints = colorInst.tints(100).map((c) => c.toHex());
-    return redTints.reverse()[p - 1];
+    return redTints.reverse()[Math.round(p - 1)];
 };
