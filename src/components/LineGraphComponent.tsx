@@ -40,7 +40,7 @@ class LineGraph extends Component<any, any> {
                     yaxis: [],
                     xaxis: [
                         {
-                            x: new Date("31.12.2013").getTime(),
+                            x: new Date("2014-12-31").getTime(),
                             strokeDashArray: 0,
                             borderColor: "#775DD0",
                             label: {
