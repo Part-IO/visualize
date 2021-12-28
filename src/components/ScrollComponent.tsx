@@ -6,6 +6,7 @@ import TimeLineComponent from "./TimeLineComponent";
 import scroller, { ScrollerObserver } from "../utils/Scroller";
 import { districts } from "../utils/Helper";
 import StackedBarComponent from "./StackedBarComponent";
+import LineGraphComponent from "./LineGraphComponent";
 
 interface IState {
     data: string;
@@ -73,6 +74,7 @@ const ScrollComponent = (props: { mapComponent: JSX.Element }): JSX.Element => {
                                     <Step data={value} key={value}>
                                         <div id={value + "-view"} className={"step"}>
                                             <p>{value}</p>
+                                            <LineGraphComponent />
                                             <StackedBarComponent />
                                         </div>
                                     </Step>

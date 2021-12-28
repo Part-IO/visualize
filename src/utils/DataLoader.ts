@@ -1,6 +1,6 @@
 import data from "../data/data.json";
 
-interface IDataEntry {
+export interface IDataEntry {
     AGS: number;
     municipality: string;
     total: number;
@@ -25,6 +25,8 @@ const literal = <L extends string | number | boolean>(l: L) => l;
 export const GroupBy = {
     municipality: literal("municipality"),
     AGS: literal("AGS"),
+    date: literal("date"),
+    usedAreaPercent: literal("used_area_percent"),
 };
 
 export type GroupByTypes = typeof GroupBy[keyof typeof GroupBy];
@@ -47,6 +49,14 @@ class DataLoader {
             }),
             {}
         );
+
+    GetSpecificDistrict = (ags: string) => {
+        return this.groupByName(
+            data.filter((entry: IDataEntry) => {
+                return entry.AGS.toString() == ags;
+            })
+        );
+    };
 
     GetDistricts = (): { [p: string | number]: IDataEntry } => {
         return this.groupByName(
