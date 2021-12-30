@@ -1,23 +1,20 @@
 import "../style/ScrollStepComponent.scss";
-import { useEffect, useState } from "react";
+import { Dispatch, SetStateAction, useEffect } from "react";
 import { districts, prevAll } from "../utils/Helper";
-import scroller, { ScrollerObserver } from "../utils/Scroller";
-import { Link } from "react-scroll";
 
-const ScrollStepComponent = (): JSX.Element => {
-    const [getDistrict, setDistrict] = useState<string>("");
-    const [getState, setState] = useState<string>("");
-
-    useEffect(() => {
-        scroller.onScrollStateChange(getState);
-    }, [getDistrict, getState]);
-
+const DistrictStepComponent = ({
+    getDistrict,
+    setDistrict,
+}: {
+    getDistrict: string;
+    setDistrict: Dispatch<SetStateAction<string>>;
+}): JSX.Element => {
     useEffect(() => {
         const progressElement: HTMLDivElement = document.querySelector(".progress") as HTMLDivElement;
         const label: HTMLDivElement = progressElement.querySelector(".left") as HTMLDivElement;
         const steps: HTMLDivElement[] = [...(label.childNodes as NodeListOf<HTMLDivElement>)];
 
-        const element: HTMLDivElement = document.getElementById(getState) as HTMLDivElement;
+        const element: HTMLDivElement = document.getElementById(getDistrict) as HTMLDivElement;
 
         if (element !== null) {
             steps.forEach((e: HTMLDivElement) => {
@@ -29,16 +26,7 @@ const ScrollStepComponent = (): JSX.Element => {
                 .slice(1)
                 .forEach((e) => e.classList.add("prev"));
         }
-    }, [getState]);
-
-    const onStateChange: ScrollerObserver = (district: string) => {
-        setState(district);
-    };
-
-    useEffect(() => {
-        scroller.attach(onStateChange);
-        return () => scroller.detach(onStateChange);
-    });
+    }, [getDistrict]);
 
     useEffect(() => {
         const progressElement: HTMLDivElement = document.querySelector(".progress") as HTMLDivElement;
@@ -57,23 +45,14 @@ const ScrollStepComponent = (): JSX.Element => {
             <div className={"progress"}>
                 <div className={"left"}>
                     {districts.map((value: string, index: number) => {
-                        const offset = -document.documentElement.clientHeight * 0.21;
-                        if (index === 1) {
+                        if (index === 0) {
                             return (
                                 <div id={value} className={"current"}>
-                                    <Link to={value + "-view"} smooth={true} spy={true} offset={offset}>
-                                        {value}
-                                    </Link>
+                                    {value}
                                 </div>
                             );
                         } else {
-                            return (
-                                <div id={value} className={"current"}>
-                                    <Link to={value + "-view"} smooth={true} spy={true} offset={offset}>
-                                        {value}
-                                    </Link>
-                                </div>
-                            );
+                            return <div id={value}>{value}</div>;
                         }
                     })}
                 </div>
@@ -87,4 +66,4 @@ const ScrollStepComponent = (): JSX.Element => {
     );
 };
 
-export default ScrollStepComponent;
+export default DistrictStepComponent;
