@@ -47,12 +47,16 @@ const DistrictStepComponent = ({
                     {districts.map((value: string, index: number) => {
                         if (index === 0) {
                             return (
-                                <div id={value} className={"current"}>
+                                <div key={index} id={value} className={"current"}>
                                     {value}
                                 </div>
                             );
                         } else {
-                            return <div id={value}>{value}</div>;
+                            return (
+                                <div key={index} id={value}>
+                                    {value}
+                                </div>
+                            );
                         }
                     })}
                 </div>

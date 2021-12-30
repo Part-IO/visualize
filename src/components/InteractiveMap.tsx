@@ -1,12 +1,12 @@
 import { Dispatch, RefObject, SetStateAction, useCallback, useEffect, useMemo, useRef, useState } from "react";
-import L, { Browser, Layer } from "leaflet";
+import L, { Layer } from "leaflet";
 import { GeoJSON, useMap } from "react-leaflet";
 import DataLoader, { GroupBy, groupBy, IDataEntry } from "../utils/DataLoader";
-import { LayerTypes } from "../utils/Helper";
 import { Colors, getTint } from "../utils/Colors";
-import { Feature, FeatureCollection } from "geojson";
+import { Feature, FeatureCollection, GeoJsonProperties } from "geojson";
 import regierungsbezirke from "../data/regierungsbezirke.json";
 import landkreise from "../data/landkreise.json";
+import "../style/InteractiveMap.scss";
 
 interface IData {
     [p: string | number]: IDataEntry[];
@@ -16,13 +16,16 @@ const InteractiveMap = ({
     getYear,
     getDistrict,
     setDistrict,
+    setLegend,
 }: {
     getYear: number;
     getDistrict: string;
     setDistrict: Dispatch<SetStateAction<string>>;
+    setLegend: Dispatch<SetStateAction<string>>;
 }): JSX.Element => {
     const [getRBGeoJson] = useState(regierungsbezirke as FeatureCollection);
     const [getLKGeoJson] = useState(landkreise);
+    const [getIDs, setIDs] = useState<number[]>([]);
     const geoJsonRef = useRef<L.GeoJSON>(null);
     const map = useMap();
 
@@ -36,12 +39,17 @@ const InteractiveMap = ({
         groupByAGSFunc(new DataLoader(GroupBy.AGS).GetGovernmentDistricts().getDataForYear(1980))
     );
 
+    /**
+     * Update Data if the year change
+     */
     useEffect(() => {
-        const gr = groupBy(GroupBy.AGS);
         setDataRB(groupByAGSFunc(new DataLoader(GroupBy.AGS).GetDistricts().getDataForYear(getYear)));
         setDataLK(groupByAGSFunc(new DataLoader(GroupBy.AGS).GetGovernmentDistricts().getDataForYear(getYear)));
     }, [getYear, groupByAGSFunc]);
 
+    /**
+     * Calculate the MaxValue
+     */
     const getMaxValue = useCallback((getData: IData) => {
         let maxValue = -Infinity;
         Object.values(getData as IData)
@@ -53,6 +61,9 @@ const InteractiveMap = ({
         return maxValue;
     }, []);
 
+    /**
+     * Colorize the Counties or the Administrative districts based on the relative land consumption
+     */
     const colorize = useCallback(
         (feature, getData: IData) => {
             const data = Object.values(getData).flat(1);
@@ -75,88 +86,59 @@ const InteractiveMap = ({
         },
         [getMaxValue]
     );
-
-    const lastClickedLayer = useRef<Layer>();
-    const lastDetailedLayerGroup = useRef<L.LayerGroup>();
+    (geoJsonRef as RefObject<L.GeoJSON>).current?.on({
+        load: (event) => {
+            console.log("Load");
+        },
+    });
 
     const onEachFeature = useCallback(
-        (feature: Feature, layer: Layer, t: LayerTypes): void => {
+        (feature: Feature, layer: Layer): void => {
             layer.on({
                 click: (event) => {
+                    setLegend(`${feature.properties?.BEZ} - ${feature.properties?.GEN}`);
                     const geoJsonMapObj: L.GeoJSON = (geoJsonRef as RefObject<L.GeoJSON>).current as L.GeoJSON;
-                    if (lastClickedLayer.current) {
-                        geoJsonMapObj.resetStyle(lastClickedLayer.current);
-                    }
-                    if (lastDetailedLayerGroup.current) {
-                        geoJsonMapObj.removeLayer(lastDetailedLayerGroup.current);
-                    }
-                    if (lastClickedLayer.current === layer || t === LayerTypes.Landkreis) {
-                        // Unselect if layer is clicked again
-                        map.flyToBounds(geoJsonMapObj.getBounds(), {
-                            duration: 0.5,
-                            easeLinearity: 0.1,
-                            padding: [10, 10],
-                            paddingBottomRight: [0, 20],
-                        });
-                        geoJsonMapObj.resetStyle(lastClickedLayer.current);
-                        lastClickedLayer.current = undefined;
-                        if (!Browser.ie && !Browser.opera && !Browser.edge) {
-                            event.target.bringToBack();
-                        }
-                    } else {
-                        if (t === LayerTypes.Regierungsbezirk) {
-                            setDistrict(feature.properties?.GEN);
-                            // Select if nothing is selected
-                            lastClickedLayer.current = layer;
-                            map.flyToBounds(event.target.getBounds(), {
-                                duration: 0.5,
-                                padding: [10, 10],
-                                easeLinearity: 0.1,
-                            });
 
-                            event.target.setStyle({
-                                weight: 5,
-                                color: Colors.Black,
-                            });
+                    geoJsonMapObj.resetStyle();
+                    geoJsonMapObj.bringToFront();
 
-                            const firstNum = parseInt(feature.properties?.AGS);
-                            const selectedLKData = getLKGeoJson.features.filter((f) => {
-                                return Math.trunc(Number(f.properties.AGS) / 100) === firstNum;
-                            });
-                            const newGeoJsonLK = {
-                                type: "FeatureCollection",
-                                features: selectedLKData,
-                            };
-                            const newGeoJsonLayer = new L.GeoJSON(newGeoJsonLK as FeatureCollection, {
-                                style: (fea) => colorize(fea, getDataLK as IData),
-                                onEachFeature: (f, l) => onEachFeature(f, l, LayerTypes.Landkreis),
-                            });
+                    // Select if nothing is selected
+                    map.flyToBounds(event.target.getBounds(), {
+                        duration: 0.5,
+                        padding: [10, 10],
+                        easeLinearity: 0.1,
+                    });
 
-                            const layerGroup = new L.LayerGroup();
-                            layerGroup.addTo(geoJsonMapObj);
-                            layerGroup.addLayer(newGeoJsonLayer);
-                            lastDetailedLayerGroup.current = layerGroup;
+                    setDistrict(feature.properties?.GEN);
 
-                            if (!Browser.ie && !Browser.opera && !Browser.edge) {
-                                event.target.bringToFront();
-                                newGeoJsonLayer.bringToFront();
-                            }
-                        }
-                    }
+                    event.target.bringToBack();
                 },
             });
         },
 
-        [map, colorize, getLKGeoJson, setDistrict, getDataLK]
+        [map, setDistrict, setLegend]
     );
 
     return (
-        <GeoJSON
-            data={getRBGeoJson}
-            onEachFeature={(l, f) => onEachFeature(l, f, LayerTypes.Regierungsbezirk)}
-            style={(feature) => colorize(feature, getDataRB as IData)}
-            ref={geoJsonRef}
-        />
+        <>
+            <GeoJSON
+                data={getLKGeoJson as FeatureCollection}
+                style={(feature) => colorize(feature, getDataLK as IData)}
+                onEachFeature={(f, l) => {
+                    l.on({
+                        click: (event) => {
+                            setLegend(`${f.properties?.BEZ} - ${f.properties?.GEN}`);
+                        },
+                    });
+                }}
+            />
+            <GeoJSON
+                data={getRBGeoJson}
+                onEachFeature={(f, l) => onEachFeature(f, l)}
+                style={(feature) => colorize(feature, getDataRB as IData)}
+                ref={geoJsonRef}
+            />
+        </>
     );
 };
 

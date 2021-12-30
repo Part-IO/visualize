@@ -14,6 +14,7 @@ export enum Colors {
     Green = "#4cd964",
     Black = "#000000",
     White = "#ffffff",
+    Transparent = "#ffffff00",
 }
 
 /**
