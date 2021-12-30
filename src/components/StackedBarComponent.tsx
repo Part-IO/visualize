@@ -1,12 +1,20 @@
 import { Component } from "react";
 import Chart from "react-apexcharts";
 import { districts } from "../utils/Helper";
+import Switch from "react-switch";
+import "../style/StackedBarComponent.scss";
 
 class StackedBar extends Component<any, any> {
+    refresh = () => {
+        // re-renders the component
+        this.setState({});
+    };
+
     constructor(props) {
         super(props);
-
+        this.handleChange = this.handleChange.bind(this);
         this.state = {
+            checked: false,
             series: [
                 {
                     name: "Terrible",
@@ -41,12 +49,12 @@ class StackedBar extends Component<any, any> {
                 chart: {
                     type: "bar",
                     stacked: true,
-                    stackType: "100%",
                 },
                 plotOptions: {
                     bar: {
                         horizontal: true,
                         enableShades: false,
+                        stackedType: 0,
                     },
                 },
                 stroke: {
@@ -79,16 +87,41 @@ class StackedBar extends Component<any, any> {
         };
     }
 
+    handleChange(checked) {
+        this.setState({ checked });
+        this.setState({
+            options: {
+                chart: {
+                    stackType: "100%",
+                },
+            },
+        });
+    } //Still needs to reload
+
     render() {
         return (
-            <div id="chart">
-                <Chart
-                    options={this.state.options}
-                    series={this.state.series}
-                    type="bar"
-                    height={"400%"}
-                    width={"100%"}
-                />
+            <div className={"container"}>
+                <div className={"flexbox"}>
+                    <Switch
+                        onChange={this.handleChange}
+                        checked={this.state.checked}
+                        className={"switch"}
+                        checkedIcon={false}
+                        uncheckedIcon={false}
+                        height={20}
+                        width={50}
+                    />
+                    <p> Regierungsbezirke </p>
+                </div>
+                <div className={"chart"}>
+                    <Chart
+                        options={this.state.options}
+                        series={this.state.series}
+                        type="bar"
+                        height={"100%"}
+                        width={"100%"}
+                    />
+                </div>
             </div>
         );
     }

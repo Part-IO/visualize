@@ -1,0 +1,27 @@
+.container{
+  height: 100%;
+}
+
+.flexbox{
+  height: 10%;
+  display: flex;
+  flex-direction: row;
+}
+
+.flexbox p{
+  width: 100%;
+}
+
+.switch{
+  alignment: right
+}
+
+.chart{
+  height: 90%;
+}
+
+.Button {
+
+  alignment: right;
+  right: 0;
+}

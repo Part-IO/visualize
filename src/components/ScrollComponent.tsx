@@ -26,7 +26,6 @@ const ScrollComponent = (props: { mapComponent: JSX.Element }): JSX.Element => {
                     </div>
                     <div className="scroller">
                         <div className={"step"}>
-                            <p>Hallo</p>
                             <StackedBarComponent />
                         </div>
                     </div>
