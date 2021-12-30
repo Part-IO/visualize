@@ -5,8 +5,13 @@ export const prevAll = (element: HTMLDivElement): HTMLDivElement[] => {
     return result;
 };
 
+export const parseDate = (input: string): Date => {
+    const parts = input.match(/(\d+)/g) as RegExpMatchArray;
+    // note parts[1]-1
+    return new Date(Number(parts[2]), Number(parts[1]) - 1, Number(parts[0]));
+};
+
 export const districts = [
-    "Bayern",
     "Mittelfranken",
     "Niederbayern",
     "Oberbayern",
@@ -16,4 +21,7 @@ export const districts = [
     "Unterfranken",
 ];
 
-export const series = [];
+export enum LayerTypes {
+    Regierungsbezirk,
+    Landkreis,
+}

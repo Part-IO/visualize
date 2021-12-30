@@ -1,8 +1,8 @@
 module.exports = {
     settings: {
         react: {
-            version: "detect"
-        }
+            version: "detect",
+        },
     },
     extends: [
         "airbnb-typescript",
@@ -11,7 +11,7 @@ module.exports = {
         "plugin:jest/recommended",
         "plugin:prettier/recommended",
         "plugin:react/recommended",
-        "plugin:react/jsx-runtime"
+        "plugin:react/jsx-runtime",
     ],
     plugins: ["react", "@typescript-eslint", "jest", "import"],
     env: {
@@ -28,7 +28,7 @@ module.exports = {
         ecmaFeatures: {
             jsx: true,
         },
-        ecmaVersion: 2018,
+        ecmaVersion: 2020,
         sourceType: "module",
         project: "./tsconfig.json",
     },
@@ -43,4 +43,5 @@ module.exports = {
         "@typescript-eslint/no-unused-vars":"warn"
 
     },
+    ignorePatterns: [".eslintrc.js"],
 };
