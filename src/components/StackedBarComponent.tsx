@@ -1,7 +1,6 @@
 import { Component } from "react";
 import Chart from "react-apexcharts";
 import { districts } from "../utils/Helper";
-import DataLoader from "../utils/DataLoader";
 
 class StackedBar extends Component<any, any> {
     constructor(props) {
