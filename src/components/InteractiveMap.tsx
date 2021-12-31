@@ -1,9 +1,9 @@
 import { Dispatch, RefObject, SetStateAction, useCallback, useEffect, useMemo, useRef, useState } from "react";
-import L, { Layer } from "leaflet";
+import L from "leaflet";
 import { GeoJSON, useMap } from "react-leaflet";
 import DataLoader, { GroupBy, groupBy, IDataEntry } from "../utils/DataLoader";
 import { Colors, getTint } from "../utils/Colors";
-import { Feature, FeatureCollection, GeoJsonProperties } from "geojson";
+import { Feature, FeatureCollection } from "geojson";
 import regierungsbezirke from "../data/regierungsbezirke.json";
 import landkreise from "../data/landkreise.json";
 import "../style/InteractiveMap.scss";
@@ -25,7 +25,6 @@ const InteractiveMap = ({
 }): JSX.Element => {
     const [getRBGeoJson] = useState(regierungsbezirke as FeatureCollection);
     const [getLKGeoJson] = useState(landkreise);
-    const [getIDs, setIDs] = useState<number[]>([]);
     const geoJsonRef = useRef<L.GeoJSON>(null);
     const map = useMap();
 
@@ -46,6 +45,15 @@ const InteractiveMap = ({
         setDataRB(groupByAGSFunc(new DataLoader(GroupBy.AGS).GetDistricts().getDataForYear(getYear)));
         setDataLK(groupByAGSFunc(new DataLoader(GroupBy.AGS).GetGovernmentDistricts().getDataForYear(getYear)));
     }, [getYear, groupByAGSFunc]);
+
+    useEffect(() => {
+        geoJsonRef.current?.getLayers().forEach((layer) => {
+            /* eslint-disable  @typescript-eslint/no-explicit-any */
+            if ((layer as any)._leaflet_id === getDistrict) {
+                layer.fire("click");
+            }
+        });
+    }, [getDistrict]);
 
     /**
      * Calculate the MaxValue
@@ -86,14 +94,10 @@ const InteractiveMap = ({
         },
         [getMaxValue]
     );
-    (geoJsonRef as RefObject<L.GeoJSON>).current?.on({
-        load: (event) => {
-            console.log("Load");
-        },
-    });
 
     const onEachFeature = useCallback(
-        (feature: Feature, layer: Layer): void => {
+        (feature: Feature, layer): void => {
+            layer._leaflet_id = feature.properties?.GEN;
             layer.on({
                 click: (event) => {
                     setLegend(`${feature.properties?.BEZ} - ${feature.properties?.GEN}`);
@@ -126,7 +130,7 @@ const InteractiveMap = ({
                 style={(feature) => colorize(feature, getDataLK as IData)}
                 onEachFeature={(f, l) => {
                     l.on({
-                        click: (event) => {
+                        click: () => {
                             setLegend(`${f.properties?.BEZ} - ${f.properties?.GEN}`);
                         },
                     });
