@@ -1,27 +1,26 @@
-.container{
-  height: 100%;
+.container {
+    height: 100%;
 }
 
-.flexbox{
-  height: 10%;
-  display: flex;
-  flex-direction: row;
+.flexbox {
+    height: 10%;
+    display: flex;
+    flex-direction: row;
 }
 
-.flexbox p{
-  width: 100%;
+.flexbox p {
+    width: 100%;
 }
 
-.switch{
-  alignment: right
+.switch {
+    alignment: right;
 }
 
-.chart{
-  height: 90%;
+.chart {
+    height: 90%;
 }
 
 .Button {
-
-  alignment: right;
-  right: 0;
+    alignment: right;
+    right: 0;
 }
