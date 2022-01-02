@@ -1,6 +1,6 @@
 .timeline-outer {
     height: 20vh;
-    min-width: 100vw;
+    min-width: 99vw;
     display: flex;
 }
 
@@ -34,15 +34,12 @@
 
             // Line
             div {
-                width: 91vw / $num-of-dots;
+                width: 90vw / $num-of-dots;
 
                 p {
                     text-align: left;
                     align-content: end;
-                    position: absolute;
-                    margin: 0;
-                    padding: 0;
-                    left: -18px;
+                    position: relative;
                 }
 
                 &.current {
@@ -86,6 +83,7 @@
                     top: -$gap;
                     transform: translateX(-50%) translateY(-35%);
                     transition: all 0.2s ease;
+                    left: $gap/1.1;
                 }
 
                 // Line
@@ -95,6 +93,7 @@
                     border-radius: 2px;
                     position: absolute;
                     top: -$gap;
+                    left: $gap/1.1;
                     width: 101%;
                     height: $line-thick;
                     transition: all 0.2s ease;
@@ -116,7 +115,8 @@
                     background: fade_out($strip-color, 0.9); //rgba(0, 0, 0, 0.6);
                     border-radius: 2px;
                     position: absolute;
-                    width: 91vw;
+                    width: 88vw;
+                    left: $gap;
                     height: 1px;
                     transform: translateY(50%);
                 }

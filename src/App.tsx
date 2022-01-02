@@ -1,12 +1,11 @@
-import ScrollComponent from "./components/ScrollComponent";
-import InteractiveMap from "./components/InteractiveMap";
+import MainComponent from "./components/MainComponent";
 import WelcomeComponent from "./components/WelcomeComponent";
 
 function App(): JSX.Element {
     return (
         <>
             <WelcomeComponent />
-            <ScrollComponent mapComponent={<InteractiveMap />} />
+            <MainComponent />
         </>
     );
 }
