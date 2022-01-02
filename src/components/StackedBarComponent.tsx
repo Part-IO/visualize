@@ -133,7 +133,7 @@ const StackedBarComponent = ({ getYear, getDistrict }: { getYear: number; getDis
                 width={50}
             />
             <div>
-                <Chart options={options} series={series} type="bar" height={"550%"} width={"100%"} />
+                <Chart options={options} series={series} type="bar" height={"575%"} width={"100%"} />
             </div>
         </div>
     );
