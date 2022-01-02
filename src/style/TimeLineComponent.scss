@@ -18,6 +18,7 @@
     $current-color: #333;
     $prev-color: #333;
     $num-of-dots: 11;
+    $fat-line-width: 90vw / $num-of-dots;
 
     display: inline-flex;
     width: 91%;
@@ -34,7 +35,8 @@
 
             // Line
             div {
-                width: 90vw / $num-of-dots;
+                width: $fat-line-width;
+                font-size: 1em;
 
                 p {
                     text-align: left;
@@ -115,7 +117,7 @@
                     background: fade_out($strip-color, 0.9); //rgba(0, 0, 0, 0.6);
                     border-radius: 2px;
                     position: absolute;
-                    width: 88vw;
+                    width: calc(90vw - (20px * 2) + 1px);
                     left: $gap;
                     height: 1px;
                     transform: translateY(50%);

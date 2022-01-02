@@ -19,7 +19,7 @@
     $prev-color: #333;
 
     display: inline-flex;
-    height: 85%;
+    height: 90%;
     margin: auto;
 
     > div {
@@ -33,7 +33,8 @@
 
             // Line
             div {
-                width: 20vh;
+                width: 12vh;
+                font-size: 1em;
 
                 &.current {
                     color: $current-color;

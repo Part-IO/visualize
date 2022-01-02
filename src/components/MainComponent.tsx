@@ -18,11 +18,11 @@ const MainComponent = (): JSX.Element => {
                     </div>
                     <div className={"main-view"}>
                         <div className={"main-view-title"}>
-                            <TextTransition text={getCurrentCountries} springConfig={presets.wobbly} />
-                            <div className={"text-transition"} style={{ margin: "0 20px" }}>
+                            <TextTransition text={getCurrentCountries} springConfig={presets.gentle} />
+                            <div className={"text-transition"} style={{ margin: "0 10px" }}>
                                 -
                             </div>
-                            <TextTransition text={getCurrentYear} springConfig={presets.wobbly} />
+                            <TextTransition text={getCurrentYear} springConfig={presets.gentle} />
                         </div>
                     </div>
                     <div className={"graphic"}>
