@@ -63,6 +63,9 @@ const StackedBarComponent = ({ getYear, getDistrict }: { getYear: number; getDis
                 position: "top",
                 horizontalAlign: "center",
                 offsetX: 40,
+                onItemClick: {
+                    toggleDataSeries: false,
+                },
             },
         };
     }, [districtlist]);
@@ -130,7 +133,7 @@ const StackedBarComponent = ({ getYear, getDistrict }: { getYear: number; getDis
                 width={50}
             />
             <div>
-                <Chart options={options} series={series} type="bar" />
+                <Chart options={options} series={series} type="bar" height={"550%"} width={"100%"} />
             </div>
         </div>
     );
