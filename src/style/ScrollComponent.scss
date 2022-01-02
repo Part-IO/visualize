@@ -13,13 +13,15 @@
 
     .main-view {
         flex-basis: 67.5%;
+        max-height: 80%;
         border: 2px solid rgba(0, 0, 0, 0.2);
         border-radius: 4px;
         background-clip: padding-box;
         margin: 1vh 0;
 
         .main-view-title {
-            margin: 2vw;
+            height: 5%;
+            margin-top: 2%;
             display: flex;
             justify-content: center;
 
@@ -30,6 +32,10 @@
                 font-weight: 300;
                 color: #000;
             }
+        }
+        .main-view-bar {
+            margin: 0 2% 2% 2%;
+            height: 90%;
         }
     }
 

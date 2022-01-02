@@ -2,6 +2,7 @@ import { useState } from "react";
 import DistrictStepComponent from "./DistrictStepComponent";
 import "../style/ScrollComponent.scss";
 import TimeLineComponent from "./TimeLineComponent";
+import StackedBarComponent from "./StackedBarComponent";
 import InteractiveMapContainer from "./InteractiveMapContainer";
 import TextTransition, { presets } from "react-text-transition";
 
@@ -23,6 +24,9 @@ const MainComponent = (): JSX.Element => {
                                 -
                             </div>
                             <TextTransition text={getCurrentYear} springConfig={presets.wobbly} />
+                        </div>
+                        <div className={"main-view-bar"}>
+                            <StackedBarComponent />
                         </div>
                     </div>
                     <div className={"graphic"}>

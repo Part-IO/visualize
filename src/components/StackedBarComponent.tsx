@@ -2,7 +2,6 @@ import { useCallback, useMemo, useState } from "react";
 import Chart from "react-apexcharts";
 import { districts } from "../utils/Helper";
 import Switch from "react-switch";
-import "../style/StackedBarComponent.scss";
 import { ApexOptions } from "apexcharts";
 
 function StackedBar(): JSX.Element {
@@ -116,21 +115,18 @@ function StackedBar(): JSX.Element {
     );
 
     return (
-        <div className={"container"}>
-            <div className={"flexbox"}>
-                <Switch
-                    onChange={(state) => handleChange(state)}
-                    checked={checked}
-                    className={"switch"}
-                    checkedIcon={false}
-                    uncheckedIcon={false}
-                    height={20}
-                    width={50}
-                />
-                <p> Regierungsbezirke </p>
-            </div>
-            <div className={"chart"}>
-                <Chart options={options} series={series} type="bar" height={"100%"} width={"100%"} />
+        <div>
+            <Switch
+                onChange={(state) => handleChange(state)}
+                checked={checked}
+                className={"switch"}
+                checkedIcon={false}
+                uncheckedIcon={false}
+                height={20}
+                width={50}
+            />
+            <div>
+                <Chart options={options} series={series} type="bar" />
             </div>
         </div>
     );
