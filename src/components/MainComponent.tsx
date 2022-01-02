@@ -9,7 +9,6 @@ import TextTransition, { presets } from "react-text-transition";
 const MainComponent = (): JSX.Element => {
     const [getCurrentCountries, setCurrentCountries] = useState<string>("Bayern");
     const [getCurrentYear, setCurrentYear] = useState<number>(1980);
-
     return (
         <div>
             <div id={"main-component"} style={{ display: "block" }}>
@@ -26,7 +25,7 @@ const MainComponent = (): JSX.Element => {
                             <TextTransition text={getCurrentYear} springConfig={presets.wobbly} />
                         </div>
                         <div className={"main-view-bar"}>
-                            <StackedBarComponent />
+                            <StackedBarComponent getYear={getCurrentYear} getDistrict={getCurrentCountries} />
                         </div>
                     </div>
                     <div className={"graphic"}>

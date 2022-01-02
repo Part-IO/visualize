@@ -1,10 +1,12 @@
-import { useCallback, useMemo, useState } from "react";
+import { Dispatch, SetStateAction, useCallback, useEffect, useMemo, useState } from "react";
 import Chart from "react-apexcharts";
-import { districts } from "../utils/Helper";
 import Switch from "react-switch";
 import { ApexOptions } from "apexcharts";
+import DataLoader, { GroupBy, groupBy, IDataEntry } from "../utils/DataLoader";
+import { districts } from "../utils/Helper";
 
-function StackedBar(): JSX.Element {
+const StackedBarComponent = ({ getYear, getDistrict }: { getYear: number; getDistrict: string }): JSX.Element => {
+    const districtlist = districts;
     const initOptions: ApexOptions = useMemo(() => {
         return {
             colors: ["#fc5c65", "#fd9644", "#AFAFAF", "#fed330", "#20bf6b"],
@@ -42,7 +44,7 @@ function StackedBar(): JSX.Element {
                 },
             },
             xaxis: {
-                categories: districts,
+                categories: districtlist,
             },
             zoom: {
                 enabled: true,
@@ -63,7 +65,7 @@ function StackedBar(): JSX.Element {
                 offsetX: 40,
             },
         };
-    }, []);
+    }, [districtlist]);
     const initSeries = useMemo(() => {
         return [
             {
@@ -88,11 +90,13 @@ function StackedBar(): JSX.Element {
             },
         ];
     }, []);
+    const [district, setdistrict] = useState(initSeries);
+    groupBy(GroupBy.AGS)(new DataLoader(GroupBy.AGS).GetDistricts().getDataForYear(1980));
 
     const [options, setOptions] = useState<ApexOptions>(initOptions);
     const [series, setSeries] = useState(initSeries);
+    //Button Settings
     const [checked, setChecked] = useState<boolean>(false);
-
     const handleChange = useCallback(
         (state: boolean) => {
             console.log(state);
@@ -130,6 +134,6 @@ function StackedBar(): JSX.Element {
             </div>
         </div>
     );
-}
+};
 
-export default StackedBar;
+export default StackedBarComponent;
