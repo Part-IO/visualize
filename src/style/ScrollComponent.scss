@@ -19,7 +19,7 @@
         margin: 1vh 0;
 
         .main-view-title {
-            padding: 2vw;
+            margin: 2vw;
             display: flex;
             justify-content: center;
 
@@ -34,8 +34,8 @@
     }
 
     .graphic {
-        padding: 1vh 1vw;
-        flex-basis: 22.5%;
+        margin: 1vh 1vw;
+        flex-basis: 25%;
         top: 0;
         position: sticky;
         height: 78vh;
