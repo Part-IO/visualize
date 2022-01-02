@@ -1,17 +1,32 @@
 import "../style/TimeLineComponent.scss";
-import { useEffect } from "react";
-import { prevAll } from "../utils/Helper";
+import { Dispatch, SetStateAction, useEffect } from "react";
+import { prevAll, years } from "../utils/Helper";
 
-const DistrictComponent = (): JSX.Element => {
-    const onHover = (el: HTMLDivElement, steps: HTMLDivElement[]): void => {
-        steps.forEach((element: HTMLDivElement) => {
-            element.classList.replace("current", "prev");
-        });
-        el.classList.add("current");
-        prevAll(el)
-            .slice(1)
-            .forEach((element) => element.classList.add("prev"));
-    };
+const DistrictComponent = ({
+    getYear,
+    setYear,
+}: {
+    getYear: number;
+    setYear: Dispatch<SetStateAction<number>>;
+}): JSX.Element => {
+    useEffect(() => {
+        const progressElement: HTMLDivElement = document.querySelector(".timeline-progress") as HTMLDivElement;
+        const label: HTMLDivElement = progressElement.querySelector(".below") as HTMLDivElement;
+        const steps: HTMLDivElement[] = [...(label.childNodes as NodeListOf<HTMLDivElement>)];
+
+        const element: HTMLDivElement = document.getElementById(getYear.toString()) as HTMLDivElement;
+
+        if (element !== null) {
+            steps.forEach((e: HTMLDivElement) => {
+                e.classList.replace("current", "prev");
+            });
+
+            element.classList.add("current");
+            prevAll(element)
+                .slice(1)
+                .forEach((e) => e.classList.add("prev"));
+        }
+    }, [getYear]);
 
     useEffect(() => {
         const progressElement: HTMLDivElement = document.querySelector(".timeline-progress") as HTMLDivElement;
@@ -19,7 +34,7 @@ const DistrictComponent = (): JSX.Element => {
         const steps: HTMLDivElement[] = [...(label.childNodes as NodeListOf<HTMLDivElement>)];
         steps.forEach((element: HTMLDivElement) =>
             element.addEventListener("click", () => {
-                onHover(element, steps);
+                setYear(parseInt(element.id));
             })
         );
     });
@@ -28,52 +43,22 @@ const DistrictComponent = (): JSX.Element => {
         <div className={"timeline-outer"}>
             <div className={"timeline-progress"}>
                 <div className={"above"}>
-                    <div />
-                    <div />
-                    <div />
-                    <div />
-                    <div />
-                    <div />
-                    <div />
-                    <div />
-                    <div />
-                    <div />
-                    <div />
+                    {years.map((index: number) => (
+                        <div key={index} />
+                    ))}
                 </div>
                 <div className={"below"}>
-                    <div className={"current"}>
-                        <p>1980</p>
-                    </div>
-                    <div>
-                        <p>1984</p>
-                    </div>
-                    <div>
-                        <p>1988</p>
-                    </div>
-                    <div>
-                        <p>1992</p>
-                    </div>
-                    <div>
-                        <p>1996</p>
-                    </div>
-                    <div>
-                        <p>2000</p>
-                    </div>
-                    <div>
-                        <p>2004</p>
-                    </div>
-                    <div>
-                        <p>2008</p>
-                    </div>
-                    <div>
-                        <p>2012</p>
-                    </div>
-                    <div>
-                        <p>2016</p>
-                    </div>
-                    <div>
-                        <p>2020</p>
-                    </div>
+                    {years.map((value: number, index: number) => {
+                        if (index === 0) {
+                            return (
+                                <div id={value.toString()} className={"current"}>
+                                    {value}
+                                </div>
+                            );
+                        } else {
+                            return <div id={value.toString()}>{value}</div>;
+                        }
+                    })}
                 </div>
             </div>
         </div>
