@@ -1,4 +1,4 @@
-import { MapContainer } from "react-leaflet";
+import { MapContainer, TileLayer } from "react-leaflet";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 import { Dispatch, SetStateAction, useState } from "react";
@@ -37,6 +37,14 @@ const InteractiveMapContainer = ({
                 zoomAnimation={true}
                 fadeAnimation={true}
             >
+                <TileLayer
+                    url={"https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png"}
+                    attribution={
+                        '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
+                    }
+                    subdomains={"abcd"}
+                    maxZoom={20}
+                />
                 <InteractiveMap
                     getYear={getYear}
                     getDistrict={getDistrict}
