@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import DistrictStepComponent from "./DistrictStepComponent";
-import "../style/ScrollComponent.scss";
+import "../style/MainComponent.scss";
 import TimeLineComponent from "./TimeLineComponent";
 import InteractiveMapContainer from "./InteractiveMapContainer";
 import TextTransition, { presets } from "react-text-transition";

@@ -48,13 +48,19 @@ const DistrictStepComponent = ({
                         if (index === 0) {
                             return (
                                 <div key={index} id={value} className={"current"}>
-                                    {value}
+                                    <p>{value}</p>
                                 </div>
                             );
                         } else {
                             return (
-                                <div key={index} id={value}>
-                                    {value}
+                                <div
+                                    key={index}
+                                    id={value}
+                                    onClick={() => {
+                                        setDistrict(value);
+                                    }}
+                                >
+                                    <p>{value}</p>
                                 </div>
                             );
                         }
