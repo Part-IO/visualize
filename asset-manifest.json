@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/visualize/static/css/main.604bdfd6.css",
+    "main.css": "/visualize/static/css/main.c9adc6af.css",
     "main.js": "/visualize/static/js/main.8c4fbd74.js",
     "static/js/787.f5c39901.chunk.js": "/visualize/static/js/787.f5c39901.chunk.js",
     "static/media/frauenkirche.jpg": "/visualize/static/media/frauenkirche.4b96e6bf9c6cb57d0f9b.jpg",
     "index.html": "/visualize/index.html",
-    "main.604bdfd6.css.map": "/visualize/static/css/main.604bdfd6.css.map",
+    "main.c9adc6af.css.map": "/visualize/static/css/main.c9adc6af.css.map",
     "main.8c4fbd74.js.map": "/visualize/static/js/main.8c4fbd74.js.map",
     "787.f5c39901.chunk.js.map": "/visualize/static/js/787.f5c39901.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.604bdfd6.css",
+    "static/css/main.c9adc6af.css",
     "static/js/main.8c4fbd74.js"
   ]
 }
