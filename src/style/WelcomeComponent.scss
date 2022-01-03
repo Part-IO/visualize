@@ -4,7 +4,7 @@
     width: calc(100vw - (100vw - 100%));
     background-size: cover;
     position: relative;
-    $color: #000;
+    $color: var(--color-black);
 
     .title-container {
         position: absolute;

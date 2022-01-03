@@ -1,6 +1,5 @@
 .timeline-outer {
-    height: 20vh;
-    min-width: 100vw;
+    height: 10vh;
     display: flex;
 }
 
@@ -8,20 +7,114 @@
     box-sizing: border-box;
 }
 
+.warn-symbol {
+    left: 33vw;
+    position: relative;
+    border-left: 0.8em solid transparent;
+    border-right: 0.8em solid transparent;
+    border-bottom: 1.55em solid var(--color-yellow);
+    top: -0.9em;
+    z-index: 20;
+    cursor: pointer;
+}
+
+.warn-symbol::before {
+    content: "⚠";
+    left: -0.45em;
+    position: absolute;
+    top: -0.1em;
+    color: var(--color-black);
+    font-size: 2em;
+    line-height: 1em;
+}
+
+.popup-overlay {
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.modal {
+    font-size: 1em;
+    width: 50vw;
+    background: var(--color-white);
+    border-radius: 4px;
+    border: 2px solid var(--color-gray-1);
+
+    .header {
+        width: 49vw;
+        margin: auto;
+        border-bottom: 1px solid var(--color-black);
+        font-size: 1.5em;
+        text-align: center;
+        padding: 5px;
+    }
+    .content {
+        width: 100%;
+        padding: 10px 5px;
+    }
+
+    .close {
+        color: var(--color-gray-1);
+        cursor: pointer;
+        position: absolute;
+        display: block;
+        padding: 2px 5px;
+        margin: auto;
+        line-height: 20px;
+        right: 5px;
+        top: 5px;
+        font-size: 24px;
+        background: var(--color-white);
+        border-radius: 20px;
+        border: 1px solid var(--color-gray-1);
+        &:hover,
+        &:focus,
+        &:checked,
+        &:active {
+            color: var(--color-black);
+            border-color: var(--color-black);
+        }
+    }
+}
+
 .timeline-progress {
     $gap: 20px;
     $line-height: 20px;
     $bullet-radius: 5px;
     $line-thick: 2px;
-    $strip-color: #333;
-    $next-color: #666;
-    $current-color: #333;
-    $prev-color: #333;
+    $strip-color: var(--color-black);
+    $next-color: var(--color-gray-1);
+    $current-color: var(--color-black);
+    $prev-color: var(--color-black);
     $num-of-dots: 11;
+    $fat-line-width: 90vw / $num-of-dots;
 
     display: inline-flex;
-    width: 91%;
-    margin: auto;
+    flex-basis: 92.5%;
+    margin: auto 1vw auto auto;
+
+    .play-button {
+        background-color: transparent;
+        display: inline-flex;
+        box-sizing: border-box;
+        height: 20px;
+        margin: 0 0 auto 1vw;
+        transform: translateY(-40%);
+
+        border-color: transparent transparent transparent var(--color-black);
+        transition: 100ms all ease;
+        will-change: border-width;
+        cursor: pointer;
+
+        // play state
+        border-style: solid;
+        border-width: 10px 0 10px 15px;
+
+        // paused state
+        &.pause {
+            border-style: double;
+            border-width: 0 0 0 15px;
+        }
+    }
 
     > div {
         display: flex;
@@ -34,15 +127,15 @@
 
             // Line
             div {
-                width: 91vw / $num-of-dots;
+                width: $fat-line-width;
+                font-size: 1em;
+                pointer-events: none;
 
                 p {
-                    text-align: left;
-                    align-content: end;
-                    position: absolute;
                     margin: 0;
-                    padding: 0;
-                    left: -18px;
+                    cursor: pointer;
+                    display: inline-block;
+                    pointer-events: all;
                 }
 
                 &.current {
@@ -86,6 +179,10 @@
                     top: -$gap;
                     transform: translateX(-50%) translateY(-35%);
                     transition: all 0.2s ease;
+                    left: $gap/1.1;
+                    cursor: pointer;
+                    pointer-events: all;
+                    border-radius: 4px;
                 }
 
                 // Line
@@ -95,6 +192,7 @@
                     border-radius: 2px;
                     position: absolute;
                     top: -$gap;
+                    left: $gap/1.1;
                     width: 101%;
                     height: $line-thick;
                     transition: all 0.2s ease;
@@ -113,10 +211,11 @@
 
                 &:after {
                     content: "";
-                    background: fade_out($strip-color, 0.9); //rgba(0, 0, 0, 0.6);
+                    background: var(--color-gray-4);
                     border-radius: 2px;
                     position: absolute;
-                    width: 91vw;
+                    width: calc(90vw - (20px * 2) + 1px);
+                    left: $gap;
                     height: 1px;
                     transform: translateY(50%);
                 }
@@ -127,6 +226,7 @@
             flex: 1;
             position: relative;
             cursor: default;
+
             &:last-of-type {
                 flex: 0;
             }
