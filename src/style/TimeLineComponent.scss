@@ -7,15 +7,84 @@
     box-sizing: border-box;
 }
 
+.warn-symbol {
+    left: 33vw;
+    position: relative;
+    border-left: 0.8em solid transparent;
+    border-right: 0.8em solid transparent;
+    border-bottom: 1.55em solid var(--color-yellow);
+    top: -0.9em;
+    z-index: 20;
+    cursor: pointer;
+}
+
+.warn-symbol::before {
+    content: "⚠";
+    left: -0.45em;
+    position: absolute;
+    top: -0.1em;
+    color: var(--color-black);
+    font-size: 2em;
+    line-height: 1em;
+}
+
+.popup-overlay {
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.modal {
+    font-size: 1em;
+    width: 50vw;
+    background: var(--color-white);
+    border-radius: 4px;
+    border: 2px solid var(--color-gray-1);
+
+    .header {
+        width: 49vw;
+        margin: auto;
+        border-bottom: 1px solid var(--color-black);
+        font-size: 1.5em;
+        text-align: center;
+        padding: 5px;
+    }
+    .content {
+        width: 100%;
+        padding: 10px 5px;
+    }
+
+    .close {
+        color: var(--color-gray-1);
+        cursor: pointer;
+        position: absolute;
+        display: block;
+        padding: 2px 5px;
+        margin: auto;
+        line-height: 20px;
+        right: 5px;
+        top: 5px;
+        font-size: 24px;
+        background: var(--color-white);
+        border-radius: 20px;
+        border: 1px solid var(--color-gray-1);
+        &:hover,
+        &:focus,
+        &:checked,
+        &:active {
+            color: var(--color-black);
+            border-color: var(--color-black);
+        }
+    }
+}
+
 .timeline-progress {
     $gap: 20px;
     $line-height: 20px;
     $bullet-radius: 5px;
     $line-thick: 2px;
-    $strip-color: #000000;
-    $next-color: rgba(0, 0, 0, 0.53);
-    $current-color: #000;
-    $prev-color: #000;
+    $strip-color: var(--color-black);
+    $next-color: var(--color-gray-1);
+    $current-color: var(--color-black);
+    $prev-color: var(--color-black);
     $num-of-dots: 11;
     $fat-line-width: 90vw / $num-of-dots;
 
@@ -24,14 +93,14 @@
     margin: auto 1vw auto auto;
 
     .play-button {
-        background-color: white;
+        background-color: transparent;
         display: inline-flex;
         box-sizing: border-box;
         height: 20px;
         margin: 0 0 auto 1vw;
         transform: translateY(-40%);
 
-        border-color: transparent transparent transparent #000000ff;
+        border-color: transparent transparent transparent var(--color-black);
         transition: 100ms all ease;
         will-change: border-width;
         cursor: pointer;
@@ -113,6 +182,7 @@
                     left: $gap/1.1;
                     cursor: pointer;
                     pointer-events: all;
+                    border-radius: 4px;
                 }
 
                 // Line
@@ -141,7 +211,7 @@
 
                 &:after {
                     content: "";
-                    background: rgba(0, 0, 0, 0.03);
+                    background: var(--color-gray-4);
                     border-radius: 2px;
                     position: absolute;
                     width: calc(90vw - (20px * 2) + 1px);
@@ -156,6 +226,7 @@
             flex: 1;
             position: relative;
             cursor: default;
+
             &:last-of-type {
                 flex: 0;
             }

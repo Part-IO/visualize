@@ -1,5 +1,6 @@
 .outer {
     display: flex;
+    flex-direction: column;
 }
 
 .outer * {
@@ -13,14 +14,14 @@
     $line-height: 20px;
     $bullet-radius: 5px;
     $line-thick: 2px;
-    $strip-color: #000000;
-    $next-color: rgba(0, 0, 0, 0.53);
-    $current-color: #000;
-    $prev-color: #000;
+    $strip-color: var(--color-black);
+    $next-color: var(--color-gray-1);
+    $current-color: var(--color-black);
+    $prev-color: var(--color-black);
 
     display: inline-flex;
-    height: 97%;
-    margin: 2vh auto;
+    height: 90%;
+    margin: auto;
 
     > div {
         display: flex;
@@ -116,7 +117,7 @@
 
                 &:after {
                     content: "";
-                    background: rgba(0, 0, 0, 0.33);
+                    background: var(--color-gray-4);
                     border-radius: 2px;
                     position: absolute;
                     left: -$gap;
@@ -124,6 +125,7 @@
                     height: 101%;
                     width: 1px;
                     transform: translateX(-50%);
+                    z-index: -5;
                 }
             }
         }

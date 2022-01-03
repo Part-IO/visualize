@@ -1,4 +1,4 @@
-import "../style/ScrollStepComponent.scss";
+import "../style/DistrictStepComponent.scss";
 import { Dispatch, SetStateAction, useEffect } from "react";
 import { districts, prevAll } from "../utils/Helper";
 
@@ -47,7 +47,14 @@ const DistrictStepComponent = ({
                     {districts.map((value: string, index: number) => {
                         if (index === 0) {
                             return (
-                                <div key={index} id={value} className={"current"}>
+                                <div
+                                    key={index}
+                                    id={value}
+                                    className={"current"}
+                                    onClick={() => {
+                                        setDistrict(value);
+                                    }}
+                                >
                                     <p>{value}</p>
                                 </div>
                             );

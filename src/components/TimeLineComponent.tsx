@@ -1,6 +1,7 @@
 import "../style/TimeLineComponent.scss";
 import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import { prevAll, years } from "../utils/Helper";
+import Popup from "reactjs-popup";
 
 const DistrictComponent = ({
     getYear,
@@ -57,6 +58,26 @@ const DistrictComponent = ({
                     }
                 />
                 <div className={"above"}>
+                    <Popup trigger={<span className={"warn-symbol"} />} modal>
+                        {(close) => (
+                            <div className={"modal"}>
+                                <button className={"close"} onClick={close}>
+                                    &times;
+                                </button>
+                                <div className={"header"}>Wechsel von ALB zum ALKIS Datensatz</div>
+                                <div className={"content"}>
+                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque, a nostrum. Dolorem,
+                                    repellat quidem ut, minima sint vel eveniet quibusdam voluptates delectus
+                                    doloremque, explicabo tempore dicta adipisci fugit amet dignissimos?
+                                    <br />
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur sit commodi
+                                    beatae optio voluptatum sed eius cumque, delectus saepe repudiandae explicabo nemo
+                                    nam libero ad, doloribus, voluptas rem alias. Vitae?
+                                </div>
+                            </div>
+                        )}
+                    </Popup>
+
                     {years.map((index: number) => (
                         <div key={index} />
                     ))}
@@ -65,7 +86,14 @@ const DistrictComponent = ({
                     {years.map((value: number, index: number) => {
                         if (index === 0) {
                             return (
-                                <div id={value.toString()} className={"current"}>
+                                <div
+                                    id={value.toString()}
+                                    className={"current"}
+                                    onClick={() => {
+                                        setPlayState(false);
+                                        setYear(value);
+                                    }}
+                                >
                                     <p>{value}</p>
                                 </div>
                             );
