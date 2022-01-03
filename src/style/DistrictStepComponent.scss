@@ -1,5 +1,6 @@
 .outer {
     display: flex;
+    flex-direction: column;
 }
 
 .outer * {
@@ -13,10 +14,10 @@
     $line-height: 20px;
     $bullet-radius: 5px;
     $line-thick: 2px;
-    $strip-color: #333;
-    $next-color: #666;
-    $current-color: #333;
-    $prev-color: #333;
+    $strip-color: var(--color-black);
+    $next-color: var(--color-gray-1);
+    $current-color: var(--color-black);
+    $prev-color: var(--color-black);
 
     display: inline-flex;
     height: 90%;
@@ -35,6 +36,7 @@
             div {
                 width: 12vh;
                 font-size: 1em;
+                pointer-events: none;
 
                 &.current {
                     color: $current-color;
@@ -66,6 +68,14 @@
                     }
                 }
 
+                p {
+                    font-family: "Cantarell", sans-serif;
+                    margin: 0;
+                    cursor: pointer;
+                    pointer-events: all;
+                    display: inline-block;
+                }
+
                 // Dot
                 &:before {
                     content: "";
@@ -77,6 +87,8 @@
                     top: $line-height/2;
                     transform: translateX(50%) translateY(-50%);
                     transition: padding 0.2s ease;
+                    cursor: pointer;
+                    pointer-events: all;
                 }
 
                 // Line
@@ -105,7 +117,7 @@
 
                 &:after {
                     content: "";
-                    background: fade_out($strip-color, 0.9); //rgba(0, 0, 0, 0.6);
+                    background: var(--color-gray-4);
                     border-radius: 2px;
                     position: absolute;
                     left: -$gap;
@@ -113,6 +125,7 @@
                     height: 101%;
                     width: 1px;
                     transform: translateX(-50%);
+                    z-index: -5;
                 }
             }
         }
