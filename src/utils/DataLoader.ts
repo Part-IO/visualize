@@ -21,6 +21,10 @@ export interface IDataEntry {
     demographic: number;
 }
 
+export interface IData {
+    [key: string | number]: IDataEntry[];
+}
+
 const literal = <L extends string | number | boolean>(l: L) => l;
 
 export const GroupBy = {
@@ -34,7 +38,7 @@ export const GroupBy = {
 
 export const groupBy =
     (key: string) =>
-    (array: IDataEntry[]): { [p: number]: IDataEntry[] } =>
+    (array: IDataEntry[]): IData =>
         array.reduce(
             (objectsByKeyValue, obj: IDataEntry) => ({
                 ...objectsByKeyValue,
@@ -57,12 +61,12 @@ class DataLoader {
 
     /**
      * Return the districts from the dataset as a grouped object
-     * @return  { [p: string | number]: IDataEntry[] }    Dictionary with grouped IDataEntry lists
+     * @return  { [key: string | number]: IDataEntry[] }    Dictionary with grouped IDataEntry lists
      */
 
     GetDistricts = (): {
         data: IDataEntry[];
-        groupBy: () => { [p: string | number]: IDataEntry[] };
+        groupBy: () => IData;
         getDataForYear: (year: number) => IDataEntry[];
     } => {
         const districts = data.filter((entry: IDataEntry) => entry.AGS.toString().length == 2);
@@ -78,13 +82,13 @@ class DataLoader {
         return { data: districts, groupBy: groupByFunc, getDataForYear: getDataForYear };
     };
     /**
-     * Return teh government districts from the dataset as a grouped object
-     * @return  { [p: string | number]: IDataEntry[] }    Dictionary with grouped IDataEntry lists
+     * Return the government districts from the dataset as a grouped object
+     * @return  { [key: string | number]: IDataEntry[] }    Dictionary with grouped IDataEntry lists
      */
 
     GetGovernmentDistricts = (): {
         data: IDataEntry[];
-        groupBy: () => { [p: string | number]: IDataEntry[] };
+        groupBy: () => IData;
         getDataForYear: (year: number) => IDataEntry[];
     } => {
         const governmentDistricts = data.filter((entry: IDataEntry) => entry.AGS.toString().length == 4);
