@@ -5,16 +5,30 @@ import TimeLineComponent from "./TimeLineComponent";
 import InteractiveMapContainer from "./InteractiveMapContainer";
 import TextTransition, { presets } from "react-text-transition";
 import DataLoader, { GroupBy, groupBy, IData } from "../utils/DataLoader";
+import ModalComponent from "./ModalComponent";
 
 const MainComponent = (): JSX.Element => {
     const [getCurrentCountries, setCurrentCountries] = useState<string>("Bayern");
     const [getCurrentYear, setCurrentYear] = useState<number>(1980);
+    const [modalState, setModalState] = useState<boolean>(false);
     const [getDataRB, setDataRB] = useState<IData>(
         groupBy(GroupBy.AGS)(new DataLoader(GroupBy.AGS).GetDistricts().getDataForYear(getCurrentYear))
     );
     const [getDataLK, setDataLK] = useState<IData>(
         groupBy(GroupBy.AGS)(new DataLoader(GroupBy.AGS).GetGovernmentDistricts().getDataForYear(getCurrentYear))
     );
+
+    const handleModalClick = (): void => {
+        setModalState((prevState) => !prevState);
+    };
+
+    useEffect(() => {
+        if (modalState) {
+            document.body.style.overflow = "hidden";
+        } else {
+            document.body.style.overflow = "unset";
+        }
+    });
 
     /**
      * Update Data if the year change
@@ -28,18 +42,19 @@ const MainComponent = (): JSX.Element => {
     return (
         <div>
             <div id={"main-component"} style={{ display: "block" }}>
+                <ModalComponent show={modalState} handleModalClick={handleModalClick} />
                 <div className={"graphic-container"}>
                     <div className={"district"}>
                         <DistrictStepComponent getDistrict={getCurrentCountries} setDistrict={setCurrentCountries} />
                     </div>
                     <div className={"main-view"}>
-                        <div className={"main-view-title"}>
+                        <code className={"main-view-title"}>
                             <TextTransition text={getCurrentCountries} springConfig={presets.gentle} />
                             <div className={"text-transition"} style={{ margin: "0 10px" }}>
                                 -
                             </div>
                             <TextTransition text={getCurrentYear} springConfig={presets.gentle} />
-                        </div>
+                        </code>
                     </div>
                     <div className={"graphic"}>
                         <div className={"map"}>
@@ -53,7 +68,11 @@ const MainComponent = (): JSX.Element => {
                     </div>
                 </div>
                 <div id={"timeline-component"} className={"timeline"}>
-                    <TimeLineComponent getYear={getCurrentYear} setYear={setCurrentYear} />
+                    <TimeLineComponent
+                        getYear={getCurrentYear}
+                        setYear={setCurrentYear}
+                        handleModalClick={handleModalClick}
+                    />
                 </div>
             </div>
         </div>

@@ -1,14 +1,15 @@
 import "../style/TimeLineComponent.scss";
 import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import { prevAll, years } from "../utils/Helper";
-import Popup from "reactjs-popup";
 
 const DistrictComponent = ({
     getYear,
     setYear,
+    handleModalClick,
 }: {
     getYear: number;
     setYear: Dispatch<SetStateAction<number>>;
+    handleModalClick: () => void;
 }): JSX.Element => {
     const [playState, setPlayState] = useState<boolean>(false);
     useEffect(() => {
@@ -30,7 +31,7 @@ const DistrictComponent = ({
         }
     }, [getYear]);
 
-    const playButtonClick = () => {
+    const playButtonClick = (): void => {
         setPlayState((prevState) => !prevState);
     };
 
@@ -58,25 +59,7 @@ const DistrictComponent = ({
                     }
                 />
                 <div className={"above"}>
-                    <Popup trigger={<span className={"warn-symbol"} />} modal>
-                        {(close) => (
-                            <div className={"modal"}>
-                                <button className={"close"} onClick={close}>
-                                    &times;
-                                </button>
-                                <div className={"header"}>Wechsel von ALB zum ALKIS Datensatz</div>
-                                <div className={"content"}>
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque, a nostrum. Dolorem,
-                                    repellat quidem ut, minima sint vel eveniet quibusdam voluptates delectus
-                                    doloremque, explicabo tempore dicta adipisci fugit amet dignissimos?
-                                    <br />
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur sit commodi
-                                    beatae optio voluptatum sed eius cumque, delectus saepe repudiandae explicabo nemo
-                                    nam libero ad, doloribus, voluptas rem alias. Vitae?
-                                </div>
-                            </div>
-                        )}
-                    </Popup>
+                    <span className={"warn-symbol"} onClick={handleModalClick} />
 
                     {years.map((index: number) => (
                         <div key={index} />
@@ -94,7 +77,7 @@ const DistrictComponent = ({
                                         setYear(value);
                                     }}
                                 >
-                                    <p>{value}</p>
+                                    <code>{value}</code>
                                 </div>
                             );
                         } else {
@@ -106,7 +89,7 @@ const DistrictComponent = ({
                                         setYear(value);
                                     }}
                                 >
-                                    <p>{value}</p>
+                                    <code>{value}</code>
                                 </div>
                             );
                         }
