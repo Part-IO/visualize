@@ -8,7 +8,7 @@
 }
 
 .warn-symbol {
-    left: 33vw;
+    left: 67.5vw;
     position: relative;
     border-left: 0.8em solid transparent;
     border-right: 0.8em solid transparent;
@@ -28,54 +28,6 @@
     line-height: 1em;
 }
 
-.popup-overlay {
-    background: rgba(0, 0, 0, 0.5);
-}
-
-.modal {
-    font-size: 1em;
-    width: 50vw;
-    background: var(--color-white);
-    border-radius: 4px;
-    border: 2px solid var(--color-gray-1);
-
-    .header {
-        width: 49vw;
-        margin: auto;
-        border-bottom: 1px solid var(--color-black);
-        font-size: 1.5em;
-        text-align: center;
-        padding: 5px;
-    }
-    .content {
-        width: 100%;
-        padding: 10px 5px;
-    }
-
-    .close {
-        color: var(--color-gray-1);
-        cursor: pointer;
-        position: absolute;
-        display: block;
-        padding: 2px 5px;
-        margin: auto;
-        line-height: 20px;
-        right: 5px;
-        top: 5px;
-        font-size: 24px;
-        background: var(--color-white);
-        border-radius: 20px;
-        border: 1px solid var(--color-gray-1);
-        &:hover,
-        &:focus,
-        &:checked,
-        &:active {
-            color: var(--color-black);
-            border-color: var(--color-black);
-        }
-    }
-}
-
 .timeline-progress {
     $gap: 20px;
     $line-height: 20px;
@@ -89,7 +41,7 @@
     $fat-line-width: 90vw / $num-of-dots;
 
     display: inline-flex;
-    flex-basis: 92.5%;
+    flex-basis: 93.5%;
     margin: auto 1vw auto auto;
 
     .play-button {
@@ -97,8 +49,7 @@
         display: inline-flex;
         box-sizing: border-box;
         height: 20px;
-        margin: 0 0 auto 1vw;
-        transform: translateY(-40%);
+        transform: translateY(-39%);
 
         border-color: transparent transparent transparent var(--color-black);
         transition: 100ms all ease;
@@ -131,7 +82,7 @@
                 font-size: 1em;
                 pointer-events: none;
 
-                p {
+                code {
                     margin: 0;
                     cursor: pointer;
                     display: inline-block;
