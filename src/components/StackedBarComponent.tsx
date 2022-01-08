@@ -1,9 +1,8 @@
-import { Dispatch, SetStateAction, useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import Chart from "react-apexcharts";
 import Switch from "react-switch";
 import { ApexOptions } from "apexcharts";
 import DataLoader, { GroupBy, groupBy, IDataEntry } from "../utils/DataLoader";
-import { districts, types } from "../utils/Helper";
 
 interface IData {
     [p: string | number]: IDataEntry[];
@@ -106,7 +105,7 @@ const StackedBarComponent = ({ getYear, getDistrict }: { getYear: number; getDis
     );
 
     /*
-    Helper function to get all areas within selected LK
+    Get List with all municipality in one LK
      */
     useEffect(() => {
         const getLK = (municipality: string) => {
@@ -141,7 +140,6 @@ const StackedBarComponent = ({ getYear, getDistrict }: { getYear: number; getDis
         };
         console.log(getLK(getDistrict));
     }, [getDataRB, getDataLK, getDistrict, initOptions]);
-
     /*
     Button switch state function
      */
