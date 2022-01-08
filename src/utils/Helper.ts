@@ -22,6 +22,8 @@ export const districts = [
     "Unterfranken",
 ];
 
+export const types = ["Wohnfläche", "Industriefläche", "Transport und Infrastruktur", "Natur und Wasser", "Sonstiges"];
+
 export const years = [1980, 1984, 1988, 1992, 1996, 2000, 2004, 2008, 2012, 2016, 2020];
 
 export enum LayerTypes {

@@ -3,10 +3,13 @@ import Chart from "react-apexcharts";
 import Switch from "react-switch";
 import { ApexOptions } from "apexcharts";
 import DataLoader, { GroupBy, groupBy, IDataEntry } from "../utils/DataLoader";
-import { districts } from "../utils/Helper";
+import { districts, types } from "../utils/Helper";
+
+interface IData {
+    [p: string | number]: IDataEntry[];
+}
 
 const StackedBarComponent = ({ getYear, getDistrict }: { getYear: number; getDistrict: string }): JSX.Element => {
-    const districtlist = districts;
     const initOptions: ApexOptions = useMemo(() => {
         return {
             colors: ["#fc5c65", "#fd9644", "#AFAFAF", "#fed330", "#20bf6b"],
@@ -44,7 +47,7 @@ const StackedBarComponent = ({ getYear, getDistrict }: { getYear: number; getDis
                 },
             },
             xaxis: {
-                categories: districtlist,
+                categories: "",
             },
             zoom: {
                 enabled: true,
@@ -68,7 +71,7 @@ const StackedBarComponent = ({ getYear, getDistrict }: { getYear: number; getDis
                 },
             },
         };
-    }, [districtlist]);
+    }, []);
     const initSeries = useMemo(() => {
         return [
             {
@@ -93,12 +96,55 @@ const StackedBarComponent = ({ getYear, getDistrict }: { getYear: number; getDis
             },
         ];
     }, []);
-    const [district, setdistrict] = useState(initSeries);
-    groupBy(GroupBy.AGS)(new DataLoader(GroupBy.AGS).GetDistricts().getDataForYear(1980));
-
     const [options, setOptions] = useState<ApexOptions>(initOptions);
     const [series, setSeries] = useState(initSeries);
-    //Button Settings
+    const [getDataRB] = useState<IData>(
+        groupBy(GroupBy.AGS)(new DataLoader(GroupBy.AGS).GetDistricts().getDataForYear(1980))
+    );
+    const [getDataLK] = useState<IData>(
+        groupBy(GroupBy.AGS)(new DataLoader(GroupBy.AGS).GetGovernmentDistricts().getDataForYear(1980))
+    );
+
+    /*
+    Helper function to get all areas within selected LK
+     */
+    useEffect(() => {
+        const getLK = (municipality: string) => {
+            // So far Bayern is not implemented
+            if (municipality != "Bayern") {
+                let selectedLK;
+                const data = Object.values(getDataRB).flat(1);
+                const dataLK = Object.values(getDataLK).flat(1);
+                data.forEach((dataEntry) => {
+                    if (dataEntry.municipality === municipality) {
+                        selectedLK = dataLK.filter(
+                            (lkEntry) => Math.trunc(Number(lkEntry.AGS) / 100) === dataEntry.AGS
+                        );
+                    }
+                });
+                const districtList: string[] = [];
+                console.log(selectedLK.length);
+                for (let i = 0; i < selectedLK.length; i++) {
+                    districtList.push(selectedLK[i].municipality);
+                }
+                console.log(districtList);
+                setOptions((prevOptions) => {
+                    return {
+                        ...prevOptions,
+                        xaxis: {
+                            categories: districtList,
+                        },
+                    };
+                });
+                return selectedLK;
+            }
+        };
+        console.log(getLK(getDistrict));
+    }, [getDataRB, getDataLK, getDistrict, initOptions]);
+
+    /*
+    Button switch state function
+     */
     const [checked, setChecked] = useState<boolean>(false);
     const handleChange = useCallback(
         (state: boolean) => {
@@ -133,7 +179,7 @@ const StackedBarComponent = ({ getYear, getDistrict }: { getYear: number; getDis
                 width={50}
             />
             <div>
-                <Chart options={options} series={series} type="bar" height={"575%"} width={"100%"} />
+                <Chart options={options} series={series} type="bar" height={"375%"} width={"100%"} />
             </div>
         </div>
     );
