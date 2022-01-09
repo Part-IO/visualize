@@ -6,6 +6,7 @@ import InteractiveMapContainer from "./InteractiveMapContainer";
 import TextTransition, { presets } from "react-text-transition";
 import DataLoader, { GroupBy, groupBy, IData } from "../utils/DataLoader";
 import ModalComponent from "./ModalComponent";
+import StackedBarComponent from "./StackedBarComponent";
 
 const MainComponent = (): JSX.Element => {
     const [getCurrentCountries, setCurrentCountries] = useState<string>("Bayern");
@@ -55,6 +56,12 @@ const MainComponent = (): JSX.Element => {
                             </div>
                             <TextTransition text={getCurrentYear} springConfig={presets.gentle} />
                         </code>
+                        <StackedBarComponent
+                            getYear={getCurrentYear}
+                            getDistrict={getCurrentCountries}
+                            getDataRB={getDataRB}
+                            getDataLK={getDataLK}
+                        />
                     </div>
                     <div className={"graphic"}>
                         <div className={"map"}>

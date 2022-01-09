@@ -1,17 +1,28 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
+import { IDataEntry } from "../utils/DataLoader";
 import Chart from "react-apexcharts";
 import Switch from "react-switch";
 import { ApexOptions } from "apexcharts";
-import DataLoader, { GroupBy, groupBy, IDataEntry } from "../utils/DataLoader";
+import { Colors } from "../utils/Colors";
 
 interface IData {
     [p: string | number]: IDataEntry[];
 }
 
-const StackedBarComponent = ({ getYear, getDistrict }: { getYear: number; getDistrict: string }): JSX.Element => {
+const StackedBarComponent = ({
+    getYear,
+    getDistrict,
+    getDataRB,
+    getDataLK,
+}: {
+    getYear: number;
+    getDistrict: string;
+    getDataRB: IData;
+    getDataLK: IData;
+}): JSX.Element => {
     const initOptions: ApexOptions = useMemo(() => {
         return {
-            colors: ["#fc5c65", "#fd9644", "#AFAFAF", "#fed330", "#20bf6b"],
+            colors: [Colors.Pink, Colors.Orange, Colors.Black, Colors.Green, Colors.Blue],
             chart: {
                 type: "bar",
                 stacked: true,
@@ -74,35 +85,29 @@ const StackedBarComponent = ({ getYear, getDistrict }: { getYear: number; getDis
     const initSeries = useMemo(() => {
         return [
             {
-                name: "Terrible",
-                data: [4, 55, 41, 37, 22, 43, 21],
+                name: "Wohnfläche",
+                data: [0],
             },
             {
-                name: "Poor",
-                data: [5, 32, 33, 52, 13, 43, 32],
+                name: "Industriefläche",
+                data: [0],
             },
             {
-                name: "OK",
-                data: [1, 17, 11, 9, 15, 11, 20],
+                name: "Transport und Infrastruktur",
+                data: [0],
             },
             {
-                name: "Good",
-                data: [7, 7, 5, 8, 6, 9, 4],
+                name: "Natur und Wasser",
+                data: [0],
             },
             {
-                name: "Amazing",
-                data: [2, 12, 19, 32, 25, 24, 10],
+                name: "Sonstiges",
+                data: [0],
             },
         ];
     }, []);
     const [options, setOptions] = useState<ApexOptions>(initOptions);
     const [series, setSeries] = useState(initSeries);
-    const [getDataRB] = useState<IData>(
-        groupBy(GroupBy.AGS)(new DataLoader(GroupBy.AGS).GetDistricts().getDataForYear(1980))
-    );
-    const [getDataLK] = useState<IData>(
-        groupBy(GroupBy.AGS)(new DataLoader(GroupBy.AGS).GetGovernmentDistricts().getDataForYear(1980))
-    );
 
     /*
     Get List with all municipality in one LK
@@ -122,11 +127,9 @@ const StackedBarComponent = ({ getYear, getDistrict }: { getYear: number; getDis
                     }
                 });
                 const districtList: string[] = [];
-                console.log(selectedLK.length);
                 for (let i = 0; i < selectedLK.length; i++) {
                     districtList.push(selectedLK[i].municipality);
                 }
-                console.log(districtList);
                 setOptions((prevOptions) => {
                     return {
                         ...prevOptions,
@@ -138,7 +141,62 @@ const StackedBarComponent = ({ getYear, getDistrict }: { getYear: number; getDis
                 return selectedLK;
             }
         };
-        console.log(getLK(getDistrict));
+        getLK(getDistrict);
+    }, [getDataRB, getDataLK, getDistrict, initOptions]);
+    /*
+    Get data of selected municipality in one LK
+     */
+    useEffect(() => {
+        const getLKData = (municipality: string) => {
+            // So far Bayern is not implemented
+            if (municipality != "Bayern") {
+                let selectedLK;
+                const data = Object.values(getDataRB).flat(1);
+                const dataLK = Object.values(getDataLK).flat(1);
+                data.forEach((dataEntry) => {
+                    if (dataEntry.municipality === municipality) {
+                        selectedLK = dataLK.filter(
+                            (lkEntry) => Math.trunc(Number(lkEntry.AGS) / 100) === dataEntry.AGS
+                        );
+                    }
+                });
+                const livingData: number[] = [];
+                const industryData: number[] = [];
+                const transportData: number[] = [];
+                const natureData: number[] = [];
+                const miscellaneousData: number[] = [];
+                for (let i = 0; i < selectedLK.length; i++) {
+                    livingData.push(selectedLK[i].living);
+                    industryData.push(selectedLK[i].industry);
+                    transportData.push(selectedLK[i].transport_infrastructure);
+                    natureData.push(selectedLK[i].nature_and_water);
+                    miscellaneousData.push(selectedLK[i].miscellaneous);
+                }
+                setSeries(() => [
+                    {
+                        name: "Wohnfläche",
+                        data: livingData,
+                    },
+                    {
+                        name: "Industriefläche",
+                        data: industryData,
+                    },
+                    {
+                        name: "Transport und Infrastruktur",
+                        data: transportData,
+                    },
+                    {
+                        name: "Natur und Wasser",
+                        data: natureData,
+                    },
+                    {
+                        name: "Sonstiges",
+                        data: miscellaneousData,
+                    },
+                ]);
+            }
+        };
+        getLKData(getDistrict);
     }, [getDataRB, getDataLK, getDistrict, initOptions]);
     /*
     Button switch state function
