@@ -1,11 +1,11 @@
 .welcome {
-    font-family: Novar;
+    font-family: Novar, serif;
     background-image: url("../data/frauenkirche.jpg");
     height: 100vh;
     width: calc(100vw - (100vw - 100%));
     background-size: cover;
     position: relative;
-    $color: var(--color-black);
+    $color: #1c1c1e;
 
     .title-container {
         position: absolute;

@@ -7,27 +7,6 @@
     box-sizing: border-box;
 }
 
-.warn-symbol {
-    left: 67.5vw;
-    position: relative;
-    border-left: 0.8em solid transparent;
-    border-right: 0.8em solid transparent;
-    border-bottom: 1.55em solid var(--color-yellow);
-    top: -0.9em;
-    z-index: 20;
-    cursor: pointer;
-}
-
-.warn-symbol::before {
-    content: "⚠";
-    left: -0.45em;
-    position: absolute;
-    top: -0.1em;
-    color: var(--color-black);
-    font-size: 2em;
-    line-height: 1em;
-}
-
 .timeline-progress {
     $gap: 20px;
     $line-height: 20px;
