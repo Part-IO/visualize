@@ -1,10 +1,11 @@
 .welcome {
+    font-family: Novar, serif;
     background-image: url("../data/frauenkirche.jpg");
     height: 100vh;
     width: calc(100vw - (100vw - 100%));
     background-size: cover;
     position: relative;
-    $color: var(--color-black);
+    $color: #1c1c1e;
 
     .title-container {
         position: absolute;
@@ -38,7 +39,7 @@
         left: 50%;
         transform: translateX(-50%);
         display: block;
-        z-index: 9999;
+        z-index: 10;
         cursor: pointer;
 
         span {

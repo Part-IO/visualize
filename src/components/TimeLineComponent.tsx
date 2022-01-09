@@ -1,14 +1,19 @@
 import "../style/TimeLineComponent.scss";
-import { Dispatch, SetStateAction, useEffect, useState } from "react";
+import { CSSProperties, Dispatch, SetStateAction, useEffect, useMemo, useState } from "react";
 import { prevAll, years } from "../utils/Helper";
-import Popup from "reactjs-popup";
+import WarnSymbol from "./WarnSymbol";
+import { Colors } from "../utils/Colors";
 
 const DistrictComponent = ({
     getYear,
     setYear,
+    handleModalClick,
+    isDark,
 }: {
     getYear: number;
     setYear: Dispatch<SetStateAction<number>>;
+    handleModalClick: () => void;
+    isDark: boolean;
 }): JSX.Element => {
     const [playState, setPlayState] = useState<boolean>(false);
     useEffect(() => {
@@ -30,7 +35,7 @@ const DistrictComponent = ({
         }
     }, [getYear]);
 
-    const playButtonClick = () => {
+    const playButtonClick = (): void => {
         setPlayState((prevState) => !prevState);
     };
 
@@ -43,6 +48,26 @@ const DistrictComponent = ({
         }
     }, [playState, getYear, setYear]);
 
+    const warnStyle = useMemo(() => {
+        if (isDark) {
+            return {
+                top: "-0.7em",
+                position: "relative",
+                left: "76.5vw",
+                zIndex: "20",
+            };
+        } else {
+            return {
+                top: "-0.7em",
+                position: "relative",
+                left: "76.5vw",
+                zIndex: "20",
+                fill: "var(--color-yellow)",
+                stroke: "var(--color-black)",
+            };
+        }
+    }, [isDark]);
+
     return (
         <div className={"timeline-outer"}>
             <div className={"timeline-progress"}>
@@ -53,30 +78,23 @@ const DistrictComponent = ({
                     disabled={getYear === 2020}
                     style={
                         getYear < 2020
-                            ? { borderColor: "transparent transparent transparent #000000FF", cursor: "pointer" }
-                            : { borderColor: "transparent transparent transparent #00000033", cursor: "default" }
+                            ? {
+                                  borderColor: "transparent transparent transparent var(--color-black)",
+                                  cursor: "pointer",
+                              }
+                            : {
+                                  borderColor: "transparent transparent transparent var(--color-gray-3",
+                                  cursor: "default",
+                              }
                     }
                 />
                 <div className={"above"}>
-                    <Popup trigger={<span className={"warn-symbol"} />} modal>
-                        {(close) => (
-                            <div className={"modal"}>
-                                <button className={"close"} onClick={close}>
-                                    &times;
-                                </button>
-                                <div className={"header"}>Wechsel von ALB zum ALKIS Datensatz</div>
-                                <div className={"content"}>
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque, a nostrum. Dolorem,
-                                    repellat quidem ut, minima sint vel eveniet quibusdam voluptates delectus
-                                    doloremque, explicabo tempore dicta adipisci fugit amet dignissimos?
-                                    <br />
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur sit commodi
-                                    beatae optio voluptatum sed eius cumque, delectus saepe repudiandae explicabo nemo
-                                    nam libero ad, doloribus, voluptas rem alias. Vitae?
-                                </div>
-                            </div>
-                        )}
-                    </Popup>
+                    <WarnSymbol
+                        onClick={handleModalClick}
+                        size={24}
+                        style={warnStyle as CSSProperties}
+                        color={Colors.Yellow}
+                    />
 
                     {years.map((index: number) => (
                         <div key={index} />
@@ -94,7 +112,7 @@ const DistrictComponent = ({
                                         setYear(value);
                                     }}
                                 >
-                                    <p>{value}</p>
+                                    <code>{value}</code>
                                 </div>
                             );
                         } else {
@@ -106,7 +124,7 @@ const DistrictComponent = ({
                                         setYear(value);
                                     }}
                                 >
-                                    <p>{value}</p>
+                                    <code>{value}</code>
                                 </div>
                             );
                         }
