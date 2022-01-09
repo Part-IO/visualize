@@ -1,21 +1,7 @@
 import "../style/ModalComponent.scss";
 import { useEffect, useRef } from "react";
 
-const ModalComponent = ({
-    show,
-    handleModalClick,
-    title,
-    content,
-    button,
-    modalType,
-}: {
-    show: boolean;
-    modalType: string;
-    handleModalClick: () => void;
-    title: JSX.Element;
-    content: JSX.Element;
-    button: JSX.Element;
-}): JSX.Element => {
+const ModalComponent = ({ show, handleModalClick }: { show: boolean; handleModalClick: () => void }): JSX.Element => {
     const modalRef = useRef(null);
 
     useEffect(() => {
@@ -32,20 +18,32 @@ const ModalComponent = ({
         };
     }, [show, handleModalClick]);
 
-    const modalClass = "popup-module popup-wrap " + modalType + " show";
-
+    const text = (
+        <>
+            In ALKIS<sup>®</sup> wurden die bisher getrennt vorgehaltenen Liegenschaftskatasterdaten der{" "}
+            <b>Digitalen Flurkarte</b> (DFK) und des <b>Automatisierten Liegenschaftsbuchs</b> (ALB) in einem System
+            zusammengeführt und um neue Datenbestände, wie die <b>Tatsächliche Nutzung</b> (TN), die{" "}
+            <b>Bodenschätzung</b> u.a. ergänzt.
+        </>
+    );
+    const title = (
+        <>
+            Wechsel von DFK + ALB zu ALKIS<sup>®</sup>
+        </>
+    );
     return (
         <>
             {show && (
-                <div className={modalClass}>
+                <div className={"popup-module popup-wrap info show"}>
                     <div className={"popup-body bounceInDown"} ref={modalRef}>
                         <div className={"popup-icon"} />
                         <div className={"title"}>{title}</div>
-                        <div className={"text"}>{content}</div>
-                        <div className={"btn-wrap"}>{button}</div>
-                        <button type={"button"} className={"close"} onClick={handleModalClick}>
-                            ×
-                        </button>
+                        <div className={"text"}>{text}</div>
+                        <div className={"btn-wrap"}>
+                            <button className={"btn btn-more"} onClick={handleModalClick}>
+                                Mehr informationen
+                            </button>
+                        </div>
                     </div>
                 </div>
             )}

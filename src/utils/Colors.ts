@@ -12,7 +12,7 @@ export enum Colors {
     TealBlue = "#5ac8fa",
     Blue = "#007aff",
     Green = "#4cd964",
-    Black = "#1C1C1E",
+    Black = "#000000",
     White = "#ffffff",
     Transparent = "#ffffff00",
 }

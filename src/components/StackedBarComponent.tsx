@@ -21,13 +21,7 @@ const StackedBarComponent = ({
 }): JSX.Element => {
     const initOptions: ApexOptions = useMemo(() => {
         return {
-            colors: [
-                "var(--color-pink)",
-                "var(--color-orange)",
-                "var(--color-black)",
-                "var(--color-green)",
-                "var(--color-blue)",
-            ],
+            colors: [Colors.Pink, Colors.Orange, Colors.Black, Colors.Green, Colors.Blue],
             chart: {
                 type: "bar",
                 stacked: true,
@@ -42,20 +36,6 @@ const StackedBarComponent = ({
                     dynamicAnimation: {
                         enabled: true,
                         speed: 100,
-                    },
-                },
-            },
-            xaxis: {
-                labels: {
-                    style: {
-                        colors: "var(--color-black)",
-                    },
-                },
-            },
-            yaxis: {
-                labels: {
-                    style: {
-                        colors: "var(--color-black)",
                     },
                 },
             },
@@ -89,17 +69,11 @@ const StackedBarComponent = ({
                 },
             ],
             legend: {
-                fontFamily: "Liberation Mono",
-                fontSize: "17px",
                 position: "top",
                 horizontalAlign: "center",
                 offsetX: 40,
                 onItemClick: {
                     toggleDataSeries: false,
-                },
-                labels: {
-                    colors: "var(--color-black)",
-                    useSeriesColors: false,
                 },
             },
         };
@@ -259,23 +233,20 @@ const StackedBarComponent = ({
     );
 
     return (
-        <>
+        <div className={"stackedBarComponent"}>
             <div className={"switch"}>
                 <SwitchSelector
                     onChange={(state) => handleChange(state as boolean)}
                     options={switchOptions}
                     backgroundColor={"white"}
                     fontColor={"black"}
-                    border={"1px solid black"}
+                    border="1px solid black"
                 />
             </div>
-            <div className="break" />
-            <div className={"stackedBarComponent"}>
-                <div className={"main-view-bar"}>
-                    <Chart options={options} series={series} type="bar" height={"100%"} width={"100%"} />
-                </div>
+            <div className={"main-view-bar"}>
+                <Chart options={options} series={series} type="bar" height={"100%"} width={"100%"} />
             </div>
-        </>
+        </div>
     );
 };
 

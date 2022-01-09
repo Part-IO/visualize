@@ -23,7 +23,7 @@
 
 .popup-body {
     position: relative;
-    background: var(--color-white);
+    background: #fff;
     max-width: 600px;
     margin: auto;
     border-radius: 5px 5px 5px 5px;
@@ -51,7 +51,7 @@
     text-justify: auto;
     text-justify-trim: auto;
     word-wrap: break-word;
-    background: var(--color-white);
+    background: #fff;
     z-index: 0;
     line-height: 1.6em;
     color: var(--color-gray-1);
@@ -71,17 +71,6 @@
     border-radius: 0 0 5px 5px;
 }
 
-.popup-module .close {
-    top: 5px;
-    position: absolute;
-    right: 10px;
-    background: transparent;
-    border: 0;
-    font-size: 1.5em;
-    color: var(--color-gray-1);
-    cursor: pointer;
-}
-
 .popup-module .btn {
     position: relative;
     display: inline-block;
@@ -92,23 +81,12 @@
     font-size: 1.2em;
     padding: 10px 20px;
     width: 90%;
-}
-
-.popup-module.info .btn {
     border: 2px solid var(--color-yellow);
 }
 
-.popup-module.success .btn {
-    border: 2px solid var(--color-green);
-}
-
-.popup-module.danger .btn {
-    border: 2px solid var(--color-red);
-}
-
-.popup-module.info .btn-more:hover {
+.popup-module .btn-more:hover {
     background: var(--color-yellow);
-    color: #1c1c1e;
+    color: var(--color-black);
 }
 
 .popup-module .btn:last-child {
@@ -139,28 +117,9 @@
     font-size: 5em;
 }
 
-.popup-module.danger .popup-icon:before {
-    content: "!";
-    text-align: center;
-    position: absolute;
-    left: 20px;
-    top: -30px;
-    transform: rotate(20deg);
-    color: var(--color-white);
-    font-size: 5em;
-}
-
 /* Popup info settings */
 .popup-module.info .popup-icon {
     background: var(--color-yellow);
-}
-
-.popup-module.success .popup-icon {
-    background: var(--color-green);
-}
-
-.popup-module.danger .popup-icon {
-    background: var(--color-red);
 }
 
 /* ANIMATION */

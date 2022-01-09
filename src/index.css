@@ -2,14 +2,14 @@
 :root {
     --duration: 0.5s;
     --timing: ease;
-    --color-gray-1: rgb(142, 142, 147); /* Tarnsport */
-    --color-gray-2: rgb(174, 174, 178);
-    --color-gray-3: rgb(199, 199, 204);
-    --color-gray-4: rgb(209, 209, 214);
-    --color-gray-5: rgb(229, 229, 234);
-    --color-gray-6: rgb(242, 242, 247);
+    --color-gray-1: rgb(108, 108, 112); /* Transport */
+    --color-gray-2: rgb(142, 142, 147);
+    --color-gray-3: rgb(174, 174, 178);
+    --color-gray-4: rgb(188, 188, 192);
+    --color-gray-5: rgb(216, 216, 220);
+    --color-gray-6: rgb(235, 235, 240);
     --color-white: rgb(255, 255, 255);
-    --color-black: rgb(28, 28, 30);
+    --color-black: rgb(0, 0, 0);
     --color-blue: rgb(0, 122, 255);
     --color-green: rgb(52, 199, 89); /* Nature */
     --color-indigo: rgb(88, 86, 214);
@@ -19,26 +19,6 @@
     --color-red: rgb(255, 59, 48); /* Map-> Nutzfläche */
     --color-teal: rgb(90, 200, 250);
     --color-yellow: rgb(255, 204, 0); /* Sonstiges */
-}
-
-[data-theme="dark"] {
-    --color-gray-1: rgb(142, 142, 147);
-    --color-gray-2: rgb(99, 99, 102);
-    --color-gray-3: rgb(72, 72, 74);
-    --color-gray-4: rgb(58, 58, 60);
-    --color-gray-5: rgb(44, 44, 46);
-    --color-gray-6: rgb(28, 28, 30);
-    --color-black: rgb(255, 255, 255);
-    --color-white: rgb(28, 28, 30);
-    --color-blue: rgb(10, 132, 255);
-    --color-green: rgb(48, 209, 88);
-    --color-indigo: rgb(94, 92, 230);
-    --color-orange: rgb(255, 159, 10);
-    --color-pink: rgb(255, 55, 95);
-    --color-purple: rgb(191, 90, 242);
-    --color-red: rgb(255, 69, 58);
-    --color-teal: rgb(100, 210, 255);
-    --color-yellow: rgb(255, 214, 10);
 }
 
 @font-face {
@@ -53,7 +33,7 @@ body {
 
     margin: 0;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans",
-        "Droid Sans", "Helvetica Neue", Liberation, sans-serif;
+        "Droid Sans", "Helvetica Neue", sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
@@ -63,5 +43,5 @@ body {
 }
 
 code {
-    font-family: source-code-pro, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 }
