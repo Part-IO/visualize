@@ -81,17 +81,10 @@ class StackedBar extends Component<any, any> {
 
     render() {
         return (
-            <div id="chart">
-                <Chart
-                    options={this.state.options}
-                    series={this.state.series}
-                    type="bar"
-                    height={"400%"}
-                    width={"100%"}
-                />
-            </div>
+            <Chart options={this.state.options} series={this.state.series} type="bar" height={"100%"} width={"100%"} />
         );
     }
 }
+
 //Verstehe die heigth Anzeige leider nicht
 export default StackedBar;
