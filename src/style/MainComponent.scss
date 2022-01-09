@@ -21,6 +21,7 @@
         display: flex;
         justify-content: flex-start;
         position: relative;
+        flex-wrap: wrap;
 
         svg {
             flex: 0 1 auto;
@@ -29,10 +30,10 @@
         }
 
         .main-view-title {
-            height: 1vw;
             flex: 0 1 auto;
-            margin: 1vw;
             display: inline-flex;
+            height: 1vw;
+            margin: 1vw;
             position: absolute;
             left: 50%;
             transform: translateX(-50%);
@@ -44,15 +45,34 @@
             }
         }
 
+        .break {
+            flex-basis: 100%;
+            height: 0;
+        }
+
         .switch {
+            flex: 1 1 auto;
+            display: inline-flex;
             margin: 1vw;
             height: 1vw;
             width: 15%;
+            position: absolute;
+            min-width: 200px;
+            min-height: 25px;
         }
 
-        .main-view-bar {
-            height: 75vh;
+        .stackedBarComponent {
+            width: 100%;
+            box-sizing: border-box;
+            overflow: auto;
+            .main-view-bar {
+                display: block;
+                width: 100%;
+                height: 75vh;
+                overflow: hidden;
+            }
         }
+
     }
 
     .graphic {
