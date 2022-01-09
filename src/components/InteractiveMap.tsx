@@ -1,7 +1,7 @@
 import { Dispatch, SetStateAction, useCallback, useEffect, useRef, useState } from "react";
 import L, { LatLngBounds } from "leaflet";
 import { GeoJSON, useMap } from "react-leaflet";
-import DataLoader, { GroupBy, groupBy, IDataEntry } from "../utils/DataLoader";
+import { IDataEntry } from "../utils/DataLoader";
 import { Colors, getTint } from "../utils/Colors";
 import { Feature, FeatureCollection } from "geojson";
 import regierungsbezirke from "../data/regierungsbezirke.json";
@@ -17,15 +17,17 @@ interface ILKLayerList {
 }
 
 const InteractiveMap = ({
-    getYear,
     getDistrict,
     setDistrict,
     setLegend,
+    getDataRB,
+    getDataLK,
 }: {
-    getYear: number;
     getDistrict: string;
     setDistrict: Dispatch<SetStateAction<string>>;
     setLegend: Dispatch<SetStateAction<string>>;
+    getDataLK: IData;
+    getDataRB: IData;
 }): JSX.Element => {
     const [getRBGeoJson] = useState(regierungsbezirke as FeatureCollection);
     const [getLKGeoJson] = useState(landkreise);
@@ -34,12 +36,6 @@ const InteractiveMap = ({
     const lastDetailedLayer = useRef<L.GeoJSON>();
     const currentAGS = useRef<number>();
     const map = useMap();
-    const [getDataRB, setDataRB] = useState<IData>(
-        groupBy(GroupBy.AGS)(new DataLoader(GroupBy.AGS).GetDistricts().getDataForYear(1980))
-    );
-    const [getDataLK, setDataLK] = useState<IData>(
-        groupBy(GroupBy.AGS)(new DataLoader(GroupBy.AGS).GetGovernmentDistricts().getDataForYear(1980))
-    );
 
     /**
      * Update Map if the District at the sidebar is clicked
@@ -64,15 +60,6 @@ const InteractiveMap = ({
             }
         });
     }, [getDistrict, setLegend, map]);
-
-    /**
-     * Update Data if the year change
-     */
-    useEffect(() => {
-        const groupByAGSFunc = groupBy(GroupBy.AGS);
-        setDataRB(groupByAGSFunc(new DataLoader(GroupBy.AGS).GetDistricts().getDataForYear(getYear)));
-        setDataLK(groupByAGSFunc(new DataLoader(GroupBy.AGS).GetGovernmentDistricts().getDataForYear(getYear)));
-    }, [getYear]);
 
     /**
      * Colorize the Counties or the Administrative districts based on the relative land consumption
