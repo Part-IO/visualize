@@ -17,12 +17,25 @@
         border: 2px solid var(--color-gray-4);
         border-radius: 4px;
         margin: 1vh 0;
+        flex-direction: row;
+        display: flex;
+        justify-content: flex-start;
+        position: relative;
+
+        svg {
+            flex: 0 1 auto;
+            display: inline-flex;
+            margin: 1vw 1vw 1vw auto;
+        }
 
         .main-view-title {
             height: 1vw;
+            flex: 0 1 auto;
             margin: 1vw;
-            display: flex;
-            justify-content: center;
+            display: inline-flex;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
 
             .text-transition {
                 font-size: 1.5em;
