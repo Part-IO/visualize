@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { IDataEntry } from "../utils/DataLoader";
 import Chart from "react-apexcharts";
-import Switch from "react-switch";
+import SwitchSelector from "react-switch-selector";
 import { ApexOptions } from "apexcharts";
 import { Colors } from "../utils/Colors";
 
@@ -10,7 +10,6 @@ interface IData {
 }
 
 const StackedBarComponent = ({
-    getYear,
     getDistrict,
     getDataRB,
     getDataLK,
@@ -52,12 +51,9 @@ const StackedBarComponent = ({
             dataLabels: {
                 enabled: true,
                 formatter: (val) => {
-                    if (val >= 5) return `${Math.round(val as number)} ha`;
+                    if (val >= 10000) return `${Math.round(val as number)} qm`;
                     else return "";
                 },
-            },
-            xaxis: {
-                categories: "",
             },
             zoom: {
                 enabled: true,
@@ -108,17 +104,29 @@ const StackedBarComponent = ({
     }, []);
     const [options, setOptions] = useState<ApexOptions>(initOptions);
     const [series, setSeries] = useState(initSeries);
-
+    const switchOptions = [
+        {
+            label: "Absolut",
+            value: false,
+            selectedBackgroundColor: Colors.Black,
+        },
+        {
+            label: "Prozentual",
+            value: true,
+            selectedBackgroundColor: Colors.Black,
+        },
+    ];
     /*
     Get List with all municipality in one LK
      */
     useEffect(() => {
         const getLK = (municipality: string) => {
-            // So far Bayern is not implemented
-            if (municipality != "Bayern") {
-                let selectedLK;
-                const data = Object.values(getDataRB).flat(1);
-                const dataLK = Object.values(getDataLK).flat(1);
+            let selectedLK;
+            const data = Object.values(getDataRB).flat(1);
+            const dataLK = Object.values(getDataLK).flat(1);
+            if (municipality == "Bayern") {
+                selectedLK = data;
+            } else {
                 data.forEach((dataEntry) => {
                     if (dataEntry.municipality === municipality) {
                         selectedLK = dataLK.filter(
@@ -126,20 +134,20 @@ const StackedBarComponent = ({
                         );
                     }
                 });
-                const districtList: string[] = [];
-                for (let i = 0; i < selectedLK.length; i++) {
-                    districtList.push(selectedLK[i].municipality);
-                }
-                setOptions((prevOptions) => {
-                    return {
-                        ...prevOptions,
-                        xaxis: {
-                            categories: districtList,
-                        },
-                    };
-                });
-                return selectedLK;
             }
+            const districtList: string[] = [];
+            for (let i = 0; i < selectedLK.length; i++) {
+                districtList.push(selectedLK[i].municipality);
+            }
+            setOptions((prevOptions) => {
+                return {
+                    ...prevOptions,
+                    xaxis: {
+                        categories: districtList,
+                    },
+                };
+            });
+            return selectedLK;
         };
         getLK(getDistrict);
     }, [getDataRB, getDataLK, getDistrict, initOptions]);
@@ -148,11 +156,12 @@ const StackedBarComponent = ({
      */
     useEffect(() => {
         const getLKData = (municipality: string) => {
-            // So far Bayern is not implemented
-            if (municipality != "Bayern") {
-                let selectedLK;
-                const data = Object.values(getDataRB).flat(1);
-                const dataLK = Object.values(getDataLK).flat(1);
+            let selectedLK;
+            const data = Object.values(getDataRB).flat(1);
+            const dataLK = Object.values(getDataLK).flat(1);
+            if (municipality == "Bayern") {
+                selectedLK = data;
+            } else {
                 data.forEach((dataEntry) => {
                     if (dataEntry.municipality === municipality) {
                         selectedLK = dataLK.filter(
@@ -160,48 +169,48 @@ const StackedBarComponent = ({
                         );
                     }
                 });
-                const livingData: number[] = [];
-                const industryData: number[] = [];
-                const transportData: number[] = [];
-                const natureData: number[] = [];
-                const miscellaneousData: number[] = [];
-                for (let i = 0; i < selectedLK.length; i++) {
-                    livingData.push(selectedLK[i].living);
-                    industryData.push(selectedLK[i].industry);
-                    transportData.push(selectedLK[i].transport_infrastructure);
-                    natureData.push(selectedLK[i].nature_and_water);
-                    miscellaneousData.push(selectedLK[i].miscellaneous);
-                }
-                setSeries(() => [
-                    {
-                        name: "Wohnfläche",
-                        data: livingData,
-                    },
-                    {
-                        name: "Industriefläche",
-                        data: industryData,
-                    },
-                    {
-                        name: "Transport und Infrastruktur",
-                        data: transportData,
-                    },
-                    {
-                        name: "Natur und Wasser",
-                        data: natureData,
-                    },
-                    {
-                        name: "Sonstiges",
-                        data: miscellaneousData,
-                    },
-                ]);
             }
+            const livingData: number[] = [];
+            const industryData: number[] = [];
+            const transportData: number[] = [];
+            const natureData: number[] = [];
+            const miscellaneousData: number[] = [];
+            for (let i = 0; i < selectedLK.length; i++) {
+                livingData.push(selectedLK[i].living);
+                industryData.push(selectedLK[i].industry);
+                transportData.push(selectedLK[i].transport_infrastructure);
+                natureData.push(selectedLK[i].nature_and_water);
+                miscellaneousData.push(selectedLK[i].miscellaneous);
+            }
+            setSeries(() => [
+                {
+                    name: "Wohnfläche",
+                    data: livingData,
+                },
+                {
+                    name: "Industriefläche",
+                    data: industryData,
+                },
+                {
+                    name: "Transport und Infrastruktur",
+                    data: transportData,
+                },
+                {
+                    name: "Natur und Wasser",
+                    data: natureData,
+                },
+                {
+                    name: "Sonstiges",
+                    data: miscellaneousData,
+                },
+            ]);
         };
         getLKData(getDistrict);
     }, [getDataRB, getDataLK, getDistrict, initOptions]);
     /*
     Button switch state function
      */
-    const [checked, setChecked] = useState<boolean>(false);
+    const [, setChecked] = useState<boolean>(false);
     const handleChange = useCallback(
         (state: boolean) => {
             console.log(state);
@@ -213,7 +222,7 @@ const StackedBarComponent = ({
                               ...prevOptions,
                               chart: { stackType: "100%" },
                               dataLabels: {
-                                  formatter: (val, opts) => `${Math.round(val as number)}%`,
+                                  formatter: (val) => `${Math.round(val as number)}%`,
                               },
                           };
                       }
@@ -224,18 +233,18 @@ const StackedBarComponent = ({
     );
 
     return (
-        <div>
-            <Switch
-                onChange={(state) => handleChange(state)}
-                checked={checked}
-                className={"switch"}
-                checkedIcon={false}
-                uncheckedIcon={false}
-                height={20}
-                width={50}
-            />
-            <div>
-                <Chart options={options} series={series} type="bar" height={"375%"} width={"100%"} />
+        <div className={"stackedBarComponent"}>
+            <div className={"switch"}>
+                <SwitchSelector
+                    onChange={(state) => handleChange(state as boolean)}
+                    options={switchOptions}
+                    backgroundColor={"white"}
+                    fontColor={"black"}
+                    border="1px solid black"
+                />
+            </div>
+            <div className={"main-view-bar"}>
+                <Chart options={options} series={series} type="bar" height={"100%"} width={"100%"} />
             </div>
         </div>
     );

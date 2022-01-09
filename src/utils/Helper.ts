@@ -13,13 +13,13 @@ export const parseDate = (input: string): Date => {
 
 export const districts = [
     "Bayern",
-    "Mittelfranken",
-    "Niederbayern",
     "Oberbayern",
-    "Oberfranken",
+    "Niederbayern",
     "Oberpfalz",
-    "Schwaben",
+    "Oberfranken",
+    "Mittelfranken",
     "Unterfranken",
+    "Schwaben",
 ];
 
 export const types = ["Wohnfläche", "Industriefläche", "Transport und Infrastruktur", "Natur und Wasser", "Sonstiges"];

@@ -12,13 +12,14 @@
     }
 
     .main-view {
-        max-height: 78vh;
+        max-height: 85vh;
         flex-basis: 67.5%;
         border: 2px solid var(--color-gray-4);
         border-radius: 4px;
         margin: 1vh 0;
 
         .main-view-title {
+            height: 1vw;
             margin: 1vw;
             display: flex;
             justify-content: center;
@@ -29,9 +30,15 @@
                 color: var(--color-black);
             }
         }
-        .main-view-bar {
-            max-height: 70vh;
+
+        .switch {
             margin: 1vw;
+            height: 1vw;
+            width: 15%;
+        }
+
+        .main-view-bar {
+            height: 75vh;
         }
     }
 
