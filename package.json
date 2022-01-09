@@ -6,10 +6,12 @@
   "dependencies": {
     "@sitecore-jss/sitecore-jss": "^19.0.0",
     "@sitecore-jss/sitecore-jss-react": "^19.0.0",
+    "apexcharts": "^3.32.1",
     "colord": "^2.9.2",
     "leaflet": "^1.7.1",
     "node-sass": "^7.0.1",
     "react": "^17.0.2",
+    "react-apexcharts": "^1.3.9",
     "react-dom": "^17.0.2",
     "react-jss": "^10.9.0",
     "react-leaflet": "^3.2.2",
