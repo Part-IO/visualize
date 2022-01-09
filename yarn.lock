@@ -8351,13 +8351,6 @@ react-switch-selector@^2.1.0:
     react "17.0.2"
     react-dom "17.0.2"
 
-react-switch@^6.0.0:
-  version "6.0.0"
-  resolved "https://registry.yarnpkg.com/react-switch/-/react-switch-6.0.0.tgz#bd4a2dea08f211b8a32e55e8314fd44bc1ec947e"
-  integrity sha512-QV3/6eRK5/5epdQzIqvDAHRoGLbCv/wDpHUi6yBMXY1Xco5XGuIZxvB49PHoV1v/SpEgOCJLD/Zo43iic+aEIw==
-  dependencies:
-    prop-types "^15.7.2"
-
 react-text-transition@^1.3.0:
   version "1.3.0"
   resolved "https://registry.yarnpkg.com/react-text-transition/-/react-text-transition-1.3.0.tgz#e4a0ed1cef884a8c216e76ed64380dd94c56a40c"
@@ -8372,11 +8365,6 @@ react@17.0.2, react@^17.0.2:
   dependencies:
     loose-envify "^1.1.0"
     object-assign "^4.1.1"
-
-reactjs-popup@^2.0.5:
-  version "2.0.5"
-  resolved "https://registry.yarnpkg.com/reactjs-popup/-/reactjs-popup-2.0.5.tgz#588a74966bb126699429d739948e3448d7771eac"
-  integrity sha512-b5hv9a6aGsHEHXFAgPO5s1Jw1eSkopueyUVxQewGdLgqk2eW0IVXZrPRpHR629YcgIpC2oxtX8OOZ8a7bQJbxA==
 
 read-pkg-up@^7.0.1:
   version "7.0.1"
