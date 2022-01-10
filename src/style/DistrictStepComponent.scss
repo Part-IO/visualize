@@ -10,7 +10,7 @@
 //--
 
 .progress {
-    $gap: 20px;
+    $gap: 1vw;
     $line-height: 20px;
     $bullet-radius: 5px;
     $line-thick: 2px;
@@ -28,6 +28,7 @@
         flex-direction: column;
         color: $prev-color;
         font-size: 1em;
+        padding-left: 1vw;
 
         &.left {
             padding-right: $gap;
@@ -35,8 +36,6 @@
 
             // Line
             div {
-                width: 12vh;
-
                 pointer-events: none;
 
                 &.current {

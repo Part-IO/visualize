@@ -2,14 +2,19 @@ import Chart from "react-apexcharts";
 import { IDataEntry } from "../utils/DataLoader";
 import { ApexOptions } from "apexcharts";
 import { useMemo } from "react";
+import data from "../data/data.json";
 
 const LineGraphComponent = ({
-    getSelectedData,
+    getCurrentCountries,
     getCurrentYear,
 }: {
-    getSelectedData: IDataEntry[];
+    getCurrentCountries: string;
     getCurrentYear: number;
 }): JSX.Element => {
+    const getSelectedData = useMemo(() => {
+        return data.filter((entry: IDataEntry) => entry.municipality == getCurrentCountries);
+    }, [getCurrentCountries]);
+
     const usedAreaSeries = useMemo(() => {
         const usedAreaData = getSelectedData.map((entry: IDataEntry) => {
             const [day, month, year] = entry.date.split(".");

@@ -161,10 +161,8 @@ const StackedBarComponent = ({
                 />
             </div>
             <div className="break" />
-            <div className={"stackedBarComponent"}>
-                <div className={"main-view-bar"}>
-                    <Chart options={options} series={series} type={"bar"} height={"100%"} width={"100%"} />
-                </div>
+            <div className={"main-view-bar"}>
+                <Chart options={options} series={series} type={"bar"} height={"100%"} width={"100%"} />
             </div>
         </>
     );

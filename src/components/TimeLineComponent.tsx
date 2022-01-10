@@ -53,14 +53,14 @@ const DistrictComponent = ({
                 top: "-0.7em",
                 position: "relative",
                 left: "76.5vw",
-                zIndex: "20",
+                zIndex: "200000",
             };
         } else {
             return {
                 top: "-0.7em",
                 position: "relative",
                 left: "76.5vw",
-                zIndex: "20",
+                zIndex: "200000",
                 fill: "var(--color-yellow)",
                 stroke: "var(--color-black)",
             };
