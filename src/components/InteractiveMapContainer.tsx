@@ -1,5 +1,5 @@
 import { MapContainer, TileLayer } from "react-leaflet";
-import L, { TileLayer as LeafletTileLayer } from "leaflet";
+import { TileLayer as LeafletTileLayer } from "leaflet";
 import "leaflet/dist/leaflet.css";
 import { Dispatch, SetStateAction, useEffect, useRef, useState } from "react";
 import InteractiveMap from "./InteractiveMap";
@@ -39,10 +39,6 @@ const InteractiveMapContainer = ({
                 zoomDelta={0.25}
                 zoom={6.510095625452387}
                 center={[49.00380582838273, 11.407993529123203]}
-                whenCreated={(m: L.Map) => {
-                    m.fitBounds(m.getBounds());
-                    m.invalidateSize();
-                }}
                 zoomAnimation={true}
                 fadeAnimation={true}
             >

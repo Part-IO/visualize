@@ -37,6 +37,17 @@ const InteractiveMap = ({
     const map = useMap();
 
     /**
+     * Init fit Map
+     */
+    useEffect(() => {
+        map.flyToBounds(geoJsonRef.current?.getBounds() as LatLngBounds, {
+            duration: 0.5,
+            padding: [10, 10],
+            easeLinearity: 0.1,
+        });
+    });
+
+    /**
      * Update Map if the District at the sidebar is clicked
      */
     useEffect(() => {
