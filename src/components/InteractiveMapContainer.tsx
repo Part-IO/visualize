@@ -34,6 +34,7 @@ const InteractiveMapContainer = ({
         <>
             <MapContainer
                 className={"map-container"}
+                trackResize={true}
                 zoomSnap={0}
                 zoomDelta={0.25}
                 zoom={6.510095625452387}

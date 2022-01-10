@@ -59,13 +59,13 @@
             margin: 1vh 1vw;
             flex-basis: 25%;
             top: 0;
-            height: calc(100% - 2 * #{margin});
+            height: calc(100% - 1vh);
             position: sticky;
             display: block;
 
             .map {
-                margin-bottom: 2vh;
-                height: calc(50% - 1vh);
+                margin-bottom: 1vh;
+                height: calc(50% - 1vh - 2px);
                 width: 100%;
 
                 .map-container {
@@ -91,8 +91,8 @@
             }
 
             .line-graph {
-                height: calc(50% - 1vh - 4px);
-                margin-top: 2vh;
+                height: calc(50% - 1vh - 2px);
+                margin-top: 1vh;
                 width: 100%;
                 border: 2px solid var(--color-gray-4);
                 border-radius: 4px;
