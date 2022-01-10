@@ -2,7 +2,6 @@ import MainComponent from "./components/MainComponent";
 import WelcomeComponent from "./components/WelcomeComponent";
 import useLocalStorage from "use-local-storage";
 import { DarkModeSwitch } from "react-toggle-dark-mode";
-import { Colors } from "./utils/Colors";
 
 function App(): JSX.Element {
     const defaultDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
@@ -17,8 +16,8 @@ function App(): JSX.Element {
             style={{ marginBottom: "2rem", alignItems: "right" }}
             checked={isDark}
             onChange={switchTheme}
-            moonColor={Colors.White}
-            sunColor={Colors.Black}
+            moonColor={"var(--color-black)"}
+            sunColor={"var(--color-black)"}
         />
     );
 

@@ -2,7 +2,6 @@ import "../style/TimeLineComponent.scss";
 import { CSSProperties, Dispatch, SetStateAction, useEffect, useMemo, useState } from "react";
 import { prevAll, years } from "../utils/Helper";
 import WarnSymbol from "./WarnSymbol";
-import { Colors } from "../utils/Colors";
 
 const DistrictComponent = ({
     getYear,
@@ -93,7 +92,7 @@ const DistrictComponent = ({
                         onClick={handleModalClick}
                         size={24}
                         style={warnStyle as CSSProperties}
-                        color={Colors.Yellow}
+                        color={"var(--color-yellow)"}
                     />
 
                     {years.map((index: number) => (

@@ -8,6 +8,7 @@ import DataLoader, { GroupBy, groupBy, IData, IDataEntry } from "../utils/DataLo
 import ModalComponent from "./ModalComponent";
 import LineGraphComponent from "./LineGraphComponent";
 import data from "../data/data.json";
+import StackedBarComponent from "./StackedBarComponent";
 
 const MainComponent = ({
     switchThemeButton,
@@ -94,6 +95,7 @@ const MainComponent = ({
                     <DistrictStepComponent getDistrict={getCurrentCountries} setDistrict={setCurrentCountries} />
                 </div>
                 <div className={"main-view"}>
+                    {switchThemeButton}
                     <code className={"main-view-title"}>
                         <TextTransition text={getCurrentCountries} springConfig={presets.gentle} />
                         <div className={"text-transition"} style={{ margin: "0 10px" }}>
@@ -101,7 +103,12 @@ const MainComponent = ({
                         </div>
                         <TextTransition text={getCurrentYear} springConfig={presets.gentle} />
                     </code>
-                    {switchThemeButton}
+                    <StackedBarComponent
+                        getYear={getCurrentYear}
+                        getDistrict={getCurrentCountries}
+                        getDataRB={getDataRB}
+                        getDataLK={getDataLK}
+                    />
                 </div>
                 <div className={"graphic"}>
                     <div className={"map"}>

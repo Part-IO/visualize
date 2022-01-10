@@ -2,7 +2,7 @@ import { Dispatch, SetStateAction, useCallback, useEffect, useRef, useState } fr
 import L, { LatLngBounds } from "leaflet";
 import { GeoJSON, useMap } from "react-leaflet";
 import { IDataEntry } from "../utils/DataLoader";
-import { Colors, getTint } from "../utils/Colors";
+import { getTint } from "../utils/Colors";
 import { Feature, FeatureCollection } from "geojson";
 import regierungsbezirke from "../data/regierungsbezirke.json";
 import landkreise from "../data/landkreise.json";
@@ -35,17 +35,6 @@ const InteractiveMap = ({
     const lastDetailedLayer = useRef<L.GeoJSON>();
     const currentAGS = useRef<number>();
     const map = useMap();
-
-    /**
-     * Init fit Map
-     */
-    useEffect(() => {
-        map.flyToBounds(geoJsonRef.current?.getBounds() as LatLngBounds, {
-            duration: 0.5,
-            padding: [10, 10],
-            easeLinearity: 0.1,
-        });
-    });
 
     /**
      * Update Map if the District at the sidebar is clicked
@@ -88,11 +77,11 @@ const InteractiveMap = ({
             ((data.find((dataEntry: IDataEntry) => dataEntry.AGS === AGS) as IDataEntry).used_area_percent * 100) /
                 maxValue
         );
-        const color = getTint(Colors.Red, percentage);
+        const color = getTint(getComputedStyle(document.documentElement).getPropertyValue("--color-red"), percentage);
         return {
             fillColor: color,
             fillOpacity: 1,
-            color: Colors.White,
+            color: "var(--color-white)",
             weight: 1,
         };
     }, []);

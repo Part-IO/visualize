@@ -26,6 +26,7 @@
             display: flex;
             justify-content: flex-start;
             position: relative;
+            flex-wrap: wrap;
 
             svg {
                 flex: 0 1 auto;
@@ -45,6 +46,31 @@
                     font-size: 1.5em;
                     font-weight: 300;
                     color: var(--color-black);
+                }
+            }
+
+            .switch {
+                flex: 1 1 auto;
+                display: inline-flex;
+                margin: 1vw;
+                height: 1vw;
+                width: 15%;
+                position: absolute;
+                min-width: 200px;
+                min-height: 25px;
+            }
+
+            .break {
+                flex-basis: 100%;
+                height: 0;
+            }
+
+            .main-view-bar {
+                top: 0;
+                height: 75vh;
+
+                .apexcharts-yaxis-label {
+                    fill: var(--color-black);
                 }
             }
 
