@@ -4,6 +4,7 @@ import "leaflet/dist/leaflet.css";
 import { Dispatch, SetStateAction, useEffect, useRef, useState } from "react";
 import InteractiveMap from "./InteractiveMap";
 import { IData } from "../utils/DataLoader";
+import TextTransition, { presets } from "react-text-transition";
 
 const InteractiveMapContainer = ({
     getDistrict,
@@ -61,9 +62,15 @@ const InteractiveMapContainer = ({
                     getDataLK={getDataLK}
                 />
             </MapContainer>
-            <div className={"info"}>
-                <p>{getLegend}</p>
-            </div>
+            {getLegend.includes("-") && (
+                <code className={"info"}>
+                    <TextTransition text={getLegend.split("-")[0]} springConfig={presets.gentle} noOverflow={true} />
+                    <div className={"text-transition"} style={{ margin: "0 10px" }}>
+                        -
+                    </div>
+                    <TextTransition text={getLegend.split("-")[1]} springConfig={presets.gentle} />
+                </code>
+            )}
         </>
     );
 };

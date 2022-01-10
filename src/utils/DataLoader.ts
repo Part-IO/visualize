@@ -30,6 +30,8 @@ const literal = <L extends string | number | boolean>(l: L) => l;
 export const GroupBy = {
     municipality: literal("municipality"),
     AGS: literal("AGS"),
+    date: literal("date"),
+    usedAreaPercent: literal("used_area_percent"),
 };
 
 /**

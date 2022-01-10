@@ -6,7 +6,6 @@ import { Colors, getTint } from "../utils/Colors";
 import { Feature, FeatureCollection } from "geojson";
 import regierungsbezirke from "../data/regierungsbezirke.json";
 import landkreise from "../data/landkreise.json";
-import "../style/InteractiveMap.scss";
 
 interface IData {
     [p: string | number]: IDataEntry[];

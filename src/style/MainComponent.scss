@@ -1,62 +1,98 @@
-.graphic-container {
-    justify-content: space-between;
-    display: flex;
-    width: calc(100vw - (100vw - 100%));
+.main-component {
+    display: block;
+    width: 100%;
+    height: 100vh;
 
-    .district {
-        top: 0;
-        margin-right: 1%;
-        position: sticky;
-        height: 90vh;
+    .graphic-container {
+        justify-content: space-between;
         display: flex;
-    }
+        width: 100%;
+        height: 90%;
 
-    .main-view {
-        flex-basis: 67.5%;
-        border: 2px solid var(--color-gray-4);
-        border-radius: 4px;
-        margin: 1vh 0;
-        flex-direction: row;
-        display: flex;
-        justify-content: flex-start;
-        position: relative;
-
-        svg {
-            flex: 0 1 auto;
-            display: inline-flex;
-            margin: 1vw 1vw 1vw auto;
+        .district {
+            top: 0;
+            margin-right: 1%;
+            position: sticky;
+            height: 100%;
+            display: flex;
         }
 
-        .main-view-title {
-            flex: 0 1 auto;
-            margin: 1vw;
-            display: inline-flex;
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
+        .main-view {
+            flex-basis: 67.5%;
+            border: 2px solid var(--color-gray-4);
+            border-radius: 4px;
+            margin: 1vh 0;
+            flex-direction: row;
+            display: flex;
+            justify-content: flex-start;
+            position: relative;
 
-            .text-transition {
-                font-size: 1.5em;
-                font-weight: 300;
-                color: var(--color-black);
+            svg {
+                flex: 0 1 auto;
+                display: inline-flex;
+                margin: 1vw 1vw 1vw auto;
+            }
+
+            .main-view-title {
+                flex: 0 1 auto;
+                margin: 1vw;
+                display: inline-flex;
+                position: absolute;
+                left: 50%;
+                transform: translateX(-50%);
+
+                .text-transition {
+                    font-size: 1.5em;
+                    font-weight: 300;
+                    color: var(--color-black);
+                }
+            }
+
+            .main-view-graph {
+                display: block;
+                width: 100%;
+                height: calc(100% - 2em - 2vw);
             }
         }
-    }
 
-    .graphic {
-        margin: 1vh 1vw;
-        flex-basis: 25%;
-        top: 0;
-        position: sticky;
-        height: 78vh;
-        display: flex;
+        .graphic {
+            margin: 1vh 1vw;
+            flex-basis: 25%;
+            top: 0;
+            height: calc(100% - 2 * #{margin});
+            position: sticky;
+            display: block;
 
-        .map {
-            height: 50%;
-            width: 100%;
+            .map {
+                margin-bottom: 2vh;
+                height: calc(50% - 1vh);
+                width: 100%;
 
-            .map-container {
-                height: 100%;
+                .map-container {
+                    height: calc(100% - 2em);
+                    width: 100%;
+                    border: 2px solid var(--color-gray-4);
+                    border-radius: 4px;
+                }
+
+                .info {
+                    display: flex;
+                    position: relative;
+                    padding: 0 0;
+                    justify-content: center;
+                    overflow: hidden;
+                }
+                .info .text-transition {
+                    display: inline-flex;
+                    font-size: 1.2em;
+                    font-weight: 300;
+                    color: var(--color-black);
+                }
+            }
+
+            .line-graph {
+                height: calc(50% - 1vh - 4px);
+                margin-top: 2vh;
                 width: 100%;
                 border: 2px solid var(--color-gray-4);
                 border-radius: 4px;
@@ -67,7 +103,7 @@
     .timeline {
         background-color: var(--color-white);
         min-width: 100%;
-        height: 20vh;
+        height: 10%;
         bottom: 0;
         position: sticky;
         overflow: hidden;
