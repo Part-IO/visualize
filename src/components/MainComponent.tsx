@@ -6,7 +6,6 @@ import InteractiveMapContainer from "./InteractiveMapContainer";
 import TextTransition, { presets } from "react-text-transition";
 import DataLoader, { GroupBy, groupBy, IData, IDataEntry } from "../utils/DataLoader";
 import ModalComponent from "./ModalComponent";
-import StackedBarComponent from "./StackedBarComponent";
 import LineGraphComponent from "./LineGraphComponent";
 import data from "../data/data.json";
 
@@ -103,9 +102,6 @@ const MainComponent = ({
                         <TextTransition text={getCurrentYear} springConfig={presets.gentle} />
                     </code>
                     {switchThemeButton}
-                    <div className={"main-view-graph"}>
-                        <StackedBarComponent />
-                    </div>
                 </div>
                 <div className={"graphic"}>
                     <div className={"map"}>
