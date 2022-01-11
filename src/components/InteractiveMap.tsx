@@ -1,37 +1,38 @@
-import { Dispatch, SetStateAction, useCallback, useEffect, useRef, useState } from "react";
+import { Dispatch, SetStateAction, useCallback, useEffect, useMemo, useRef, useState } from "react";
 import L, { LatLngBounds } from "leaflet";
 import { GeoJSON, useMap } from "react-leaflet";
 import { IDataEntry } from "../utils/DataLoader";
-import { getTint } from "../utils/Colors";
 import { Feature, FeatureCollection } from "geojson";
 import regierungsbezirke from "../data/regierungsbezirke.json";
 import landkreise from "../data/landkreise.json";
+import { colord, extend } from "colord";
+
+import mixPlugin from "colord/plugins/mix";
+import { ICLickedLK } from "./MainComponent";
+
+extend([mixPlugin]);
 
 interface IData {
     [p: string | number]: IDataEntry[];
 }
 
-interface ILKLayerList {
-    [key: number]: L.GeoJSON;
-}
-
 const InteractiveMap = ({
     getDistrict,
     setDistrict,
-    setLegend,
+    setClickedLK,
     getDataRB,
     getDataLK,
 }: {
     getDistrict: string;
     setDistrict: Dispatch<SetStateAction<string>>;
-    setLegend: Dispatch<SetStateAction<string>>;
+    setClickedLK: Dispatch<SetStateAction<ICLickedLK>>;
     getDataLK: IData;
     getDataRB: IData;
 }): JSX.Element => {
     const [getRBGeoJson] = useState(regierungsbezirke as FeatureCollection);
     const [getLKGeoJson] = useState(landkreise);
     const geoJsonRef = useRef<L.GeoJSON>(null);
-    const layerListLK = useRef<ILKLayerList>();
+    const layerListLK = useRef<Map<number, L.GeoJSON>>();
     const lastDetailedLayer = useRef<L.GeoJSON>();
     const currentAGS = useRef<number>();
     const map = useMap();
@@ -40,13 +41,33 @@ const InteractiveMap = ({
         map.zoomControl.setPosition("topright");
     });
 
+    const maxValueRB = useMemo(() => {
+        const data = Object.values(getDataRB).flat(1);
+        return data.reduce((prev, current) => (prev.used_area_percent > current.used_area_percent ? prev : current))
+            .used_area_percent;
+    }, [getDataRB]);
+
+    const maxValueLK = useMemo(() => {
+        const data = Object.values(getDataLK).flat(1);
+        return data.reduce((prev, current) => (prev.used_area_percent > current.used_area_percent ? prev : current))
+            .used_area_percent;
+    }, [getDataLK]);
+
+    const redColors = useMemo(() => {
+        const colorInst = colord(getComputedStyle(document.documentElement).getPropertyValue("--color-red"));
+        return colorInst
+            .tints(100)
+            .map((c) => c.toHex())
+            .reverse();
+    }, []);
+
     /**
      * Update Map if the District at the sidebar is clicked
      */
     useEffect(() => {
         geoJsonRef.current?.getLayers().forEach((layer) => {
             if (getDistrict === "Bayern") {
-                setLegend("Bundesland - Bayern");
+                setClickedLK({ BEZ: "Bundesland", GEN: "Bayern", AGS: "09" });
                 if (lastDetailedLayer.current !== undefined) {
                     currentAGS.current = undefined;
                     map.removeLayer(lastDetailedLayer.current);
@@ -62,33 +83,26 @@ const InteractiveMap = ({
                 layer.fire("click");
             }
         });
-    }, [getDistrict, setLegend, map]);
+    }, [getDistrict, setClickedLK, map]);
 
     /**
      * Colorize the Counties or the Administrative districts based on the relative land consumption
      */
-    const colorize = useCallback((feature, baseData: IData) => {
-        const data = Object.values(baseData).flat(1);
-        const AGS: number = parseInt(feature.properties.AGS);
-        let maxValue = -Infinity;
-        Object.values(baseData)
-            .flat(1)
-            .forEach((dataEntry) => {
-                const value = dataEntry.used_area_percent;
-                maxValue = maxValue < value ? value : maxValue;
-            });
-        const percentage = Math.round(
-            ((data.find((dataEntry: IDataEntry) => dataEntry.AGS === AGS) as IDataEntry).used_area_percent * 100) /
-                maxValue
-        );
-        const color = getTint(getComputedStyle(document.documentElement).getPropertyValue("--color-red"), percentage);
-        return {
-            fillColor: color,
-            fillOpacity: 1,
-            color: "var(--color-white)",
-            weight: 1,
-        };
-    }, []);
+    const colorize = useCallback(
+        (feature, baseData: IData, LK: boolean) => {
+            const AGS: number = parseInt(feature.properties.AGS);
+            const maxValue: number = LK ? maxValueLK : maxValueRB;
+
+            const percentage = Math.round((baseData[AGS][0].used_area_percent * 100) / maxValue);
+            return {
+                fillColor: redColors[Math.trunc(percentage) - 1],
+                fillOpacity: 1,
+                color: "var(--color-white)",
+                weight: 1,
+            };
+        },
+        [maxValueRB, maxValueLK, redColors]
+    );
 
     /**
      * Render detail map dynamically
@@ -100,7 +114,7 @@ const InteractiveMap = ({
                     map.removeLayer(lastDetailedLayer.current);
                     lastDetailedLayer.current = undefined;
                 }
-                const detailedLayer: L.GeoJSON = layerListLK.current[AGS] as L.GeoJSON;
+                const detailedLayer: L.GeoJSON = layerListLK.current.get(AGS) as L.GeoJSON;
                 detailedLayer.addTo(map);
                 lastDetailedLayer.current = detailedLayer;
             }
@@ -109,10 +123,12 @@ const InteractiveMap = ({
     );
     /**
      * Init functions to build the Detail-Map-Views
+     * Only 1 run on init
      */
     useEffect(() => {
+        console.log(getLKGeoJson);
         const data = Object.values(getDataRB).flat(1);
-        const dataList: ILKLayerList = {};
+        const dataList = new Map<number, L.GeoJSON>();
         data.forEach((dataEntry) => {
             const firstAGS = dataEntry.AGS;
             const geoJsonLKData = {
@@ -122,28 +138,31 @@ const InteractiveMap = ({
                 }),
             };
             const geoJsonLKLayer = new L.GeoJSON(geoJsonLKData as FeatureCollection, {
-                style: (f) => colorize(f, getDataLK),
+                style: (f) => colorize(f, getDataLK, true),
                 onEachFeature: (f, l) => {
                     l.on({
                         click: () => {
-                            setLegend(`${f.properties?.BEZ} - ${f.properties?.GEN}`);
+                            setClickedLK({ BEZ: f.properties?.BEZ, GEN: f.properties?.GEN, AGS: f.properties?.AGS });
                         },
                     });
                 },
             });
-            Object.assign(dataList, { [firstAGS]: geoJsonLKLayer } as ILKLayerList);
+            dataList.set(firstAGS, geoJsonLKLayer);
         });
         layerListLK.current = dataList;
 
         if (currentAGS.current !== undefined) renderLKMap(currentAGS.current);
-    }, [getDataRB, getDataLK, getLKGeoJson, setLegend, colorize, renderLKMap]);
+    }, [getDataRB, getDataLK, getLKGeoJson, setClickedLK, colorize, renderLKMap]);
 
     const onEachFeature = (feature: Feature, layer): void => {
         layer._leaflet_id = feature.properties?.GEN;
         layer.on({
             click: (event) => {
-                setLegend(`${feature.properties?.BEZ} - ${feature.properties?.GEN}`);
-
+                setClickedLK({
+                    BEZ: feature.properties?.BEZ,
+                    GEN: feature.properties?.GEN,
+                    AGS: feature.properties?.AGS,
+                });
                 geoJsonRef.current?.resetStyle();
 
                 map.flyToBounds(event.target.getBounds(), {
@@ -159,12 +178,11 @@ const InteractiveMap = ({
             },
         });
     };
-
     return (
         <GeoJSON
             data={getRBGeoJson}
             onEachFeature={(f, l) => onEachFeature(f, l)}
-            style={(feature) => colorize(feature, getDataRB)}
+            style={(feature) => colorize(feature, getDataRB, false)}
             ref={geoJsonRef}
         />
     );

@@ -9,6 +9,12 @@ import ModalComponent from "./ModalComponent";
 import LineGraphComponent from "./LineGraphComponent";
 import StackedBarComponent from "./StackedBarComponent";
 
+export interface ICLickedLK {
+    BEZ: string;
+    GEN: string;
+    AGS: string;
+}
+
 const MainComponent = ({
     switchThemeButton,
     isDark,
@@ -16,6 +22,7 @@ const MainComponent = ({
     switchThemeButton: JSX.Element;
     isDark: boolean;
 }): JSX.Element => {
+    console.log("render MainComponent");
     const [getCurrentCountries, setCurrentCountries] = useState<string>("Bayern");
     const [getCurrentYear, setCurrentYear] = useState<number>(1980);
     const [modalState, setModalState] = useState<boolean>(false);
@@ -25,6 +32,8 @@ const MainComponent = ({
     const [getDataLK, setDataLK] = useState<IData>(
         groupBy(GroupBy.AGS)(new DataLoader(GroupBy.AGS).GetGovernmentDistricts().getDataForYear(getCurrentYear))
     );
+
+    const [getClickedLK, setClickedLK] = useState<ICLickedLK>({ BEZ: "Bundesland", GEN: "Bayern", AGS: "09" });
 
     const handleModalClick = (): void => {
         setModalState((prevState) => !prevState);
@@ -97,7 +106,7 @@ const MainComponent = ({
                     </code>
                     <StackedBarComponent
                         getYear={getCurrentYear}
-                        getDistrict={getCurrentCountries}
+                        getClickedLK={getClickedLK}
                         getDataRB={getDataRB}
                         getDataLK={getDataLK}
                     />
@@ -110,10 +119,12 @@ const MainComponent = ({
                             setDistrict={setCurrentCountries}
                             getDataRB={getDataRB}
                             getDataLK={getDataLK}
+                            getClickedLK={getClickedLK}
+                            setClickedLK={setClickedLK}
                         />
                     </div>
                     <div className={"line-graph"}>
-                        <LineGraphComponent getCurrentCountries={getCurrentCountries} getCurrentYear={getCurrentYear} />
+                        <LineGraphComponent getClickedLK={getClickedLK} getCurrentYear={getCurrentYear} />
                     </div>
                 </div>
             </div>

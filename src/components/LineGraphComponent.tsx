@@ -3,17 +3,18 @@ import { IDataEntry } from "../utils/DataLoader";
 import { ApexOptions } from "apexcharts";
 import { useMemo } from "react";
 import data from "../data/data.json";
+import { ICLickedLK } from "./MainComponent";
 
 const LineGraphComponent = ({
-    getCurrentCountries,
+    getClickedLK,
     getCurrentYear,
 }: {
-    getCurrentCountries: string;
+    getClickedLK: ICLickedLK;
     getCurrentYear: number;
 }): JSX.Element => {
     const getSelectedData = useMemo(() => {
-        return data.filter((entry: IDataEntry) => entry.municipality == getCurrentCountries);
-    }, [getCurrentCountries]);
+        return data.filter((entry: IDataEntry) => entry.AGS == parseInt(getClickedLK.AGS));
+    }, [getClickedLK]);
 
     const usedAreaSeries = useMemo(() => {
         const usedAreaData = getSelectedData.map((entry: IDataEntry) => {

@@ -1,39 +1,36 @@
 import { useMemo, useState } from "react";
-import { IDataEntry } from "../utils/DataLoader";
+import { IData, IDataEntry } from "../utils/DataLoader";
 import Chart from "react-apexcharts";
 import SwitchSelector from "react-switch-selector";
 import { ApexOptions } from "apexcharts";
-
-interface IData {
-    [p: string | number]: IDataEntry[];
-}
+import { ICLickedLK } from "./MainComponent";
 
 const StackedBarComponent = ({
-    getDistrict,
+    getClickedLK,
     getDataRB,
     getDataLK,
 }: {
     getYear: number;
-    getDistrict: string;
+    getClickedLK: ICLickedLK;
     getDataRB: IData;
     getDataLK: IData;
 }): JSX.Element => {
     const [checked, setChecked] = useState<boolean>(false);
-    const selectedLK = useMemo(() => {
-        let sLK;
-        const data = Object.values(getDataRB).flat(1);
+    const selectedLK: IDataEntry[] = useMemo(() => {
         const dataLK = Object.values(getDataLK).flat(1);
-        if (getDistrict == "Bayern") {
-            sLK = data;
+        if (getClickedLK.GEN == "Bayern") {
+            return Object.values(getDataRB).flat(1);
         } else {
-            data.forEach((dataEntry) => {
-                if (dataEntry.municipality === getDistrict) {
-                    sLK = dataLK.filter((lkEntry) => Math.trunc(Number(lkEntry.AGS) / 100) === dataEntry.AGS);
-                }
-            });
+            const length = (Math.log(parseInt(getClickedLK.AGS)) * Math.LOG10E + 1) | 0;
+            return dataLK.filter(
+                (lkEntry) =>
+                    Math.trunc(lkEntry.AGS / 100) ===
+                    (length > 2 && length < 4
+                        ? Math.trunc(parseInt(getClickedLK.AGS) / 100)
+                        : parseInt(getClickedLK.AGS))
+            );
         }
-        return sLK;
-    }, [getDataRB, getDataLK, getDistrict]);
+    }, [getDataRB, getDataLK, getClickedLK]);
     const options: ApexOptions = useMemo(() => {
         return {
             colors: [
@@ -167,5 +164,4 @@ const StackedBarComponent = ({
         </>
     );
 };
-
 export default StackedBarComponent;
