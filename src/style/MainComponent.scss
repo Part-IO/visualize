@@ -24,23 +24,14 @@
             margin: 1vh 0;
             flex-direction: row;
             display: flex;
-            justify-content: flex-start;
             position: relative;
             flex-wrap: wrap;
 
-            svg {
-                flex: 0 1 auto;
-                display: inline-flex;
-                margin: 1vw 1vw 1vw auto;
-            }
-
             .main-view-title {
-                flex: 0 1 auto;
+                flex: 1 1 auto;
                 margin: 1vw;
                 display: inline-flex;
-                position: absolute;
-                left: 50%;
-                transform: translateX(-50%);
+                justify-content: center;
 
                 .text-transition {
                     font-size: 1.5em;
@@ -50,14 +41,12 @@
             }
 
             .switch {
-                flex: 1 1 auto;
                 display: inline-flex;
                 margin: 1vw;
-                height: 1vw;
-                width: 15%;
-                position: absolute;
-                min-width: 200px;
-                min-height: 25px;
+                height: 5vh;
+                width: 220px;
+                min-width: 190px;
+                max-height: 30px;
             }
 
             .break {
@@ -66,8 +55,10 @@
             }
 
             .main-view-bar {
+                display: inline-block;
                 top: 0;
                 height: 75vh;
+                width: calc(100% - 1vw);
 
                 .apexcharts-yaxis-label {
                     fill: var(--color-black);
@@ -99,6 +90,18 @@
                     width: 100%;
                     border: 2px solid var(--color-gray-4);
                     border-radius: 4px;
+
+                    .leaflet-control-zoom-in,
+                    .leaflet-control-zoom-out {
+                        color: var(--color-black);
+                        background-color: var(--color-white);
+                        border-color: var(--color-gray-4);
+                    }
+                    .leaflet-control-attribution {
+                        background-color: var(--color-gray-5);
+                        opacity: 0.8;
+                        color: var(--color-black);
+                    }
                 }
 
                 .info {

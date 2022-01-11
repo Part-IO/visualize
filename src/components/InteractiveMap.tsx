@@ -36,6 +36,10 @@ const InteractiveMap = ({
     const currentAGS = useRef<number>();
     const map = useMap();
 
+    useEffect(() => {
+        map.zoomControl.setPosition("topright");
+    });
+
     /**
      * Update Map if the District at the sidebar is clicked
      */

@@ -13,7 +13,7 @@ function App(): JSX.Element {
 
     const switchThemeButton = (
         <DarkModeSwitch
-            style={{ marginBottom: "2rem", alignItems: "right" }}
+            style={{ display: "inline-flex", margin: "1vw" }}
             checked={isDark}
             onChange={switchTheme}
             moonColor={"var(--color-black)"}

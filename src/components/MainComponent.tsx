@@ -4,10 +4,9 @@ import "../style/MainComponent.scss";
 import TimeLineComponent from "./TimeLineComponent";
 import InteractiveMapContainer from "./InteractiveMapContainer";
 import TextTransition, { presets } from "react-text-transition";
-import DataLoader, { GroupBy, groupBy, IData, IDataEntry } from "../utils/DataLoader";
+import DataLoader, { GroupBy, groupBy, IData } from "../utils/DataLoader";
 import ModalComponent from "./ModalComponent";
 import LineGraphComponent from "./LineGraphComponent";
-import data from "../data/data.json";
 import StackedBarComponent from "./StackedBarComponent";
 
 const MainComponent = ({
@@ -25,9 +24,6 @@ const MainComponent = ({
     );
     const [getDataLK, setDataLK] = useState<IData>(
         groupBy(GroupBy.AGS)(new DataLoader(GroupBy.AGS).GetGovernmentDistricts().getDataForYear(getCurrentYear))
-    );
-    const [getSelectedData, setSelectedData] = useState<IDataEntry[]>(
-        (data as IDataEntry[]).filter((entry: IDataEntry) => entry.municipality == getCurrentCountries)
     );
 
     const handleModalClick = (): void => {
@@ -50,10 +46,6 @@ const MainComponent = ({
         setDataRB(groupByAGSFunc(new DataLoader(GroupBy.AGS).GetDistricts().getDataForYear(getCurrentYear)));
         setDataLK(groupByAGSFunc(new DataLoader(GroupBy.AGS).GetGovernmentDistricts().getDataForYear(getCurrentYear)));
     }, [getCurrentYear]);
-
-    useEffect(() => {
-        setSelectedData(data.filter((entry: IDataEntry) => entry.municipality == getCurrentCountries));
-    }, [getCurrentCountries]);
 
     const textValue: JSX.Element = (
         <>
@@ -121,7 +113,7 @@ const MainComponent = ({
                         />
                     </div>
                     <div className={"line-graph"}>
-                        <LineGraphComponent getSelectedData={getSelectedData} getCurrentYear={getCurrentYear} />
+                        <LineGraphComponent getCurrentCountries={getCurrentCountries} getCurrentYear={getCurrentYear} />
                     </div>
                 </div>
             </div>
