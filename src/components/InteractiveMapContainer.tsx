@@ -4,7 +4,6 @@ import "leaflet/dist/leaflet.css";
 import { Dispatch, SetStateAction, useEffect, useRef } from "react";
 import InteractiveMap from "./InteractiveMap";
 import { IData } from "../utils/DataLoader";
-import TextTransition, { presets } from "react-text-transition";
 import { ICLickedLK } from "./MainComponent";
 
 const InteractiveMapContainer = ({
@@ -13,7 +12,6 @@ const InteractiveMapContainer = ({
     getDataRB,
     getDataLK,
     isDark,
-    getClickedLK,
     setClickedLK,
 }: {
     getDistrict: string;
@@ -21,7 +19,6 @@ const InteractiveMapContainer = ({
     getDataRB: IData;
     setDistrict: Dispatch<SetStateAction<string>>;
     isDark: boolean;
-    getClickedLK: ICLickedLK;
     setClickedLK: Dispatch<SetStateAction<ICLickedLK>>;
 }): JSX.Element => {
     const tileRef = useRef(null);
@@ -63,14 +60,6 @@ const InteractiveMapContainer = ({
                     getDataLK={getDataLK}
                 />
             </MapContainer>
-
-            <code className={"info"}>
-                <TextTransition text={getClickedLK.BEZ} springConfig={presets.gentle} noOverflow={true} />
-                <div className={"text-transition"} style={{ margin: "0 10px" }}>
-                    -
-                </div>
-                <TextTransition text={getClickedLK.GEN} springConfig={presets.gentle} />
-            </code>
         </>
     );
 };

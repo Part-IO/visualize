@@ -15,7 +15,7 @@ export interface ICLickedLK {
     AGS: string;
 }
 
-const MainComponent = ({ isDark }: { isDark: boolean }): JSX.Element => {
+const MainComponent = ({ isDark, isAbsolute }: { isDark: boolean; isAbsolute: boolean }): JSX.Element => {
     console.log("render MainComponent");
     const [getCurrentCountries, setCurrentCountries] = useState<string>("Bayern");
     const [getCurrentYear, setCurrentYear] = useState<number>(1980);
@@ -98,6 +98,7 @@ const MainComponent = ({ isDark }: { isDark: boolean }): JSX.Element => {
                         <TextTransition text={getCurrentYear} springConfig={presets.gentle} />
                     </code>
                     <StackedBarComponent
+                        isAbsolute={isAbsolute}
                         getYear={getCurrentYear}
                         getClickedLK={getClickedLK}
                         getDataRB={getDataRB}
@@ -112,9 +113,22 @@ const MainComponent = ({ isDark }: { isDark: boolean }): JSX.Element => {
                             setDistrict={setCurrentCountries}
                             getDataRB={getDataRB}
                             getDataLK={getDataLK}
-                            getClickedLK={getClickedLK}
                             setClickedLK={setClickedLK}
                         />
+                    </div>
+                    <div className={"map-legend-container"}>
+                        <div className={"map-legend"}>
+                            <div>0%</div>
+                            <div className={"map-legend-bar"} />
+                            <div>100%</div>
+                        </div>
+                        <code className={"info"}>
+                            <TextTransition text={getClickedLK.BEZ} springConfig={presets.gentle} noOverflow={true} />
+                            <div className={"text-transition"} style={{ margin: "0 10px" }}>
+                                -
+                            </div>
+                            <TextTransition text={getClickedLK.GEN} springConfig={presets.gentle} />
+                        </code>
                     </div>
                     <div className={"line-graph"}>
                         <LineGraphComponent getClickedLK={getClickedLK} getCurrentYear={getCurrentYear} />

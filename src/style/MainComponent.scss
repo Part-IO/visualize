@@ -1,32 +1,42 @@
+* {
+    -webkit-transition: color var(--duration) var(--timing), background-color var(--duration) var(--timing);
+    -moz-transition: color var(--duration) var(--timing), background-color var(--duration) var(--timing);
+    -o-transition: color var(--duration) var(--timing), background-color var(--duration) var(--timing);
+    transition: color var(--duration) var(--timing), background-color var(--duration) var(--timing);
+}
+
 .main-component {
+    background-color: var(--color-white);
     display: block;
     width: 100%;
     height: calc(100vh - 80px);
 
     .graphic-container {
+        background-color: var(--color-white);
         justify-content: space-between;
         display: flex;
         width: 100%;
         height: 90%;
 
         .district {
+            background-color: var(--color-white);
             flex-basis: 7.5%;
-            top: 0;
-            margin-right: 1%;
+            margin-right: 20px;
             position: sticky;
             height: 100%;
             display: flex;
         }
 
         .main-view {
+            background-color: var(--color-white);
             flex-basis: 67.5%;
             border: 2px solid var(--color-gray-4);
             border-radius: 4px;
-            margin: 1vh 0;
             flex-direction: row;
             display: flex;
             position: relative;
             flex-wrap: wrap;
+            height: calc(100% - 4px);
 
             .main-view-title {
                 flex: 1 1 auto;
@@ -39,15 +49,6 @@
                     font-weight: 300;
                     color: var(--color-black);
                 }
-            }
-
-            .switch {
-                display: inline-flex;
-                margin: 1vw;
-                height: 5vh;
-                width: 220px;
-                min-width: 190px;
-                max-height: 30px;
             }
 
             .break {
@@ -74,20 +75,22 @@
         }
 
         .graphic {
-            margin: 1vh 1vw;
+            background-color: var(--color-white);
+            margin: auto 20px;
             flex-basis: 25%;
-            top: 0;
-            height: calc(100% - 1vh);
+            height: 100%;
             position: sticky;
-            display: block;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
 
             .map {
-                margin-bottom: 1vh;
-                height: calc(50% - 1vh - 2px);
+                margin-bottom: 8px;
+                height: 47%;
                 width: 100%;
 
                 .map-container {
-                    height: calc(100% - 2em);
+                    height: 100%;
                     width: 100%;
                     border: 2px solid var(--color-gray-4);
                     border-radius: 4px;
@@ -98,31 +101,61 @@
                         background-color: var(--color-white);
                         border-color: var(--color-gray-4);
                     }
+
                     .leaflet-control-attribution {
                         background-color: var(--color-gray-5);
                         opacity: 0.8;
                         color: var(--color-black);
                     }
                 }
+            }
+
+            .map-legend-container {
+                display: flex;
+                flex-direction: column;
+                height: 60px;
+                justify-content: center;
+
+                .map-legend {
+                    display: flex;
+                    height: 20px;
+                    width: 100%;
+                    margin: auto;
+                    justify-content: space-between;
+
+                   > div {
+                       color: var(--color-black);
+                       text-align: center;
+                       min-width:47px;
+                   }
+
+                    .map-legend-bar {
+                        background-image: linear-gradient(to right, #fff, var(--color-red));
+                        width: 100%;
+                        height: 100%;
+                        margin: auto 8px;
+                    }
+                }
 
                 .info {
                     display: flex;
                     position: relative;
-                    padding: 0 0;
                     justify-content: center;
                     overflow: hidden;
+                    margin: auto;
                 }
+
                 .info .text-transition {
+                    margin: auto;
                     display: inline-flex;
-                    font-size: 1.2em;
+                    font-size: 18px;
                     font-weight: 300;
                     color: var(--color-black);
                 }
             }
 
             .line-graph {
-                height: calc(50% - 1vh - 2px);
-                margin-top: 1vh;
+                height: 45%;
                 width: 100%;
                 border: 2px solid var(--color-gray-4);
                 border-radius: 4px;

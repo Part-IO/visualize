@@ -3,7 +3,13 @@ import { Link } from "react-scroll";
 import { useEffect, useRef, useState } from "react";
 import useWindowDimensions from "../hooks/useWindowDimensions";
 
-const WelcomeComponent = ({ switchThemeButton }: { switchThemeButton: JSX.Element }): JSX.Element => {
+const WelcomeComponent = ({
+    switchThemeButton,
+    changeBarChartButton,
+}: {
+    switchThemeButton: JSX.Element;
+    changeBarChartButton: JSX.Element;
+}): JSX.Element => {
     const [scrollPosition, setScrollPosition] = useState(0);
     const backgroundRef = useRef<HTMLDivElement>(null);
     const titleRef = useRef<HTMLParagraphElement>(null);
@@ -41,9 +47,15 @@ const WelcomeComponent = ({ switchThemeButton }: { switchThemeButton: JSX.Elemen
             } else {
                 mouseRef.current.style.height = "Inherit";
             }
-            titleContainerRef.current.style.top = `${resize({ num: relPos, minVal: 10, maxVal: 99 })}%`;
-            subTitleRef.current.style.fontSize = `${resize({ num: 5 - relPos / 25, minVal: 1.4 })}vh`;
-            titleRef.current.style.fontSize = `${resize({ num: 15 - relPos / 10, minVal: 4.6 })}vh`;
+            if (relPos > 85) {
+                titleContainerRef.current.style.color = "var(--color-black)";
+            } else {
+                titleContainerRef.current.style.color = "#000";
+            }
+
+            titleContainerRef.current.style.top = `${resize({ num: relPos, minVal: 10, maxVal: 100 })}%`;
+            subTitleRef.current.style.fontSize = `${resize({ num: 5 - relPos / 25, minVal: 1.2 })}vh`;
+            titleRef.current.style.fontSize = `${resize({ num: 15 - relPos / 9, minVal: 3.5 })}vh`;
         }
     }, [scrollPosition, WD]);
 
@@ -73,6 +85,7 @@ const WelcomeComponent = ({ switchThemeButton }: { switchThemeButton: JSX.Elemen
                 </Link>
             </div>
             {switchThemeButton}
+            {changeBarChartButton}
         </>
     );
 };
