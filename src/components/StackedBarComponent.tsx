@@ -16,6 +16,7 @@ const StackedBarComponent = ({
     getDataLK: IData;
 }): JSX.Element => {
     const [checked, setChecked] = useState<boolean>(false);
+    const [checkedHighlighting, setCheckedHighlighting] = useState<boolean>(false);
     const selectedLK: IDataEntry[] = useMemo(() => {
         const dataLK = Object.values(getDataLK).flat(1);
         if (getClickedLK.GEN == "Bayern") {
@@ -41,9 +42,21 @@ const StackedBarComponent = ({
                 "var(--color-blue)",
             ],
             chart: {
+                toolbar: {
+                    show: false,
+                },
                 type: "bar",
                 stacked: true,
                 stackType: checked ? "100%" : "normal",
+                animations: {
+                    enabled: true,
+                    easing: "easeinout",
+                    speed: 800,
+                    animateGradually: {
+                        enabled: false,
+                        //delay: 150,
+                    },
+                },
             },
             xaxis: {
                 type: "category",
@@ -92,11 +105,23 @@ const StackedBarComponent = ({
                 },
             ],
             legend: {
+                markers: {
+                    onClick() {
+                        if (checkedHighlighting) {
+                            setCheckedHighlighting(false);
+                        } else {
+                            setCheckedHighlighting(true);
+                        }
+                    },
+                },
                 fontFamily: "Liberation Mono",
                 fontSize: "17px",
                 position: "top",
                 horizontalAlign: "center",
                 offsetX: 40,
+                onItemHover: {
+                    highlightDataSeries: true, //checkedHighlighting,
+                },
                 onItemClick: {
                     toggleDataSeries: false,
                 },
@@ -106,7 +131,7 @@ const StackedBarComponent = ({
                 },
             },
         };
-    }, [selectedLK, checked]);
+    }, [selectedLK, checked, checkedHighlighting]);
     const series = useMemo(() => {
         return [
             {
@@ -152,9 +177,10 @@ const StackedBarComponent = ({
                     backgroundColor={"var(--color-white)"}
                     fontColor={"var(--color-black)"}
                     border={"1px solid var(--color-black)"}
-                    optionBorderRadius={4}
+                    optionBorderRadius={3}
                     wrapperBorderRadius={4}
                     selectedFontColor={"var(--color-white)"}
+                    selectionIndicatorMargin={-0.7}
                 />
             </div>
             <div className="break" />
@@ -164,4 +190,5 @@ const StackedBarComponent = ({
         </>
     );
 };
+
 export default StackedBarComponent;
