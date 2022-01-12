@@ -1,10 +1,10 @@
 import { MapContainer, TileLayer } from "react-leaflet";
 import { TileLayer as LeafletTileLayer } from "leaflet";
 import "leaflet/dist/leaflet.css";
-import { Dispatch, SetStateAction, useEffect, useRef, useState } from "react";
+import { Dispatch, SetStateAction, useEffect, useRef } from "react";
 import InteractiveMap from "./InteractiveMap";
 import { IData } from "../utils/DataLoader";
-import TextTransition, { presets } from "react-text-transition";
+import { ICLickedLK } from "./MainComponent";
 
 const InteractiveMapContainer = ({
     getDistrict,
@@ -12,14 +12,15 @@ const InteractiveMapContainer = ({
     getDataRB,
     getDataLK,
     isDark,
+    setClickedLK,
 }: {
     getDistrict: string;
     getDataLK: IData;
     getDataRB: IData;
     setDistrict: Dispatch<SetStateAction<string>>;
     isDark: boolean;
+    setClickedLK: Dispatch<SetStateAction<ICLickedLK>>;
 }): JSX.Element => {
-    const [getLegend, setLegend] = useState<string>("");
     const tileRef = useRef(null);
     const dark = "https://{s}.basemaps.cartocdn.com/dark_nolabels/{z}/{x}/{y}{r}.png";
     const light = "https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png";
@@ -54,20 +55,11 @@ const InteractiveMapContainer = ({
                 <InteractiveMap
                     getDistrict={getDistrict}
                     setDistrict={setDistrict}
-                    setLegend={setLegend}
+                    setClickedLK={setClickedLK}
                     getDataRB={getDataRB}
                     getDataLK={getDataLK}
                 />
             </MapContainer>
-            {getLegend.includes("-") && (
-                <code className={"info"}>
-                    <TextTransition text={getLegend.split("-")[0]} springConfig={presets.gentle} noOverflow={true} />
-                    <div className={"text-transition"} style={{ margin: "0 10px" }}>
-                        -
-                    </div>
-                    <TextTransition text={getLegend.split("-")[1]} springConfig={presets.gentle} />
-                </code>
-            )}
         </>
     );
 };

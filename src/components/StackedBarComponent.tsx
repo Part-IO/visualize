@@ -1,46 +1,47 @@
 import { useMemo, useState } from "react";
-import { IDataEntry } from "../utils/DataLoader";
+import { IData, IDataEntry } from "../utils/DataLoader";
 import Chart from "react-apexcharts";
-import SwitchSelector from "react-switch-selector";
 import { ApexOptions } from "apexcharts";
-
-interface IData {
-    [p: string | number]: IDataEntry[];
-}
+import { ICLickedLK } from "./MainComponent";
 
 const StackedBarComponent = ({
-    getDistrict,
+    getClickedLK,
     getDataRB,
     getDataLK,
+    isAbsolute,
+    isDark,
 }: {
     getYear: number;
-    getDistrict: string;
+    getClickedLK: ICLickedLK;
     getDataRB: IData;
     getDataLK: IData;
+    isAbsolute: boolean;
+    isDark: boolean;
 }): JSX.Element => {
-    const [checked, setChecked] = useState<boolean>(false);
     const [checkedHighlighting, setCheckedHighlighting] = useState<boolean>(false);
-    const selectedLK = useMemo(() => {
-        let sLK;
-        const data = Object.values(getDataRB).flat(1);
+    const length = useMemo(() => {
+        return (Math.log(parseInt(getClickedLK.AGS)) * Math.LOG10E + 1) | 0;
+    }, [getClickedLK]);
+    const selectedLK: IDataEntry[] = useMemo(() => {
         const dataLK = Object.values(getDataLK).flat(1);
-        if (getDistrict == "Bayern") {
-            sLK = data;
+        if (getClickedLK.GEN == "Bayern") {
+            return Object.values(getDataRB).flat(1);
         } else {
-            data.forEach((dataEntry) => {
-                if (dataEntry.municipality === getDistrict) {
-                    sLK = dataLK.filter((lkEntry) => Math.trunc(Number(lkEntry.AGS) / 100) === dataEntry.AGS);
-                }
-            });
+            return dataLK.filter(
+                (lkEntry) =>
+                    Math.trunc(lkEntry.AGS / 100) ===
+                    (length > 2 && length <= 4
+                        ? Math.trunc(parseInt(getClickedLK.AGS) / 100)
+                        : parseInt(getClickedLK.AGS))
+            );
         }
-        return sLK;
-    }, [getDataRB, getDataLK, getDistrict]);
+    }, [getDataRB, getDataLK, getClickedLK, length]);
     const options: ApexOptions = useMemo(() => {
         return {
             colors: [
                 "var(--color-pink)",
                 "var(--color-orange)",
-                "var(--color-gray-4)",
+                "var(--color-gray-1)",
                 "var(--color-green)",
                 "var(--color-blue)",
             ],
@@ -50,7 +51,7 @@ const StackedBarComponent = ({
                 },
                 type: "bar",
                 stacked: true,
-                stackType: checked ? "100%" : "normal",
+                stackType: isAbsolute ? "100%" : "normal",
                 animations: {
                     enabled: true,
                     easing: "easeinout",
@@ -60,6 +61,7 @@ const StackedBarComponent = ({
                         //delay: 150,
                     },
                 },
+                background: "rgba(0,0,0,0)",
             },
             xaxis: {
                 type: "category",
@@ -82,10 +84,10 @@ const StackedBarComponent = ({
             dataLabels: {
                 enabled: true,
                 formatter: (val) => {
-                    if (checked) {
-                        return `${Math.round(val as number)}%`;
+                    if (isAbsolute) {
+                        return `${Math.round(val as number)} %`;
                     } else {
-                        if (val >= 10000) return `${Math.round(val as number)} m²`;
+                        if (val >= 10000) return `${Math.round(val as number)} ha`;
                         else return "";
                     }
                 },
@@ -99,7 +101,7 @@ const StackedBarComponent = ({
             },
             tooltip: {
                 y: {
-                    formatter: (val) => val + " m²",
+                    formatter: (val) => val + " ha",
                 },
             },
             responsive: [
@@ -133,8 +135,11 @@ const StackedBarComponent = ({
                     useSeriesColors: false,
                 },
             },
+            theme: {
+                mode: isDark ? "dark" : "light",
+            },
         };
-    }, [checked, selectedLK, checkedHighlighting]);
+    }, [selectedLK, isAbsolute, checkedHighlighting, isDark]);
     const series = useMemo(() => {
         return [
             {
@@ -159,33 +164,8 @@ const StackedBarComponent = ({
             },
         ];
     }, [selectedLK]);
-    const switchOptions = [
-        {
-            label: "Absolut",
-            value: false,
-            selectedBackgroundColor: "var(--color-black)",
-        },
-        {
-            label: "Prozentual",
-            value: true,
-            selectedBackgroundColor: "var(--color-black)",
-        },
-    ];
     return (
         <>
-            <div className={"switch"}>
-                <SwitchSelector
-                    onChange={(state) => setChecked(state as boolean)}
-                    options={switchOptions}
-                    backgroundColor={"var(--color-white)"}
-                    fontColor={"var(--color-black)"}
-                    border={"1px solid var(--color-black)"}
-                    optionBorderRadius={3}
-                    wrapperBorderRadius={4}
-                    selectedFontColor={"var(--color-white)"}
-                    selectionIndicatorMargin={-0.7}
-                />
-            </div>
             <div className="break" />
             <div className={"main-view-bar"}>
                 <Chart options={options} series={series} type={"bar"} height={"100%"} width={"100%"} />

@@ -20,19 +20,21 @@
     $prev-color: var(--color-black);
 
     display: inline-flex;
-    height: 90%;
-    margin: auto;
+    height: 100%;
+    margin: 0;
+    position: relative;
 
     > div {
         display: flex;
         flex-direction: column;
         color: $prev-color;
         font-size: 1em;
-        padding-left: 1vw;
+        padding-left: 20px;
 
         &.left {
             padding-right: $gap;
             text-align: right;
+            position: relative;
 
             // Line
             div {
@@ -69,6 +71,7 @@
                 }
 
                 p {
+                    font-family: "Liberation Mono", monospace;
                     margin: 0;
                     cursor: pointer;
                     pointer-events: all;
@@ -121,7 +124,7 @@
                     position: absolute;
                     left: -$gap;
                     top: $line-height/2;
-                    height: 101%;
+                    height: 100%;
                     width: 1px;
                     transform: translateX(-50%);
                     z-index: -5;

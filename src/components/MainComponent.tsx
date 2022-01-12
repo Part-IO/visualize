@@ -9,13 +9,13 @@ import ModalComponent from "./ModalComponent";
 import LineGraphComponent from "./LineGraphComponent";
 import StackedBarComponent from "./StackedBarComponent";
 
-const MainComponent = ({
-    switchThemeButton,
-    isDark,
-}: {
-    switchThemeButton: JSX.Element;
-    isDark: boolean;
-}): JSX.Element => {
+export interface ICLickedLK {
+    BEZ: string;
+    GEN: string;
+    AGS: string;
+}
+
+const MainComponent = ({ isDark, isAbsolute }: { isDark: boolean; isAbsolute: boolean }): JSX.Element => {
     const [getCurrentCountries, setCurrentCountries] = useState<string>("Bayern");
     const [getCurrentYear, setCurrentYear] = useState<number>(1980);
     const [modalState, setModalState] = useState<boolean>(false);
@@ -25,6 +25,8 @@ const MainComponent = ({
     const [getDataLK, setDataLK] = useState<IData>(
         groupBy(GroupBy.AGS)(new DataLoader(GroupBy.AGS).GetGovernmentDistricts().getDataForYear(getCurrentYear))
     );
+
+    const [getClickedLK, setClickedLK] = useState<ICLickedLK>({ BEZ: "Bundesland", GEN: "Bayern", AGS: "09" });
 
     const handleModalClick = (): void => {
         setModalState((prevState) => !prevState);
@@ -81,13 +83,13 @@ const MainComponent = ({
                 title={titleValue}
                 content={textValue}
                 button={moreInfoButton}
+                closeButton={true}
             />
             <div className={"graphic-container"}>
                 <div className={"district"}>
                     <DistrictStepComponent getDistrict={getCurrentCountries} setDistrict={setCurrentCountries} />
                 </div>
                 <div className={"main-view"}>
-                    {switchThemeButton}
                     <code className={"main-view-title"}>
                         <TextTransition text={getCurrentCountries} springConfig={presets.gentle} />
                         <div className={"text-transition"} style={{ margin: "0 10px" }}>
@@ -96,10 +98,12 @@ const MainComponent = ({
                         <TextTransition text={getCurrentYear} springConfig={presets.gentle} />
                     </code>
                     <StackedBarComponent
+                        isAbsolute={isAbsolute}
                         getYear={getCurrentYear}
-                        getDistrict={getCurrentCountries}
+                        getClickedLK={getClickedLK}
                         getDataRB={getDataRB}
                         getDataLK={getDataLK}
+                        isDark={isDark}
                     />
                 </div>
                 <div className={"graphic"}>
@@ -110,10 +114,29 @@ const MainComponent = ({
                             setDistrict={setCurrentCountries}
                             getDataRB={getDataRB}
                             getDataLK={getDataLK}
+                            setClickedLK={setClickedLK}
                         />
                     </div>
+                    <div className={"map-legend-container"}>
+                        <div className={"map-legend"}>
+                            <div>0%</div>
+                            <div className={"map-legend-bar"} />
+                            <div>100%</div>
+                        </div>
+                        <code className={"info"}>
+                            <TextTransition text={getClickedLK.BEZ} springConfig={presets.gentle} noOverflow={true} />
+                            <div className={"text-transition"} style={{ margin: "0 10px" }}>
+                                -
+                            </div>
+                            <TextTransition text={getClickedLK.GEN} springConfig={presets.gentle} />
+                        </code>
+                    </div>
                     <div className={"line-graph"}>
-                        <LineGraphComponent getCurrentCountries={getCurrentCountries} getCurrentYear={getCurrentYear} />
+                        <LineGraphComponent
+                            getClickedLK={getClickedLK}
+                            getCurrentYear={getCurrentYear}
+                            isDark={isDark}
+                        />
                     </div>
                 </div>
             </div>
