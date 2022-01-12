@@ -1,5 +1,5 @@
 .timeline-outer {
-    height: 10vh;
+    height: 100%;
     display: flex;
     justify-content: space-between;
 
@@ -48,7 +48,6 @@
     display: inline-flex;
     justify-content: flex-end;
     margin: auto 0 auto 0;
-    flex-basis: 93.5%;
 
     > div {
         display: flex;
@@ -66,7 +65,8 @@
                 font-size: 1em;
                 pointer-events: none;
 
-                code {
+                p {
+                    font-family: "Liberation Mono", monospace;
                     margin: 0;
                     cursor: pointer;
                     display: inline-block;
@@ -167,8 +167,4 @@
             }
         }
     }
-}
-
-#2020:before {
-    left: 1vw !important;
 }

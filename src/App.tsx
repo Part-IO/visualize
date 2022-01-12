@@ -3,12 +3,34 @@ import WelcomeComponent from "./components/WelcomeComponent";
 import useLocalStorage from "use-local-storage";
 import { DarkModeSwitch } from "react-toggle-dark-mode";
 import SwitchSelector from "react-switch-selector";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import ModalComponent from "./components/ModalComponent";
+import useWindowDimensions from "./hooks/useWindowDimensions";
 
 function App(): JSX.Element {
     const defaultDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
     const [isDark, setIsDark] = useLocalStorage("darkMode", defaultDark);
     const [isAbsolute, setIsAbsolute] = useState<boolean>(false);
+    const [isMobile, setIsMobile] = useState<boolean>(false);
+    const WD = useWindowDimensions();
+
+    useEffect(() => {
+        if (WD.width < 1280) {
+            setIsMobile(true);
+        } else {
+            setIsMobile(false);
+        }
+    }, [setIsMobile, WD]);
+
+    useEffect(() => {
+        if (isMobile) {
+            document.body.style.overflow = "hidden";
+            document.body.style.touchAction = "none";
+        } else {
+            document.body.style.overflow = "unset";
+            document.body.style.touchAction = "unset";
+        }
+    });
 
     const switchTheme = (checked: boolean) => {
         setIsDark(checked);
@@ -53,8 +75,17 @@ function App(): JSX.Element {
         </div>
     );
 
+    const textValue: JSX.Element = (
+        <>
+            Diese Webseite sollte <b>nur</b> im 16:9 oder 16: 10 Format und auf einem mindestens FullHD Bildschirm
+            betrachtet werden um so ein richtiges Rendern der Webseite zu gewährleisten.
+        </>
+    );
+    const titleValue: JSX.Element = <>Kompatibilitätswarnung</>;
+
     return (
         <div data-theme={isDark ? "dark" : "light"}>
+            <ModalComponent show={isMobile} modalType={"danger"} title={titleValue} content={textValue} />
             <WelcomeComponent switchThemeButton={switchThemeButton} changeBarChartButton={changeBarChartButton} />
             <MainComponent isDark={isDark} isAbsolute={isAbsolute} />
         </div>

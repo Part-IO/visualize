@@ -10,12 +10,14 @@ const StackedBarComponent = ({
     getDataRB,
     getDataLK,
     isAbsolute,
+    isDark,
 }: {
     getYear: number;
     getClickedLK: ICLickedLK;
     getDataRB: IData;
     getDataLK: IData;
     isAbsolute: boolean;
+    isDark: boolean;
 }): JSX.Element => {
     const [checkedHighlighting, setCheckedHighlighting] = useState<boolean>(false);
     const length = useMemo(() => {
@@ -40,7 +42,7 @@ const StackedBarComponent = ({
             colors: [
                 "var(--color-pink)",
                 "var(--color-orange)",
-                "var(--color-gray-4)",
+                "var(--color-gray-1)",
                 "var(--color-green)",
                 "var(--color-blue)",
             ],
@@ -60,6 +62,7 @@ const StackedBarComponent = ({
                         //delay: 150,
                     },
                 },
+                background: "rgba(0,0,0,0)",
             },
             xaxis: {
                 type: "category",
@@ -133,8 +136,11 @@ const StackedBarComponent = ({
                     useSeriesColors: false,
                 },
             },
+            theme: {
+                mode: isDark ? "dark" : "light",
+            },
         };
-    }, [selectedLK, isAbsolute, checkedHighlighting]);
+    }, [selectedLK, isAbsolute, checkedHighlighting, isDark]);
     const series = useMemo(() => {
         return [
             {

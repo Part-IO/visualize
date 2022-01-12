@@ -111,7 +111,7 @@ const DistrictComponent = ({
                                         setYear(value);
                                     }}
                                 >
-                                    <code>{value}</code>
+                                    <p>{value}</p>
                                 </div>
                             );
                         } else {
@@ -123,7 +123,9 @@ const DistrictComponent = ({
                                         setYear(value);
                                     }}
                                 >
-                                    <code style={index === 10 ? { marginRight: "0vw" } : {}}>{value}</code>
+                                    <p style={index === 10 ? { marginRight: "0vw", pointerEvents: "all" } : {}}>
+                                        {value}
+                                    </p>
                                 </div>
                             );
                         }

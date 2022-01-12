@@ -16,7 +16,6 @@ export interface ICLickedLK {
 }
 
 const MainComponent = ({ isDark, isAbsolute }: { isDark: boolean; isAbsolute: boolean }): JSX.Element => {
-    console.log("render MainComponent");
     const [getCurrentCountries, setCurrentCountries] = useState<string>("Bayern");
     const [getCurrentYear, setCurrentYear] = useState<number>(1980);
     const [modalState, setModalState] = useState<boolean>(false);
@@ -84,6 +83,7 @@ const MainComponent = ({ isDark, isAbsolute }: { isDark: boolean; isAbsolute: bo
                 title={titleValue}
                 content={textValue}
                 button={moreInfoButton}
+                closeButton={true}
             />
             <div className={"graphic-container"}>
                 <div className={"district"}>
@@ -103,6 +103,7 @@ const MainComponent = ({ isDark, isAbsolute }: { isDark: boolean; isAbsolute: bo
                         getClickedLK={getClickedLK}
                         getDataRB={getDataRB}
                         getDataLK={getDataLK}
+                        isDark={isDark}
                     />
                 </div>
                 <div className={"graphic"}>
@@ -131,7 +132,11 @@ const MainComponent = ({ isDark, isAbsolute }: { isDark: boolean; isAbsolute: bo
                         </code>
                     </div>
                     <div className={"line-graph"}>
-                        <LineGraphComponent getClickedLK={getClickedLK} getCurrentYear={getCurrentYear} />
+                        <LineGraphComponent
+                            getClickedLK={getClickedLK}
+                            getCurrentYear={getCurrentYear}
+                            isDark={isDark}
+                        />
                     </div>
                 </div>
             </div>

@@ -8,9 +8,11 @@ import { ICLickedLK } from "./MainComponent";
 const LineGraphComponent = ({
     getClickedLK,
     getCurrentYear,
+    isDark,
 }: {
     getClickedLK: ICLickedLK;
     getCurrentYear: number;
+    isDark: boolean;
 }): JSX.Element => {
     const getSelectedData = useMemo(() => {
         return data.filter((entry: IDataEntry) => entry.AGS == parseInt(getClickedLK.AGS));
@@ -45,18 +47,19 @@ const LineGraphComponent = ({
                 zoom: {
                     enabled: false,
                 },
+                background: "rgba(0,0,0,0)",
             },
             annotations: {
                 xaxis: [
                     {
                         x: new Date("2014-12-31").getTime(),
                         strokeDashArray: 0,
-                        borderColor: "var(--color-purple)",
+                        borderColor: "var(--color-black)",
                         label: {
-                            borderColor: "var(--color-purple)",
+                            borderColor: "var(--color-black)",
                             style: {
                                 color: "var(--color-white)",
-                                background: "var(--color-purple)",
+                                background: "var(--color-black)",
                             },
                             text: "ALB -> ALKIS Umstellung",
                         },
@@ -64,14 +67,14 @@ const LineGraphComponent = ({
                     {
                         x: new Date(getCurrentYear + "-12-31").getTime(),
                         strokeDashArray: 0,
-                        borderColor: "var(--color-purple)",
+                        borderColor: "var(--color-black)",
                         label: {
-                            borderColor: "var(--color-purple)",
+                            borderColor: "var(--color-black)",
                             style: {
                                 color: "var(--color-white)",
-                                background: "var(--color-purple)",
+                                background: "var(--color-black)",
                             },
-                            // text: "Aktuell",
+                            text: "Aktuell",
                         },
                     },
                 ],
@@ -98,7 +101,6 @@ const LineGraphComponent = ({
                 labels: {
                     formatter: (value) => new Date(value).getFullYear().toString(),
                     style: {
-                        colors: "var(--color-black)",
                         fontFamily: "Liberation mono",
                     },
                 },
@@ -111,7 +113,6 @@ const LineGraphComponent = ({
                 labels: {
                     formatter: (value) => value + "%",
                     style: {
-                        colors: "var(--color-black)",
                         fontFamily: "Liberation mono",
                     },
                 },
@@ -126,8 +127,11 @@ const LineGraphComponent = ({
                     formatter: (value) => value.toFixed(2) + "%",
                 },
             },
+            theme: {
+                mode: isDark ? "dark" : "light",
+            },
         };
-    }, [getCurrentYear]);
+    }, [getCurrentYear, isDark]);
 
     return <Chart options={options} series={usedAreaSeries} type="line" height={"100%"} width={"100%"} />;
 };
