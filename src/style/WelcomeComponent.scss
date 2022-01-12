@@ -1,32 +1,42 @@
-.welcome {
-    font-family: Novar, serif;
-    background-image: url("../data/frauenkirche.jpg");
-    height: 100vh;
-    width: calc(100vw - (100vw - 100%));
-    background-size: cover;
+.welcome-container {
+    height: calc(100vh + 80px);
+    width: 100vw;
     position: relative;
     $color: #1c1c1e;
 
+    .welcome-background {
+        background-image: url("../data/frauenkirche.jpg");
+        background-size: cover;
+        background-attachment: fixed;
+        filter: blur(10px);
+        position: relative;
+        width: 100%;
+        height: 100vh;
+    }
+
     .title-container {
+        transition: all 0.1s;
+        font-family: Novar, serif;
         position: absolute;
-        top: 20%;
         left: 50%;
         transform: translateX(-50%);
+        z-index: 3;
 
         .title {
+            transition: all 0.1s;
+            position: relative;
             text-align: center;
-            font-size: 10vw;
-            line-height: 0;
             letter-spacing: 0.1em;
             font-weight: 900;
-            margin: 6vw;
+            margin: 0;
             color: $color;
         }
 
         .subtitle {
+            transition: all 0.1s;
+            position: relative;
             text-align: center;
-            font-size: 3vw;
-            line-height: 0;
+            margin: 0;
             letter-spacing: 0.01em;
             font-weight: 300;
             color: $color;
@@ -41,6 +51,7 @@
         display: block;
         z-index: 10;
         cursor: pointer;
+        overflow: hidden;
 
         span {
             display: block;
@@ -83,6 +94,7 @@
             -moz-animation-delay: 0.1s;
             -webkit-animation-direction: alternate;
         }
+
         .down-arrow-2 {
             -webkit-animation: mouse-scroll 1s infinite;
             -moz-animation: mouse-scroll 1s infinite;
@@ -90,6 +102,7 @@
             -moz-animation-delay: 0.2s;
             -webkit-animation-direction: alternate;
         }
+
         .down-arrow-3 {
             -webkit-animation: mouse-scroll 1s infinite;
             -moz-animation: mouse-scroll 1s infinite;
@@ -142,4 +155,10 @@
             opacity: 1;
         }
     }
+}
+
+.switch-theme-button {
+    display: inline-block !important;
+    position: relative;
+    float: right;
 }

@@ -69,24 +69,24 @@ const DistrictComponent = ({
 
     return (
         <div className={"timeline-outer"}>
+            <button
+                className={playState ? "play-button pause" : "play-button"}
+                id={"playButton"}
+                onClick={playButtonClick}
+                disabled={getYear === 2020}
+                style={
+                    getYear < 2020
+                        ? {
+                              borderColor: "transparent transparent transparent var(--color-black)",
+                              cursor: "pointer",
+                          }
+                        : {
+                              borderColor: "transparent transparent transparent var(--color-gray-3",
+                              cursor: "default",
+                          }
+                }
+            />
             <div className={"timeline-progress"}>
-                <button
-                    className={playState ? "play-button pause" : "play-button"}
-                    id={"playButton"}
-                    onClick={playButtonClick}
-                    disabled={getYear === 2020}
-                    style={
-                        getYear < 2020
-                            ? {
-                                  borderColor: "transparent transparent transparent var(--color-black)",
-                                  cursor: "pointer",
-                              }
-                            : {
-                                  borderColor: "transparent transparent transparent var(--color-gray-3",
-                                  cursor: "default",
-                              }
-                    }
-                />
                 <div className={"above"}>
                     <WarnSymbol
                         onClick={handleModalClick}
@@ -123,7 +123,7 @@ const DistrictComponent = ({
                                         setYear(value);
                                     }}
                                 >
-                                    <code>{value}</code>
+                                    <code style={index === 10 ? { marginRight: "0vw" } : {}}>{value}</code>
                                 </div>
                             );
                         }

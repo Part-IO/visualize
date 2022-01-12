@@ -1,6 +1,32 @@
 .timeline-outer {
     height: 10vh;
     display: flex;
+    justify-content: space-between;
+
+    .play-button {
+        position: relative;
+        background-color: transparent;
+        display: inline-flex;
+        height: 20px;
+        transform: translateY(-90%);
+        border-color: transparent transparent transparent var(--color-black);
+        transition: 100ms all ease;
+        will-change: border-width;
+        cursor: pointer;
+        margin-left: auto;
+        margin-top: auto;
+        margin-bottom: auto;
+
+        // play state
+        border-style: solid;
+        border-width: 10px 0 10px 15px;
+
+        // paused state
+        &.pause {
+            border-style: double;
+            border-width: 0 0 0 15px;
+        }
+    }
 }
 
 .timeline-outer * {
@@ -17,34 +43,12 @@
     $current-color: var(--color-black);
     $prev-color: var(--color-black);
     $num-of-dots: 11;
-    $fat-line-width: 90vw / $num-of-dots;
+    $fat-line-width: 92vw / $num-of-dots;
 
     display: inline-flex;
+    justify-content: flex-end;
+    margin: auto 0 auto 0;
     flex-basis: 93.5%;
-    margin: auto 1vw auto auto;
-
-    .play-button {
-        background-color: transparent;
-        display: inline-flex;
-        box-sizing: border-box;
-        height: 20px;
-        transform: translateY(-39%);
-
-        border-color: transparent transparent transparent var(--color-black);
-        transition: 100ms all ease;
-        will-change: border-width;
-        cursor: pointer;
-
-        // play state
-        border-style: solid;
-        border-width: 10px 0 10px 15px;
-
-        // paused state
-        &.pause {
-            border-style: double;
-            border-width: 0 0 0 15px;
-        }
-    }
 
     > div {
         display: flex;
@@ -57,6 +61,7 @@
 
             // Line
             div {
+                position: relative;
                 width: $fat-line-width;
                 font-size: 1em;
                 pointer-events: none;
@@ -144,7 +149,7 @@
                     background: var(--color-gray-4);
                     border-radius: 2px;
                     position: absolute;
-                    width: calc(90vw - (20px * 2) + 1px);
+                    width: calc(92vw - (20px * 2) + 1px);
                     left: $gap;
                     height: 1px;
                     transform: translateY(50%);
@@ -162,4 +167,8 @@
             }
         }
     }
+}
+
+#2020:before {
+    left: 1vw !important;
 }

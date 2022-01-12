@@ -18,13 +18,14 @@ function App(): JSX.Element {
             onChange={switchTheme}
             moonColor={"var(--color-black)"}
             sunColor={"var(--color-black)"}
+            className={"switch-theme-button"}
         />
     );
 
     return (
         <div data-theme={isDark ? "dark" : "light"} style={{ backgroundColor: "var(--color-white)" }}>
-            <WelcomeComponent />
-            <MainComponent switchThemeButton={switchThemeButton} isDark={isDark} />
+            <WelcomeComponent switchThemeButton={switchThemeButton} />
+            <MainComponent isDark={isDark} />
         </div>
     );
 }

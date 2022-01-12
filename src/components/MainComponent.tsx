@@ -15,13 +15,7 @@ export interface ICLickedLK {
     AGS: string;
 }
 
-const MainComponent = ({
-    switchThemeButton,
-    isDark,
-}: {
-    switchThemeButton: JSX.Element;
-    isDark: boolean;
-}): JSX.Element => {
+const MainComponent = ({ isDark }: { isDark: boolean }): JSX.Element => {
     console.log("render MainComponent");
     const [getCurrentCountries, setCurrentCountries] = useState<string>("Bayern");
     const [getCurrentYear, setCurrentYear] = useState<number>(1980);
@@ -96,7 +90,6 @@ const MainComponent = ({
                     <DistrictStepComponent getDistrict={getCurrentCountries} setDistrict={setCurrentCountries} />
                 </div>
                 <div className={"main-view"}>
-                    {switchThemeButton}
                     <code className={"main-view-title"}>
                         <TextTransition text={getCurrentCountries} springConfig={presets.gentle} />
                         <div className={"text-transition"} style={{ margin: "0 10px" }}>
