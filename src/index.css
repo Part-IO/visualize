@@ -47,26 +47,26 @@
 
 @font-face {
     font-family: "Liberation Mono", Monospace;
-    src: url('./style/fonts/LiberationMono-Regular-webfont.woff') format('woff');
+    src: url("./style/fonts/LiberationMono-Regular-webfont.woff") format("woff");
     font-weight: normal;
 }
 
 @font-face {
     font-family: "Liberation Mono", Monospace;
-    src: url('./style/fonts/LiberationMono-Bold-webfont.woff') format('woff');
+    src: url("./style/fonts/LiberationMono-Bold-webfont.woff") format("woff");
     font-weight: bold;
 }
 
 @font-face {
     font-family: "Liberation Mono", Monospace;
-    src: url('./style/fonts/LiberationMono-BoldItalic-webfont.woff') format('woff');
+    src: url("./style/fonts/LiberationMono-BoldItalic-webfont.woff") format("woff");
     font-weight: bold;
     font-style: italic;
 }
 
 @font-face {
-    font-family: 'Liberation Mono', Monospace;
-    src: url('./style/fonts/LiberationMono-Italic-webfont.woff') format('woff');
+    font-family: "Liberation Mono", Monospace;
+    src: url("./style/fonts/LiberationMono-Italic-webfont.woff") format("woff");
     font-weight: normal;
     font-style: italic;
 }
@@ -75,7 +75,7 @@ body {
     margin: 0;
     overflow-x: hidden !important;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans",
-    "Droid Sans", "Helvetica Neue", Liberation, sans-serif;
+        "Droid Sans", "Helvetica Neue", Liberation, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }

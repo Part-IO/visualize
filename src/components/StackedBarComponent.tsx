@@ -1,7 +1,6 @@
 import { useMemo, useState } from "react";
 import { IData, IDataEntry } from "../utils/DataLoader";
 import Chart from "react-apexcharts";
-import SwitchSelector from "react-switch-selector";
 import { ApexOptions } from "apexcharts";
 import { ICLickedLK } from "./MainComponent";
 
