@@ -1,33 +1,28 @@
 import { Dispatch, SetStateAction, useCallback, useEffect, useMemo, useRef, useState } from "react";
 import L, { LatLngBounds } from "leaflet";
 import { GeoJSON, useMap } from "react-leaflet";
-import { IDataEntry } from "../utils/DataLoader";
 import { Feature, FeatureCollection } from "geojson";
 import regierungsbezirke from "../data/regierungsbezirke.json";
 import landkreise from "../data/landkreise.json";
 import { colord, extend } from "colord";
-
 import mixPlugin from "colord/plugins/mix";
 import { ICLickedLK } from "./MainComponent";
+import { IData } from "../utils/Helper";
+import RBDataYear from "../data/RBYear.json";
+import LKDataYear from "../data/LKYear.json";
 
 extend([mixPlugin]);
-
-interface IData {
-    [p: string | number]: IDataEntry[];
-}
 
 const InteractiveMap = ({
     getDistrict,
     setDistrict,
     setClickedLK,
-    getDataRB,
-    getDataLK,
+    getYear,
 }: {
     getDistrict: string;
     setDistrict: Dispatch<SetStateAction<string>>;
     setClickedLK: Dispatch<SetStateAction<ICLickedLK>>;
-    getDataLK: IData;
-    getDataRB: IData;
+    getYear: number;
 }): JSX.Element => {
     const [getRBGeoJson] = useState(regierungsbezirke as FeatureCollection);
     const [getLKGeoJson] = useState(landkreise);
@@ -35,11 +30,24 @@ const InteractiveMap = ({
     const layerListLK = useRef<Map<number, L.GeoJSON>>();
     const lastDetailedLayer = useRef<L.GeoJSON>();
     const currentAGS = useRef<number>();
+    const redColors = useRef<string[]>(
+        colord(getComputedStyle(document.documentElement).getPropertyValue("--color-red"))
+            .tints(100)
+            .map((c) => c.toHex())
+            .reverse()
+    );
     const map = useMap();
 
     useEffect(() => {
         map.zoomControl.setPosition("topright");
     });
+
+    const getDataRB: IData = useMemo(() => {
+        return RBDataYear[`31.12.${getYear}`].reduce((obj, item) => Object.assign(obj, { [item.AGS]: [item] }), {});
+    }, [getYear]);
+    const getDataLK: IData = useMemo(() => {
+        return LKDataYear[`31.12.${getYear}`].reduce((obj, item) => Object.assign(obj, { [item.AGS]: [item] }), {});
+    }, [getYear]);
 
     const maxValueRB = useMemo(() => {
         const data = Object.values(getDataRB).flat(1);
@@ -52,14 +60,6 @@ const InteractiveMap = ({
         return data.reduce((prev, current) => (prev.used_area_percent > current.used_area_percent ? prev : current))
             .used_area_percent;
     }, [getDataLK]);
-
-    const redColors = useMemo(() => {
-        const colorInst = colord(getComputedStyle(document.documentElement).getPropertyValue("--color-red"));
-        return colorInst
-            .tints(100)
-            .map((c) => c.toHex())
-            .reverse();
-    }, []);
 
     /**
      * Update Map if the District at the sidebar is clicked
@@ -94,8 +94,9 @@ const InteractiveMap = ({
             const maxValue: number = LK ? maxValueLK : maxValueRB;
 
             const percentage = Math.round((baseData[AGS][0].used_area_percent * 100) / maxValue);
+
             return {
-                fillColor: redColors[Math.trunc(percentage) - 1],
+                fillColor: redColors.current[Math.trunc(percentage) - 1],
                 fillOpacity: 1,
                 color: "var(--color-white)",
                 weight: 1,
@@ -126,7 +127,6 @@ const InteractiveMap = ({
      * Only 1 run on init
      */
     useEffect(() => {
-        console.log(getLKGeoJson);
         const data = Object.values(getDataRB).flat(1);
         const dataList = new Map<number, L.GeoJSON>();
         data.forEach((dataEntry) => {

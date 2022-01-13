@@ -4,7 +4,6 @@ import "../style/MainComponent.scss";
 import TimeLineComponent from "./TimeLineComponent";
 import InteractiveMapContainer from "./InteractiveMapContainer";
 import TextTransition, { presets } from "react-text-transition";
-import DataLoader, { GroupBy, groupBy, IData } from "../utils/DataLoader";
 import ModalComponent from "./ModalComponent";
 import LineGraphComponent from "./LineGraphComponent";
 import StackedBarComponent from "./StackedBarComponent";
@@ -19,12 +18,6 @@ const MainComponent = ({ isDark, isAbsolute }: { isDark: boolean; isAbsolute: bo
     const [getCurrentCountries, setCurrentCountries] = useState<string>("Bayern");
     const [getCurrentYear, setCurrentYear] = useState<number>(1980);
     const [modalState, setModalState] = useState<boolean>(false);
-    const [getDataRB, setDataRB] = useState<IData>(
-        groupBy(GroupBy.AGS)(new DataLoader(GroupBy.AGS).GetDistricts().getDataForYear(getCurrentYear))
-    );
-    const [getDataLK, setDataLK] = useState<IData>(
-        groupBy(GroupBy.AGS)(new DataLoader(GroupBy.AGS).GetGovernmentDistricts().getDataForYear(getCurrentYear))
-    );
 
     const [getClickedLK, setClickedLK] = useState<ICLickedLK>({ BEZ: "Bundesland", GEN: "Bayern", AGS: "09" });
 
@@ -35,19 +28,14 @@ const MainComponent = ({ isDark, isAbsolute }: { isDark: boolean; isAbsolute: bo
     useEffect(() => {
         if (modalState) {
             document.body.style.overflow = "hidden";
+            (document.getElementById("main-component") as HTMLDivElement).style.filter = "blur(5px)";
+            (document.getElementById("welcome-container") as HTMLDivElement).style.filter = "blur(5px)";
         } else {
             document.body.style.overflow = "unset";
+            (document.getElementById("main-component") as HTMLDivElement).style.filter = "none";
+            (document.getElementById("welcome-container") as HTMLDivElement).style.filter = "none";
         }
     });
-
-    /**
-     * Update Data if the year change
-     */
-    useEffect(() => {
-        const groupByAGSFunc = groupBy(GroupBy.AGS);
-        setDataRB(groupByAGSFunc(new DataLoader(GroupBy.AGS).GetDistricts().getDataForYear(getCurrentYear)));
-        setDataLK(groupByAGSFunc(new DataLoader(GroupBy.AGS).GetGovernmentDistricts().getDataForYear(getCurrentYear)));
-    }, [getCurrentYear]);
 
     const textValue: JSX.Element = (
         <>
@@ -75,7 +63,7 @@ const MainComponent = ({ isDark, isAbsolute }: { isDark: boolean; isAbsolute: bo
         </button>
     );
     return (
-        <div id={"main-component"} className={"main-component"}>
+        <>
             <ModalComponent
                 show={modalState}
                 modalType={"info"}
@@ -85,70 +73,73 @@ const MainComponent = ({ isDark, isAbsolute }: { isDark: boolean; isAbsolute: bo
                 button={moreInfoButton}
                 closeButton={true}
             />
-            <div className={"graphic-container"}>
-                <div className={"district"}>
-                    <DistrictStepComponent getDistrict={getCurrentCountries} setDistrict={setCurrentCountries} />
-                </div>
-                <div className={"main-view"}>
-                    <code className={"main-view-title"}>
-                        <TextTransition text={getCurrentCountries} springConfig={presets.gentle} />
-                        <div className={"text-transition"} style={{ margin: "0 10px" }}>
-                            -
-                        </div>
-                        <TextTransition text={getCurrentYear} springConfig={presets.gentle} />
-                    </code>
-                    <StackedBarComponent
-                        isAbsolute={isAbsolute}
-                        getYear={getCurrentYear}
-                        getClickedLK={getClickedLK}
-                        getDataRB={getDataRB}
-                        getDataLK={getDataLK}
-                        isDark={isDark}
-                    />
-                </div>
-                <div className={"graphic"}>
-                    <div className={"map"}>
-                        <InteractiveMapContainer
-                            isDark={isDark}
-                            getDistrict={getCurrentCountries}
-                            setDistrict={setCurrentCountries}
-                            getDataRB={getDataRB}
-                            getDataLK={getDataLK}
-                            setClickedLK={setClickedLK}
-                        />
+            <div id={"main-component"} className={"main-component"}>
+                <div className={"graphic-container"}>
+                    <div className={"district"}>
+                        <DistrictStepComponent getDistrict={getCurrentCountries} setDistrict={setCurrentCountries} />
                     </div>
-                    <div className={"map-legend-container"}>
-                        <div className={"map-legend"}>
-                            <div>0%</div>
-                            <div className={"map-legend-bar"} />
-                            <div>100%</div>
-                        </div>
-                        <code className={"info"}>
-                            <TextTransition text={getClickedLK.BEZ} springConfig={presets.gentle} noOverflow={true} />
+                    <div className={"main-view"}>
+                        <code className={"main-view-title"}>
+                            <TextTransition text={getCurrentCountries} springConfig={presets.gentle} />
                             <div className={"text-transition"} style={{ margin: "0 10px" }}>
                                 -
                             </div>
-                            <TextTransition text={getClickedLK.GEN} springConfig={presets.gentle} />
+                            <TextTransition text={getCurrentYear} springConfig={presets.gentle} />
                         </code>
-                    </div>
-                    <div className={"line-graph"}>
-                        <LineGraphComponent
-                            getClickedLK={getClickedLK}
-                            getCurrentYear={getCurrentYear}
+                        <StackedBarComponent
+                            isAbsolute={isAbsolute}
+                            getYear={getCurrentYear}
+                            getDistrict={getCurrentCountries}
                             isDark={isDark}
                         />
                     </div>
+                    <div className={"graphic"}>
+                        <div className={"map"}>
+                            <InteractiveMapContainer
+                                isDark={isDark}
+                                getDistrict={getCurrentCountries}
+                                setDistrict={setCurrentCountries}
+                                getYear={getCurrentYear}
+                                setClickedLK={setClickedLK}
+                            />
+                        </div>
+                        <div className={"map-legend-container"}>
+                            <div className={"map-legend"}>
+                                <div>0%</div>
+                                <div className={"map-legend-bar"} />
+                                <div>100%</div>
+                            </div>
+                            <code className={"info"}>
+                                <TextTransition
+                                    text={getClickedLK.BEZ}
+                                    springConfig={presets.gentle}
+                                    noOverflow={true}
+                                />
+                                <div className={"text-transition"} style={{ margin: "0 10px" }}>
+                                    -
+                                </div>
+                                <TextTransition text={getClickedLK.GEN} springConfig={presets.gentle} />
+                            </code>
+                        </div>
+                        <div className={"line-graph"}>
+                            <LineGraphComponent
+                                getClickedLK={getClickedLK}
+                                getCurrentYear={getCurrentYear}
+                                isDark={isDark}
+                            />
+                        </div>
+                    </div>
+                </div>
+                <div id={"timeline-component"} className={"timeline"}>
+                    <TimeLineComponent
+                        isDark={isDark}
+                        getYear={getCurrentYear}
+                        setYear={setCurrentYear}
+                        handleModalClick={handleModalClick}
+                    />
                 </div>
             </div>
-            <div id={"timeline-component"} className={"timeline"}>
-                <TimeLineComponent
-                    isDark={isDark}
-                    getYear={getCurrentYear}
-                    setYear={setCurrentYear}
-                    handleModalClick={handleModalClick}
-                />
-            </div>
-        </div>
+        </>
     );
 };
 

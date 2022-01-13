@@ -6,7 +6,9 @@
     left: 0;
     bottom: 0;
     right: 0;
-    padding: 30vh 20px 0 20px;
+    width: 100%;
+    height: 100%;
+    filter: blur(0) !important;
 }
 
 .popup-module.show {
@@ -20,10 +22,10 @@
 .popup-body {
     position: relative;
     background: var(--color-white);
-    max-width: 600px;
-    margin: auto;
+    max-width: 550px;
+    margin: 30vh auto auto auto;
     border-radius: 5px 5px 5px 5px;
-    z-index: 0;
+    filter: blur(0) !important;
 }
 
 .popup-module p {

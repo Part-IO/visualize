@@ -5,11 +5,29 @@ export const prevAll = (element: HTMLDivElement): HTMLDivElement[] => {
     return result;
 };
 
-export const parseDate = (input: string): Date => {
-    const parts = input.match(/(\d+)/g) as RegExpMatchArray;
-    // note parts[1]-1
-    return new Date(Number(parts[2]), Number(parts[1]) - 1, Number(parts[0]));
-};
+export interface IData {
+    [key: string | number]: IDataEntry[];
+}
+
+export interface IDataEntry {
+    AGS: number;
+    municipality: string;
+    total: number;
+    date: string;
+    living: number;
+    living_percent: number;
+    industry: number;
+    industry_percent: number;
+    transport_infrastructure: number;
+    transport_infrastructure_percent: number;
+    nature_and_water: number;
+    nature_and_water_percent: number;
+    miscellaneous: number;
+    miscellaneous_percent: number;
+    used_area: number;
+    used_area_percent: number;
+    demographic: number;
+}
 
 export const districts = [
     "Bayern",

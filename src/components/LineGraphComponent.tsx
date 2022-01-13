@@ -1,9 +1,9 @@
 import Chart from "react-apexcharts";
-import { IDataEntry } from "../utils/DataLoader";
 import { ApexOptions } from "apexcharts";
 import { useMemo } from "react";
 import data from "../data/data.json";
 import { ICLickedLK } from "./MainComponent";
+import { IDataEntry } from "../utils/Helper";
 
 const LineGraphComponent = ({
     getClickedLK,

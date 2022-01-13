@@ -1,5 +1,5 @@
 .welcome-container {
-    height: calc(100vh + 80px);
+    height: 100vh;
     width: 100vw;
     position: relative;
 
@@ -162,6 +162,7 @@
 }
 
 .switch {
+    position: sticky;
     display: inline-block;
     margin: 28px;
     height: 24px;
