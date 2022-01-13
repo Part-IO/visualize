@@ -4,19 +4,16 @@ import "leaflet/dist/leaflet.css";
 import { Dispatch, SetStateAction, useEffect, useRef } from "react";
 import InteractiveMap from "./InteractiveMap";
 import { ICLickedLK } from "./MainComponent";
-import { IData } from "../utils/Helper";
 
 const InteractiveMapContainer = ({
     getDistrict,
     setDistrict,
-    getDataRB,
-    getDataLK,
+    getYear,
     isDark,
     setClickedLK,
 }: {
     getDistrict: string;
-    getDataLK: IData;
-    getDataRB: IData;
+    getYear: number;
     setDistrict: Dispatch<SetStateAction<string>>;
     isDark: boolean;
     setClickedLK: Dispatch<SetStateAction<ICLickedLK>>;
@@ -56,8 +53,7 @@ const InteractiveMapContainer = ({
                     getDistrict={getDistrict}
                     setDistrict={setDistrict}
                     setClickedLK={setClickedLK}
-                    getDataRB={getDataRB}
-                    getDataLK={getDataLK}
+                    getYear={getYear}
                 />
             </MapContainer>
         </>

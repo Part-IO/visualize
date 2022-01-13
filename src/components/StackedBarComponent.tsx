@@ -2,22 +2,29 @@ import { useMemo, useState } from "react";
 import Chart from "react-apexcharts";
 import { ApexOptions } from "apexcharts";
 import { IData } from "../utils/Helper";
+import RBDataYear from "../data/RBYear.json";
+import LKDataYear from "../data/LKYear.json";
 
 const StackedBarComponent = ({
+    getYear,
     getDistrict,
-    getDataRB,
-    getDataLK,
     isAbsolute,
     isDark,
 }: {
     getYear: number;
     getDistrict: string;
-    getDataRB: IData;
-    getDataLK: IData;
     isAbsolute: boolean;
     isDark: boolean;
 }): JSX.Element => {
     const [checkedHighlighting, setCheckedHighlighting] = useState<boolean>(false);
+
+    const getDataRB: IData = useMemo(() => {
+        return RBDataYear[`31.12.${getYear}`].reduce((obj, item) => Object.assign(obj, { [item.AGS]: [item] }), {});
+    }, [getYear]);
+    const getDataLK: IData = useMemo(() => {
+        return LKDataYear[`31.12.${getYear}`].reduce((obj, item) => Object.assign(obj, { [item.AGS]: [item] }), {});
+    }, [getYear]);
+
     const selectedLK = useMemo(() => {
         let sLK;
         const data = Object.values(getDataRB).flat(1);
