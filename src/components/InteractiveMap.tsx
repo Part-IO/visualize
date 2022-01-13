@@ -1,7 +1,6 @@
 import { Dispatch, SetStateAction, useCallback, useEffect, useMemo, useRef, useState } from "react";
 import L, { LatLngBounds } from "leaflet";
 import { GeoJSON, useMap } from "react-leaflet";
-import { IDataEntry } from "../utils/DataLoader";
 import { Feature, FeatureCollection } from "geojson";
 import regierungsbezirke from "../data/regierungsbezirke.json";
 import landkreise from "../data/landkreise.json";
@@ -9,12 +8,9 @@ import { colord, extend } from "colord";
 
 import mixPlugin from "colord/plugins/mix";
 import { ICLickedLK } from "./MainComponent";
+import { IData } from "../utils/Helper";
 
 extend([mixPlugin]);
-
-interface IData {
-    [p: string | number]: IDataEntry[];
-}
 
 const InteractiveMap = ({
     getDistrict,
@@ -126,7 +122,6 @@ const InteractiveMap = ({
      * Only 1 run on init
      */
     useEffect(() => {
-        console.log(getLKGeoJson);
         const data = Object.values(getDataRB).flat(1);
         const dataList = new Map<number, L.GeoJSON>();
         data.forEach((dataEntry) => {

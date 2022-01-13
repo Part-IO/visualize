@@ -1,41 +1,38 @@
 import { useMemo, useState } from "react";
-import { IData, IDataEntry } from "../utils/DataLoader";
 import Chart from "react-apexcharts";
 import { ApexOptions } from "apexcharts";
-import { ICLickedLK } from "./MainComponent";
+import { IData } from "../utils/Helper";
 
 const StackedBarComponent = ({
-    getClickedLK,
+    getDistrict,
     getDataRB,
     getDataLK,
     isAbsolute,
     isDark,
 }: {
     getYear: number;
-    getClickedLK: ICLickedLK;
+    getDistrict: string;
     getDataRB: IData;
     getDataLK: IData;
     isAbsolute: boolean;
     isDark: boolean;
 }): JSX.Element => {
     const [checkedHighlighting, setCheckedHighlighting] = useState<boolean>(false);
-    const length = useMemo(() => {
-        return (Math.log(parseInt(getClickedLK.AGS)) * Math.LOG10E + 1) | 0;
-    }, [getClickedLK]);
-    const selectedLK: IDataEntry[] = useMemo(() => {
+    const selectedLK = useMemo(() => {
+        let sLK;
+        const data = Object.values(getDataRB).flat(1);
         const dataLK = Object.values(getDataLK).flat(1);
-        if (getClickedLK.GEN == "Bayern") {
-            return Object.values(getDataRB).flat(1);
+        if (getDistrict == "Bayern") {
+            sLK = data;
         } else {
-            return dataLK.filter(
-                (lkEntry) =>
-                    Math.trunc(lkEntry.AGS / 100) ===
-                    (length > 2 && length <= 4
-                        ? Math.trunc(parseInt(getClickedLK.AGS) / 100)
-                        : parseInt(getClickedLK.AGS))
-            );
+            data.forEach((dataEntry) => {
+                if (dataEntry.municipality === getDistrict) {
+                    sLK = dataLK.filter((lkEntry) => Math.trunc(Number(lkEntry.AGS) / 100) === dataEntry.AGS);
+                }
+            });
         }
-    }, [getDataRB, getDataLK, getClickedLK, length]);
+        return sLK;
+    }, [getDataRB, getDataLK, getDistrict]);
     const options: ApexOptions = useMemo(() => {
         return {
             colors: [

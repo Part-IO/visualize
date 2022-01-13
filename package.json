@@ -2,7 +2,7 @@
   "name": "visualize",
   "version": "0.1.0",
   "private": false,
-  "homepage": "https://part-io.github.io/visualize",
+  "homepage": "https://mozartuss.github.io/visualize",
   "dependencies": {
     "@sitecore-jss/sitecore-jss": "^19.0.1",
     "@sitecore-jss/sitecore-jss-react": "^19.0.1",

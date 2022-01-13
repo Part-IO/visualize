@@ -3,8 +3,8 @@ import { TileLayer as LeafletTileLayer } from "leaflet";
 import "leaflet/dist/leaflet.css";
 import { Dispatch, SetStateAction, useEffect, useRef } from "react";
 import InteractiveMap from "./InteractiveMap";
-import { IData } from "../utils/DataLoader";
 import { ICLickedLK } from "./MainComponent";
+import { IData } from "../utils/Helper";
 
 const InteractiveMapContainer = ({
     getDistrict,
