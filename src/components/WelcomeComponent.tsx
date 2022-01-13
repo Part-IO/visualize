@@ -61,7 +61,7 @@ const WelcomeComponent = ({
 
     return (
         <>
-            <div className={"welcome-container"}>
+            <div id={"welcome-container"} className={"welcome-container"}>
                 <div className={"welcome-background"} ref={backgroundRef} />
                 <div className={"title-container"} ref={titleContainerRef}>
                     <p className={"title"} ref={titleRef}>
