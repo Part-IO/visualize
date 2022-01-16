@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/visualize/static/css/main.0a734f69.css",
-    "main.js": "/visualize/static/js/main.56e0b670.js",
+    "main.js": "/visualize/static/js/main.d93e03e9.js",
     "static/media/frauenkirche.jpg": "/visualize/static/media/frauenkirche.4b96e6bf9c6cb57d0f9b.jpg",
     "static/media/Novar.ttf": "/visualize/static/media/Novar.7b7beb4e69e6104e27f2.ttf",
     "static/media/LiberationMono-BoldItalic-webfont.woff": "/visualize/static/media/LiberationMono-BoldItalic-webfont.3e7c4d58ef1aabc51de1.woff",
@@ -10,10 +10,10 @@
     "static/media/LiberationMono-Regular-webfont.woff": "/visualize/static/media/LiberationMono-Regular-webfont.b6705bc63b0a64afa09a.woff",
     "index.html": "/visualize/index.html",
     "main.0a734f69.css.map": "/visualize/static/css/main.0a734f69.css.map",
-    "main.56e0b670.js.map": "/visualize/static/js/main.56e0b670.js.map"
+    "main.d93e03e9.js.map": "/visualize/static/js/main.d93e03e9.js.map"
   },
   "entrypoints": [
     "static/css/main.0a734f69.css",
-    "static/js/main.56e0b670.js"
+    "static/js/main.d93e03e9.js"
   ]
 }
