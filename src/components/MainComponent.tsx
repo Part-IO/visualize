@@ -25,6 +25,10 @@ const MainComponent = ({ isDark, isAbsolute }: { isDark: boolean; isAbsolute: bo
         setModalState((prevState) => !prevState);
     };
 
+    const handleModalClick2 = (): void => {
+        setModalState((prevState) => !prevState);
+    };
+
     useEffect(() => {
         if (modalState) {
             document.body.style.overflow = "hidden";
@@ -51,6 +55,14 @@ const MainComponent = ({ isDark, isAbsolute }: { isDark: boolean; isAbsolute: bo
         </>
     );
 
+    const textValue2: JSX.Element = (
+        <>
+            Zwischen 1992 und 1996 wurde eine Veränderte Kategorisierung der Daten durchgeführt. Es können sich deshalb
+            speziell große Unterschiede bei Daten bezüglich Wohnfläche und Sonstigen Daten ergeben.
+        </>
+    );
+    const titleValue2: JSX.Element = <>Kategegorisierungsupdate</>;
+
     const moreInfoButton: JSX.Element = (
         <button
             className={"btn btn-more"}
@@ -71,6 +83,14 @@ const MainComponent = ({ isDark, isAbsolute }: { isDark: boolean; isAbsolute: bo
                 title={titleValue}
                 content={textValue}
                 button={moreInfoButton}
+                closeButton={true}
+            />
+            <ModalComponent
+                show={modalState}
+                modalType={"info"}
+                handleModalClick={handleModalClick}
+                title={titleValue2}
+                content={textValue2}
                 closeButton={true}
             />
             <div id={"main-component"} className={"main-component"}>

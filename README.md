@@ -12,3 +12,4 @@ Scroll Animation: https://github.com/lucafalasco/scroll-snap or https://lucafala
 
 Early Access Website https://part-io.github.io/visualize/
 
+Favicon: https://www.stmi.bayern.de/assets/stmi/suv/bayern/oea_staatsflagge-rautenflagge_pdf.pdf

@@ -16,8 +16,6 @@ const StackedBarComponent = ({
     isAbsolute: boolean;
     isDark: boolean;
 }): JSX.Element => {
-    const [checkedHighlighting, setCheckedHighlighting] = useState<boolean>(false);
-
     const getDataRB: IData = useMemo(() => {
         return RBDataYear[`31.12.${getYear}`].reduce((obj, item) => Object.assign(obj, { [item.AGS]: [item] }), {});
     }, [getYear]);
@@ -105,7 +103,21 @@ const StackedBarComponent = ({
             },
             tooltip: {
                 y: {
-                    formatter: (val) => val + " ha",
+                    formatter: (val, opts) => {
+                        let sumArea = 0;
+                        for (let i = 0; i <= 4; i++) {
+                            sumArea = sumArea + opts.series[i][opts.dataPointIndex];
+                        }
+                        if (isAbsolute) {
+                            return `${Math.round(val as number)} ha (${(((val as number) / sumArea) * 100).toFixed(
+                                1
+                            )} %)`;
+                        } else {
+                            return `${Math.round(val as number)} ha (${(((val as number) / sumArea) * 100).toFixed(
+                                1
+                            )} %)`;
+                        }
+                    },
                 },
             },
             responsive: [
@@ -114,22 +126,13 @@ const StackedBarComponent = ({
                 },
             ],
             legend: {
-                markers: {
-                    onClick() {
-                        if (checkedHighlighting) {
-                            setCheckedHighlighting(false);
-                        } else {
-                            setCheckedHighlighting(true);
-                        }
-                    },
-                },
                 fontFamily: "Liberation Mono",
                 fontSize: "17px",
                 position: "top",
                 horizontalAlign: "center",
                 offsetX: 40,
                 onItemHover: {
-                    highlightDataSeries: true, //checkedHighlighting,
+                    highlightDataSeries: true,
                 },
                 onItemClick: {
                     toggleDataSeries: false,
@@ -143,7 +146,7 @@ const StackedBarComponent = ({
                 mode: isDark ? "dark" : "light",
             },
         };
-    }, [selectedLK, isAbsolute, checkedHighlighting, isDark]);
+    }, [selectedLK, isAbsolute, isDark]);
     const series = useMemo(() => {
         return [
             {
