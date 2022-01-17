@@ -45,9 +45,10 @@
         }
         .quote-container{
             font-family: Novar, serif;
-            opacity: 90%;
+            opacity: 85%;
+            filter: blur(0.3px);
             position: absolute;
-            background-color: white;
+            background-color: darkgrey;
             margin: 10px;
             box-shadow: 4px 4px 8px 0px rgba(0, 0, 0, 0.2);
             border-radius: 5px;
