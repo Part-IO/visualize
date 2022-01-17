@@ -28,25 +28,11 @@ const MainComponent = ({ isDark, isAbsolute }: { isDark: boolean; isAbsolute: bo
         setModalState2((prevState) => !prevState);
     };
 
-    function disableScrolling() {
-        const x = window.scrollX;
-        const y = window.scrollY;
-        window.onscroll = function () {
-            window.scrollTo(x, y);
-        };
-    }
-
-    function enableScrolling() {
-        window.onscroll = function () {};
-    }
-
     useEffect(() => {
         if (modalState || modalState2) {
-            disableScrolling();
             (document.getElementById("main-component") as HTMLDivElement).style.filter = "blur(5px)";
             (document.getElementById("welcome-container") as HTMLDivElement).style.filter = "blur(5px)";
         } else {
-            enableScrolling();
             (document.getElementById("main-component") as HTMLDivElement).style.filter = "none";
             (document.getElementById("welcome-container") as HTMLDivElement).style.filter = "none";
         }

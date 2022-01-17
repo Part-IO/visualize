@@ -63,13 +63,43 @@ const WelcomeComponent = ({
         <>
             <div id={"welcome-container"} className={"welcome-container"}>
                 <div className={"welcome-background"} ref={backgroundRef} />
-                <div className={"title-container"} ref={titleContainerRef}>
-                    <p className={"title"} ref={titleRef}>
-                        Betonwüste
-                    </p>
-                    <p className={"subtitle"} ref={subTitleRef}>
-                        Flächenverbrauch Bayerns in Zahlen
-                    </p>
+                <div className={"welcome-container"}>
+                    <div className={"title-container"} ref={titleContainerRef}>
+                        <p className={"title"} ref={titleRef}>
+                            Betonwüste
+                        </p>
+                        <p className={"subtitle"} ref={subTitleRef}>
+                            Flächenverbrauch Bayerns in Zahlen
+                        </p>
+                    </div>
+                    <div className={"quote-container"}>
+                        <div className={"item"}>
+                            <p className={"text"}>{"2020 wurden in Bayern täglich 16 Fußballfelder bebaut"}</p>
+                            <p className={"author"}>
+                                <i>{"Landesamt für Statistik"}</i>
+                            </p>
+                        </div>
+                        <div className={"item2"}>
+                            <p className={"text"}>
+                                {
+                                    "Im Großraum München sind die die Siedlungs- und Verkehrsflächen von 1980 bis 2017 um mehr als ein Drittel angewachsen"
+                                }
+                            </p>
+                            <p className={"author"}>
+                                <i>{"Planungsverband\n" + "Äußerer\n" + "Wirtschaftsraum\n" + "München"}</i>
+                            </p>
+                        </div>
+                        <div className={"item3"}>
+                            <p className={"text"}>
+                                {
+                                    "Täglich werden in Bayern 10,8 Hektar Boden für Industriegebiete, Straßen und Siedlungen zubetoniert."
+                                }
+                            </p>
+                            <p className={"author"}>
+                                <i>{"Ludwig Hartmann"}</i>
+                            </p>
+                        </div>
+                    </div>
                 </div>
                 <Link to={"main-component"} smooth={true} spy={true}>
                     <div className={"mouse-scroll"} ref={mouseRef}>
