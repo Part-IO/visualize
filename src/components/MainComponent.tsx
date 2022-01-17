@@ -127,14 +127,6 @@ const MainComponent = ({ isDark, isAbsolute }: { isDark: boolean; isAbsolute: bo
                                 <div>100%</div>
                             </div>
                             <code className={"info"}>
-                                <TextTransition
-                                    text={getClickedLK.BEZ}
-                                    springConfig={presets.gentle}
-                                    noOverflow={true}
-                                />
-                                <div className={"text-transition"} style={{ margin: "0 10px" }}>
-                                    -
-                                </div>
                                 <TextTransition text={getClickedLK.GEN} springConfig={presets.gentle} />
                             </code>
                         </div>
