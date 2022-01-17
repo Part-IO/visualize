@@ -43,7 +43,7 @@
                 font-weight: 300;
             }
         }
-        .quote-container{
+        .quote-container {
             font-family: Novar, serif;
             opacity: 85%;
             filter: blur(0.3px);
@@ -54,7 +54,6 @@
             border-radius: 5px;
             will-change: transform;
             transition: all 1s ease-in-out;
-
         }
 
         .quote-container:hover {
@@ -86,7 +85,7 @@
             top: 58vh;
         }
 
-    .text {
+        .text {
             text-align: center;
             font-size: 1.5em;
         }
@@ -94,7 +93,6 @@
         .author {
             text-align: right;
         }
-
     }
 
     .mouse-scroll {
@@ -226,4 +224,3 @@
     width: 190px;
     float: right;
 }
-

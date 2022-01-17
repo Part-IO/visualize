@@ -91,6 +91,12 @@ const LineGraphComponent = ({
                     left: 20,
                 },
             },
+            legend: {
+                show: true,
+                showForSingleSeries: true,
+                position: "top",
+                horizontalAlign: "center",
+            },
             // title: {
             //     text: "Line with Annotations",
             //     align: "left",
