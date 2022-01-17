@@ -14,7 +14,6 @@ const WelcomeComponent = ({
     const backgroundRef = useRef<HTMLDivElement>(null);
     const titleRef = useRef<HTMLParagraphElement>(null);
     const subTitleRef = useRef<HTMLParagraphElement>(null);
-    const subsubTitleRef = useRef<HTMLParagraphElement>(null);
     const titleContainerRef = useRef<HTMLDivElement>(null);
     const mouseRef = useRef<HTMLDivElement>(null);
     const WD = useWindowDimensions();
@@ -42,13 +41,7 @@ const WelcomeComponent = ({
         if (backgroundRef.current) {
             backgroundRef.current.style.filter = `blur(${Math.trunc(relPos / 10)}px)`;
         }
-        if (
-            titleRef.current &&
-            subTitleRef.current &&
-            subsubTitleRef.current &&
-            titleContainerRef.current &&
-            mouseRef.current
-        ) {
+        if (titleRef.current && subTitleRef.current && titleContainerRef.current && mouseRef.current) {
             if (relPos > 50) {
                 mouseRef.current.style.height = "0";
             } else {
@@ -62,7 +55,6 @@ const WelcomeComponent = ({
 
             titleContainerRef.current.style.top = `${resize({ num: relPos, minVal: 10, maxVal: 100 })}%`;
             subTitleRef.current.style.fontSize = `${resize({ num: 5 - relPos / 25, minVal: 1.2 })}vh`;
-            subsubTitleRef.current.style.fontSize = `${resize({ num: 2.5 - relPos / 25, minVal: 1.2 })}vh`;
             titleRef.current.style.fontSize = `${resize({ num: 15 - relPos / 9, minVal: 3.5 })}vh`;
         }
     }, [scrollPosition, WD]);
@@ -77,9 +69,6 @@ const WelcomeComponent = ({
                     </p>
                     <p className={"subtitle"} ref={subTitleRef}>
                         Flächenverbrauch Bayerns in Zahlen
-                    </p>
-                    <p className={"subtitle"} ref={subsubTitleRef}>
-                        2020 wurden in Bayern täglich 16 Fußballfelder bebaut
                     </p>
                 </div>
                 <Link to={"main-component"} smooth={true} spy={true}>
