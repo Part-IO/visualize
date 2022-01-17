@@ -7,11 +7,13 @@ const DistrictComponent = ({
     getYear,
     setYear,
     handleModalClick,
+    handleModalClick2,
     isDark,
 }: {
     getYear: number;
     setYear: Dispatch<SetStateAction<number>>;
     handleModalClick: () => void;
+    handleModalClick2: () => void;
     isDark: boolean;
 }): JSX.Element => {
     const [playState, setPlayState] = useState<boolean>(false);
@@ -115,7 +117,7 @@ const DistrictComponent = ({
                         color={"var(--color-yellow)"}
                     />
                     <WarnSymbol
-                        onClick={handleModalClick}
+                        onClick={handleModalClick2}
                         size={24}
                         style={warnStyle2 as CSSProperties}
                         color={"var(--color-yellow)"}

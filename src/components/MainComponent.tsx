@@ -18,24 +18,35 @@ const MainComponent = ({ isDark, isAbsolute }: { isDark: boolean; isAbsolute: bo
     const [getCurrentCountries, setCurrentCountries] = useState<string>("Bayern");
     const [getCurrentYear, setCurrentYear] = useState<number>(1980);
     const [modalState, setModalState] = useState<boolean>(false);
-
+    const [modalState2, setModalState2] = useState<boolean>(false);
     const [getClickedLK, setClickedLK] = useState<ICLickedLK>({ BEZ: "Bundesland", GEN: "Bayern", AGS: "09" });
 
     const handleModalClick = (): void => {
         setModalState((prevState) => !prevState);
     };
-
     const handleModalClick2 = (): void => {
-        setModalState((prevState) => !prevState);
+        setModalState2((prevState) => !prevState);
     };
 
+    function disableScrolling() {
+        const x = window.scrollX;
+        const y = window.scrollY;
+        window.onscroll = function () {
+            window.scrollTo(x, y);
+        };
+    }
+
+    function enableScrolling() {
+        window.onscroll = function () {};
+    }
+
     useEffect(() => {
-        if (modalState) {
-            document.body.style.overflow = "hidden";
+        if (modalState || modalState2) {
+            disableScrolling();
             (document.getElementById("main-component") as HTMLDivElement).style.filter = "blur(5px)";
             (document.getElementById("welcome-container") as HTMLDivElement).style.filter = "blur(5px)";
         } else {
-            document.body.style.overflow = "unset";
+            enableScrolling();
             (document.getElementById("main-component") as HTMLDivElement).style.filter = "none";
             (document.getElementById("welcome-container") as HTMLDivElement).style.filter = "none";
         }
@@ -86,9 +97,9 @@ const MainComponent = ({ isDark, isAbsolute }: { isDark: boolean; isAbsolute: bo
                 closeButton={true}
             />
             <ModalComponent
-                show={modalState}
+                show={modalState2}
                 modalType={"info"}
-                handleModalClick={handleModalClick}
+                handleModalClick={handleModalClick2}
                 title={titleValue2}
                 content={textValue2}
                 closeButton={true}
@@ -156,6 +167,7 @@ const MainComponent = ({ isDark, isAbsolute }: { isDark: boolean; isAbsolute: bo
                         getYear={getCurrentYear}
                         setYear={setCurrentYear}
                         handleModalClick={handleModalClick}
+                        handleModalClick2={handleModalClick2}
                     />
                 </div>
             </div>
