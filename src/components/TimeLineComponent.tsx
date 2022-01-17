@@ -7,11 +7,13 @@ const DistrictComponent = ({
     getYear,
     setYear,
     handleModalClick,
+    handleModalClick2,
     isDark,
 }: {
     getYear: number;
     setYear: Dispatch<SetStateAction<number>>;
     handleModalClick: () => void;
+    handleModalClick2: () => void;
     isDark: boolean;
 }): JSX.Element => {
     const [playState, setPlayState] = useState<boolean>(false);
@@ -67,6 +69,26 @@ const DistrictComponent = ({
         }
     }, [isDark]);
 
+    const warnStyle2 = useMemo(() => {
+        if (isDark) {
+            return {
+                top: "-0.7em",
+                position: "relative",
+                left: "33vw",
+                zIndex: "200000",
+            };
+        } else {
+            return {
+                top: "-0.7em",
+                position: "relative",
+                left: "33vw",
+                zIndex: "200000",
+                fill: "var(--color-yellow)",
+                stroke: "var(--color-black)",
+            };
+        }
+    }, [isDark]);
+
     return (
         <div className={"timeline-outer"}>
             <button
@@ -94,7 +116,12 @@ const DistrictComponent = ({
                         style={warnStyle as CSSProperties}
                         color={"var(--color-yellow)"}
                     />
-
+                    <WarnSymbol
+                        onClick={handleModalClick2}
+                        size={24}
+                        style={warnStyle2 as CSSProperties}
+                        color={"var(--color-yellow)"}
+                    />
                     {years.map((index: number) => (
                         <div key={index} />
                     ))}
