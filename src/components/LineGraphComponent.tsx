@@ -51,7 +51,7 @@ const LineGraphComponent = ({
                 },
                 background: "rgba(0,0,0,0)",
                 events: {
-                    click: (e, ctx, cfg) => {
+                    click: (e) => {
                         if (e.target.innerHTML === "⚠") {
                             handleModalClick2();
                         }
