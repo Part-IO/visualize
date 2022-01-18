@@ -3,7 +3,7 @@ import { CSSProperties, Dispatch, SetStateAction, useEffect, useMemo, useState }
 import { prevAll, years } from "../utils/Helper";
 import WarnSymbol from "./WarnSymbol";
 
-const DistrictComponent = ({
+const TimeLineComponent = ({
     getYear,
     setYear,
     handleModalClick,
@@ -165,4 +165,4 @@ const DistrictComponent = ({
     );
 };
 
-export default DistrictComponent;
+export default TimeLineComponent;
