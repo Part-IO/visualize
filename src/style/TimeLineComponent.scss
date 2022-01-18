@@ -43,7 +43,7 @@
     $current-color: var(--color-black);
     $prev-color: var(--color-black);
     $num-of-dots: 11;
-    $fat-line-width: 92vw / $num-of-dots;
+    $fat-line-width: 89.4vw / $num-of-dots;
 
     display: inline-flex;
     justify-content: flex-end;
@@ -149,7 +149,7 @@
                     background: var(--color-gray-4);
                     border-radius: 2px;
                     position: absolute;
-                    width: calc(92vw - (20px * 2) + 1px);
+                    width: calc(89.5vw - (20px * 2) + 1px);
                     left: $gap;
                     height: 1px;
                     transform: translateY(50%);
