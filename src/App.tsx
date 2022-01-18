@@ -1,8 +1,6 @@
 import MainComponent from "./components/MainComponent";
 import WelcomeComponent from "./components/WelcomeComponent";
 import useLocalStorage from "use-local-storage";
-import { DarkModeSwitch } from "react-toggle-dark-mode";
-import SwitchSelector from "react-switch-selector";
 import { useEffect, useState } from "react";
 import ModalComponent from "./components/ModalComponent";
 import { useMediaQuery } from "react-responsive";
