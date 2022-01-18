@@ -24,13 +24,15 @@
     background-color: var(--color-white);
     color: var(--color-black);
     border-radius: 50%;
-    border: 1px solid var(--color-black);
+    border: 2px solid var(--color-black);
+    transition: 0.2s all;
     cursor: pointer;
     text-align: center;
 }
 
 .data-info-button:hover {
-    background: var(--color-gray-3);
+    background: var(--color-black);
+    color: var(--color-white);
 }
 
 .popup {

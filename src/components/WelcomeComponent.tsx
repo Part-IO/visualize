@@ -43,21 +43,17 @@ const WelcomeComponent = (): JSX.Element => {
             mouseRef.current &&
             quoteRef.current
         ) {
-            if (relPos > 50) {
-                mouseRef.current.style.height = "0";
-            } else {
-                mouseRef.current.style.height = "Inherit";
-            }
             if (relPos > 85) {
                 titleContainerRef.current.style.color = "var(--color-black)";
             } else {
-                titleContainerRef.current.style.color = "#000";
+                titleContainerRef.current.style.color = "rgb(28, 28, 30)";
             }
 
             titleContainerRef.current.style.top = `${resize({ num: relPos, minVal: 10, maxVal: 100 })}%`;
             subTitleRef.current.style.fontSize = `${resize({ num: 5 - relPos / 25, minVal: 1.5 })}vh`;
             titleRef.current.style.fontSize = `${resize({ num: 15 - relPos / 8, minVal: 4 })}vh`;
             quoteRef.current.style.opacity = `${100 - relPos * 3}%`;
+            mouseRef.current.style.opacity = `${100 - relPos * 2}%`;
         }
     }, [scrollPosition, WD]);
 
@@ -93,7 +89,7 @@ const WelcomeComponent = (): JSX.Element => {
                             }
                         </p>
                         <p className={"author"}>
-                            <i>{"- Ludwig Hartmann, Mitglied des Landtags Bayern"}</i>
+                            <i>{"- Ludwig Hartmann, Mitglied des Bayerischen Landtags"}</i>
                         </p>
                     </div>
                 </div>
@@ -103,7 +99,7 @@ const WelcomeComponent = (): JSX.Element => {
                     <div className={"mouse"}>
                         <div className={"mouse-in"} />
                     </div>
-                    <div>
+                    <div className={"mouse-arrow"}>
                         <span className={"down-arrow-1"} />
                         <span className={"down-arrow-2"} />
                         <span className={"down-arrow-3"} />
