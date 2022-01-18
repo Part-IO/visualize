@@ -54,6 +54,7 @@
             border-radius: 5px;
             will-change: transform;
             transition: all 1s ease-in-out;
+            z-index: 4;
         }
 
         .quote-container:hover {
