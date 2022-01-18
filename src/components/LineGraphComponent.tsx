@@ -102,6 +102,9 @@ const LineGraphComponent = ({
                 showForSingleSeries: true,
                 position: "top",
                 horizontalAlign: "center",
+                onItemClick: {
+                    toggleDataSeries: false,
+                },
             },
             // title: {
             //     text: "Line with Annotations",
