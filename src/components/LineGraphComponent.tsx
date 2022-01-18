@@ -9,10 +9,12 @@ const LineGraphComponent = ({
     getClickedLK,
     getCurrentYear,
     isDark,
+    handleModalClick2,
 }: {
     getClickedLK: ICLickedLK;
     getCurrentYear: number;
     isDark: boolean;
+    handleModalClick2: () => void;
 }): JSX.Element => {
     const getSelectedData = useMemo(() => {
         return data.filter((entry: IDataEntry) => entry.AGS == parseInt(getClickedLK.AGS));
@@ -48,20 +50,33 @@ const LineGraphComponent = ({
                     enabled: false,
                 },
                 background: "rgba(0,0,0,0)",
+                events: {
+                    click: (e) => {
+                        if (e.target.innerHTML === "⚠") {
+                            handleModalClick2();
+                        }
+                    },
+                },
+                fontFamily: "Liberation Mono !important",
             },
             annotations: {
                 xaxis: [
                     {
+                        id: "warn",
                         x: new Date("2014-12-31").getTime(),
                         strokeDashArray: 0,
-                        borderColor: "var(--color-black)",
+                        borderColor: "var(--color-yellow)",
                         label: {
-                            borderColor: "var(--color-black)",
+                            borderColor: "var(--color-yellow)",
+                            borderWidth: 0,
+                            offsetY: -10,
                             style: {
-                                color: "var(--color-white)",
-                                background: "var(--color-black)",
+                                fontSize: "20px",
+                                color: "var(--color-yellow)",
+                                background: "rgba(0,0,0,0)",
                             },
-                            text: "ALB -> ALKIS Umstellung",
+                            text: "⚠",
+                            orientation: "horizontal",
                         },
                     },
                     {
@@ -96,6 +111,9 @@ const LineGraphComponent = ({
                 showForSingleSeries: true,
                 position: "top",
                 horizontalAlign: "center",
+                onItemClick: {
+                    toggleDataSeries: false,
+                },
             },
             // title: {
             //     text: "Line with Annotations",
@@ -106,9 +124,6 @@ const LineGraphComponent = ({
                 type: "datetime",
                 labels: {
                     formatter: (value) => new Date(value).getFullYear().toString(),
-                    style: {
-                        fontFamily: "Liberation mono",
-                    },
                 },
             },
             yaxis: {
@@ -118,9 +133,6 @@ const LineGraphComponent = ({
                 decimalsInFloat: 0,
                 labels: {
                     formatter: (value) => value + "%",
-                    style: {
-                        fontFamily: "Liberation mono",
-                    },
                 },
             },
             tooltip: {
@@ -137,7 +149,7 @@ const LineGraphComponent = ({
                 mode: isDark ? "dark" : "light",
             },
         };
-    }, [getCurrentYear, isDark]);
+    }, [getCurrentYear, isDark, handleModalClick2]);
 
     return <Chart options={options} series={usedAreaSeries} type="line" height={"100%"} width={"100%"} />;
 };

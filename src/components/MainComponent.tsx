@@ -58,7 +58,7 @@ const MainComponent = ({ isDark, isAbsolute }: { isDark: boolean; isAbsolute: bo
             speziell große Unterschiede bei Daten bezüglich Wohnfläche und Sonstigen Daten ergeben.
         </>
     );
-    const titleValue2: JSX.Element = <>Kategegorisierungsupdate</>;
+    const titleValue2: JSX.Element = <>Kategorisierungsupdate</>;
 
     const moreInfoButton: JSX.Element = (
         <button
@@ -135,6 +135,7 @@ const MainComponent = ({ isDark, isAbsolute }: { isDark: boolean; isAbsolute: bo
                                 getClickedLK={getClickedLK}
                                 getCurrentYear={getCurrentYear}
                                 isDark={isDark}
+                                handleModalClick2={handleModalClick2}
                             />
                         </div>
                     </div>

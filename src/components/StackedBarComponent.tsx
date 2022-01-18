@@ -64,6 +64,7 @@ const StackedBarComponent = ({
                     },
                 },
                 background: "rgba(0,0,0,0)",
+                fontFamily: "Liberation Mono !important",
             },
             xaxis: {
                 type: "category",
@@ -94,7 +95,6 @@ const StackedBarComponent = ({
                     }
                 },
                 style: {
-                    fontFamily: "Liberation Mono",
                     fontSize: "14px",
                 },
             },
@@ -126,7 +126,6 @@ const StackedBarComponent = ({
                 },
             ],
             legend: {
-                fontFamily: "Liberation Mono",
                 fontSize: "17px",
                 position: "top",
                 horizontalAlign: "center",

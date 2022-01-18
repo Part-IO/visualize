@@ -43,6 +43,7 @@
                 font-weight: 300;
             }
         }
+
         .quote-container {
             position: relative;
             font-family: Novar, serif;
@@ -79,7 +80,7 @@
             top: 56vh;
         }
 
-        .quotion-mark {
+        .quotation-mark {
             background: url("icons/quotation-right-mark-svgrepo-com.svg");
             background-size: 30px 30px;
             position: relative;
@@ -212,20 +213,4 @@
             opacity: 1;
         }
     }
-}
-
-.switch-theme-button {
-    display: inline-block;
-    margin: 28px;
-    position: relative;
-    float: right;
-}
-
-.switch {
-    position: sticky;
-    display: inline-block;
-    margin: 28px;
-    height: 24px;
-    width: 190px;
-    float: right;
 }
