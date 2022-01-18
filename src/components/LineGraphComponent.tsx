@@ -9,10 +9,12 @@ const LineGraphComponent = ({
     getClickedLK,
     getCurrentYear,
     isDark,
+    handleModalClick2,
 }: {
     getClickedLK: ICLickedLK;
     getCurrentYear: number;
     isDark: boolean;
+    handleModalClick2: () => void;
 }): JSX.Element => {
     const getSelectedData = useMemo(() => {
         return data.filter((entry: IDataEntry) => entry.AGS == parseInt(getClickedLK.AGS));
@@ -48,6 +50,13 @@ const LineGraphComponent = ({
                     enabled: false,
                 },
                 background: "rgba(0,0,0,0)",
+                events: {
+                    click: (e, ctx, cfg) => {
+                        if (e.target.innerHTML === "⚠") {
+                            handleModalClick2();
+                        }
+                    },
+                },
             },
             annotations: {
                 xaxis: [
@@ -146,7 +155,7 @@ const LineGraphComponent = ({
                 mode: isDark ? "dark" : "light",
             },
         };
-    }, [getCurrentYear, isDark]);
+    }, [getCurrentYear, isDark, handleModalClick2]);
 
     return <Chart options={options} series={usedAreaSeries} type="line" height={"100%"} width={"100%"} />;
 };

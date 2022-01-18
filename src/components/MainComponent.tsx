@@ -135,6 +135,7 @@ const MainComponent = ({ isDark, isAbsolute }: { isDark: boolean; isAbsolute: bo
                                 getClickedLK={getClickedLK}
                                 getCurrentYear={getCurrentYear}
                                 isDark={isDark}
+                                handleModalClick2={handleModalClick2}
                             />
                         </div>
                     </div>
