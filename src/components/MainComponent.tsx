@@ -110,7 +110,7 @@ const MainComponent = ({ isDark, isAbsolute }: { isDark: boolean; isAbsolute: bo
                             isDark={isDark}
                         />
                     </div>
-                    <div className={"graphic"}>
+                    <div id={"right_content_container"} className={"graphic"}>
                         <div className={"map"}>
                             <InteractiveMapContainer
                                 isDark={isDark}

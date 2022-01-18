@@ -5,6 +5,10 @@
     transition: color var(--duration) var(--timing), background-color var(--duration) var(--timing);
 }
 
+#root {
+    background-color: var(--color-white);
+}
+
 .main-component {
     background-color: var(--color-white);
     display: block;
