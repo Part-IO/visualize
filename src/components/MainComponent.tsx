@@ -99,7 +99,7 @@ const MainComponent = ({ isDark, isAbsolute }: { isDark: boolean; isAbsolute: bo
                         <code className={"main-view-title"}>
                             <TextTransition text={getCurrentCountries} springConfig={presets.gentle} />
                             <div className={"text-transition"} style={{ margin: "0 10px" }}>
-                                -
+                                &#8210;
                             </div>
                             <TextTransition text={getCurrentYear} springConfig={presets.gentle} />
                         </code>
