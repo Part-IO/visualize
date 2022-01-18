@@ -52,16 +52,21 @@ const LineGraphComponent = ({
             annotations: {
                 xaxis: [
                     {
+                        id: "warn",
                         x: new Date("2014-12-31").getTime(),
                         strokeDashArray: 0,
-                        borderColor: "var(--color-black)",
+                        borderColor: "var(--color-yellow)",
                         label: {
-                            borderColor: "var(--color-black)",
+                            borderColor: "var(--color-yellow)",
+                            borderWidth: 0,
+                            offsetY: -10,
                             style: {
-                                color: "var(--color-white)",
-                                background: "var(--color-black)",
+                                fontSize: "20px",
+                                color: "var(--color-yellow)",
+                                background: "rgba(0,0,0,0)",
                             },
-                            text: "ALB -> ALKIS Umstellung",
+                            text: "⚠",
+                            orientation: "horizontal",
                         },
                     },
                     {
