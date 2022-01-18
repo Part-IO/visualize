@@ -8,14 +8,12 @@
         background-color: transparent;
         display: inline-flex;
         height: 20px;
-        transform: translateY(-90%);
+        top: -6px;
         border-color: transparent transparent transparent var(--color-black);
         transition: 100ms all ease;
         will-change: border-width;
         cursor: pointer;
-        margin-left: auto;
-        margin-top: auto;
-        margin-bottom: auto;
+        margin: auto 20px;
 
         // play state
         border-style: solid;
@@ -42,12 +40,12 @@
     $next-color: var(--color-gray-1);
     $current-color: var(--color-black);
     $prev-color: var(--color-black);
-    $num-of-dots: 11;
-    $fat-line-width: 89.4vw / $num-of-dots;
 
     display: inline-flex;
     justify-content: flex-end;
     margin: auto 0 auto 0;
+    width: 105%;
+    flex-direction: column;
 
     > div {
         display: flex;
@@ -61,7 +59,7 @@
             // Line
             div {
                 position: relative;
-                width: $fat-line-width;
+                width: 100%;
                 font-size: 1em;
                 pointer-events: none;
 
@@ -71,6 +69,7 @@
                     cursor: pointer;
                     display: inline-block;
                     pointer-events: all;
+                    position: relative;
                 }
 
                 &.current {
@@ -137,22 +136,21 @@
 
         // Transparent Line
         &.above {
-            padding-bottom: $gap;
+            position: relative;
+            width: 100%;
+            top: 24px;
 
             div {
-                &:last-of-type:after {
-                    display: none;
-                }
-
                 &:after {
                     content: "";
                     background: var(--color-gray-4);
                     border-radius: 2px;
-                    position: absolute;
-                    width: calc(89.5vw - (20px * 2) + 1px);
-                    left: $gap;
+                    position: relative;
+                    width: calc(100% + 10px);
+                    left: -30px;
                     height: 1px;
                     transform: translateY(50%);
+                    display: block;
                 }
             }
         }
