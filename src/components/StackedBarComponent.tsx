@@ -43,6 +43,7 @@ const StackedBarComponent = ({
             colors: [
                 "var(--color-pink)",
                 "var(--color-orange)",
+                "var(--color-yellow)",
                 "var(--color-gray-1)",
                 "var(--color-green)",
                 "var(--color-blue)",
@@ -149,15 +150,19 @@ const StackedBarComponent = ({
     const series = useMemo(() => {
         return [
             {
-                name: "Wohnfläche",
+                name: "Wohnen",
                 data: selectedLK.map((lkEntry) => lkEntry.living),
             },
             {
-                name: "Industriefläche",
+                name: "Industrie / Wohnen",
+                data: selectedLK.map((lkEntry) => lkEntry.misc_industry_living),
+            },
+            {
+                name: "Industrie",
                 data: selectedLK.map((lkEntry) => lkEntry.industry),
             },
             {
-                name: "Transport und Infrastruktur",
+                name: "Verkehrsflächen",
                 data: selectedLK.map((lkEntry) => lkEntry.transport_infrastructure),
             },
             {
@@ -165,8 +170,8 @@ const StackedBarComponent = ({
                 data: selectedLK.map((lkEntry) => lkEntry.nature_and_water),
             },
             {
-                name: "Sonstiges",
-                data: selectedLK.map((lkEntry) => lkEntry.miscellaneous),
+                name: "Bergbau",
+                data: selectedLK.map((lkEntry) => lkEntry.mining),
             },
         ];
     }, [selectedLK]);

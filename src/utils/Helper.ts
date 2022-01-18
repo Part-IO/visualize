@@ -18,12 +18,14 @@ export interface IDataEntry {
     living_percent: number;
     industry: number;
     industry_percent: number;
+    misc_industry_living: number;
+    misc_industry_living_percent: number;
     transport_infrastructure: number;
     transport_infrastructure_percent: number;
     nature_and_water: number;
     nature_and_water_percent: number;
-    miscellaneous: number;
-    miscellaneous_percent: number;
+    mining: number;
+    mining_percent: number;
     used_area: number;
     used_area_percent: number;
     demographic: number;
