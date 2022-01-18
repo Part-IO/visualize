@@ -47,7 +47,13 @@ function App(): JSX.Element {
     const titleValue: JSX.Element = <>Kompatibilitätswarnung</>;
 
     return (
-        <div data-theme={isDark ? "dark" : "light"} style={{ backgroundColor: "var(--color-white)" }}>
+        <div
+            data-theme={isDark ? "dark" : "light"}
+            style={{
+                backgroundColor: "var(--color-white)",
+                transition: "all 0.5s ease",
+            }}
+        >
             <ModalComponent show={isMobile} modalType={"danger"} title={titleValue} content={textValue} />
             <WelcomeComponent />
             <HeaderButtons isDark={isDark} setIsDark={setIsDark} setIsAbsolute={setIsAbsolute} />
