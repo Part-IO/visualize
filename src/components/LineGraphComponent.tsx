@@ -57,6 +57,7 @@ const LineGraphComponent = ({
                         }
                     },
                 },
+                fontFamily: "Liberation Mono !important",
             },
             annotations: {
                 xaxis: [
@@ -106,7 +107,6 @@ const LineGraphComponent = ({
                 },
             },
             legend: {
-                fontFamily: "Liberation Mono !important",
                 show: true,
                 showForSingleSeries: true,
                 position: "top",
@@ -124,9 +124,6 @@ const LineGraphComponent = ({
                 type: "datetime",
                 labels: {
                     formatter: (value) => new Date(value).getFullYear().toString(),
-                    style: {
-                        fontFamily: "Liberation Mono !important",
-                    },
                 },
             },
             yaxis: {
@@ -136,9 +133,6 @@ const LineGraphComponent = ({
                 decimalsInFloat: 0,
                 labels: {
                     formatter: (value) => value + "%",
-                    style: {
-                        fontFamily: "Liberation Mono !important",
-                    },
                 },
             },
             tooltip: {

@@ -64,6 +64,7 @@ const StackedBarComponent = ({
                     },
                 },
                 background: "rgba(0,0,0,0)",
+                fontFamily: "Liberation Mono !important",
             },
             xaxis: {
                 type: "category",
@@ -71,14 +72,6 @@ const StackedBarComponent = ({
                 labels: {
                     style: {
                         colors: "var(--color-black)",
-                        fontFamily: "Liberation Mono !important",
-                    },
-                },
-            },
-            yaxis: {
-                labels: {
-                    style: {
-                        fontFamily: "Liberation Mono !important",
                     },
                 },
             },
@@ -102,7 +95,6 @@ const StackedBarComponent = ({
                     }
                 },
                 style: {
-                    fontFamily: "Liberation Mono !important",
                     fontSize: "14px",
                 },
             },
@@ -134,7 +126,6 @@ const StackedBarComponent = ({
                 },
             ],
             legend: {
-                fontFamily: "Liberation Mono !important",
                 fontSize: "17px",
                 position: "top",
                 horizontalAlign: "center",
