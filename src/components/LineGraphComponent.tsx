@@ -97,6 +97,7 @@ const LineGraphComponent = ({
                 },
             },
             legend: {
+                fontFamily: "Liberation Mono !important",
                 show: true,
                 showForSingleSeries: true,
                 position: "top",
@@ -112,7 +113,7 @@ const LineGraphComponent = ({
                 labels: {
                     formatter: (value) => new Date(value).getFullYear().toString(),
                     style: {
-                        fontFamily: "Liberation mono",
+                        fontFamily: "Liberation Mono !important",
                     },
                 },
             },
@@ -124,7 +125,7 @@ const LineGraphComponent = ({
                 labels: {
                     formatter: (value) => value + "%",
                     style: {
-                        fontFamily: "Liberation mono",
+                        fontFamily: "Liberation Mono !important",
                     },
                 },
             },
