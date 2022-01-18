@@ -74,14 +74,7 @@ const WelcomeComponent = (): JSX.Element => {
                     </p>
                 </div>
                 <div className={"quote-container"} ref={quoteRef}>
-                    <div
-                        className={"item quote1"}
-                        onClick={() => {
-                            window.open(
-                                "https://www.pv-muenchen.de/leistungen/verbandskommunikation/presse/pressemitteilung-broschuere-demografische-entwicklung-und-flaechennutzung-im-grossraum-muenchen"
-                            );
-                        }}
-                    >
+                    <div className={"item quote1"}>
                         <div className={"quotation-mark"} />
                         <p className={"text"}>
                             {
@@ -92,14 +85,7 @@ const WelcomeComponent = (): JSX.Element => {
                             <i>{"- Planungsverband Äußerer Wirtschaftsraum München"}</i>
                         </p>
                     </div>
-                    <div
-                        className={"item quote2"}
-                        onClick={() => {
-                            window.open(
-                                "https://www.ludwighartmann.de/klare-politische-leitplanken-fuer-den-flaechenverbrauch-5-ha-am-tag-damit-bayern-heimat-bleibt/"
-                            );
-                        }}
-                    >
+                    <div className={"item quote2"}>
                         <div className={"quotation-mark"} />
                         <p className={"text"}>
                             {
