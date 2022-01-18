@@ -15,6 +15,7 @@ const WelcomeComponent = ({
     const titleRef = useRef<HTMLParagraphElement>(null);
     const subTitleRef = useRef<HTMLParagraphElement>(null);
     const titleContainerRef = useRef<HTMLDivElement>(null);
+    const quoteRef = useRef<HTMLDivElement>(null);
     const mouseRef = useRef<HTMLDivElement>(null);
     const WD = useWindowDimensions();
     const handleScroll = () => {
@@ -41,7 +42,13 @@ const WelcomeComponent = ({
         if (backgroundRef.current) {
             backgroundRef.current.style.filter = `blur(${Math.trunc(relPos / 10)}px)`;
         }
-        if (titleRef.current && subTitleRef.current && titleContainerRef.current && mouseRef.current) {
+        if (
+            titleRef.current &&
+            subTitleRef.current &&
+            titleContainerRef.current &&
+            mouseRef.current &&
+            quoteRef.current
+        ) {
             if (relPos > 50) {
                 mouseRef.current.style.height = "0";
             } else {
@@ -54,8 +61,9 @@ const WelcomeComponent = ({
             }
 
             titleContainerRef.current.style.top = `${resize({ num: relPos, minVal: 10, maxVal: 100 })}%`;
-            subTitleRef.current.style.fontSize = `${resize({ num: 5 - relPos / 25, minVal: 1.2 })}vh`;
-            titleRef.current.style.fontSize = `${resize({ num: 15 - relPos / 9, minVal: 3.5 })}vh`;
+            subTitleRef.current.style.fontSize = `${resize({ num: 5 - relPos / 25, minVal: 1.5 })}vh`;
+            titleRef.current.style.fontSize = `${resize({ num: 15 - relPos / 8, minVal: 4 })}vh`;
+            quoteRef.current.style.opacity = `${100 - relPos * 3}%`;
         }
     }, [scrollPosition, WD]);
 
@@ -72,31 +80,41 @@ const WelcomeComponent = ({
                             Flächenverbrauch Bayerns in Zahlen
                         </p>
                     </div>
-                    <div className={"quote-container"}>
-                        <div className={"item"}>
-                            <p className={"text"}>{"2020 wurden in Bayern täglich 16 Fußballfelder bebaut"}</p>
-                            <p className={"author"}>
-                                <i>{"Landesamt für Statistik"}</i>
-                            </p>
-                        </div>
-                        <div className={"item2"}>
+                    <div className={"quote-container"} ref={quoteRef}>
+                        <div
+                            className={"item quote1"}
+                            onClick={() => {
+                                window.open(
+                                    "https://www.pv-muenchen.de/leistungen/verbandskommunikation/presse/pressemitteilung-broschuere-demografische-entwicklung-und-flaechennutzung-im-grossraum-muenchen"
+                                );
+                            }}
+                        >
+                            <div className={"quotion-mark"} />
                             <p className={"text"}>
                                 {
-                                    "Im Großraum München sind die die Siedlungs- und Verkehrsflächen von 1980 bis 2017 um mehr als ein Drittel angewachsen"
+                                    "Durch das Wachstum ist die Siedlungs- und Verkehrsfläche von 1980 bis 2017 um mehr als ein Drittel angewachsen."
                                 }
                             </p>
                             <p className={"author"}>
-                                <i>{"Planungsverband\n" + "Äußerer\n" + "Wirtschaftsraum\n" + "München"}</i>
+                                <i>{"- Planungsverband Äußerer Wirtschaftsraum München"}</i>
                             </p>
                         </div>
-                        <div className={"item3"}>
+                        <div
+                            className={"item quote2"}
+                            onClick={() => {
+                                window.open(
+                                    "https://www.ludwighartmann.de/klare-politische-leitplanken-fuer-den-flaechenverbrauch-5-ha-am-tag-damit-bayern-heimat-bleibt/"
+                                );
+                            }}
+                        >
+                            <div className={"quotion-mark"}></div>
                             <p className={"text"}>
                                 {
-                                    "Täglich werden in Bayern 10,8 Hektar Boden für Industriegebiete, Straßen und Siedlungen zubetoniert."
+                                    "Derzeit werden in Bayern täglich 10,8 Hektar Boden für Industriegebiete, Straßen und Siedlungen zubetoniert."
                                 }
                             </p>
                             <p className={"author"}>
-                                <i>{"Ludwig Hartmann"}</i>
+                                <i>{"- Ludwig Hartmann"}</i>
                             </p>
                         </div>
                     </div>
