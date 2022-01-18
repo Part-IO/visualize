@@ -20,7 +20,9 @@ const HeaderButtons = ({
     useEffect(() => {
         const mapContainer = document.getElementById("right_content_container");
         if (mapContainer && headerButtonContainer.current) {
-            headerButtonContainer.current.style.width = `${mapContainer.offsetWidth}px`;
+            const containerWidth = mapContainer.offsetWidth;
+            console.log(containerWidth);
+            headerButtonContainer.current.style.width = `${containerWidth > 270 ? containerWidth : 270}px`;
         }
     }, [width]);
 
