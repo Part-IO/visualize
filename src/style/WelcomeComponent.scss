@@ -53,24 +53,30 @@
 
         .item {
             position: absolute;
-            padding: 10px;
+            padding: 15px;
             transition: all 0.2s ease-in-out;
+            backdrop-filter: blur(5px);
+            background: rgba(white, 0.1);
+            box-shadow: 12px 29px 81px 0 rgba(0,0,0,0.3);
+            border-radius: 3px 15px 5px 30px;
         }
 
         .item:hover {
+            backdrop-filter: blur(5px);
+            background: rgba(white, 0.1);
             transform: scale(1.1);
         }
 
         .quote1 {
             width: 35vw;
-            left: 35vw;
-            top: 45vh;
+            left: 36vw;
+            top: 37vh;
         }
 
         .quote2 {
             width: 33vw;
-            left: 10vw;
-            top: 58vh;
+            left: 18vw;
+            top: 56vh;
         }
 
         .quotion-mark {
@@ -84,6 +90,7 @@
         .text {
             text-align: center;
             font-size: 1.9vh;
+            margin: 1vh;
         }
 
         .author {
