@@ -54,7 +54,7 @@ const TimeLineComponent = ({
             return {
                 top: "-0.7em",
                 position: "relative",
-                left: "76.5vw",
+                left: "75.35vw",
                 zIndex: "200000",
                 fill: "var(--color-white)",
             };
@@ -62,7 +62,7 @@ const TimeLineComponent = ({
             return {
                 top: "-0.7em",
                 position: "relative",
-                left: "76.5vw",
+                left: "75.35vw",
                 zIndex: "200000",
                 fill: "var(--color-yellow)",
                 stroke: "var(--color-black)",
@@ -75,7 +75,7 @@ const TimeLineComponent = ({
             return {
                 top: "-0.7em",
                 position: "relative",
-                left: "33vw",
+                left: "32.35vw",
                 zIndex: "200000",
                 fill: "var(--color-white)",
             };
@@ -83,7 +83,7 @@ const TimeLineComponent = ({
             return {
                 top: "-0.7em",
                 position: "relative",
-                left: "33vw",
+                left: "32.35vw",
                 zIndex: "200000",
                 fill: "var(--color-yellow)",
                 stroke: "var(--color-black)",
