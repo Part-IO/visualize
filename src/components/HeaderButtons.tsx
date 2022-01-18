@@ -21,7 +21,6 @@ const HeaderButtons = ({
         const mapContainer = document.getElementById("right_content_container");
         if (mapContainer && headerButtonContainer.current) {
             const containerWidth = mapContainer.offsetWidth;
-            console.log(containerWidth);
             headerButtonContainer.current.style.width = `${containerWidth > 270 ? containerWidth : 270}px`;
         }
     }, [width]);
