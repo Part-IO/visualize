@@ -14,8 +14,8 @@ function App(): JSX.Element {
     const [isAbsolute, setIsAbsolute] = useState<boolean>(false);
     const [isMobile, setIsMobile] = useState<boolean>(false);
 
-    const isSmartphone = useMediaQuery({ maxWidth: 767 });
-    const isTablet = useMediaQuery({ minWidth: 768 });
+    const isSmartphone = useMediaQuery({ maxWidth: 780 });
+    const isTablet = useMediaQuery({ minWidth: 781 });
     const isPortrait = useMediaQuery({ orientation: "portrait" });
 
     useEffect(() => {
