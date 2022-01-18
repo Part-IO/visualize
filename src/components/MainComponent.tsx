@@ -92,7 +92,7 @@ const MainComponent = ({ isDark, isAbsolute }: { isDark: boolean; isAbsolute: bo
             />
             <div id={"main-component"} className={"main-component"}>
                 <div className={"graphic-container"}>
-                    <div className={"district"}>
+                    <div id={"district"} className={"district"}>
                         <DistrictStepComponent getDistrict={getCurrentCountries} setDistrict={setCurrentCountries} />
                     </div>
                     <div className={"main-view"}>
@@ -110,7 +110,7 @@ const MainComponent = ({ isDark, isAbsolute }: { isDark: boolean; isAbsolute: bo
                             isDark={isDark}
                         />
                     </div>
-                    <div className={"graphic"}>
+                    <div id={"right_content_container"} className={"graphic"}>
                         <div className={"map"}>
                             <InteractiveMapContainer
                                 isDark={isDark}

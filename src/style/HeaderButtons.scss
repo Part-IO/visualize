@@ -1,6 +1,17 @@
+.header-button-container {
+    margin-right: 20px;
+    position: relative;
+    display: flex;
+    background-color: var(--color-white);
+    float: right;
+    z-index: 0;
+    height: 80px;
+    justify-content: space-between;
+    align-items: center;
+}
+
 .switch-theme-button {
     display: inline-block;
-    margin: 28px;
     position: relative;
     float: right;
 }
@@ -8,15 +19,13 @@
 .switch {
     position: sticky;
     display: inline-block;
-    margin: 28px;
     height: 24px;
     width: 190px;
-    float: right;
+    float: left;
 }
 
 .data-info-button {
     display: inline-block;
-    margin: 28px;
     position: relative;
     float: right;
     height: 24px;
@@ -46,7 +55,7 @@
     background: var(--color-white);
     overflow: hidden;
     z-index: 200001;
-    border: 3px solid var(--color-black);
+    border: 0 solid var(--color-black);
 }
 
 .popup .content {

@@ -1,7 +1,8 @@
 import "../style/TimeLineComponent.scss";
-import { CSSProperties, Dispatch, SetStateAction, useEffect, useMemo, useState } from "react";
+import { CSSProperties, Dispatch, SetStateAction, useEffect, useMemo, useRef, useState } from "react";
 import { prevAll, years } from "../utils/Helper";
 import WarnSymbol from "./WarnSymbol";
+import useWindowDimensions from "../hooks/useWindowDimensions";
 
 const TimeLineComponent = ({
     getYear,
@@ -17,6 +18,8 @@ const TimeLineComponent = ({
     isDark: boolean;
 }): JSX.Element => {
     const [playState, setPlayState] = useState<boolean>(false);
+    const playButtonRef = useRef<HTMLButtonElement>(null);
+    const { width } = useWindowDimensions();
     useEffect(() => {
         const progressElement: HTMLDivElement = document.querySelector(".timeline-progress") as HTMLDivElement;
         const label: HTMLDivElement = progressElement.querySelector(".below") as HTMLDivElement;
@@ -41,6 +44,14 @@ const TimeLineComponent = ({
     };
 
     useEffect(() => {
+        const districtLeft = document.getElementById("district_left");
+        if (playButtonRef.current && districtLeft) {
+            playButtonRef.current.style.flexBasis = `${districtLeft.offsetWidth + 48}px`;
+            playButtonRef.current.style.left = `${districtLeft.offsetWidth - 20}px`;
+        }
+    }, [width]);
+
+    useEffect(() => {
         if (getYear < 2020) {
             const animation = setTimeout(() => playState && setYear(getYear + 4), 2e3);
             return () => clearTimeout(animation);
@@ -54,7 +65,7 @@ const TimeLineComponent = ({
             return {
                 top: "-0.7em",
                 position: "relative",
-                left: "76.5vw",
+                left: "82%",
                 zIndex: "200000",
                 fill: "var(--color-white)",
             };
@@ -62,7 +73,7 @@ const TimeLineComponent = ({
             return {
                 top: "-0.7em",
                 position: "relative",
-                left: "76.5vw",
+                left: "82%",
                 zIndex: "200000",
                 fill: "var(--color-yellow)",
                 stroke: "var(--color-black)",
@@ -75,7 +86,7 @@ const TimeLineComponent = ({
             return {
                 top: "-0.7em",
                 position: "relative",
-                left: "33vw",
+                left: "33%",
                 zIndex: "200000",
                 fill: "var(--color-white)",
             };
@@ -83,7 +94,7 @@ const TimeLineComponent = ({
             return {
                 top: "-0.7em",
                 position: "relative",
-                left: "33vw",
+                left: "33%",
                 zIndex: "200000",
                 fill: "var(--color-yellow)",
                 stroke: "var(--color-black)",
@@ -98,6 +109,7 @@ const TimeLineComponent = ({
                 id={"playButton"}
                 onClick={playButtonClick}
                 disabled={getYear === 2020}
+                ref={playButtonRef}
                 style={
                     getYear < 2020
                         ? {
@@ -124,9 +136,9 @@ const TimeLineComponent = ({
                         style={warnStyle2 as CSSProperties}
                         color={"var(--color-yellow)"}
                     />
-                    {years.map((index: number) => (
-                        <div key={index} />
-                    ))}
+
+                    <div />
+                    <div />
                 </div>
                 <div className={"below"}>
                     {years.map((value: number, index: number) => {
@@ -140,7 +152,7 @@ const TimeLineComponent = ({
                                         setYear(value);
                                     }}
                                 >
-                                    <p>{value}</p>
+                                    <p style={{ left: "16px" }}>{value}</p>
                                 </div>
                             );
                         } else {
@@ -152,9 +164,7 @@ const TimeLineComponent = ({
                                         setYear(value);
                                     }}
                                 >
-                                    <p style={index === 10 ? { marginRight: "0vw", pointerEvents: "all" } : {}}>
-                                        {value}
-                                    </p>
+                                    <p style={index === 10 ? { right: "16px" } : {}}>{value}</p>
                                 </div>
                             );
                         }

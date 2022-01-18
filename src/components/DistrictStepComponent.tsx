@@ -43,7 +43,7 @@ const DistrictStepComponent = ({
     return (
         <div className={"outer"}>
             <div className={"progress"}>
-                <div className={"left"}>
+                <div id={"district_left"} className={"left"}>
                     {districts.map((value: string, index: number) => {
                         if (index === 0) {
                             return (

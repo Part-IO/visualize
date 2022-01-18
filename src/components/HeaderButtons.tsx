@@ -1,7 +1,8 @@
 import "../style/HeaderButtons.scss";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { DarkModeSwitch } from "react-toggle-dark-mode";
 import SwitchSelector from "react-switch-selector";
+import useWindowDimensions from "../hooks/useWindowDimensions";
 
 const HeaderButtons = ({
     isDark,
@@ -13,6 +14,15 @@ const HeaderButtons = ({
     setIsAbsolute: (isAbsolute: boolean) => void;
 }): JSX.Element => {
     const [showPopup, setShowPopup] = useState<boolean | null>(null);
+    const headerButtonContainer = useRef<HTMLDivElement>(null);
+    const { width } = useWindowDimensions();
+
+    useEffect(() => {
+        const mapContainer = document.getElementById("right_content_container");
+        if (mapContainer && headerButtonContainer.current) {
+            headerButtonContainer.current.style.width = `${mapContainer.offsetWidth}px`;
+        }
+    }, [width]);
 
     const switchOptions = [
         {
@@ -29,17 +39,32 @@ const HeaderButtons = ({
 
     return (
         <>
-            <DarkModeSwitch
-                checked={isDark}
-                onChange={setIsDark}
-                moonColor={"var(--color-black)"}
-                sunColor={"var(--color-black)"}
-                className={"switch-theme-button"}
-            />
+            <div className={"header-button-container"} ref={headerButtonContainer}>
+                <div className={"switch"}>
+                    <SwitchSelector
+                        onChange={(state) => setIsAbsolute(state as boolean)}
+                        options={switchOptions}
+                        backgroundColor={"var(--color-white)"}
+                        fontColor={"var(--color-black)"}
+                        border={"1px solid var(--color-black)"}
+                        optionBorderRadius={3}
+                        wrapperBorderRadius={4}
+                        selectedFontColor={"var(--color-white)"}
+                        selectionIndicatorMargin={-0.7}
+                    />
+                </div>
+                <button onClick={() => setShowPopup(true)} className={"data-info-button"}>
+                    i
+                </button>
+                <DarkModeSwitch
+                    checked={isDark}
+                    onChange={setIsDark}
+                    moonColor={"var(--color-black)"}
+                    sunColor={"var(--color-black)"}
+                    className={"switch-theme-button"}
+                />
+            </div>
 
-            <button onClick={() => setShowPopup(true)} className={"data-info-button"}>
-                i
-            </button>
             <div className={`popup ${showPopup === null ? "" : showPopup ? "active" : "inactive"}`}>
                 <div className={"content"}>
                     <div className="popup-close-btn" onClick={() => setShowPopup(false)}>
@@ -65,20 +90,6 @@ const HeaderButtons = ({
                         consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse
                     </p>
                 </div>
-            </div>
-
-            <div className={"switch"}>
-                <SwitchSelector
-                    onChange={(state) => setIsAbsolute(state as boolean)}
-                    options={switchOptions}
-                    backgroundColor={"var(--color-white)"}
-                    fontColor={"var(--color-black)"}
-                    border={"1px solid var(--color-black)"}
-                    optionBorderRadius={3}
-                    wrapperBorderRadius={4}
-                    selectedFontColor={"var(--color-white)"}
-                    selectionIndicatorMargin={-0.7}
-                />
             </div>
         </>
     );

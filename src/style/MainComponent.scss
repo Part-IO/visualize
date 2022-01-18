@@ -5,11 +5,16 @@
     transition: color var(--duration) var(--timing), background-color var(--duration) var(--timing);
 }
 
+#root {
+    background-color: var(--color-white);
+}
+
 .main-component {
     background-color: var(--color-white);
     display: block;
     width: 100%;
     height: calc(100vh - 80px);
+    transition: all 0.2s ease-in-out;
 
     .graphic-container {
         background-color: var(--color-white);
