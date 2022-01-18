@@ -74,6 +74,9 @@ const StackedBarComponent = ({
                     style: {
                         colors: "var(--color-black)",
                     },
+                    formatter: function (value) {
+                        return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+                    },
                 },
             },
             plotOptions: {
