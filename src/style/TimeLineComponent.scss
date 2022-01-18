@@ -2,6 +2,7 @@
     height: 100%;
     display: flex;
     justify-content: space-between;
+    transition: all 0.2s ease-in-out;
 
     .play-button {
         position: relative;
@@ -13,7 +14,7 @@
         transition: 100ms all ease;
         will-change: border-width;
         cursor: pointer;
-        margin: auto 20px;
+        margin: auto 0;
 
         // play state
         border-style: solid;

@@ -44,11 +44,10 @@ const TimeLineComponent = ({
     };
 
     useEffect(() => {
-        const district = document.getElementById("district");
         const districtLeft = document.getElementById("district_left");
-        if (playButtonRef.current && district && districtLeft) {
-            playButtonRef.current.style.flexBasis = `${district.offsetWidth - 20}px`;
-            playButtonRef.current.style.left = `${districtLeft.offsetWidth - 30}px`;
+        if (playButtonRef.current && districtLeft) {
+            playButtonRef.current.style.flexBasis = `${districtLeft.offsetWidth + 48}px`;
+            playButtonRef.current.style.left = `${districtLeft.offsetWidth - 20}px`;
         }
     }, [width]);
 
