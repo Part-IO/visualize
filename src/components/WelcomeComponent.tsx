@@ -93,7 +93,7 @@ const WelcomeComponent = (): JSX.Element => {
                             }
                         </p>
                         <p className={"author"}>
-                            <i>{"- Ludwig Hartmann"}</i>
+                            <i>{"- Ludwig Hartmann, Mitglied des Landtags Bayern"}</i>
                         </p>
                     </div>
                 </div>
