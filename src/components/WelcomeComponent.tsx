@@ -82,7 +82,7 @@ const WelcomeComponent = (): JSX.Element => {
                             );
                         }}
                     >
-                        <div className={"quotion-mark"} />
+                        <div className={"quotation-mark"} />
                         <p className={"text"}>
                             {
                                 "Durch das Wachstum ist die Siedlungs- und Verkehrsfläche von 1980 bis 2017 um mehr als ein Drittel angewachsen."
@@ -100,7 +100,7 @@ const WelcomeComponent = (): JSX.Element => {
                             );
                         }}
                     >
-                        <div className={"quotion-mark"}></div>
+                        <div className={"quotation-mark"} />
                         <p className={"text"}>
                             {
                                 "Derzeit werden in Bayern täglich 10,8 Hektar Boden für Industriegebiete, Straßen und Siedlungen zubetoniert."
