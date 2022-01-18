@@ -56,6 +56,7 @@ const DistrictComponent = ({
                 position: "relative",
                 left: "76.5vw",
                 zIndex: "200000",
+                fill: "var(--color-white)",
             };
         } else {
             return {
@@ -76,6 +77,7 @@ const DistrictComponent = ({
                 position: "relative",
                 left: "33vw",
                 zIndex: "200000",
+                fill: "var(--color-white)",
             };
         } else {
             return {
