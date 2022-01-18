@@ -3,13 +3,7 @@ import { Link } from "react-scroll";
 import { useEffect, useRef, useState } from "react";
 import useWindowDimensions from "../hooks/useWindowDimensions";
 
-const WelcomeComponent = ({
-    switchThemeButton,
-    changeBarChartButton,
-}: {
-    switchThemeButton: JSX.Element;
-    changeBarChartButton: JSX.Element;
-}): JSX.Element => {
+const WelcomeComponent = (): JSX.Element => {
     const [scrollPosition, setScrollPosition] = useState(0);
     const backgroundRef = useRef<HTMLDivElement>(null);
     const titleRef = useRef<HTMLParagraphElement>(null);
@@ -68,73 +62,69 @@ const WelcomeComponent = ({
     }, [scrollPosition, WD]);
 
     return (
-        <>
-            <div id={"welcome-container"} className={"welcome-container"}>
-                <div className={"welcome-background"} ref={backgroundRef} />
-                <div className={"welcome-container"}>
-                    <div className={"title-container"} ref={titleContainerRef}>
-                        <p className={"title"} ref={titleRef}>
-                            Betonwüste
+        <div id={"welcome-container"} className={"welcome-container"}>
+            <div className={"welcome-background"} ref={backgroundRef} />
+            <div className={"welcome-container"}>
+                <div className={"title-container"} ref={titleContainerRef}>
+                    <p className={"title"} ref={titleRef}>
+                        Betonwüste
+                    </p>
+                    <p className={"subtitle"} ref={subTitleRef}>
+                        Flächenverbrauch Bayerns in Zahlen
+                    </p>
+                </div>
+                <div className={"quote-container"} ref={quoteRef}>
+                    <div
+                        className={"item quote1"}
+                        onClick={() => {
+                            window.open(
+                                "https://www.pv-muenchen.de/leistungen/verbandskommunikation/presse/pressemitteilung-broschuere-demografische-entwicklung-und-flaechennutzung-im-grossraum-muenchen"
+                            );
+                        }}
+                    >
+                        <div className={"quotion-mark"} />
+                        <p className={"text"}>
+                            {
+                                "Durch das Wachstum ist die Siedlungs- und Verkehrsfläche von 1980 bis 2017 um mehr als ein Drittel angewachsen."
+                            }
                         </p>
-                        <p className={"subtitle"} ref={subTitleRef}>
-                            Flächenverbrauch Bayerns in Zahlen
+                        <p className={"author"}>
+                            <i>{"- Planungsverband Äußerer Wirtschaftsraum München"}</i>
                         </p>
                     </div>
-                    <div className={"quote-container"} ref={quoteRef}>
-                        <div
-                            className={"item quote1"}
-                            onClick={() => {
-                                window.open(
-                                    "https://www.pv-muenchen.de/leistungen/verbandskommunikation/presse/pressemitteilung-broschuere-demografische-entwicklung-und-flaechennutzung-im-grossraum-muenchen"
-                                );
-                            }}
-                        >
-                            <div className={"quotion-mark"} />
-                            <p className={"text"}>
-                                {
-                                    "Durch das Wachstum ist die Siedlungs- und Verkehrsfläche von 1980 bis 2017 um mehr als ein Drittel angewachsen."
-                                }
-                            </p>
-                            <p className={"author"}>
-                                <i>{"- Planungsverband Äußerer Wirtschaftsraum München"}</i>
-                            </p>
-                        </div>
-                        <div
-                            className={"item quote2"}
-                            onClick={() => {
-                                window.open(
-                                    "https://www.ludwighartmann.de/klare-politische-leitplanken-fuer-den-flaechenverbrauch-5-ha-am-tag-damit-bayern-heimat-bleibt/"
-                                );
-                            }}
-                        >
-                            <div className={"quotion-mark"}></div>
-                            <p className={"text"}>
-                                {
-                                    "Derzeit werden in Bayern täglich 10,8 Hektar Boden für Industriegebiete, Straßen und Siedlungen zubetoniert."
-                                }
-                            </p>
-                            <p className={"author"}>
-                                <i>{"- Ludwig Hartmann"}</i>
-                            </p>
-                        </div>
+                    <div
+                        className={"item quote2"}
+                        onClick={() => {
+                            window.open(
+                                "https://www.ludwighartmann.de/klare-politische-leitplanken-fuer-den-flaechenverbrauch-5-ha-am-tag-damit-bayern-heimat-bleibt/"
+                            );
+                        }}
+                    >
+                        <div className={"quotion-mark"}></div>
+                        <p className={"text"}>
+                            {
+                                "Derzeit werden in Bayern täglich 10,8 Hektar Boden für Industriegebiete, Straßen und Siedlungen zubetoniert."
+                            }
+                        </p>
+                        <p className={"author"}>
+                            <i>{"- Ludwig Hartmann"}</i>
+                        </p>
                     </div>
                 </div>
-                <Link to={"main-component"} smooth={true} spy={true}>
-                    <div className={"mouse-scroll"} ref={mouseRef}>
-                        <div className={"mouse"}>
-                            <div className={"mouse-in"} />
-                        </div>
-                        <div>
-                            <span className={"down-arrow-1"} />
-                            <span className={"down-arrow-2"} />
-                            <span className={"down-arrow-3"} />
-                        </div>
-                    </div>
-                </Link>
             </div>
-            {switchThemeButton}
-            {changeBarChartButton}
-        </>
+            <Link to={"main-component"} smooth={true} spy={true}>
+                <div className={"mouse-scroll"} ref={mouseRef}>
+                    <div className={"mouse"}>
+                        <div className={"mouse-in"} />
+                    </div>
+                    <div>
+                        <span className={"down-arrow-1"} />
+                        <span className={"down-arrow-2"} />
+                        <span className={"down-arrow-3"} />
+                    </div>
+                </div>
+            </Link>
+        </div>
     );
 };
 
