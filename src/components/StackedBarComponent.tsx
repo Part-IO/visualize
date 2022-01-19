@@ -73,6 +73,7 @@ const StackedBarComponent = ({
                 labels: {
                     style: {
                         colors: "var(--color-black)",
+                        fontSize: "13px",
                     },
                     formatter: function (value) {
                         return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
@@ -101,7 +102,7 @@ const StackedBarComponent = ({
                     }
                 },
                 style: {
-                    fontSize: "14px",
+                    fontSize: "13px",
                 },
             },
             zoom: {

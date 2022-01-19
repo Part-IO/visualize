@@ -55,7 +55,7 @@ const MainComponent = ({ isDark, isAbsolute }: { isDark: boolean; isAbsolute: bo
     const textValue2: JSX.Element = (
         <>
             Zwischen 1992 und 1996 wurde eine Veränderte Kategorisierung der Daten durchgeführt. Es können sich deshalb
-            speziell große Unterschiede bei Daten bezüglich Wohnfläche und Sonstigen Daten ergeben.
+            speziell große Unterschiede bei Daten bezüglich industriell und wohnlich genutzten Flächen ergeben.
         </>
     );
     const titleValue2: JSX.Element = <>Kategorisierungsupdate</>;
