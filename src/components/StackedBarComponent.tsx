@@ -87,15 +87,17 @@ const StackedBarComponent = ({
             stroke: {
                 width: 0,
             },
-
             dataLabels: {
                 enabled: true,
                 formatter: (val) => {
                     if (isAbsolute) {
-                        return `${Math.round(val as number)} %`;
+                        const value = `${Math.round(val as number)} %`;
+                        return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
                     } else {
-                        if (val >= 10000) return `${Math.round(val as number)} ha`;
-                        else return "";
+                        if (val >= 10000) {
+                            const value = `${Math.round(val as number)} ha`;
+                            return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+                        } else return "";
                     }
                 },
                 style: {
@@ -113,13 +115,11 @@ const StackedBarComponent = ({
                             sumArea = sumArea + opts.series[i][opts.dataPointIndex];
                         }
                         if (isAbsolute) {
-                            return `${Math.round(val as number)} ha (${(((val as number) / sumArea) * 100).toFixed(
-                                1
-                            )} %)`;
+                            const value = `${Math.round(val)} ha (${(((val as number) / sumArea) * 100).toFixed(1)} %)`;
+                            return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
                         } else {
-                            return `${Math.round(val as number)} ha (${(((val as number) / sumArea) * 100).toFixed(
-                                1
-                            )} %)`;
+                            const value = `${Math.round(val)} ha (${(((val as number) / sumArea) * 100).toFixed(1)} %)`;
+                            return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
                         }
                     },
                 },
