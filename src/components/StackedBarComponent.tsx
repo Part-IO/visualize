@@ -157,7 +157,7 @@ const StackedBarComponent = ({
                 data: selectedLK.map((lkEntry) => lkEntry.living),
             },
             {
-                name: "Industrie / Wohnen",
+                name: "Industrie/Wohnen",
                 data: selectedLK.map((lkEntry) => lkEntry.misc_industry_living),
             },
             {
