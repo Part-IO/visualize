@@ -95,7 +95,7 @@ const StackedBarComponent = ({
                         const value = `${Math.round(val as number)} %`;
                         return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
                     } else {
-                        if ((val >= 650000 && getDistrict == "Bayern") || (val >= 10000 && getDistrict != "Bayern")) {
+                        if ((val >= 700000 && getDistrict == "Bayern") || (val >= 10000 && getDistrict != "Bayern")) {
                             const value = `${Math.round(val as number)} ha`;
                             return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
                         } else return "";
