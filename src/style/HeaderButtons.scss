@@ -59,11 +59,15 @@
 }
 
 .popup .content {
-    padding: 30px 20px;
-    width: 100%;
-    max-width: 550px;
-    margin: 0 auto;
+    padding: 30px 30px;
+    margin: 0 0;
     opacity: 0;
+    width: calc(100% - 60px);
+    height: calc(100% - 60px);
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .popup .content .popup-close-btn {
@@ -84,6 +88,21 @@
     background: var(--color-gray-3);
 }
 
+.popup .content .content-text {
+    width: 100%;
+    height: auto;
+    max-width: 900px;
+    display: block;
+}
+
+.popup .content .content-image {
+    border: 2px solid var(--color-gray-4);
+    border-radius: 4px;
+    width: auto;
+    height: auto;
+    display: block;
+}
+
 .popup .content h1 {
     font-size: 40px;
     margin: 20px 0;
@@ -93,6 +112,7 @@
 .popup .content p {
     margin-bottom: 10px;
     color: var(--color-gray-inverted-2);
+    text-align: justify;
 }
 
 .popup.active {
