@@ -102,7 +102,7 @@ const StackedBarComponent = ({
                     }
                 },
                 style: {
-                    fontSize: "12px",
+                    fontSize: "12px", //Nummern imBarplot
                 },
             },
             zoom: {
@@ -131,7 +131,7 @@ const StackedBarComponent = ({
                 },
             ],
             legend: {
-                fontSize: "17px",
+                fontSize: "16px", //Anzeige verschiedene Flächen
                 position: "top",
                 horizontalAlign: "center",
                 offsetX: 40,
