@@ -73,7 +73,7 @@ const StackedBarComponent = ({
                 labels: {
                     style: {
                         colors: "var(--color-black)",
-                        fontSize: "13px",
+                        fontSize: "12px",
                     },
                     formatter: function (value) {
                         return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
@@ -95,14 +95,14 @@ const StackedBarComponent = ({
                         const value = `${Math.round(val as number)} %`;
                         return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
                     } else {
-                        if (val >= 10000) {
+                        if ((val >= 650000 && getDistrict == "Bayern") || (val >= 10000 && getDistrict != "Bayern")) {
                             const value = `${Math.round(val as number)} ha`;
                             return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
                         } else return "";
                     }
                 },
                 style: {
-                    fontSize: "13px",
+                    fontSize: "12px",
                 },
             },
             zoom: {
@@ -150,7 +150,7 @@ const StackedBarComponent = ({
                 mode: isDark ? "dark" : "light",
             },
         };
-    }, [selectedLK, isAbsolute, isDark]);
+    }, [selectedLK, isAbsolute, isDark, getDistrict]);
     const series = useMemo(() => {
         return [
             {
