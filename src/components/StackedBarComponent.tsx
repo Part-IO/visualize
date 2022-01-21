@@ -47,6 +47,7 @@ const StackedBarComponent = ({
                 "var(--color-gray-1)",
                 "var(--color-green)",
                 "var(--color-blue)",
+                "var(--color-purple)",
             ],
             chart: {
                 toolbar: {
@@ -157,20 +158,24 @@ const StackedBarComponent = ({
                 data: selectedLK.map((lkEntry) => lkEntry.living),
             },
             {
-                name: "Industrie / Wohnen",
-                data: selectedLK.map((lkEntry) => lkEntry.misc_industry_living),
+                name: "Industrie/Gewerbe",
+                data: selectedLK.map((lkEntry) => lkEntry.industry),
             },
             {
-                name: "Industrie",
-                data: selectedLK.map((lkEntry) => lkEntry.industry),
+                name: "Sonstiges",
+                data: selectedLK.map((lkEntry) => lkEntry.misc_industry_living),
             },
             {
                 name: "Verkehrsflächen",
                 data: selectedLK.map((lkEntry) => lkEntry.transport_infrastructure),
             },
             {
-                name: "Natur und Wasser",
-                data: selectedLK.map((lkEntry) => lkEntry.nature_and_water),
+                name: "Natur",
+                data: selectedLK.map((lkEntry) => lkEntry.nature),
+            },
+            {
+                name: "Wasser",
+                data: selectedLK.map((lkEntry) => lkEntry.water),
             },
             {
                 name: "Bergbau",
