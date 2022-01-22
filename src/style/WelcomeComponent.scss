@@ -212,4 +212,27 @@
             opacity: 1;
         }
     }
+
+    .required-links {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        height: 100vh;
+        display: flex;
+        align-items: flex-end;
+        justify-content: flex-end;
+        float: right;
+        z-index: 20;
+
+        .link {
+            display: flex;
+            cursor: pointer;
+            height: auto;
+            border: none;
+            font-size: 12px;
+            background: rgb(242, 242, 247);
+            color: rgb(28, 28, 30);
+        }
+    }
 }
