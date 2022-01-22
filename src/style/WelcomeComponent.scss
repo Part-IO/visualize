@@ -231,8 +231,8 @@
             height: auto;
             border: none;
             font-size: 12px;
-            background: rgb(242, 242, 247);
-            color: rgb(28, 28, 30);
+            backdrop-filter: blur(5px);
+            background: rgba(white, 0.5);
         }
     }
 }
