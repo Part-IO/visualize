@@ -215,10 +215,8 @@
 
     .required-links {
         position: absolute;
-        left: 0;
         right: 0;
-        top: 0;
-        height: 100vh;
+        bottom: 0;
         display: flex;
         align-items: flex-end;
         justify-content: flex-end;
