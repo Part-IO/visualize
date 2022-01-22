@@ -64,6 +64,7 @@
                 width: calc(100% - 1vw);
 
                 .apexcharts-yaxis-label {
+                    font-size: 12px;
                     fill: var(--color-black);
                 }
             }
@@ -150,7 +151,7 @@
                 .info .text-transition {
                     margin: auto;
                     display: inline-flex;
-                    font-size: 18px;
+                    font-size: 16px;
                     font-weight: 300;
                     color: var(--color-black);
                 }

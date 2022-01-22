@@ -30,11 +30,15 @@ const MainComponent = ({ isDark, isAbsolute }: { isDark: boolean; isAbsolute: bo
 
     useEffect(() => {
         if (modalState || modalState2) {
+            document.body.style.overflow = "hidden";
             (document.getElementById("main-component") as HTMLDivElement).style.filter = "blur(5px)";
             (document.getElementById("welcome-container") as HTMLDivElement).style.filter = "blur(5px)";
+            (document.getElementById("header-button-container") as HTMLDivElement).style.filter = "blur(5px)";
         } else {
             (document.getElementById("main-component") as HTMLDivElement).style.filter = "none";
             (document.getElementById("welcome-container") as HTMLDivElement).style.filter = "none";
+            (document.getElementById("header-button-container") as HTMLDivElement).style.filter = "none";
+            document.body.style.overflow = "unset";
         }
     });
 
@@ -55,7 +59,7 @@ const MainComponent = ({ isDark, isAbsolute }: { isDark: boolean; isAbsolute: bo
     const textValue2: JSX.Element = (
         <>
             Zwischen 1992 und 1996 wurde eine Veränderte Kategorisierung der Daten durchgeführt. Es können sich deshalb
-            speziell große Unterschiede bei Daten bezüglich Wohnfläche und Sonstigen Daten ergeben.
+            speziell große Unterschiede bei Daten bezüglich industriell und wohnlich genutzten Flächen ergeben.
         </>
     );
     const titleValue2: JSX.Element = <>Kategorisierungsupdate</>;

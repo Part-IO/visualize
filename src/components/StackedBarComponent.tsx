@@ -73,6 +73,7 @@ const StackedBarComponent = ({
                 labels: {
                     style: {
                         colors: "var(--color-black)",
+                        fontSize: "12px",
                     },
                     formatter: function (value) {
                         return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
@@ -87,19 +88,21 @@ const StackedBarComponent = ({
             stroke: {
                 width: 0,
             },
-
             dataLabels: {
                 enabled: true,
                 formatter: (val) => {
                     if (isAbsolute) {
-                        return `${Math.round(val as number)} %`;
+                        const value = `${Math.round(val as number)} %`;
+                        return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
                     } else {
-                        if (val >= 10000) return `${Math.round(val as number)} ha`;
-                        else return "";
+                        if ((val >= 700000 && getDistrict == "Bayern") || (val >= 10000 && getDistrict != "Bayern")) {
+                            const value = `${Math.round(val as number)} ha`;
+                            return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+                        } else return "";
                     }
                 },
                 style: {
-                    fontSize: "14px",
+                    fontSize: "12px", //Nummern imBarplot
                 },
             },
             zoom: {
@@ -113,13 +116,11 @@ const StackedBarComponent = ({
                             sumArea = sumArea + opts.series[i][opts.dataPointIndex];
                         }
                         if (isAbsolute) {
-                            return `${Math.round(val as number)} ha (${(((val as number) / sumArea) * 100).toFixed(
-                                1
-                            )} %)`;
+                            const value = `${Math.round(val)} ha (${(((val as number) / sumArea) * 100).toFixed(1)} %)`;
+                            return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
                         } else {
-                            return `${Math.round(val as number)} ha (${(((val as number) / sumArea) * 100).toFixed(
-                                1
-                            )} %)`;
+                            const value = `${Math.round(val)} ha (${(((val as number) / sumArea) * 100).toFixed(1)} %)`;
+                            return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
                         }
                     },
                 },
@@ -130,7 +131,7 @@ const StackedBarComponent = ({
                 },
             ],
             legend: {
-                fontSize: "17px",
+                fontSize: "16px", //Anzeige verschiedene Flächen
                 position: "top",
                 horizontalAlign: "center",
                 offsetX: 40,
@@ -149,7 +150,7 @@ const StackedBarComponent = ({
                 mode: isDark ? "dark" : "light",
             },
         };
-    }, [selectedLK, isAbsolute, isDark]);
+    }, [selectedLK, isAbsolute, isDark, getDistrict]);
     const series = useMemo(() => {
         return [
             {
@@ -157,7 +158,7 @@ const StackedBarComponent = ({
                 data: selectedLK.map((lkEntry) => lkEntry.living),
             },
             {
-                name: "Industrie / Wohnen",
+                name: "Industrie/Wohnen",
                 data: selectedLK.map((lkEntry) => lkEntry.misc_industry_living),
             },
             {

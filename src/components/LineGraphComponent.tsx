@@ -109,6 +109,7 @@ const LineGraphComponent = ({
             legend: {
                 show: true,
                 showForSingleSeries: true,
+                fontSize: "16px",
                 position: "top",
                 horizontalAlign: "center",
                 onItemClick: {
@@ -124,6 +125,9 @@ const LineGraphComponent = ({
                 type: "datetime",
                 labels: {
                     formatter: (value) => new Date(value).getFullYear().toString(),
+                    style: {
+                        fontSize: "12px",
+                    },
                 },
             },
             yaxis: {
@@ -133,6 +137,9 @@ const LineGraphComponent = ({
                 decimalsInFloat: 0,
                 labels: {
                     formatter: (value) => value + "%",
+                    style: {
+                        fontSize: "12px",
+                    },
                 },
             },
             tooltip: {
