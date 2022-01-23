@@ -41,7 +41,7 @@ const HeaderButtons = ({
 
     return (
         <>
-            <div className={"header-button-container"} ref={headerButtonContainer}>
+            <div id={"header-button-container"} className={"header-button-container"} ref={headerButtonContainer}>
                 <div className={"switch"}>
                     <SwitchSelector
                         onChange={(state) => setIsAbsolute(state as boolean)}
