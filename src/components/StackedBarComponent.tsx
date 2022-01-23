@@ -58,8 +58,8 @@ const StackedBarComponent = ({
                 stackType: isAbsolute ? "100%" : "normal",
                 animations: {
                     enabled: true,
-                    easing: "easeinout",
-                    speed: 800,
+                    easing: "easeout",
+                    speed: 150,
                     animateGradually: {
                         enabled: false,
                         //delay: 150,

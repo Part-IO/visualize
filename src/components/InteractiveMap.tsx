@@ -4,7 +4,7 @@ import { GeoJSON, useMap } from "react-leaflet";
 import { Feature, FeatureCollection } from "geojson";
 import regierungsbezirke from "../data/regierungsbezirke.json";
 import landkreise from "../data/landkreise.json";
-import { colord, extend } from "colord";
+import { extend } from "colord";
 import mixPlugin from "colord/plugins/mix";
 import { ICLickedLK } from "./MainComponent";
 import { IData } from "../utils/Helper";
@@ -18,11 +18,13 @@ const InteractiveMap = ({
     setDistrict,
     setClickedLK,
     getYear,
+    redColors,
 }: {
     getDistrict: string;
     setDistrict: Dispatch<SetStateAction<string>>;
     setClickedLK: Dispatch<SetStateAction<ICLickedLK>>;
     getYear: number;
+    redColors: string[];
 }): JSX.Element => {
     const [getRBGeoJson] = useState(regierungsbezirke as FeatureCollection);
     const [getLKGeoJson] = useState(landkreise);
@@ -31,59 +33,7 @@ const InteractiveMap = ({
     const lastDetailedLayer = useRef<L.GeoJSON>();
     const currentAGS = useRef<number>();
 
-    const colors: { color: string; percent: number }[] = [
-        {
-            color: "rgb(255,255,255)",
-            percent: 0,
-        },
-        {
-            color: "rgb(255, 59, 48)",
-            percent: 10,
-        },
-        {
-            color: "rgb(175, 82, 222)",
-            percent: 100,
-        },
-    ];
-
-    function perc2color(perc) {
-        let c1 = colors[0];
-        let c2 = colors[1];
-
-        for (let i = 0; i < colors.length - 1; i++) {
-            if (colors[i].percent <= perc && perc <= colors[i + 1].percent) {
-                c1 = colors[i];
-                c2 = colors[i + 1];
-                break;
-            }
-        }
-
-        const color1 = colord(c1.color);
-        const color2 = colord(c2.color);
-
-        const ratio = (perc - c1.percent) / (c2.percent - c1.percent);
-
-        console.log(`P: ${perc} R: ${ratio}`);
-
-        return color1.mix(color2, ratio).toHex();
-    }
-
-    const redColors = useRef<string[]>(Array.from(Array(101).keys()).map(perc2color));
     const map = useMap();
-
-    function genDiv(color) {
-        return (
-            <div
-                style={{
-                    width: "2px",
-                    height: "10px",
-                    backgroundColor: color,
-                }}
-            />
-        );
-    }
-
-    const element = redColors.current.map(genDiv);
 
     useEffect(() => {
         map.zoomControl.setPosition("topright");
@@ -95,18 +45,6 @@ const InteractiveMap = ({
     const getDataLK: IData = useMemo(() => {
         return LKDataYear[`31.12.${getYear}`].reduce((obj, item) => Object.assign(obj, { [item.AGS]: [item] }), {});
     }, [getYear]);
-
-    const maxValueRB = useMemo(() => {
-        const data = Object.values(getDataRB).flat(1);
-        return data.reduce((prev, current) => (prev.used_area_percent > current.used_area_percent ? prev : current))
-            .used_area_percent;
-    }, [getDataRB]);
-
-    const maxValueLK = useMemo(() => {
-        const data = Object.values(getDataLK).flat(1);
-        return data.reduce((prev, current) => (prev.used_area_percent > current.used_area_percent ? prev : current))
-            .used_area_percent;
-    }, [getDataLK]);
 
     /**
      * Update Map if the District at the sidebar is clicked
@@ -136,13 +74,13 @@ const InteractiveMap = ({
      * Colorize the Counties or the Administrative districts based on the relative land consumption
      */
     const colorize = useCallback(
-        (feature, baseData: IData, LK: boolean) => {
+        (feature, baseData: IData) => {
             const AGS: number = parseInt(feature.properties.AGS);
 
             const percentage = Math.round(baseData[AGS][0].used_area_percent * 100);
 
             return {
-                fillColor: redColors.current[Math.trunc(percentage) - 1],
+                fillColor: redColors[Math.trunc(percentage) - 1],
                 fillOpacity: 1,
                 color: "var(--color-white)",
                 weight: 1,
@@ -184,7 +122,7 @@ const InteractiveMap = ({
                 }),
             };
             const geoJsonLKLayer = new L.GeoJSON(geoJsonLKData as FeatureCollection, {
-                style: (f) => colorize(f, getDataLK, true),
+                style: (f) => colorize(f, getDataLK),
                 onEachFeature: (f, l) => {
                     l.on({
                         click: () => {
@@ -228,7 +166,7 @@ const InteractiveMap = ({
         <GeoJSON
             data={getRBGeoJson}
             onEachFeature={(f, l) => onEachFeature(f, l)}
-            style={(feature) => colorize(feature, getDataRB, false)}
+            style={(feature) => colorize(feature, getDataRB)}
             ref={geoJsonRef}
         />
     );

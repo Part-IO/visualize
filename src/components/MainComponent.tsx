@@ -7,6 +7,7 @@ import TextTransition, { presets } from "react-text-transition";
 import ModalComponent from "./ModalComponent";
 import LineGraphComponent from "./LineGraphComponent";
 import StackedBarComponent from "./StackedBarComponent";
+import { colord } from "colord";
 
 export interface ICLickedLK {
     BEZ: string;
@@ -20,7 +21,42 @@ const MainComponent = ({ isDark, isAbsolute }: { isDark: boolean; isAbsolute: bo
     const [modalState, setModalState] = useState<boolean>(false);
     const [modalState2, setModalState2] = useState<boolean>(false);
     const [getClickedLK, setClickedLK] = useState<ICLickedLK>({ BEZ: "Bundesland", GEN: "Bayern", AGS: "09" });
-    const [getShortLKName, setShortLKName] = useState<string>("Bayern");
+    const [, setShortLKName] = useState<string>("Bayern");
+
+    const colors: { color: string; percent: number }[] = [
+        {
+            color: "rgb(255,255,255)",
+            percent: 0,
+        },
+        {
+            color: isDark ? "rgb(255, 69, 58)" : "rgb(255, 59, 48)",
+            percent: 12,
+        },
+        {
+            color: isDark ? "rgb(191, 90, 242)" : "rgb(175, 82, 222)",
+            percent: 100,
+        },
+    ];
+
+    const percToColor = (percentage: number) => {
+        let c1 = colors[0];
+        let c2 = colors[1];
+
+        for (let i = 0; i < colors.length - 1; i++) {
+            if (colors[i].percent <= percentage && percentage <= colors[i + 1].percent) {
+                c1 = colors[i];
+                c2 = colors[i + 1];
+                break;
+            }
+        }
+        const color1 = colord(c1.color);
+        const color2 = colord(c2.color);
+
+        const ratio = (percentage - c1.percent) / (c2.percent - c1.percent);
+        return color1.mix(color2, ratio).toHex();
+    };
+
+    const redColors = Array.from(Array(101).keys()).map(percToColor);
 
     useEffect(() => {}, [setShortLKName]);
 
@@ -121,12 +157,24 @@ const MainComponent = ({ isDark, isAbsolute }: { isDark: boolean; isAbsolute: bo
                                 setDistrict={setCurrentCountries}
                                 getYear={getCurrentYear}
                                 setClickedLK={setClickedLK}
+                                redColors={redColors}
                             />
                         </div>
                         <div className={"map-legend-container"}>
                             <div className={"map-legend"}>
                                 <div>0%</div>
-                                <div className={"map-legend-bar"} />
+                                <div className={"map-legend-bar"}>
+                                    {redColors.map((color: string, index: number) => {
+                                        return (
+                                            <div
+                                                id={`MapLegend_${index}`}
+                                                key={index}
+                                                className={"map-legend-bar-item"}
+                                                style={{ backgroundColor: color }}
+                                            />
+                                        );
+                                    })}
+                                </div>
                                 <div>100%</div>
                             </div>
                             <code className={"info"}>
