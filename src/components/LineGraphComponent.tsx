@@ -71,7 +71,8 @@ const LineGraphComponent = ({
                             borderWidth: 0,
                             offsetY: -10,
                             style: {
-                                fontSize: "20px",
+                                fontSize: "30px",
+                                fontFamily: "Liberation Mono",
                                 color: "var(--color-yellow)",
                                 background: "rgba(0,0,0,0)",
                             },
