@@ -57,11 +57,15 @@ const StackedBarComponent = ({
                 stackType: isAbsolute ? "100%" : "normal",
                 animations: {
                     enabled: true,
-                    easing: "easeout",
-                    speed: 150,
+                    easing: "easeinout",
+                    speed: 350,
                     animateGradually: {
                         enabled: false,
                         //delay: 150,
+                    },
+                    dynamicAnimation: {
+                        enabled: true,
+                        speed: 150,
                     },
                 },
                 background: "rgba(0,0,0,0)",
@@ -153,7 +157,7 @@ const StackedBarComponent = ({
                 mode: isDark ? "dark" : "light",
             },
         };
-    }, [selectedLK, isAbsolute, isDark]);
+    }, [selectedLK, isAbsolute, isDark, getDistrict]);
     const series = useMemo(() => {
         return [
             {
