@@ -1,7 +1,7 @@
 import { useMemo } from "react";
 import Chart from "react-apexcharts";
 import { ApexOptions } from "apexcharts";
-import { IData } from "../utils/Helper";
+import { IData, longNameMap } from "../utils/Helper";
 import RBDataYear from "../data/RBYear.json";
 import LKDataYear from "../data/LKYear.json";
 
@@ -70,7 +70,7 @@ const StackedBarComponent = ({
             },
             xaxis: {
                 type: "category",
-                categories: selectedLK.map((lkEntry) => lkEntry.municipality),
+                categories: selectedLK.map((lkEntry) => lkEntry.municipality_short),
                 labels: {
                     style: {
                         colors: "var(--color-black)",
@@ -123,6 +123,9 @@ const StackedBarComponent = ({
                             )} %)`;
                         }
                     },
+                },
+                x: {
+                    formatter: (seriesName) => longNameMap.get(seriesName),
                 },
             },
             responsive: [

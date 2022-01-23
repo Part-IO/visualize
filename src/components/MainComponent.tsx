@@ -20,6 +20,9 @@ const MainComponent = ({ isDark, isAbsolute }: { isDark: boolean; isAbsolute: bo
     const [modalState, setModalState] = useState<boolean>(false);
     const [modalState2, setModalState2] = useState<boolean>(false);
     const [getClickedLK, setClickedLK] = useState<ICLickedLK>({ BEZ: "Bundesland", GEN: "Bayern", AGS: "09" });
+    const [getShortLKName, setShortLKName] = useState<string>("Bayern");
+
+    useEffect(() => {}, [setShortLKName]);
 
     const handleModalClick = (): void => {
         setModalState((prevState) => !prevState);
@@ -40,15 +43,15 @@ const MainComponent = ({ isDark, isAbsolute }: { isDark: boolean; isAbsolute: bo
 
     const textValue: JSX.Element = (
         <>
-            In ALKIS<sup>®</sup> wurden die bisher getrennt vorgehaltenen Liegenschaftskatasterdaten der{" "}
-            <b>Digitalen Flurkarte</b> (DFK) und des <b>Automatisierten Liegenschaftsbuchs</b> (ALB) in einem System
-            zusammengeführt und um neue Datenbestände, wie die <b>Tatsächliche Nutzung</b> (TN), die{" "}
-            <b>Bodenschätzung</b> u.a. ergänzt.
+            2014 wurde in Bayern das <b>Automatisierte Liegenschaftsbuchs</b> (ALB) von{" "}
+            <b>Amtliche Liegenschaftskatasterinformationssystem</b> abgelöst. Dabei gab es eine neue Kategorisierung für
+            Flächen. Durch diese neue Kategorisierung, konnte es passieren das zum Beispiel ein Truppenübungsplatz von
+            Siedlungsfläche in die Grünfläche übergegangen ist.
         </>
     );
     const titleValue: JSX.Element = (
         <>
-            Wechsel von DFK + ALB zu ALKIS<sup>®</sup>
+            Wechsel von ALB zu ALKIS<sup>®</sup>
         </>
     );
 

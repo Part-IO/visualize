@@ -110,7 +110,7 @@ const WelcomeComponent = (): JSX.Element => {
             </Link>
             <div className={"required-links"}>
                 <button
-                    onClick={() => window.open("https://www.hs-augsburg.de/Service/Impressum.html", "_self")}
+                    onClick={() => window.open("https://www.hs-augsburg.de/Service/Impressum.html", "_blank")}
                     className={"link"}
                 >
                     Impressum

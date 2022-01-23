@@ -17,34 +17,34 @@ const InformationPopup = ({
                 <h1>Datensätze</h1>
                 <p>
                     Um den Flächenverbrauch von 1980 bis 2020 berechnen zu können, wurden mehrere Datenbestände
-                    verwendet. Hierbei wurden zwei unterschiedliche Systeme verwendet einmal das Automatisierte
-                    Liegenschaftsbuch (ALB) von 1980 bis 2013. Seit 2014 gibt es das Amtliche
-                    Liegenschaftskatasterinformationssystem (ALKIS®). Es war nötig zwei Datensätze zu verwenden, da in
-                    Bayern seit 2014 ALB durch ALKIS® abgelöst wurde.
+                    verwendet. Hierbei wurden zwei unterschiedliche Systeme verwendet einmal das{" "}
+                    <b>Automatisierte Liegenschaftsbuch</b> (ALB) von 1980 bis 2013. Seit 2014 gibt es das <b>A</b>
+                    mtliche <b>Liegenschaftskatasterinformationssystem</b> (ALKIS®). Es war nötig zwei Datensätze zu
+                    verwenden, da in Bayern seit 2014 ALB durch ALKIS® abgelöst wurde.
                     <br />
                     <br />
                     <a
-                        href={
-                            "https://www.statistikdaten.bayern.de/genesis//online?operation=table&code=33111-201r&bypass=true&levelindex=0&levelid=1638273244475#abreadcrumb"
-                        }
+                        href="https://www.statistikdaten.bayern.de/genesis//online?operation=table&code=33111-201r&bypass=true&levelindex=0&levelid=1638273244475#abreadcrumb"
+                        target="_blank"
+                        rel="noreferrer noopener"
                     >
                         Bayerisches Landesamt für Statistik - ALB
                     </a>
                     <br />
                     <a
-                        href={
-                            "https://www.statistikdaten.bayern.de/genesis//online?operation=table&code=33111-001r&bypass=true&levelindex=0&levelid=1638273260896#abreadcrumb"
-                        }
+                        href="https://www.statistikdaten.bayern.de/genesis//online?operation=table&code=33111-001r&bypass=true&levelindex=0&levelid=1638273260896#abreadcrumb"
+                        target="_blank"
+                        rel="noreferrer noopener"
                     >
                         Bayerisches Landesamt für Statistik - ALKIS®
                     </a>
                 </p>
                 <h1>Flächenverbrauch vs. versiegelte Fläche</h1>
                 <p>
-                    Der Flächenverbrauch beschäftigt sich mit der Zunahme von Siedlungs- und Verkehrflächen (SuV), dabei
-                    zählen Agrar- und Forstflächen nicht mit rein. Dies ist abzugrenzen von versiegelter Fläche, denn
-                    der Flächenverbrauch beinhaltet auch nicht versiegelte Flächen wie Gärten, Friedhöfe oder
-                    Stellplätze.
+                    Der Flächenverbrauch beschäftigt sich mit der Zunahme von <b>S</b>iedlungs- <b>u</b>nd <b>V</b>
+                    erkehrflächen (SuV), dabei zählen Agrar- und Forstflächen nicht mit rein. Dies ist abzugrenzen von
+                    versiegelter Fläche, denn der Flächenverbrauch beinhaltet auch nicht versiegelte Flächen wie Gärten,
+                    Friedhöfe oder Stellplätze.
                 </p>
                 <h1>Berechnung Flächenverbrauch</h1>
                 <p>

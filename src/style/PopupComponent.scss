@@ -54,7 +54,8 @@
 
             p {
                 margin-bottom: 10px;
-                color: var(--color-gray-inverted-2);
+                //color: var(--color-gray-inverted-2);
+                color: var(--color-black);
                 text-align: justify;
             }
         }
@@ -62,7 +63,8 @@
         .content-image {
             border: 2px solid var(--color-gray-4);
             border-radius: 4px;
-            width: auto;
+            width: 100%;
+            max-width: 900px;
             height: auto;
             display: block;
         }

@@ -30,13 +30,60 @@ const InteractiveMap = ({
     const layerListLK = useRef<Map<number, L.GeoJSON>>();
     const lastDetailedLayer = useRef<L.GeoJSON>();
     const currentAGS = useRef<number>();
-    const redColors = useRef<string[]>(
-        colord(getComputedStyle(document.documentElement).getPropertyValue("--color-red"))
-            .tints(100)
-            .map((c) => c.toHex())
-            .reverse()
-    );
+
+    const colors: { color: string; percent: number }[] = [
+        {
+            color: "rgb(255,255,255)",
+            percent: 0,
+        },
+        {
+            color: "rgb(255, 59, 48)",
+            percent: 10,
+        },
+        {
+            color: "rgb(175, 82, 222)",
+            percent: 100,
+        },
+    ];
+
+    function perc2color(perc) {
+        let c1 = colors[0];
+        let c2 = colors[1];
+
+        for (let i = 0; i < colors.length - 1; i++) {
+            if (colors[i].percent <= perc && perc <= colors[i + 1].percent) {
+                c1 = colors[i];
+                c2 = colors[i + 1];
+                break;
+            }
+        }
+
+        const color1 = colord(c1.color);
+        const color2 = colord(c2.color);
+
+        const ratio = (perc - c1.percent) / (c2.percent - c1.percent);
+
+        console.log(`P: ${perc} R: ${ratio}`);
+
+        return color1.mix(color2, ratio).toHex();
+    }
+
+    const redColors = useRef<string[]>(Array.from(Array(101).keys()).map(perc2color));
     const map = useMap();
+
+    function genDiv(color) {
+        return (
+            <div
+                style={{
+                    width: "2px",
+                    height: "10px",
+                    backgroundColor: color,
+                }}
+            />
+        );
+    }
+
+    const element = redColors.current.map(genDiv);
 
     useEffect(() => {
         map.zoomControl.setPosition("topright");
@@ -91,9 +138,8 @@ const InteractiveMap = ({
     const colorize = useCallback(
         (feature, baseData: IData, LK: boolean) => {
             const AGS: number = parseInt(feature.properties.AGS);
-            const maxValue: number = LK ? maxValueLK : maxValueRB;
 
-            const percentage = Math.round((baseData[AGS][0].used_area_percent * 100) / maxValue);
+            const percentage = Math.round(baseData[AGS][0].used_area_percent * 100);
 
             return {
                 fillColor: redColors.current[Math.trunc(percentage) - 1],
@@ -102,7 +148,7 @@ const InteractiveMap = ({
                 weight: 1,
             };
         },
-        [maxValueRB, maxValueLK, redColors]
+        [redColors]
     );
 
     /**
