@@ -69,7 +69,7 @@ const LineGraphComponent = ({
                 xaxis: [
                     {
                         id: "warn",
-                        x: new Date("2014-12-31").getTime(),
+                        x: new Date("2013-12-31").getTime(),
                         strokeDashArray: 0,
                         borderColor: "var(--color-yellow)",
                         label: {
