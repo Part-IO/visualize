@@ -10,6 +10,12 @@
     overflow: hidden;
     z-index: 200001;
     border: 0 solid var(--color-black);
+    font-family: "Liberation Mono", monospace;
+    -webkit-hyphens: auto;
+    -moz-hyphens: auto;
+    -ms-hyphens: auto;
+    hyphens: auto;
+    word-wrap: break-word;
 
     .content {
         padding: 30px 30px;

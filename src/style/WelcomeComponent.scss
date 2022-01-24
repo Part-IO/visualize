@@ -20,34 +20,36 @@
 
         .title-container {
             transition: all 0.1s ease-out;
-            font-family: Novar, serif;
+            font-family: "DejaVu Serif", serif;
             position: absolute;
             left: 50%;
             transform: translateX(-50%);
             z-index: 3;
 
             .title {
+                font-family: "DejaVu Serif", serif;
                 transition: all 0.1s;
                 position: relative;
                 text-align: center;
                 letter-spacing: 0.1em;
-                font-weight: 900;
+                font-weight: bold;
                 margin: 0;
             }
 
             .subtitle {
+                font-family: "DejaVu Serif", serif;
                 transition: all 0.1s;
                 position: relative;
                 text-align: center;
                 margin: 0;
                 letter-spacing: 0.01em;
-                font-weight: 300;
+                font-weight: normal;
             }
         }
 
         .quote-container {
             position: relative;
-            font-family: Novar, serif;
+            font-family: "DejaVu Serif", serif;
             opacity: 100%;
             width: 100%;
             height: 100%;

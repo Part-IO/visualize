@@ -21,6 +21,7 @@
         height: 24px;
         width: 190px;
         float: left;
+        font-family: "Liberation Mono", monospace;
     }
 
     .data-info-button {
@@ -37,6 +38,8 @@
         transition: 0.2s all;
         cursor: pointer;
         text-align: center;
+        font-family: "Liberation Mono", monospace;
+
 
         &:hover {
             background: var(--color-black);
