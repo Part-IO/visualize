@@ -4,6 +4,7 @@ import { ApexOptions } from "apexcharts";
 import { IData } from "../utils/Helper";
 import RBDataYear from "../data/RBYear.json";
 import LKDataYear from "../data/LKYear.json";
+import { longNameMap } from "../utils/LookUp";
 
 const StackedBarComponent = ({
     getYear,
@@ -58,10 +59,14 @@ const StackedBarComponent = ({
                 animations: {
                     enabled: true,
                     easing: "easeinout",
-                    speed: 800,
+                    speed: 350,
                     animateGradually: {
                         enabled: false,
                         //delay: 150,
+                    },
+                    dynamicAnimation: {
+                        enabled: true,
+                        speed: 150,
                     },
                 },
                 background: "rgba(0,0,0,0)",
@@ -69,7 +74,7 @@ const StackedBarComponent = ({
             },
             xaxis: {
                 type: "category",
-                categories: selectedLK.map((lkEntry) => lkEntry.municipality),
+                categories: selectedLK.map((lkEntry) => lkEntry.municipality_short),
                 labels: {
                     style: {
                         colors: "var(--color-black)",
@@ -124,6 +129,9 @@ const StackedBarComponent = ({
                         }
                     },
                 },
+                x: {
+                    formatter: (seriesName) => longNameMap.get(seriesName),
+                },
             },
             responsive: [
                 {
@@ -158,20 +166,24 @@ const StackedBarComponent = ({
                 data: selectedLK.map((lkEntry) => lkEntry.living),
             },
             {
-                name: "Industrie/Wohnen",
-                data: selectedLK.map((lkEntry) => lkEntry.misc_industry_living),
+                name: "Industrie/Gewerbe",
+                data: selectedLK.map((lkEntry) => lkEntry.industry),
             },
             {
-                name: "Industrie",
-                data: selectedLK.map((lkEntry) => lkEntry.industry),
+                name: "Sonstiges",
+                data: selectedLK.map((lkEntry) => lkEntry.misc_industry_living),
             },
             {
                 name: "Verkehrsflächen",
                 data: selectedLK.map((lkEntry) => lkEntry.transport_infrastructure),
             },
             {
-                name: "Natur und Wasser",
-                data: selectedLK.map((lkEntry) => lkEntry.nature_and_water),
+                name: "Natur",
+                data: selectedLK.map((lkEntry) => lkEntry.nature),
+            },
+            {
+                name: "Wasser",
+                data: selectedLK.map((lkEntry) => lkEntry.water),
             },
             {
                 name: "Bergbau",

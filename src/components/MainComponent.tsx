@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import DistrictStepComponent from "./DistrictStepComponent";
 import "../style/MainComponent.scss";
 import TimeLineComponent from "./TimeLineComponent";
@@ -7,6 +7,9 @@ import TextTransition, { presets } from "react-text-transition";
 import ModalComponent from "./ModalComponent";
 import LineGraphComponent from "./LineGraphComponent";
 import StackedBarComponent from "./StackedBarComponent";
+import { colord } from "colord";
+import data from "../data/data.json";
+import { IDataEntry } from "../utils/Helper";
 
 export interface ICLickedLK {
     BEZ: string;
@@ -20,6 +23,49 @@ const MainComponent = ({ isDark, isAbsolute }: { isDark: boolean; isAbsolute: bo
     const [modalState, setModalState] = useState<boolean>(false);
     const [modalState2, setModalState2] = useState<boolean>(false);
     const [getClickedLK, setClickedLK] = useState<ICLickedLK>({ BEZ: "Bundesland", GEN: "Bayern", AGS: "09" });
+
+    const getClickedLKName = useMemo(() => {
+        return data.find((entry: IDataEntry) => entry.AGS == parseInt(getClickedLK.AGS))?.municipality_short || "";
+    }, [getClickedLK]);
+
+    const [, setShortLKName] = useState<string>("Bayern");
+
+    const colors: { color: string; percent: number }[] = [
+        {
+            color: "rgb(255,255,255)",
+            percent: 0,
+        },
+        {
+            color: isDark ? "rgb(255, 69, 58)" : "rgb(255, 59, 48)",
+            percent: 12,
+        },
+        {
+            color: isDark ? "rgb(191, 90, 242)" : "rgb(175, 82, 222)",
+            percent: 100,
+        },
+    ];
+
+    const percToColor = (percentage: number) => {
+        let c1 = colors[0];
+        let c2 = colors[1];
+
+        for (let i = 0; i < colors.length - 1; i++) {
+            if (colors[i].percent <= percentage && percentage <= colors[i + 1].percent) {
+                c1 = colors[i];
+                c2 = colors[i + 1];
+                break;
+            }
+        }
+        const color1 = colord(c1.color);
+        const color2 = colord(c2.color);
+
+        const ratio = (percentage - c1.percent) / (c2.percent - c1.percent);
+        return color1.mix(color2, ratio).toHex();
+    };
+
+    const redColors = Array.from(Array(101).keys()).map(percToColor);
+
+    useEffect(() => {}, [setShortLKName]);
 
     const handleModalClick = (): void => {
         setModalState((prevState) => !prevState);
@@ -44,15 +90,15 @@ const MainComponent = ({ isDark, isAbsolute }: { isDark: boolean; isAbsolute: bo
 
     const textValue: JSX.Element = (
         <>
-            In ALKIS<sup>®</sup> wurden die bisher getrennt vorgehaltenen Liegenschaftskatasterdaten der{" "}
-            <b>Digitalen Flurkarte</b> (DFK) und des <b>Automatisierten Liegenschaftsbuchs</b> (ALB) in einem System
-            zusammengeführt und um neue Datenbestände, wie die <b>Tatsächliche Nutzung</b> (TN), die{" "}
-            <b>Bodenschätzung</b> u.a. ergänzt.
+            2014 wurde in Bayern das <b>Automatisierte Liegenschaftsbuchs</b> (ALB) von{" "}
+            <b>Amtliche Liegenschaftskatasterinformationssystem</b> abgelöst. Dabei gab es eine neue Kategorisierung für
+            Flächen. Durch diese neue Kategorisierung, konnte es passieren das zum Beispiel ein Truppenübungsplatz von
+            Siedlungsfläche in die Grünfläche übergegangen ist.
         </>
     );
     const titleValue: JSX.Element = (
         <>
-            Wechsel von DFK + ALB zu ALKIS<sup>®</sup>
+            Wechsel von ALB zu ALKIS<sup>®</sup>
         </>
     );
 
@@ -130,17 +176,29 @@ const MainComponent = ({ isDark, isAbsolute }: { isDark: boolean; isAbsolute: bo
                                 setDistrict={setCurrentCountries}
                                 getYear={getCurrentYear}
                                 setClickedLK={setClickedLK}
+                                redColors={redColors}
                             />
                         </div>
                         <div className={"map-legend-container"}>
                             <div className={"map-legend"}>
                                 <div>0%</div>
-                                <div className={"map-legend-bar"} />
+                                <div className={"map-legend-bar"}>
+                                    {redColors.map((color: string, index: number) => {
+                                        return (
+                                            <div
+                                                id={`MapLegend_${index}`}
+                                                key={index}
+                                                className={"map-legend-bar-item"}
+                                                style={{ backgroundColor: color }}
+                                            />
+                                        );
+                                    })}
+                                </div>
                                 <div>100%</div>
                             </div>
                             <code className={"info"}>
                                 <TextTransition
-                                    text={getClickedLK.GEN}
+                                    text={getClickedLKName}
                                     springConfig={presets.gentle}
                                     style={{ fontFamily: "Liberation Mono", fontWeight: 400 }}
                                 />
@@ -151,6 +209,7 @@ const MainComponent = ({ isDark, isAbsolute }: { isDark: boolean; isAbsolute: bo
                                 getClickedLK={getClickedLK}
                                 getCurrentYear={getCurrentYear}
                                 isDark={isDark}
+                                handleModalClick={handleModalClick}
                                 handleModalClick2={handleModalClick2}
                             />
                         </div>

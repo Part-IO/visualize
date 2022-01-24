@@ -9,11 +9,13 @@ const LineGraphComponent = ({
     getClickedLK,
     getCurrentYear,
     isDark,
+    handleModalClick,
     handleModalClick2,
 }: {
     getClickedLK: ICLickedLK;
     getCurrentYear: number;
     isDark: boolean;
+    handleModalClick: () => void;
     handleModalClick2: () => void;
 }): JSX.Element => {
     const getSelectedData = useMemo(() => {
@@ -52,8 +54,12 @@ const LineGraphComponent = ({
                 background: "rgba(0,0,0,0)",
                 events: {
                     click: (e) => {
-                        if (e.target.innerHTML === "⚠") {
+                        console.log('"' + e.target.innerHTML + '"');
+                        // The extra spaces are deliberate to discern the two annotations
+                        if (e.target.innerHTML === " ⚠ ") {
                             handleModalClick2();
+                        } else if (e.target.innerHTML === "⚠") {
+                            handleModalClick();
                         }
                     },
                 },
@@ -63,7 +69,7 @@ const LineGraphComponent = ({
                 xaxis: [
                     {
                         id: "warn",
-                        x: new Date("2014-12-31").getTime(),
+                        x: new Date("2013-12-31").getTime(),
                         strokeDashArray: 0,
                         borderColor: "var(--color-yellow)",
                         label: {
@@ -71,11 +77,32 @@ const LineGraphComponent = ({
                             borderWidth: 0,
                             offsetY: -10,
                             style: {
-                                fontSize: "20px",
+                                fontSize: "30px",
+                                fontFamily: "Liberation Mono",
                                 color: "var(--color-yellow)",
                                 background: "rgba(0,0,0,0)",
                             },
                             text: "⚠",
+                            orientation: "horizontal",
+                        },
+                    },
+                    {
+                        id: "warn",
+                        x: new Date("1994-12-31").getTime(),
+                        strokeDashArray: 0,
+                        borderColor: "var(--color-yellow)",
+                        label: {
+                            borderColor: "var(--color-yellow)",
+                            borderWidth: 0,
+                            offsetY: -10,
+                            style: {
+                                fontSize: "30px",
+                                fontFamily: "Liberation Mono",
+                                color: "var(--color-yellow)",
+                                background: "rgba(0,0,0,0)",
+                            },
+                            // The extra spaces are deliberate to discern the two annotations
+                            text: " ⚠ ",
                             orientation: "horizontal",
                         },
                     },
@@ -156,7 +183,7 @@ const LineGraphComponent = ({
                 mode: isDark ? "dark" : "light",
             },
         };
-    }, [getCurrentYear, isDark, handleModalClick2]);
+    }, [getCurrentYear, isDark, handleModalClick, handleModalClick2]);
 
     return <Chart options={options} series={usedAreaSeries} type="line" height={"100%"} width={"100%"} />;
 };

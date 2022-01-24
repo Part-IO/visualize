@@ -1,0 +1,130 @@
+.popup {
+    position: fixed;
+    top: 50%;
+    left: 0;
+    width: 0;
+    height: 0;
+    transform: translateY(-50%);
+    //background: var(--color-gray-5);
+    background: var(--color-white);
+    overflow: hidden;
+    z-index: 200001;
+    border: 0 solid var(--color-black);
+    font-family: "Liberation Mono", monospace;
+    -webkit-hyphens: auto;
+    -moz-hyphens: auto;
+    -ms-hyphens: auto;
+    hyphens: auto;
+    word-wrap: break-word;
+
+    .content {
+        padding: 30px 30px;
+        margin: 0 0;
+        opacity: 0;
+        width: calc(100% - 60px);
+        height: calc(100% - 60px);
+        overflow-y: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .popup-close-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            text-align: center;
+            line-height: 35px;
+            color: var(--color-black);
+            font-size: 30px;
+            cursor: pointer;
+            border-radius: 50%;
+
+            &:hover {
+                background: var(--color-gray-3);
+            }
+        }
+
+        .content-text {
+            width: 100%;
+            height: auto;
+            max-width: 900px;
+            display: block;
+
+            h1 {
+                font-size: 40px;
+                margin: 20px 0;
+                color: var(--color-black);
+            }
+
+            p {
+                margin-bottom: 10px;
+                //color: var(--color-gray-inverted-2);
+                color: var(--color-black);
+                text-align: justify;
+            }
+        }
+
+        .content-image {
+            border: 2px solid var(--color-gray-4);
+            border-radius: 4px;
+            width: 100%;
+            max-width: 900px;
+            height: auto;
+            display: block;
+        }
+    }
+
+    &.active {
+        animation: popupAppearAnimation 500ms ease-in-out forwards;
+
+        .content {
+            opacity: 1;
+            transition: all 300ms ease-in-out 500ms;
+        }
+
+        @keyframes popupAppearAnimation {
+            0% {
+                width: 0;
+                height: 0;
+                border-width: 0;
+            }
+            1% {
+                width: 100%;
+                height: 0;
+                border-width: 3px;
+            }
+            100% {
+                width: 100%;
+                height: 100%;
+            }
+        }
+    }
+
+    &.inactive {
+        animation: popupDisappearAnimation 500ms ease-in-out forwards;
+
+        .content {
+            opacity: 1;
+            transition: all 300ms ease-in-out 500ms;
+        }
+
+        @keyframes popupDisappearAnimation {
+            0% {
+                width: 100%;
+                height: 100%;
+            }
+            99% {
+                width: 100%;
+                height: 0;
+                border-width: 3px;
+            }
+            100% {
+                width: 0;
+                height: 0;
+                border-width: 0;
+            }
+        }
+    }
+}

@@ -22,8 +22,9 @@
     "noImplicitAny": false
   },
   "include": [
-    "src"
-  ],
+    "src",
+    "src/style/image/svg.d.ts"
+  ]
   /*Might be deleted
   "typeRoots": [
     "./src/typings",

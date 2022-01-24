@@ -24,7 +24,10 @@
     --color-purple: rgb(175, 82, 222);
     --color-red: rgb(255, 59, 48); /* Map-> Nutzfläche */
     --color-teal: rgb(90, 200, 250);
-    --color-yellow: rgb(255, 204, 0); /* Sonstiges */
+    --color-yellow: rgb(255, 204, 0);
+    --color-link: var(--color-blue);
+    --color-link-visited: var(--color-indigo);
+    /* Sonstiges */
 }
 
 [data-theme="dark"] {
@@ -51,6 +54,16 @@
     --color-red: rgb(255, 69, 58);
     --color-teal: rgb(100, 210, 255);
     --color-yellow: rgb(255, 214, 10);
+    --color-link: var(--color-pink);
+    --color-link-visited: var(--color-orange);
+}
+
+:root a:link {
+    color: var(--color-link);
+}
+
+:root a:visited {
+    color: var(--color-link-visited);
 }
 
 @font-face {

@@ -8,150 +8,41 @@
     justify-content: space-between;
     align-items: center;
     width: 270px;
-}
 
-.switch-theme-button {
-    display: inline-block;
-    position: relative;
-    float: right;
-}
-
-.switch {
-    position: sticky;
-    display: inline-block;
-    height: 24px;
-    width: 190px;
-    float: left;
-    font-family: "Liberation Mono", monospace;
-}
-
-.data-info-button {
-    display: inline-block;
-    position: relative;
-    float: right;
-    font-weight: 800;
-    height: 24px;
-    width: 24px;
-    background-color: var(--color-white);
-    color: var(--color-black);
-    border-radius: 50%;
-    border: 2px solid var(--color-black);
-    transition: 0.2s all;
-    cursor: pointer;
-    text-align: center;
-    font-family: "Liberation Mono", monospace;
-}
-
-.data-info-button:hover {
-    background: var(--color-black);
-    color: var(--color-white);
-}
-
-.popup {
-    position: fixed;
-    top: 50%;
-    left: 0;
-    width: 0;
-    height: 0;
-    transform: translateY(-50%);
-    //background: var(--color-gray-5);
-    background: var(--color-white);
-    overflow: hidden;
-    z-index: 200001;
-    border: 0 solid var(--color-black);
-    font-family: "Liberation Mono", monospace;
-    -webkit-hyphens: auto;
-    -moz-hyphens: auto;
-    -ms-hyphens: auto;
-    hyphens: auto;
-    word-wrap: break-word;
-}
-
-.popup .content {
-    padding: 30px 20px;
-    width: 100%;
-    max-width: 550px;
-    margin: 0 auto;
-    opacity: 0;
-}
-
-.popup .content .popup-close-btn {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    width: 40px;
-    height: 40px;
-    text-align: center;
-    line-height: 35px;
-    color: var(--color-black);
-    font-size: 30px;
-    cursor: pointer;
-    border-radius: 50%;
-}
-
-.popup .content .popup-close-btn:hover {
-    background: var(--color-gray-3);
-}
-
-.popup .content h1 {
-    font-size: 40px;
-    margin: 20px 0;
-    color: var(--color-black);
-}
-
-.popup .content p {
-    margin-bottom: 10px;
-    color: var(--color-gray-inverted-2);
-}
-
-.popup.active {
-    animation: popupAppearAnimation 500ms ease-in-out forwards;
-}
-
-.popup.inactive {
-    animation: popupDisappearAnimation 500ms ease-in-out forwards;
-}
-
-.popup.inactive .content {
-    opacity: 1;
-    transition: all 300ms ease-in-out 500ms;
-}
-
-.popup.active .content {
-    opacity: 1;
-    transition: all 300ms ease-in-out 500ms;
-}
-
-@keyframes popupAppearAnimation {
-    0% {
-        width: 0;
-        height: 0;
-        border-width: 0;
+    .switch-theme-button {
+        display: inline-block;
+        position: relative;
+        float: right;
     }
-    1% {
-        width: 100%;
-        height: 0;
-        border-width: 3px;
-    }
-    100% {
-        width: 100%;
-        height: 100%;
-    }
-}
 
-@keyframes popupDisappearAnimation {
-    0% {
-        width: 100%;
-        height: 100%;
+    .switch {
+        position: sticky;
+        display: inline-block;
+        height: 24px;
+        width: 190px;
+        float: left;
+        font-family: "Liberation Mono", monospace;
     }
-    99% {
-        width: 100%;
-        height: 0;
-        border-width: 3px;
-    }
-    100% {
-        width: 0;
-        height: 0;
-        border-width: 0;
+
+    .data-info-button {
+        display: inline-block;
+        position: relative;
+        float: right;
+        font-weight: 800;
+        height: 24px;
+        width: 24px;
+        background-color: var(--color-white);
+        color: var(--color-black);
+        border-radius: 50%;
+        border: 2px solid var(--color-black);
+        transition: 0.2s all;
+        cursor: pointer;
+        text-align: center;
+        font-family: "Liberation Mono", monospace;
+
+        &:hover {
+            background: var(--color-black);
+            color: var(--color-white);
+        }
     }
 }

@@ -12,6 +12,7 @@ export interface IData {
 export interface IDataEntry {
     AGS: number;
     municipality: string;
+    municipality_short: string;
     total: number;
     date: string;
     living: number;
@@ -22,8 +23,10 @@ export interface IDataEntry {
     misc_industry_living_percent: number;
     transport_infrastructure: number;
     transport_infrastructure_percent: number;
-    nature_and_water: number;
-    nature_and_water_percent: number;
+    nature: number;
+    nature_percent: number;
+    water: number;
+    water_percent: number;
     mining: number;
     mining_percent: number;
     used_area: number;

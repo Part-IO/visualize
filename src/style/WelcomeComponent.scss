@@ -214,4 +214,43 @@
             opacity: 1;
         }
     }
+
+    .image-author {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        display: flex;
+        align-items: flex-end;
+        justify-content: flex-start;
+        float: left;
+        z-index: 20;
+        font-style: italic;
+        height: auto;
+        border: none;
+        font-size: 12px;
+        backdrop-filter: blur(5px);
+        background: rgba(white, 0.5);
+        padding: 1px 6px;
+    }
+
+    .required-links {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        display: flex;
+        align-items: flex-end;
+        justify-content: flex-end;
+        float: right;
+        z-index: 20;
+
+        .link {
+            display: flex;
+            cursor: pointer;
+            height: auto;
+            border: none;
+            font-size: 12px;
+            backdrop-filter: blur(5px);
+            background: rgba(white, 0.5);
+        }
+    }
 }

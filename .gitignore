@@ -1,6 +1,7 @@
 # ignore VS and Eclipse files
 .vscode/
 .settings/
+
 # ignore IntelliJ IDEA files
 .idea/
 *.iml
@@ -29,3 +30,5 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+data/sankey

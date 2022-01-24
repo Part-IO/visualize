@@ -96,6 +96,7 @@
                     width: 100%;
                     border: 2px solid var(--color-gray-4);
                     border-radius: 4px;
+                    background-color: var(--color-white);
 
                     .leaflet-control-zoom-in,
                     .leaflet-control-zoom-out {
@@ -132,10 +133,15 @@
                     }
 
                     .map-legend-bar {
-                        background-image: linear-gradient(to right, #fff, var(--color-red));
+                        display: inline-flex;
                         width: 100%;
                         height: 100%;
                         margin: auto 8px;
+
+                        .map-legend-bar-item {
+                            height: 100%;
+                            width: 1%;
+                        }
                     }
                 }
 
