@@ -80,10 +80,14 @@ const MainComponent = ({ isDark, isAbsolute }: { isDark: boolean; isAbsolute: bo
             (document.getElementById("main-component") as HTMLDivElement).style.filter = "blur(5px)";
             (document.getElementById("welcome-container") as HTMLDivElement).style.filter = "blur(5px)";
             (document.getElementById("header-button-container") as HTMLDivElement).style.filter = "blur(5px)";
+            (document.getElementById("image-author") as HTMLDivElement).style.filter = "blur(5px)";
+            (document.getElementById("required-links") as HTMLDivElement).style.filter = "blur(5px)";
         } else {
             (document.getElementById("main-component") as HTMLDivElement).style.filter = "none";
             (document.getElementById("welcome-container") as HTMLDivElement).style.filter = "none";
             (document.getElementById("header-button-container") as HTMLDivElement).style.filter = "none";
+            (document.getElementById("image-author") as HTMLDivElement).style.filter = "none";
+            (document.getElementById("required-links") as HTMLDivElement).style.filter = "none";
             document.body.style.overflow = "unset";
         }
     });

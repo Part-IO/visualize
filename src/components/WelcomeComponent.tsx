@@ -56,6 +56,8 @@ const WelcomeComponent = (): JSX.Element => {
             titleRef.current.style.fontSize = `${resize({ num: 15 - relPos / 8, minVal: 4 })}vh`;
             quoteRef.current.style.opacity = `${100 - relPos * 3}%`;
             mouseRef.current.style.opacity = `${100 - relPos * 2}%`;
+            (document.getElementById("required-links") as HTMLDivElement).style.opacity = `${100 - relPos}%`;
+            (document.getElementById("image-author") as HTMLDivElement).style.opacity = `${100 - relPos}%`;
         }
     }, [scrollPosition, WD]);
 
@@ -108,8 +110,10 @@ const WelcomeComponent = (): JSX.Element => {
                     </div>
                 </div>
             </Link>
-            <div className={"image-author"}>Foto: Franz Wanner</div>
-            <div className={"required-links"}>
+            <div id={"image-author"} className={"image-author"}>
+                Foto: Franz Wanner
+            </div>
+            <div id={"required-links"} className={"required-links"}>
                 <button
                     onClick={() => window.open("https://www.hs-augsburg.de/Service/Impressum.html", "_blank")}
                     className={"link"}

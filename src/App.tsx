@@ -40,8 +40,8 @@ function App(): JSX.Element {
 
     const textValue: JSX.Element = (
         <>
-            Diese Webseite sollte <b>nur</b> im 16:9 oder 16: 10 Format und auf einem mindestens FullHD Bildschirm
-            betrachtet werden um so ein richtiges Rendern der Webseite zu gewährleisten.
+            Diese Webseite sollte <b>nur</b> im 16:9 oder 16:10 Format und auf einem Desktop,Laptop oder Tablet
+            betrachtet werden.
         </>
     );
     const titleValue: JSX.Element = <>Kompatibilitätswarnung</>;
@@ -51,7 +51,7 @@ function App(): JSX.Element {
             data-theme={isDark ? "dark" : "light"}
             style={{
                 backgroundColor: "var(--color-white)",
-                transition: "all 0.5s ease",
+                transition: "color 0.2 ease, background-color 0.2 ease background 0.2 ease;",
             }}
         >
             <ModalComponent show={isMobile} modalType={"danger"} title={titleValue} content={textValue} />

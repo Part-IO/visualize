@@ -19,7 +19,6 @@
         transform: translateY(-100%);
 
         .title-container {
-            transition: all 0.1s ease-out;
             font-family: "DejaVu Serif", serif;
             position: absolute;
             left: 50%;
@@ -28,7 +27,6 @@
 
             .title {
                 font-family: "DejaVu Serif", serif;
-                transition: all 0.1s;
                 position: relative;
                 text-align: center;
                 letter-spacing: 0.1em;
@@ -38,7 +36,6 @@
 
             .subtitle {
                 font-family: "DejaVu Serif", serif;
-                transition: all 0.1s;
                 position: relative;
                 text-align: center;
                 margin: 0;
@@ -58,7 +55,8 @@
         .item {
             position: absolute;
             padding: 15px;
-            transition: all 0.2s ease-in-out;
+            transition: color var(--duration) var(--timing),
+                background-color var(--duration) var(--timing) background var(--duration) var(--timing);
             backdrop-filter: blur(5px);
             background: rgba(white, 0.1);
             box-shadow: 12px 29px 81px 0 rgba(0, 0, 0, 0.3);

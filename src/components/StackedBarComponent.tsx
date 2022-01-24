@@ -67,7 +67,7 @@ const StackedBarComponent = ({
                     },
                     dynamicAnimation: {
                         enabled: true,
-                        speed: 150,
+                        speed: 350,
                     },
                 },
                 background: "rgba(0,0,0,0)",

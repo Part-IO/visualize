@@ -16,7 +16,7 @@ const HeaderButtons = ({
 }): JSX.Element => {
     const [showPopup, setShowPopup] = useState<boolean | null>(null);
     const headerButtonContainer = useRef<HTMLDivElement>(null);
-    const { width } = useWindowDimensions();
+    const { width, height } = useWindowDimensions();
 
     useEffect(() => {
         const mapContainer = document.getElementById("right_content_container");
@@ -24,7 +24,7 @@ const HeaderButtons = ({
             const containerWidth = mapContainer.offsetWidth;
             headerButtonContainer.current.style.width = `${containerWidth > 270 ? containerWidth : 270}px`;
         }
-    }, [width]);
+    }, [width, height]);
 
     const switchOptions = [
         {
