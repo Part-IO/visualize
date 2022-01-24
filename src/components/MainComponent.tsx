@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import DistrictStepComponent from "./DistrictStepComponent";
 import "../style/MainComponent.scss";
 import TimeLineComponent from "./TimeLineComponent";
@@ -8,6 +8,8 @@ import ModalComponent from "./ModalComponent";
 import LineGraphComponent from "./LineGraphComponent";
 import StackedBarComponent from "./StackedBarComponent";
 import { colord } from "colord";
+import data from "../data/data.json";
+import { IDataEntry } from "../utils/Helper";
 
 export interface ICLickedLK {
     BEZ: string;
@@ -21,6 +23,11 @@ const MainComponent = ({ isDark, isAbsolute }: { isDark: boolean; isAbsolute: bo
     const [modalState, setModalState] = useState<boolean>(false);
     const [modalState2, setModalState2] = useState<boolean>(false);
     const [getClickedLK, setClickedLK] = useState<ICLickedLK>({ BEZ: "Bundesland", GEN: "Bayern", AGS: "09" });
+
+    const getClickedLKName = useMemo(() => {
+        return data.find((entry: IDataEntry) => entry.AGS == parseInt(getClickedLK.AGS))?.municipality_short || "";
+    }, [getClickedLK]);
+
     const [, setShortLKName] = useState<string>("Bayern");
 
     const colors: { color: string; percent: number }[] = [
@@ -191,7 +198,7 @@ const MainComponent = ({ isDark, isAbsolute }: { isDark: boolean; isAbsolute: bo
                             </div>
                             <code className={"info"}>
                                 <TextTransition
-                                    text={getClickedLK.GEN}
+                                    text={getClickedLKName}
                                     springConfig={presets.gentle}
                                     style={{ fontFamily: "Liberation Mono", fontWeight: 400 }}
                                 />

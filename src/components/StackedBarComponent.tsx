@@ -1,9 +1,10 @@
 import { useMemo } from "react";
 import Chart from "react-apexcharts";
 import { ApexOptions } from "apexcharts";
-import { IData, longNameMap } from "../utils/Helper";
+import { IData } from "../utils/Helper";
 import RBDataYear from "../data/RBYear.json";
 import LKDataYear from "../data/LKYear.json";
+import { longNameMap } from "../utils/LookUp";
 
 const StackedBarComponent = ({
     getYear,
