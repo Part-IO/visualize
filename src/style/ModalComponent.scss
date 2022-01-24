@@ -33,6 +33,7 @@
 }
 
 .popup-module .title {
+    font-family: "Liberation Mono", monospace;
     padding: 36px 10px 10px 10px;
     background: var(--color-white);
     border-radius: 5px 5px 0 0;
@@ -44,6 +45,7 @@
 }
 
 .popup-module .text {
+    font-family: "Liberation Mono", monospace;
     padding: 0 40px 10px 40px;
     text-align: justify;
     text-justify: auto;
@@ -81,6 +83,7 @@
 }
 
 .popup-module .btn {
+    font-family: "Liberation Mono", monospace;
     position: relative;
     display: inline-block;
     border-radius: 5px;

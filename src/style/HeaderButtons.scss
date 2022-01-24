@@ -22,6 +22,7 @@
     height: 24px;
     width: 190px;
     float: left;
+    font-family: "Liberation Mono", monospace;
 }
 
 .data-info-button {
@@ -38,6 +39,7 @@
     transition: 0.2s all;
     cursor: pointer;
     text-align: center;
+    font-family: "Liberation Mono", monospace;
 }
 
 .data-info-button:hover {
@@ -57,6 +59,12 @@
     overflow: hidden;
     z-index: 200001;
     border: 0 solid var(--color-black);
+    font-family: "Liberation Mono", monospace;
+    -webkit-hyphens: auto;
+    -moz-hyphens: auto;
+    -ms-hyphens: auto;
+    hyphens: auto;
+    word-wrap: break-word;
 }
 
 .popup .content {

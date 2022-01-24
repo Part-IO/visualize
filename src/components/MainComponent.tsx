@@ -101,11 +101,19 @@ const MainComponent = ({ isDark, isAbsolute }: { isDark: boolean; isAbsolute: bo
                     </div>
                     <div className={"main-view"}>
                         <code className={"main-view-title"}>
-                            <TextTransition text={getCurrentCountries} springConfig={presets.gentle} />
+                            <TextTransition
+                                text={getCurrentCountries}
+                                springConfig={presets.gentle}
+                                style={{ fontFamily: "Liberation Mono", fontWeight: 400 }}
+                            />
                             <div className={"text-transition"} style={{ margin: "0 10px" }}>
                                 &#8210;
                             </div>
-                            <TextTransition text={getCurrentYear} springConfig={presets.gentle} />
+                            <TextTransition
+                                text={getCurrentYear}
+                                springConfig={presets.gentle}
+                                style={{ fontFamily: "Liberation Mono", fontWeight: 400 }}
+                            />
                         </code>
                         <StackedBarComponent
                             isAbsolute={isAbsolute}
@@ -131,7 +139,11 @@ const MainComponent = ({ isDark, isAbsolute }: { isDark: boolean; isAbsolute: bo
                                 <div>100%</div>
                             </div>
                             <code className={"info"}>
-                                <TextTransition text={getClickedLK.GEN} springConfig={presets.gentle} />
+                                <TextTransition
+                                    text={getClickedLK.GEN}
+                                    springConfig={presets.gentle}
+                                    style={{ fontFamily: "Liberation Mono", fontWeight: 400 }}
+                                />
                             </code>
                         </div>
                         <div className={"line-graph"}>
