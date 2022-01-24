@@ -108,6 +108,7 @@ const WelcomeComponent = (): JSX.Element => {
                     </div>
                 </div>
             </Link>
+            <div className={"image-author"}>Foto: Franz Wanner</div>
             <div className={"required-links"}>
                 <button
                     onClick={() => window.open("https://www.hs-augsburg.de/Service/Impressum.html", "_blank")}
