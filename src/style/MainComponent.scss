@@ -1,13 +1,13 @@
 .main-component {
     display: block;
     width: 100%;
-    height: calc(100vh - 80px);
+    height: 100vh;
 
     .graphic-container {
         justify-content: space-between;
         display: flex;
         width: 100%;
-        height: 90%;
+        height: 82%;
 
         .district {
             flex-basis: 7.5%;
@@ -65,7 +65,7 @@
         }
 
         .graphic {
-            margin: auto 20px;
+            margin: 0 20px;
             flex-basis: 25%;
             height: 100%;
             position: sticky;
@@ -164,10 +164,9 @@
     }
 
     .timeline {
-        background-color: var(--color-white);
-        transition: background-color var(--duration) var(--timing);
         min-width: 100%;
-        height: 10%;
+        height: 80px;
         bottom: 0;
+        position: relative;
     }
 }
