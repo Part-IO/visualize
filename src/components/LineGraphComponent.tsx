@@ -85,6 +85,7 @@ const LineGraphComponent = ({
                                 fontFamily: "Liberation Mono",
                                 color: "var(--color-yellow)",
                                 background: "rgba(0,0,0,0)",
+                                cssClass: "line-chart-label-warn",
                             },
                             text: "⚠",
                             orientation: "horizontal",
@@ -104,6 +105,7 @@ const LineGraphComponent = ({
                                 fontFamily: "Liberation Mono",
                                 color: "var(--color-yellow)",
                                 background: "rgba(0,0,0,0)",
+                                cssClass: "line-chart-label-warn",
                             },
                             // The extra spaces are deliberate to discern the two annotations
                             text: " ⚠ ",
