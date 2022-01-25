@@ -1,0 +1,1184 @@
+<svg id="sankey_svg" width="100%" viewBox="0 0 900 900" xmlns="http://www.w3.org/2000/svg" version="1.1">
+    <title>Kategorisierung
+    </title><!-- Generated with SankeyMATIC on Sun Jan 23 2022 00:23:13 GMT+0100 (Mitteleuropäische Normalzeit)-->
+    <g>
+        <rect width="100%" height="100%" fill="transparent"></rect>
+        <g transform="translate(12,12)">
+            <g>
+                <path class="link"
+                      d="M8,357.0723324754974C103.16666666666667,357.0723324754974 103.16666666666667,331.8004485352403 198.33333333333334,331.8004485352403"
+                      style="fill: none; stroke-width: 204.115; stroke: rgb(49, 130, 189); stroke-opacity: 0.4;">
+                    <title>Gesamtfläche -> Verbrauchte Fläche:
+                        29
+                    </title>
+                </path>
+                <path class="link"
+                      d="M8,540.0723324754974C103.16666666666667,540.0723324754974 103.16666666666667,571.9351524950152 198.33333333333334,571.9351524950152"
+                      style="fill: none; stroke-width: 161.885; stroke: rgb(49, 130, 189); stroke-opacity: 0.4;">
+                    <title>Gesamtfläche -> Unverbrauchte Fläche:
+                        23
+                    </title>
+                </path>
+                <path class="link"
+                      d="M206.33333333333334,547.3005371103998C301.5,547.3005371103998 301.5,569.3393099541041 396.6666666666667,569.3393099541041"
+                      style="fill: none; stroke-width: 112.615; stroke: rgb(0, 255, 0); stroke-opacity: 0.4;">
+                    <title>Unverbrauchte Fläche -> Natur:
+                        16
+                    </title>
+                </path>
+                <path class="link"
+                      d="M206.33333333333334,342.35814084293264C301.5,342.35814084293264 301.5,321.26759533777164 396.6666666666667,321.26759533777164"
+                      style="fill: none; stroke-width: 70.3846; stroke: rgb(255, 0, 0); stroke-opacity: 0.4;">
+                    <title>Verbrauchte Fläche -> Sonstiges:
+                        10
+                    </title>
+                </path>
+                <path class="link"
+                      d="M206.33333333333334,275.492756227548C301.5,275.492756227548 301.5,227.5580773858221 396.6666666666667,227.5580773858221"
+                      style="fill: none; stroke-width: 63.3462; stroke: rgb(255, 0, 0); stroke-opacity: 0.4;">
+                    <title>Verbrauchte Fläche -> Industrie/Gewerbe:
+                        9
+                    </title>
+                </path>
+                <path class="link"
+                      d="M206.33333333333334,405.70429468908645C301.5,405.70429468908645 301.5,410.0450333975133 396.6666666666667,410.0450333975133"
+                      style="fill: none; stroke-width: 56.3077; stroke: rgb(255, 0, 0); stroke-opacity: 0.4;">
+                    <title>Verbrauchte Fläche -> Verkehrsflächen:
+                        8
+                    </title>
+                </path>
+                <path class="link"
+                      d="M206.33333333333334,617.6851524950152C301.5,617.6851524950152 301.5,667.9809077982616 396.6666666666667,667.9809077982616"
+                      style="fill: none; stroke-width: 28.1538; stroke: rgb(0, 255, 0); stroke-opacity: 0.4;">
+                    <title>Unverbrauchte Fläche -> Wasser:
+                        4
+                    </title>
+                </path>
+                <path class="link"
+                      d="M206.33333333333334,642.3197678796306C301.5,642.3197678796306 301.5,702.6155231828769 396.6666666666667,702.6155231828769"
+                      style="fill: none; stroke-width: 21.1154; stroke: rgb(0, 255, 0); stroke-opacity: 0.4;">
+                    <title>Unverbrauchte Fläche -> Bergbau:
+                        3
+                    </title>
+                </path>
+                <path class="link"
+                      d="M206.33333333333334,236.78121776600958C301.5,236.78121776600958 301.5,173.30519857153553 396.6666666666667,173.30519857153553"
+                      style="fill: none; stroke-width: 14.0769; stroke: rgb(255, 0, 0); stroke-opacity: 0.4;">
+                    <title>Verbrauchte Fläche -> Wohnfläche:
+                        2
+                    </title>
+                </path>
+                <path class="link"
+                      d="M404.6666666666667,169.78596780230475C499.83333333333337,169.78596780230475 499.83333333333337,3.519230769230357 595,3.519230769230357"
+                      style="fill: none; stroke-width: 7.03846; stroke: rgb(255, 55, 95); stroke-opacity: 0.4;">
+                    <title>Wohnfläche -> Wohnen:
+                        1
+                    </title>
+                </path>
+                <path class="link"
+                      d="M404.6666666666667,176.8244293407663C499.83333333333337,176.8244293407663 499.83333333333337,20.55769230769189 595,20.55769230769189"
+                      style="fill: none; stroke-width: 7.03846; stroke: rgb(255, 55, 95); stroke-opacity: 0.4;">
+                    <title>Wohnfläche -> 11000 Wohnbaufläche:
+                        1
+                    </title>
+                </path>
+                <path class="link"
+                      d="M404.6666666666667,199.40423123197593C499.83333333333337,199.40423123197593 499.83333333333337,37.596153846153406 595,37.596153846153406"
+                      style="fill: none; stroke-width: 7.03846; stroke: rgb(255, 159, 10); stroke-opacity: 0.4;">
+                    <title>Industrie/Gewerbe -> Gewerbe, Industrie:
+                        1
+                    </title>
+                </path>
+                <path class="link"
+                      d="M404.6666666666667,206.44269277043747C499.83333333333337,206.44269277043747 499.83333333333337,54.63461538461495 595,54.63461538461495"
+                      style="fill: none; stroke-width: 7.03846; stroke: rgb(255, 159, 10); stroke-opacity: 0.4;">
+                    <title>Industrie/Gewerbe -> Betriebsfläche (ohne Abbauland):
+                        1
+                    </title>
+                </path>
+                <path class="link"
+                      d="M404.6666666666667,213.481154308899C499.83333333333337,213.481154308899 499.83333333333337,71.67307692307651 595,71.67307692307651"
+                      style="fill: none; stroke-width: 7.03846; stroke: rgb(255, 159, 10); stroke-opacity: 0.4;">
+                    <title>Industrie/Gewerbe -> Flächen anderer Nutzung (ohne Unland, Friedhof):
+                        1
+                    </title>
+                </path>
+                <path class="link"
+                      d="M404.6666666666667,220.51961584736054C499.83333333333337,220.51961584736054 499.83333333333337,88.71153846153805 595,88.71153846153805"
+                      style="fill: none; stroke-width: 7.03846; stroke: rgb(255, 159, 10); stroke-opacity: 0.4;">
+                    <title>Industrie/Gewerbe -> 12100 Industrie und Gewerbe:
+                        1
+                    </title>
+                </path>
+                <path class="link"
+                      d="M404.6666666666667,227.5580773858221C499.83333333333337,227.5580773858221 499.83333333333337,105.7499999999996 595,105.7499999999996"
+                      style="fill: none; stroke-width: 7.03846; stroke: rgb(255, 159, 10); stroke-opacity: 0.4;">
+                    <title>Industrie/Gewerbe -> 12200 Handel und Dienstleistung:
+                        1
+                    </title>
+                </path>
+                <path class="link"
+                      d="M404.6666666666667,234.5965389242836C499.83333333333337,234.5965389242836 499.83333333333337,122.78846153846115 595,122.78846153846115"
+                      style="fill: none; stroke-width: 7.03846; stroke: rgb(255, 159, 10); stroke-opacity: 0.4;">
+                    <title>Industrie/Gewerbe -> 12300 Versorgungsanlage:
+                        1
+                    </title>
+                </path>
+                <path class="link"
+                      d="M404.6666666666667,241.63500046274515C499.83333333333337,241.63500046274515 499.83333333333337,139.8269230769227 595,139.8269230769227"
+                      style="fill: none; stroke-width: 7.03846; stroke: rgb(255, 159, 10); stroke-opacity: 0.4;">
+                    <title>Industrie/Gewerbe -> 12400 Entsorgung:
+                        1
+                    </title>
+                </path>
+                <path class="link"
+                      d="M404.6666666666667,248.6734620012067C499.83333333333337,248.6734620012067 499.83333333333337,156.86538461538424 595,156.86538461538424"
+                      style="fill: none; stroke-width: 7.03846; stroke: rgb(255, 159, 10); stroke-opacity: 0.4;">
+                    <title>Industrie/Gewerbe -> 13000 Halde:
+                        1
+                    </title>
+                </path>
+                <path class="link"
+                      d="M404.6666666666667,255.71192353966825C499.83333333333337,255.71192353966825 499.83333333333337,173.9038461538458 595,173.9038461538458"
+                      style="fill: none; stroke-width: 7.03846; stroke: rgb(255, 159, 10); stroke-opacity: 0.4;">
+                    <title>Industrie/Gewerbe -> 17000 Fläche besonderer funktionaler Prägung:
+                        1
+                    </title>
+                </path>
+                <path class="link"
+                      d="M404.6666666666667,289.59451841469473C499.83333333333337,289.59451841469473 499.83333333333337,190.94230769230734 595,190.94230769230734"
+                      style="fill: none; stroke-width: 7.03846; stroke: rgb(255, 214, 10); stroke-opacity: 0.4;">
+                    <title>Sonstiges -> Grünanlage:
+                        1
+                    </title>
+                </path>
+                <path class="link"
+                      d="M404.6666666666667,296.6329799531563C499.83333333333337,296.6329799531563 499.83333333333337,207.98076923076889 595,207.98076923076889"
+                      style="fill: none; stroke-width: 7.03846; stroke: rgb(255, 214, 10); stroke-opacity: 0.4;">
+                    <title>Sonstiges -> Friedhof:
+                        1
+                    </title>
+                </path>
+                <path class="link"
+                      d="M404.6666666666667,303.6714414916178C499.83333333333337,303.6714414916178 499.83333333333337,225.01923076923043 595,225.01923076923043"
+                      style="fill: none; stroke-width: 7.03846; stroke: rgb(255, 214, 10); stroke-opacity: 0.4;">
+                    <title>Sonstiges -> sonstige Erholungsfläche:
+                        1
+                    </title>
+                </path>
+                <path class="link"
+                      d="M404.6666666666667,310.7099030300794C499.83333333333337,310.7099030300794 499.83333333333337,242.05769230769198 595,242.05769230769198"
+                      style="fill: none; stroke-width: 7.03846; stroke: rgb(255, 214, 10); stroke-opacity: 0.4;">
+                    <title>Sonstiges -> sonstige Gebäude- und Freifläche:
+                        1
+                    </title>
+                </path>
+                <path class="link"
+                      d="M404.6666666666667,317.74836456854086C499.83333333333337,317.74836456854086 499.83333333333337,259.0961538461535 595,259.0961538461535"
+                      style="fill: none; stroke-width: 7.03846; stroke: rgb(255, 214, 10); stroke-opacity: 0.4;">
+                    <title>Sonstiges -> 16000 Fläche gemischter Nutzung:
+                        1
+                    </title>
+                </path>
+                <path class="link"
+                      d="M404.6666666666667,324.7868261070024C499.83333333333337,324.7868261070024 499.83333333333337,276.1346153846151 595,276.1346153846151"
+                      style="fill: none; stroke-width: 7.03846; stroke: rgb(255, 214, 10); stroke-opacity: 0.4;">
+                    <title>Sonstiges -> 18100 Sportanlage:
+                        1
+                    </title>
+                </path>
+                <path class="link"
+                      d="M404.6666666666667,331.82528764546396C499.83333333333337,331.82528764546396 499.83333333333337,293.1730769230766 595,293.1730769230766"
+                      style="fill: none; stroke-width: 7.03846; stroke: rgb(255, 214, 10); stroke-opacity: 0.4;">
+                    <title>Sonstiges -> 18200 Freizeitanlage:
+                        1
+                    </title>
+                </path>
+                <path class="link"
+                      d="M404.6666666666667,338.8637491839255C499.83333333333337,338.8637491839255 499.83333333333337,310.21153846153817 595,310.21153846153817"
+                      style="fill: none; stroke-width: 7.03846; stroke: rgb(255, 214, 10); stroke-opacity: 0.4;">
+                    <title>Sonstiges -> 18300 Erholungsfläche:
+                        1
+                    </title>
+                </path>
+                <path class="link"
+                      d="M404.6666666666667,345.90221072238705C499.83333333333337,345.90221072238705 499.83333333333337,327.2499999999997 595,327.2499999999997"
+                      style="fill: none; stroke-width: 7.03846; stroke: rgb(255, 214, 10); stroke-opacity: 0.4;">
+                    <title>Sonstiges -> 18400 Grünanlage:
+                        1
+                    </title>
+                </path>
+                <path class="link"
+                      d="M404.6666666666667,352.9406722608486C499.83333333333337,352.9406722608486 499.83333333333337,344.28846153846126 595,344.28846153846126"
+                      style="fill: none; stroke-width: 7.03846; stroke: rgb(255, 214, 10); stroke-opacity: 0.4;">
+                    <title>Sonstiges -> 19000 Friedhof:
+                        1
+                    </title>
+                </path>
+                <path class="link"
+                      d="M404.6666666666667,385.41041801289794C499.83333333333337,385.41041801289794 499.83333333333337,361.3269230769228 595,361.3269230769228"
+                      style="fill: none; stroke-width: 7.03846; stroke: rgb(142, 142, 147); stroke-opacity: 0.4;">
+                    <title>Verkehrsflächen -> Straße, Weg, Platz:
+                        1
+                    </title>
+                </path>
+                <path class="link"
+                      d="M404.6666666666667,392.4488795513595C499.83333333333337,392.4488795513595 499.83333333333337,378.36538461538436 595,378.36538461538436"
+                      style="fill: none; stroke-width: 7.03846; stroke: rgb(142, 142, 147); stroke-opacity: 0.4;">
+                    <title>Verkehrsflächen -> sonstige Verkehrsfläche:
+                        1
+                    </title>
+                </path>
+                <path class="link"
+                      d="M404.6666666666667,399.48734108982103C499.83333333333337,399.48734108982103 499.83333333333337,395.4038461538459 595,395.4038461538459"
+                      style="fill: none; stroke-width: 7.03846; stroke: rgb(142, 142, 147); stroke-opacity: 0.4;">
+                    <title>Verkehrsflächen -> 21000 Straßenverkehr:
+                        1
+                    </title>
+                </path>
+                <path class="link"
+                      d="M404.6666666666667,406.5258026282825C499.83333333333337,406.5258026282825 499.83333333333337,412.44230769230745 595,412.44230769230745"
+                      style="fill: none; stroke-width: 7.03846; stroke: rgb(142, 142, 147); stroke-opacity: 0.4;">
+                    <title>Verkehrsflächen -> 22000 Weg:
+                        1
+                    </title>
+                </path>
+                <path class="link"
+                      d="M404.6666666666667,413.56426416674407C499.83333333333337,413.56426416674407 499.83333333333337,429.480769230769 595,429.480769230769"
+                      style="fill: none; stroke-width: 7.03846; stroke: rgb(142, 142, 147); stroke-opacity: 0.4;">
+                    <title>Verkehrsflächen -> 23000 Platz:
+                        1
+                    </title>
+                </path>
+                <path class="link"
+                      d="M404.6666666666667,420.6027257052056C499.83333333333337,420.6027257052056 499.83333333333337,446.51923076923055 595,446.51923076923055"
+                      style="fill: none; stroke-width: 7.03846; stroke: rgb(142, 142, 147); stroke-opacity: 0.4;">
+                    <title>Verkehrsflächen -> 24000 Bahnverkehr:
+                        1
+                    </title>
+                </path>
+                <path class="link"
+                      d="M404.6666666666667,427.64118724366716C499.83333333333337,427.64118724366716 499.83333333333337,463.5576923076921 595,463.5576923076921"
+                      style="fill: none; stroke-width: 7.03846; stroke: rgb(142, 142, 147); stroke-opacity: 0.4;">
+                    <title>Verkehrsflächen -> 25000 Flugverkehr:
+                        1
+                    </title>
+                </path>
+                <path class="link"
+                      d="M404.6666666666667,434.6796487821287C499.83333333333337,434.6796487821287 499.83333333333337,480.59615384615364 595,480.59615384615364"
+                      style="fill: none; stroke-width: 7.03846; stroke: rgb(142, 142, 147); stroke-opacity: 0.4;">
+                    <title>Verkehrsflächen -> 26000 Schiffsverkehr:
+                        1
+                    </title>
+                </path>
+                <path class="link"
+                      d="M404.6666666666667,516.5508484156426C499.83333333333337,516.5508484156426 499.83333333333337,497.6346153846152 595,497.6346153846152"
+                      style="fill: none; stroke-width: 7.03846; stroke: rgb(48, 209, 88); stroke-opacity: 0.4;">
+                    <title>Natur -> Moor:
+                        1
+                    </title>
+                </path>
+                <path class="link"
+                      d="M404.6666666666667,523.5893099541041C499.83333333333337,523.5893099541041 499.83333333333337,514.6730769230767 595,514.6730769230767"
+                      style="fill: none; stroke-width: 7.03846; stroke: rgb(48, 209, 88); stroke-opacity: 0.4;">
+                    <title>Natur -> Landwirtschaftsfläche (ohne Moor, Heide):
+                        1
+                    </title>
+                </path>
+                <path class="link"
+                      d="M404.6666666666667,530.6277714925657C499.83333333333337,530.6277714925657 499.83333333333337,531.7115384615382 595,531.7115384615382"
+                      style="fill: none; stroke-width: 7.03846; stroke: rgb(48, 209, 88); stroke-opacity: 0.4;">
+                    <title>Natur -> Heide:
+                        1
+                    </title>
+                </path>
+                <path class="link"
+                      d="M404.6666666666667,537.6662330310272C499.83333333333337,537.6662330310272 499.83333333333337,548.7499999999998 595,548.7499999999998"
+                      style="fill: none; stroke-width: 7.03846; stroke: rgb(48, 209, 88); stroke-opacity: 0.4;">
+                    <title>Natur -> Waldfläche:
+                        1
+                    </title>
+                </path>
+                <path class="link"
+                      d="M404.6666666666667,544.7046945694888C499.83333333333337,544.7046945694888 499.83333333333337,565.7884615384613 595,565.7884615384613"
+                      style="fill: none; stroke-width: 7.03846; stroke: rgb(48, 209, 88); stroke-opacity: 0.4;">
+                    <title>Natur -> Unland:
+                        1
+                    </title>
+                </path>
+                <path class="link"
+                      d="M404.6666666666667,551.7431561079503C499.83333333333337,551.7431561079503 499.83333333333337,582.8269230769229 595,582.8269230769229"
+                      style="fill: none; stroke-width: 7.03846; stroke: rgb(48, 209, 88); stroke-opacity: 0.4;">
+                    <title>Natur -> 31100 Ackerland:
+                        1
+                    </title>
+                </path>
+                <path class="link"
+                      d="M404.6666666666667,558.7816176464119C499.83333333333337,558.7816176464119 499.83333333333337,599.8653846153844 595,599.8653846153844"
+                      style="fill: none; stroke-width: 7.03846; stroke: rgb(48, 209, 88); stroke-opacity: 0.4;">
+                    <title>Natur -> 31200 Grünland:
+                        1
+                    </title>
+                </path>
+                <path class="link"
+                      d="M404.6666666666667,565.8200791848733C499.83333333333337,565.8200791848733 499.83333333333337,616.903846153846 595,616.903846153846"
+                      style="fill: none; stroke-width: 7.03846; stroke: rgb(48, 209, 88); stroke-opacity: 0.4;">
+                    <title>Natur -> 31300 Gartenland:
+                        1
+                    </title>
+                </path>
+                <path class="link"
+                      d="M404.6666666666667,572.8585407233348C499.83333333333337,572.8585407233348 499.83333333333337,633.9423076923075 595,633.9423076923075"
+                      style="fill: none; stroke-width: 7.03846; stroke: rgb(48, 209, 88); stroke-opacity: 0.4;">
+                    <title>Natur -> 31400 Weingarten:
+                        1
+                    </title>
+                </path>
+                <path class="link"
+                      d="M404.6666666666667,579.8970022617964C499.83333333333337,579.8970022617964 499.83333333333337,650.980769230769 595,650.980769230769"
+                      style="fill: none; stroke-width: 7.03846; stroke: rgb(48, 209, 88); stroke-opacity: 0.4;">
+                    <title>Natur -> 31500 Obstplantage:
+                        1
+                    </title>
+                </path>
+                <path class="link"
+                      d="M404.6666666666667,586.9354638002579C499.83333333333337,586.9354638002579 499.83333333333337,668.0192307692306 595,668.0192307692306"
+                      style="fill: none; stroke-width: 7.03846; stroke: rgb(48, 209, 88); stroke-opacity: 0.4;">
+                    <title>Natur -> 32000 Wald:
+                        1
+                    </title>
+                </path>
+                <path class="link"
+                      d="M404.6666666666667,593.9739253387195C499.83333333333337,593.9739253387195 499.83333333333337,685.0576923076922 595,685.0576923076922"
+                      style="fill: none; stroke-width: 7.03846; stroke: rgb(48, 209, 88); stroke-opacity: 0.4;">
+                    <title>Natur -> 33000 Gehölz:
+                        1
+                    </title>
+                </path>
+                <path class="link"
+                      d="M404.6666666666667,601.012386877181C499.83333333333337,601.012386877181 499.83333333333337,702.0961538461537 595,702.0961538461537"
+                      style="fill: none; stroke-width: 7.03846; stroke: rgb(48, 209, 88); stroke-opacity: 0.4;">
+                    <title>Natur -> 34000 Heide:
+                        1
+                    </title>
+                </path>
+                <path class="link"
+                      d="M404.6666666666667,608.0508484156426C499.83333333333337,608.0508484156426 499.83333333333337,719.1346153846152 595,719.1346153846152"
+                      style="fill: none; stroke-width: 7.03846; stroke: rgb(48, 209, 88); stroke-opacity: 0.4;">
+                    <title>Natur -> 35000 Moor:
+                        1
+                    </title>
+                </path>
+                <path class="link"
+                      d="M404.6666666666667,615.0893099541041C499.83333333333337,615.0893099541041 499.83333333333337,736.1730769230768 595,736.1730769230768"
+                      style="fill: none; stroke-width: 7.03846; stroke: rgb(48, 209, 88); stroke-opacity: 0.4;">
+                    <title>Natur -> 36000 Sumpf:
+                        1
+                    </title>
+                </path>
+                <path class="link"
+                      d="M404.6666666666667,622.1277714925657C499.83333333333337,622.1277714925657 499.83333333333337,753.2115384615383 595,753.2115384615383"
+                      style="fill: none; stroke-width: 7.03846; stroke: rgb(48, 209, 88); stroke-opacity: 0.4;">
+                    <title>Natur -> 37000 Unland, Vegetationslose Fläche:
+                        1
+                    </title>
+                </path>
+                <path class="link"
+                      d="M404.6666666666667,657.4232154905692C499.83333333333337,657.4232154905692 499.83333333333337,770.2499999999999 595,770.2499999999999"
+                      style="fill: none; stroke-width: 7.03846; stroke: rgb(10, 132, 255); stroke-opacity: 0.4;">
+                    <title>Wasser -> Wasserfläche:
+                        1
+                    </title>
+                </path>
+                <path class="link"
+                      d="M404.6666666666667,664.4616770290307C499.83333333333337,664.4616770290307 499.83333333333337,787.2884615384614 595,787.2884615384614"
+                      style="fill: none; stroke-width: 7.03846; stroke: rgb(10, 132, 255); stroke-opacity: 0.4;">
+                    <title>Wasser -> 42000 Hafenbecken:
+                        1
+                    </title>
+                </path>
+                <path class="link"
+                      d="M404.6666666666667,671.5001385674923C499.83333333333337,671.5001385674923 499.83333333333337,804.326923076923 595,804.326923076923"
+                      style="fill: none; stroke-width: 7.03846; stroke: rgb(10, 132, 255); stroke-opacity: 0.4;">
+                    <title>Wasser -> 41000 Fließgewässer:
+                        1
+                    </title>
+                </path>
+                <path class="link"
+                      d="M404.6666666666667,678.5386001059538C499.83333333333337,678.5386001059538 499.83333333333337,821.3653846153845 595,821.3653846153845"
+                      style="fill: none; stroke-width: 7.03846; stroke: rgb(10, 132, 255); stroke-opacity: 0.4;">
+                    <title>Wasser -> 43000 Stehendes Gewässer:
+                        1
+                    </title>
+                </path>
+                <path class="link"
+                      d="M404.6666666666667,695.5770616444154C499.83333333333337,695.5770616444154 499.83333333333337,838.4038461538461 595,838.4038461538461"
+                      style="fill: none; stroke-width: 7.03846; stroke: rgb(191, 90, 242); stroke-opacity: 0.4;">
+                    <title>Bergbau -> Abbauland:
+                        1
+                    </title>
+                </path>
+                <path class="link"
+                      d="M404.6666666666667,702.6155231828769C499.83333333333337,702.6155231828769 499.83333333333337,855.4423076923076 595,855.4423076923076"
+                      style="fill: none; stroke-width: 7.03846; stroke: rgb(191, 90, 242); stroke-opacity: 0.4;">
+                    <title>Bergbau -> 14000 Bergbaubetrieb:
+                        1
+                    </title>
+                </path>
+                <path class="link"
+                      d="M404.6666666666667,709.6539847213385C499.83333333333337,709.6539847213385 499.83333333333337,872.4807692307692 595,872.4807692307692"
+                      style="fill: none; stroke-width: 7.03846; stroke: rgb(191, 90, 242); stroke-opacity: 0.4;">
+                    <title>Bergbau -> 15000 Tagebau, Grube, Steinbruch:
+                        1
+                    </title>
+                </path>
+            </g>
+            <g>
+                <g class="node" transform="translate(396.6666666666667,166.26673703307398)">
+                    <rect height="14.076923076923077" width="8" id="r0" shape-rendering="crispEdges"
+                          style="fill: rgb(255, 55, 95); fill-opacity: 1; stroke-width: 0; stroke: rgb(124, 26, 46);">
+                        <title>Wohnfläche:
+                            2
+                        </title>
+                    </rect>
+                    <text x="14" y="7.038461538461538" dy=".35em" text-anchor="start"
+                          style="stroke-width: 0; font-family: sans-serif; font-size: 12px; font-weight: 400; fill: rgb(0, 0, 0);">
+                        Wohnfläche
+                    </text>
+                </g>
+                <g class="node" transform="translate(396.6666666666667,195.88500046274515)">
+                    <rect height="63.34615384615385" width="8" id="r1" shape-rendering="crispEdges"
+                          style="fill: rgb(255, 159, 10); fill-opacity: 1; stroke-width: 0; stroke: rgb(124, 77, 4);">
+                        <title>Industrie/Gewerbe:
+                            9
+                        </title>
+                    </rect>
+                    <text x="14" y="31.673076923076923" dy=".35em" text-anchor="start"
+                          style="stroke-width: 0; font-family: sans-serif; font-size: 12px; font-weight: 400; fill: rgb(0, 0, 0);">
+                        Industrie/Gewerbe
+                    </text>
+                </g>
+                <g class="node" transform="translate(396.6666666666667,286.07528764546396)">
+                    <rect height="70.38461538461539" width="8" id="r2" shape-rendering="crispEdges"
+                          style="fill: rgb(255, 214, 10); fill-opacity: 1; stroke-width: 0; stroke: rgb(124, 104, 4);">
+                        <title>Sonstiges:
+                            10
+                        </title>
+                    </rect>
+                    <text x="14" y="35.19230769230769" dy=".35em" text-anchor="start"
+                          style="stroke-width: 0; font-family: sans-serif; font-size: 12px; font-weight: 400; fill: rgb(0, 0, 0);">
+                        Sonstiges
+                    </text>
+                </g>
+                <g class="node" transform="translate(396.6666666666667,381.89118724366716)">
+                    <rect height="56.30769230769231" width="8" id="r3" shape-rendering="crispEdges"
+                          style="fill: rgb(142, 142, 147); fill-opacity: 1; stroke-width: 0; stroke: rgb(69, 69, 72);">
+                        <title>Verkehrsflächen:
+                            8
+                        </title>
+                    </rect>
+                    <text x="14" y="28.153846153846153" dy=".35em" text-anchor="start"
+                          style="stroke-width: 0; font-family: sans-serif; font-size: 12px; font-weight: 400; fill: rgb(0, 0, 0);">
+                        Verkehrsflächen
+                    </text>
+                </g>
+                <g class="node" transform="translate(396.6666666666667,513.0316176464119)">
+                    <rect height="112.61538461538461" width="8" id="r4" shape-rendering="crispEdges"
+                          style="fill: rgb(48, 209, 88); fill-opacity: 1; stroke-width: 0; stroke: rgb(23, 102, 43);">
+                        <title>Natur:
+                            16
+                        </title>
+                    </rect>
+                    <text x="14" y="56.30769230769231" dy=".35em" text-anchor="start"
+                          style="stroke-width: 0; font-family: sans-serif; font-size: 12px; font-weight: 400; fill: rgb(0, 0, 0);">
+                        Natur
+                    </text>
+                </g>
+                <g class="node" transform="translate(396.6666666666667,653.9039847213385)">
+                    <rect height="28.153846153846153" width="8" id="r5" shape-rendering="crispEdges"
+                          style="fill: rgb(10, 132, 255); fill-opacity: 1; stroke-width: 0; stroke: rgb(4, 64, 124);">
+                        <title>Wasser:
+                            4
+                        </title>
+                    </rect>
+                    <text x="14" y="14.076923076923077" dy=".35em" text-anchor="start"
+                          style="stroke-width: 0; font-family: sans-serif; font-size: 12px; font-weight: 400; fill: rgb(0, 0, 0);">
+                        Wasser
+                    </text>
+                </g>
+                <g class="node" transform="translate(396.6666666666667,692.0578308751847)">
+                    <rect height="21.115384615384613" width="8" id="r6" shape-rendering="crispEdges"
+                          style="fill: rgb(191, 90, 242); fill-opacity: 1; stroke-width: 0; stroke: rgb(93, 44, 118);">
+                        <title>Bergbau:
+                            3
+                        </title>
+                    </rect>
+                    <text x="14" y="10.557692307692307" dy=".35em" text-anchor="start"
+                          style="stroke-width: 0; font-family: sans-serif; font-size: 12px; font-weight: 400; fill: rgb(0, 0, 0);">
+                        Bergbau
+                    </text>
+                </g>
+                <g class="node" transform="translate(595,-4.121147867408581e-13)">
+                    <rect height="7.038461538461538" width="8" id="r7" shape-rendering="crispEdges"
+                          style="fill: rgb(255, 55, 95); fill-opacity: 1; stroke-width: 0; stroke: rgb(124, 26, 46);">
+                        <title>Wohnen:
+                            1
+                        </title>
+                    </rect>
+                    <text x="14" y="3.519230769230769" dy=".35em" text-anchor="start"
+                          style="stroke-width: 0; font-family: sans-serif; font-size: 12px; font-weight: 400; fill: rgb(0, 0, 0);">
+                        Wohnen
+                    </text>
+                </g>
+                <g class="node" transform="translate(595,17.03846153846112)">
+                    <rect height="7.038461538461538" width="8" id="r8" shape-rendering="crispEdges"
+                          style="fill: rgb(255, 55, 95); fill-opacity: 1; stroke-width: 0; stroke: rgb(124, 26, 46);">
+                        <title>11000 Wohnbaufläche:
+                            1
+                        </title>
+                    </rect>
+                    <text x="14" y="3.519230769230769" dy=".35em" text-anchor="start"
+                          style="stroke-width: 0; font-family: sans-serif; font-size: 12px; font-weight: 400; fill: rgb(0, 0, 0);">
+                        11000 Wohnbaufläche
+                    </text>
+                </g>
+                <g class="node" transform="translate(595,34.07692307692264)">
+                    <rect height="7.038461538461538" width="8" id="r9" shape-rendering="crispEdges"
+                          style="fill: rgb(255, 159, 10); fill-opacity: 1; stroke-width: 0; stroke: rgb(124, 77, 4);">
+                        <title>Gewerbe, Industrie:
+                            1
+                        </title>
+                    </rect>
+                    <text x="14" y="3.519230769230769" dy=".35em" text-anchor="start"
+                          style="stroke-width: 0; font-family: sans-serif; font-size: 12px; font-weight: 400; fill: rgb(0, 0, 0);">
+                        Gewerbe, Industrie
+                    </text>
+                </g>
+                <g class="node" transform="translate(595,51.11538461538419)">
+                    <rect height="7.038461538461538" width="8" id="r10" shape-rendering="crispEdges"
+                          style="fill: rgb(255, 159, 10); fill-opacity: 1; stroke-width: 0; stroke: rgb(124, 77, 4);">
+                        <title>Betriebsfläche (ohne Abbauland):
+                            1
+                        </title>
+                    </rect>
+                    <text x="14" y="3.519230769230769" dy=".35em" text-anchor="start"
+                          style="stroke-width: 0; font-family: sans-serif; font-size: 12px; font-weight: 400; fill: rgb(0, 0, 0);">
+                        Betriebsfläche (ohne Abbauland)
+                    </text>
+                </g>
+                <g class="node" transform="translate(595,68.15384615384573)">
+                    <rect height="7.038461538461538" width="8" id="r11" shape-rendering="crispEdges"
+                          style="fill: rgb(255, 159, 10); fill-opacity: 1; stroke-width: 0; stroke: rgb(124, 77, 4);">
+                        <title>Flächen anderer Nutzung (ohne Unland, Friedhof):
+                            1
+                        </title>
+                    </rect>
+                    <text x="14" y="3.519230769230769" dy=".35em" text-anchor="start"
+                          style="stroke-width: 0; font-family: sans-serif; font-size: 12px; font-weight: 400; fill: rgb(0, 0, 0);">
+                        Flächen anderer Nutzung (ohne Unland, Friedhof)
+                    </text>
+                </g>
+                <g class="node" transform="translate(595,85.19230769230728)">
+                    <rect height="7.038461538461538" width="8" id="r12" shape-rendering="crispEdges"
+                          style="fill: rgb(255, 159, 10); fill-opacity: 1; stroke-width: 0; stroke: rgb(124, 77, 4);">
+                        <title>12100 Industrie und Gewerbe:
+                            1
+                        </title>
+                    </rect>
+                    <text x="14" y="3.519230769230769" dy=".35em" text-anchor="start"
+                          style="stroke-width: 0; font-family: sans-serif; font-size: 12px; font-weight: 400; fill: rgb(0, 0, 0);">
+                        12100 Industrie und Gewerbe
+                    </text>
+                </g>
+                <g class="node" transform="translate(595,102.23076923076883)">
+                    <rect height="7.038461538461538" width="8" id="r13" shape-rendering="crispEdges"
+                          style="fill: rgb(255, 159, 10); fill-opacity: 1; stroke-width: 0; stroke: rgb(124, 77, 4);">
+                        <title>12200 Handel und Dienstleistung:
+                            1
+                        </title>
+                    </rect>
+                    <text x="14" y="3.519230769230769" dy=".35em" text-anchor="start"
+                          style="stroke-width: 0; font-family: sans-serif; font-size: 12px; font-weight: 400; fill: rgb(0, 0, 0);">
+                        12200 Handel und Dienstleistung
+                    </text>
+                </g>
+                <g class="node" transform="translate(595,119.26923076923038)">
+                    <rect height="7.038461538461538" width="8" id="r14" shape-rendering="crispEdges"
+                          style="fill: rgb(255, 159, 10); fill-opacity: 1; stroke-width: 0; stroke: rgb(124, 77, 4);">
+                        <title>12300 Versorgungsanlage:
+                            1
+                        </title>
+                    </rect>
+                    <text x="14" y="3.519230769230769" dy=".35em" text-anchor="start"
+                          style="stroke-width: 0; font-family: sans-serif; font-size: 12px; font-weight: 400; fill: rgb(0, 0, 0);">
+                        12300 Versorgungsanlage
+                    </text>
+                </g>
+                <g class="node" transform="translate(595,136.30769230769192)">
+                    <rect height="7.038461538461538" width="8" id="r15" shape-rendering="crispEdges"
+                          style="fill: rgb(255, 159, 10); fill-opacity: 1; stroke-width: 0; stroke: rgb(124, 77, 4);">
+                        <title>12400 Entsorgung:
+                            1
+                        </title>
+                    </rect>
+                    <text x="14" y="3.519230769230769" dy=".35em" text-anchor="start"
+                          style="stroke-width: 0; font-family: sans-serif; font-size: 12px; font-weight: 400; fill: rgb(0, 0, 0);">
+                        12400 Entsorgung
+                    </text>
+                </g>
+                <g class="node" transform="translate(595,153.34615384615347)">
+                    <rect height="7.038461538461538" width="8" id="r16" shape-rendering="crispEdges"
+                          style="fill: rgb(255, 159, 10); fill-opacity: 1; stroke-width: 0; stroke: rgb(124, 77, 4);">
+                        <title>13000 Halde:
+                            1
+                        </title>
+                    </rect>
+                    <text x="14" y="3.519230769230769" dy=".35em" text-anchor="start"
+                          style="stroke-width: 0; font-family: sans-serif; font-size: 12px; font-weight: 400; fill: rgb(0, 0, 0);">
+                        13000 Halde
+                    </text>
+                </g>
+                <g class="node" transform="translate(595,170.38461538461502)">
+                    <rect height="7.038461538461538" width="8" id="r17" shape-rendering="crispEdges"
+                          style="fill: rgb(255, 159, 10); fill-opacity: 1; stroke-width: 0; stroke: rgb(124, 77, 4);">
+                        <title>17000 Fläche besonderer funktionaler Prägung:
+                            1
+                        </title>
+                    </rect>
+                    <text x="14" y="3.519230769230769" dy=".35em" text-anchor="start"
+                          style="stroke-width: 0; font-family: sans-serif; font-size: 12px; font-weight: 400; fill: rgb(0, 0, 0);">
+                        17000 Fläche besonderer funktionaler Prägung
+                    </text>
+                </g>
+                <g class="node" transform="translate(595,187.42307692307656)">
+                    <rect height="7.038461538461538" width="8" id="r18" shape-rendering="crispEdges"
+                          style="fill: rgb(255, 214, 10); fill-opacity: 1; stroke-width: 0; stroke: rgb(124, 104, 4);">
+                        <title>Grünanlage:
+                            1
+                        </title>
+                    </rect>
+                    <text x="14" y="3.519230769230769" dy=".35em" text-anchor="start"
+                          style="stroke-width: 0; font-family: sans-serif; font-size: 12px; font-weight: 400; fill: rgb(0, 0, 0);">
+                        Grünanlage
+                    </text>
+                </g>
+                <g class="node" transform="translate(595,204.4615384615381)">
+                    <rect height="7.038461538461538" width="8" id="r19" shape-rendering="crispEdges"
+                          style="fill: rgb(255, 214, 10); fill-opacity: 1; stroke-width: 0; stroke: rgb(124, 104, 4);">
+                        <title>Friedhof:
+                            1
+                        </title>
+                    </rect>
+                    <text x="14" y="3.519230769230769" dy=".35em" text-anchor="start"
+                          style="stroke-width: 0; font-family: sans-serif; font-size: 12px; font-weight: 400; fill: rgb(0, 0, 0);">
+                        Friedhof
+                    </text>
+                </g>
+                <g class="node" transform="translate(595,221.49999999999966)">
+                    <rect height="7.038461538461538" width="8" id="r20" shape-rendering="crispEdges"
+                          style="fill: rgb(255, 214, 10); fill-opacity: 1; stroke-width: 0; stroke: rgb(124, 104, 4);">
+                        <title>sonstige Erholungsfläche:
+                            1
+                        </title>
+                    </rect>
+                    <text x="14" y="3.519230769230769" dy=".35em" text-anchor="start"
+                          style="stroke-width: 0; font-family: sans-serif; font-size: 12px; font-weight: 400; fill: rgb(0, 0, 0);">
+                        sonstige Erholungsfläche
+                    </text>
+                </g>
+                <g class="node" transform="translate(595,238.5384615384612)">
+                    <rect height="7.038461538461538" width="8" id="r21" shape-rendering="crispEdges"
+                          style="fill: rgb(255, 214, 10); fill-opacity: 1; stroke-width: 0; stroke: rgb(124, 104, 4);">
+                        <title>sonstige Gebäude- und Freifläche:
+                            1
+                        </title>
+                    </rect>
+                    <text x="14" y="3.519230769230769" dy=".35em" text-anchor="start"
+                          style="stroke-width: 0; font-family: sans-serif; font-size: 12px; font-weight: 400; fill: rgb(0, 0, 0);">
+                        sonstige Gebäude- und Freifläche
+                    </text>
+                </g>
+                <g class="node" transform="translate(595,255.57692307692275)">
+                    <rect height="7.038461538461538" width="8" id="r22" shape-rendering="crispEdges"
+                          style="fill: rgb(255, 214, 10); fill-opacity: 1; stroke-width: 0; stroke: rgb(124, 104, 4);">
+                        <title>16000 Fläche gemischter Nutzung:
+                            1
+                        </title>
+                    </rect>
+                    <text x="14" y="3.519230769230769" dy=".35em" text-anchor="start"
+                          style="stroke-width: 0; font-family: sans-serif; font-size: 12px; font-weight: 400; fill: rgb(0, 0, 0);">
+                        16000 Fläche gemischter Nutzung
+                    </text>
+                </g>
+                <g class="node" transform="translate(595,272.6153846153843)">
+                    <rect height="7.038461538461538" width="8" id="r23" shape-rendering="crispEdges"
+                          style="fill: rgb(255, 214, 10); fill-opacity: 1; stroke-width: 0; stroke: rgb(124, 104, 4);">
+                        <title>18100 Sportanlage:
+                            1
+                        </title>
+                    </rect>
+                    <text x="14" y="3.519230769230769" dy=".35em" text-anchor="start"
+                          style="stroke-width: 0; font-family: sans-serif; font-size: 12px; font-weight: 400; fill: rgb(0, 0, 0);">
+                        18100 Sportanlage
+                    </text>
+                </g>
+                <g class="node" transform="translate(595,289.65384615384585)">
+                    <rect height="7.038461538461538" width="8" id="r24" shape-rendering="crispEdges"
+                          style="fill: rgb(255, 214, 10); fill-opacity: 1; stroke-width: 0; stroke: rgb(124, 104, 4);">
+                        <title>18200 Freizeitanlage:
+                            1
+                        </title>
+                    </rect>
+                    <text x="14" y="3.519230769230769" dy=".35em" text-anchor="start"
+                          style="stroke-width: 0; font-family: sans-serif; font-size: 12px; font-weight: 400; fill: rgb(0, 0, 0);">
+                        18200 Freizeitanlage
+                    </text>
+                </g>
+                <g class="node" transform="translate(595,306.6923076923074)">
+                    <rect height="7.038461538461538" width="8" id="r25" shape-rendering="crispEdges"
+                          style="fill: rgb(255, 214, 10); fill-opacity: 1; stroke-width: 0; stroke: rgb(124, 104, 4);">
+                        <title>18300 Erholungsfläche:
+                            1
+                        </title>
+                    </rect>
+                    <text x="14" y="3.519230769230769" dy=".35em" text-anchor="start"
+                          style="stroke-width: 0; font-family: sans-serif; font-size: 12px; font-weight: 400; fill: rgb(0, 0, 0);">
+                        18300 Erholungsfläche
+                    </text>
+                </g>
+                <g class="node" transform="translate(595,323.73076923076894)">
+                    <rect height="7.038461538461538" width="8" id="r26" shape-rendering="crispEdges"
+                          style="fill: rgb(255, 214, 10); fill-opacity: 1; stroke-width: 0; stroke: rgb(124, 104, 4);">
+                        <title>18400 Grünanlage:
+                            1
+                        </title>
+                    </rect>
+                    <text x="14" y="3.519230769230769" dy=".35em" text-anchor="start"
+                          style="stroke-width: 0; font-family: sans-serif; font-size: 12px; font-weight: 400; fill: rgb(0, 0, 0);">
+                        18400 Grünanlage
+                    </text>
+                </g>
+                <g class="node" transform="translate(595,340.7692307692305)">
+                    <rect height="7.038461538461538" width="8" id="r27" shape-rendering="crispEdges"
+                          style="fill: rgb(255, 214, 10); fill-opacity: 1; stroke-width: 0; stroke: rgb(124, 104, 4);">
+                        <title>19000 Friedhof:
+                            1
+                        </title>
+                    </rect>
+                    <text x="14" y="3.519230769230769" dy=".35em" text-anchor="start"
+                          style="stroke-width: 0; font-family: sans-serif; font-size: 12px; font-weight: 400; fill: rgb(0, 0, 0);">
+                        19000 Friedhof
+                    </text>
+                </g>
+                <g class="node" transform="translate(595,357.80769230769204)">
+                    <rect height="7.038461538461538" width="8" id="r28" shape-rendering="crispEdges"
+                          style="fill: rgb(142, 142, 147); fill-opacity: 1; stroke-width: 0; stroke: rgb(69, 69, 72);">
+                        <title>Straße, Weg, Platz:
+                            1
+                        </title>
+                    </rect>
+                    <text x="14" y="3.519230769230769" dy=".35em" text-anchor="start"
+                          style="stroke-width: 0; font-family: sans-serif; font-size: 12px; font-weight: 400; fill: rgb(0, 0, 0);">
+                        Straße, Weg, Platz
+                    </text>
+                </g>
+                <g class="node" transform="translate(595,374.8461538461536)">
+                    <rect height="7.038461538461538" width="8" id="r29" shape-rendering="crispEdges"
+                          style="fill: rgb(142, 142, 147); fill-opacity: 1; stroke-width: 0; stroke: rgb(69, 69, 72);">
+                        <title>sonstige Verkehrsfläche:
+                            1
+                        </title>
+                    </rect>
+                    <text x="14" y="3.519230769230769" dy=".35em" text-anchor="start"
+                          style="stroke-width: 0; font-family: sans-serif; font-size: 12px; font-weight: 400; fill: rgb(0, 0, 0);">
+                        sonstige Verkehrsfläche
+                    </text>
+                </g>
+                <g class="node" transform="translate(595,391.88461538461513)">
+                    <rect height="7.038461538461538" width="8" id="r30" shape-rendering="crispEdges"
+                          style="fill: rgb(142, 142, 147); fill-opacity: 1; stroke-width: 0; stroke: rgb(69, 69, 72);">
+                        <title>21000 Straßenverkehr:
+                            1
+                        </title>
+                    </rect>
+                    <text x="14" y="3.519230769230769" dy=".35em" text-anchor="start"
+                          style="stroke-width: 0; font-family: sans-serif; font-size: 12px; font-weight: 400; fill: rgb(0, 0, 0);">
+                        21000 Straßenverkehr
+                    </text>
+                </g>
+                <g class="node" transform="translate(595,408.9230769230767)">
+                    <rect height="7.038461538461538" width="8" id="r31" shape-rendering="crispEdges"
+                          style="fill: rgb(142, 142, 147); fill-opacity: 1; stroke-width: 0; stroke: rgb(69, 69, 72);">
+                        <title>22000 Weg:
+                            1
+                        </title>
+                    </rect>
+                    <text x="14" y="3.519230769230769" dy=".35em" text-anchor="start"
+                          style="stroke-width: 0; font-family: sans-serif; font-size: 12px; font-weight: 400; fill: rgb(0, 0, 0);">
+                        22000 Weg
+                    </text>
+                </g>
+                <g class="node" transform="translate(595,425.9615384615382)">
+                    <rect height="7.038461538461538" width="8" id="r32" shape-rendering="crispEdges"
+                          style="fill: rgb(142, 142, 147); fill-opacity: 1; stroke-width: 0; stroke: rgb(69, 69, 72);">
+                        <title>23000 Platz:
+                            1
+                        </title>
+                    </rect>
+                    <text x="14" y="3.519230769230769" dy=".35em" text-anchor="start"
+                          style="stroke-width: 0; font-family: sans-serif; font-size: 12px; font-weight: 400; fill: rgb(0, 0, 0);">
+                        23000 Platz
+                    </text>
+                </g>
+                <g class="node" transform="translate(595,442.9999999999998)">
+                    <rect height="7.038461538461538" width="8" id="r33" shape-rendering="crispEdges"
+                          style="fill: rgb(142, 142, 147); fill-opacity: 1; stroke-width: 0; stroke: rgb(69, 69, 72);">
+                        <title>24000 Bahnverkehr:
+                            1
+                        </title>
+                    </rect>
+                    <text x="14" y="3.519230769230769" dy=".35em" text-anchor="start"
+                          style="stroke-width: 0; font-family: sans-serif; font-size: 12px; font-weight: 400; fill: rgb(0, 0, 0);">
+                        24000 Bahnverkehr
+                    </text>
+                </g>
+                <g class="node" transform="translate(595,460.0384615384613)">
+                    <rect height="7.038461538461538" width="8" id="r34" shape-rendering="crispEdges"
+                          style="fill: rgb(142, 142, 147); fill-opacity: 1; stroke-width: 0; stroke: rgb(69, 69, 72);">
+                        <title>25000 Flugverkehr:
+                            1
+                        </title>
+                    </rect>
+                    <text x="14" y="3.519230769230769" dy=".35em" text-anchor="start"
+                          style="stroke-width: 0; font-family: sans-serif; font-size: 12px; font-weight: 400; fill: rgb(0, 0, 0);">
+                        25000 Flugverkehr
+                    </text>
+                </g>
+                <g class="node" transform="translate(595,477.07692307692287)">
+                    <rect height="7.038461538461538" width="8" id="r35" shape-rendering="crispEdges"
+                          style="fill: rgb(142, 142, 147); fill-opacity: 1; stroke-width: 0; stroke: rgb(69, 69, 72);">
+                        <title>26000 Schiffsverkehr:
+                            1
+                        </title>
+                    </rect>
+                    <text x="14" y="3.519230769230769" dy=".35em" text-anchor="start"
+                          style="stroke-width: 0; font-family: sans-serif; font-size: 12px; font-weight: 400; fill: rgb(0, 0, 0);">
+                        26000 Schiffsverkehr
+                    </text>
+                </g>
+                <g class="node" transform="translate(595,494.1153846153844)">
+                    <rect height="7.038461538461538" width="8" id="r36" shape-rendering="crispEdges"
+                          style="fill: rgb(48, 209, 88); fill-opacity: 1; stroke-width: 0; stroke: rgb(23, 102, 43);">
+                        <title>Moor:
+                            1
+                        </title>
+                    </rect>
+                    <text x="14" y="3.519230769230769" dy=".35em" text-anchor="start"
+                          style="stroke-width: 0; font-family: sans-serif; font-size: 12px; font-weight: 400; fill: rgb(0, 0, 0);">
+                        Moor
+                    </text>
+                </g>
+                <g class="node" transform="translate(595,511.15384615384596)">
+                    <rect height="7.038461538461538" width="8" id="r37" shape-rendering="crispEdges"
+                          style="fill: rgb(48, 209, 88); fill-opacity: 1; stroke-width: 0; stroke: rgb(23, 102, 43);">
+                        <title>Landwirtschaftsfläche (ohne Moor, Heide):
+                            1
+                        </title>
+                    </rect>
+                    <text x="14" y="3.519230769230769" dy=".35em" text-anchor="start"
+                          style="stroke-width: 0; font-family: sans-serif; font-size: 12px; font-weight: 400; fill: rgb(0, 0, 0);">
+                        Landwirtschaftsfläche (ohne Moor, Heide)
+                    </text>
+                </g>
+                <g class="node" transform="translate(595,528.1923076923075)">
+                    <rect height="7.038461538461538" width="8" id="r38" shape-rendering="crispEdges"
+                          style="fill: rgb(48, 209, 88); fill-opacity: 1; stroke-width: 0; stroke: rgb(23, 102, 43);">
+                        <title>Heide:
+                            1
+                        </title>
+                    </rect>
+                    <text x="14" y="3.519230769230769" dy=".35em" text-anchor="start"
+                          style="stroke-width: 0; font-family: sans-serif; font-size: 12px; font-weight: 400; fill: rgb(0, 0, 0);">
+                        Heide
+                    </text>
+                </g>
+                <g class="node" transform="translate(595,545.230769230769)">
+                    <rect height="7.038461538461538" width="8" id="r39" shape-rendering="crispEdges"
+                          style="fill: rgb(48, 209, 88); fill-opacity: 1; stroke-width: 0; stroke: rgb(23, 102, 43);">
+                        <title>Waldfläche:
+                            1
+                        </title>
+                    </rect>
+                    <text x="14" y="3.519230769230769" dy=".35em" text-anchor="start"
+                          style="stroke-width: 0; font-family: sans-serif; font-size: 12px; font-weight: 400; fill: rgb(0, 0, 0);">
+                        Waldfläche
+                    </text>
+                </g>
+                <g class="node" transform="translate(595,562.2692307692306)">
+                    <rect height="7.038461538461538" width="8" id="r40" shape-rendering="crispEdges"
+                          style="fill: rgb(48, 209, 88); fill-opacity: 1; stroke-width: 0; stroke: rgb(23, 102, 43);">
+                        <title>Unland:
+                            1
+                        </title>
+                    </rect>
+                    <text x="14" y="3.519230769230769" dy=".35em" text-anchor="start"
+                          style="stroke-width: 0; font-family: sans-serif; font-size: 12px; font-weight: 400; fill: rgb(0, 0, 0);">
+                        Unland
+                    </text>
+                </g>
+                <g class="node" transform="translate(595,579.3076923076922)">
+                    <rect height="7.038461538461538" width="8" id="r41" shape-rendering="crispEdges"
+                          style="fill: rgb(48, 209, 88); fill-opacity: 1; stroke-width: 0; stroke: rgb(23, 102, 43);">
+                        <title>31100 Ackerland:
+                            1
+                        </title>
+                    </rect>
+                    <text x="14" y="3.519230769230769" dy=".35em" text-anchor="start"
+                          style="stroke-width: 0; font-family: sans-serif; font-size: 12px; font-weight: 400; fill: rgb(0, 0, 0);">
+                        31100 Ackerland
+                    </text>
+                </g>
+                <g class="node" transform="translate(595,596.3461538461537)">
+                    <rect height="7.038461538461538" width="8" id="r42" shape-rendering="crispEdges"
+                          style="fill: rgb(48, 209, 88); fill-opacity: 1; stroke-width: 0; stroke: rgb(23, 102, 43);">
+                        <title>31200 Grünland:
+                            1
+                        </title>
+                    </rect>
+                    <text x="14" y="3.519230769230769" dy=".35em" text-anchor="start"
+                          style="stroke-width: 0; font-family: sans-serif; font-size: 12px; font-weight: 400; fill: rgb(0, 0, 0);">
+                        31200 Grünland
+                    </text>
+                </g>
+                <g class="node" transform="translate(595,613.3846153846152)">
+                    <rect height="7.038461538461538" width="8" id="r43" shape-rendering="crispEdges"
+                          style="fill: rgb(48, 209, 88); fill-opacity: 1; stroke-width: 0; stroke: rgb(23, 102, 43);">
+                        <title>31300 Gartenland:
+                            1
+                        </title>
+                    </rect>
+                    <text x="14" y="3.519230769230769" dy=".35em" text-anchor="start"
+                          style="stroke-width: 0; font-family: sans-serif; font-size: 12px; font-weight: 400; fill: rgb(0, 0, 0);">
+                        31300 Gartenland
+                    </text>
+                </g>
+                <g class="node" transform="translate(595,630.4230769230768)">
+                    <rect height="7.038461538461538" width="8" id="r44" shape-rendering="crispEdges"
+                          style="fill: rgb(48, 209, 88); fill-opacity: 1; stroke-width: 0; stroke: rgb(23, 102, 43);">
+                        <title>31400 Weingarten:
+                            1
+                        </title>
+                    </rect>
+                    <text x="14" y="3.519230769230769" dy=".35em" text-anchor="start"
+                          style="stroke-width: 0; font-family: sans-serif; font-size: 12px; font-weight: 400; fill: rgb(0, 0, 0);">
+                        31400 Weingarten
+                    </text>
+                </g>
+                <g class="node" transform="translate(595,647.4615384615383)">
+                    <rect height="7.038461538461538" width="8" id="r45" shape-rendering="crispEdges"
+                          style="fill: rgb(48, 209, 88); fill-opacity: 1; stroke-width: 0; stroke: rgb(23, 102, 43);">
+                        <title>31500 Obstplantage:
+                            1
+                        </title>
+                    </rect>
+                    <text x="14" y="3.519230769230769" dy=".35em" text-anchor="start"
+                          style="stroke-width: 0; font-family: sans-serif; font-size: 12px; font-weight: 400; fill: rgb(0, 0, 0);">
+                        31500 Obstplantage
+                    </text>
+                </g>
+                <g class="node" transform="translate(595,664.4999999999999)">
+                    <rect height="7.038461538461538" width="8" id="r46" shape-rendering="crispEdges"
+                          style="fill: rgb(48, 209, 88); fill-opacity: 1; stroke-width: 0; stroke: rgb(23, 102, 43);">
+                        <title>32000 Wald:
+                            1
+                        </title>
+                    </rect>
+                    <text x="14" y="3.519230769230769" dy=".35em" text-anchor="start"
+                          style="stroke-width: 0; font-family: sans-serif; font-size: 12px; font-weight: 400; fill: rgb(0, 0, 0);">
+                        32000 Wald
+                    </text>
+                </g>
+                <g class="node" transform="translate(595,681.5384615384614)">
+                    <rect height="7.038461538461538" width="8" id="r47" shape-rendering="crispEdges"
+                          style="fill: rgb(48, 209, 88); fill-opacity: 1; stroke-width: 0; stroke: rgb(23, 102, 43);">
+                        <title>33000 Gehölz:
+                            1
+                        </title>
+                    </rect>
+                    <text x="14" y="3.519230769230769" dy=".35em" text-anchor="start"
+                          style="stroke-width: 0; font-family: sans-serif; font-size: 12px; font-weight: 400; fill: rgb(0, 0, 0);">
+                        33000 Gehölz
+                    </text>
+                </g>
+                <g class="node" transform="translate(595,698.576923076923)">
+                    <rect height="7.038461538461538" width="8" id="r48" shape-rendering="crispEdges"
+                          style="fill: rgb(48, 209, 88); fill-opacity: 1; stroke-width: 0; stroke: rgb(23, 102, 43);">
+                        <title>34000 Heide:
+                            1
+                        </title>
+                    </rect>
+                    <text x="14" y="3.519230769230769" dy=".35em" text-anchor="start"
+                          style="stroke-width: 0; font-family: sans-serif; font-size: 12px; font-weight: 400; fill: rgb(0, 0, 0);">
+                        34000 Heide
+                    </text>
+                </g>
+                <g class="node" transform="translate(595,715.6153846153845)">
+                    <rect height="7.038461538461538" width="8" id="r49" shape-rendering="crispEdges"
+                          style="fill: rgb(48, 209, 88); fill-opacity: 1; stroke-width: 0; stroke: rgb(23, 102, 43);">
+                        <title>35000 Moor:
+                            1
+                        </title>
+                    </rect>
+                    <text x="14" y="3.519230769230769" dy=".35em" text-anchor="start"
+                          style="stroke-width: 0; font-family: sans-serif; font-size: 12px; font-weight: 400; fill: rgb(0, 0, 0);">
+                        35000 Moor
+                    </text>
+                </g>
+                <g class="node" transform="translate(595,732.6538461538461)">
+                    <rect height="7.038461538461538" width="8" id="r50" shape-rendering="crispEdges"
+                          style="fill: rgb(48, 209, 88); fill-opacity: 1; stroke-width: 0; stroke: rgb(23, 102, 43);">
+                        <title>36000 Sumpf:
+                            1
+                        </title>
+                    </rect>
+                    <text x="14" y="3.519230769230769" dy=".35em" text-anchor="start"
+                          style="stroke-width: 0; font-family: sans-serif; font-size: 12px; font-weight: 400; fill: rgb(0, 0, 0);">
+                        36000 Sumpf
+                    </text>
+                </g>
+                <g class="node" transform="translate(595,749.6923076923076)">
+                    <rect height="7.038461538461538" width="8" id="r51" shape-rendering="crispEdges"
+                          style="fill: rgb(48, 209, 88); fill-opacity: 1; stroke-width: 0; stroke: rgb(23, 102, 43);">
+                        <title>37000 Unland, Vegetationslose Fläche:
+                            1
+                        </title>
+                    </rect>
+                    <text x="14" y="3.519230769230769" dy=".35em" text-anchor="start"
+                          style="stroke-width: 0; font-family: sans-serif; font-size: 12px; font-weight: 400; fill: rgb(0, 0, 0);">
+                        37000 Unland, Vegetationslose Fläche
+                    </text>
+                </g>
+                <g class="node" transform="translate(595,766.7307692307692)">
+                    <rect height="7.038461538461538" width="8" id="r52" shape-rendering="crispEdges"
+                          style="fill: rgb(10, 132, 255); fill-opacity: 1; stroke-width: 0; stroke: rgb(4, 64, 124);">
+                        <title>Wasserfläche:
+                            1
+                        </title>
+                    </rect>
+                    <text x="14" y="3.519230769230769" dy=".35em" text-anchor="start"
+                          style="stroke-width: 0; font-family: sans-serif; font-size: 12px; font-weight: 400; fill: rgb(0, 0, 0);">
+                        Wasserfläche
+                    </text>
+                </g>
+                <g class="node" transform="translate(595,783.7692307692307)">
+                    <rect height="7.038461538461538" width="8" id="r53" shape-rendering="crispEdges"
+                          style="fill: rgb(10, 132, 255); fill-opacity: 1; stroke-width: 0; stroke: rgb(4, 64, 124);">
+                        <title>42000 Hafenbecken:
+                            1
+                        </title>
+                    </rect>
+                    <text x="14" y="3.519230769230769" dy=".35em" text-anchor="start"
+                          style="stroke-width: 0; font-family: sans-serif; font-size: 12px; font-weight: 400; fill: rgb(0, 0, 0);">
+                        42000 Hafenbecken
+                    </text>
+                </g>
+                <g class="node" transform="translate(595,800.8076923076923)">
+                    <rect height="7.038461538461538" width="8" id="r54" shape-rendering="crispEdges"
+                          style="fill: rgb(10, 132, 255); fill-opacity: 1; stroke-width: 0; stroke: rgb(4, 64, 124);">
+                        <title>41000 Fließgewässer:
+                            1
+                        </title>
+                    </rect>
+                    <text x="14" y="3.519230769230769" dy=".35em" text-anchor="start"
+                          style="stroke-width: 0; font-family: sans-serif; font-size: 12px; font-weight: 400; fill: rgb(0, 0, 0);">
+                        41000 Fließgewässer
+                    </text>
+                </g>
+                <g class="node" transform="translate(595,817.8461538461538)">
+                    <rect height="7.038461538461538" width="8" id="r55" shape-rendering="crispEdges"
+                          style="fill: rgb(10, 132, 255); fill-opacity: 1; stroke-width: 0; stroke: rgb(4, 64, 124);">
+                        <title>43000 Stehendes Gewässer:
+                            1
+                        </title>
+                    </rect>
+                    <text x="14" y="3.519230769230769" dy=".35em" text-anchor="start"
+                          style="stroke-width: 0; font-family: sans-serif; font-size: 12px; font-weight: 400; fill: rgb(0, 0, 0);">
+                        43000 Stehendes Gewässer
+                    </text>
+                </g>
+                <g class="node" transform="translate(595,834.8846153846154)">
+                    <rect height="7.038461538461538" width="8" id="r56" shape-rendering="crispEdges"
+                          style="fill: rgb(191, 90, 242); fill-opacity: 1; stroke-width: 0; stroke: rgb(93, 44, 118);">
+                        <title>Abbauland:
+                            1
+                        </title>
+                    </rect>
+                    <text x="14" y="3.519230769230769" dy=".35em" text-anchor="start"
+                          style="stroke-width: 0; font-family: sans-serif; font-size: 12px; font-weight: 400; fill: rgb(0, 0, 0);">
+                        Abbauland
+                    </text>
+                </g>
+                <g class="node" transform="translate(595,851.9230769230769)">
+                    <rect height="7.038461538461538" width="8" id="r57" shape-rendering="crispEdges"
+                          style="fill: rgb(191, 90, 242); fill-opacity: 1; stroke-width: 0; stroke: rgb(93, 44, 118);">
+                        <title>14000 Bergbaubetrieb:
+                            1
+                        </title>
+                    </rect>
+                    <text x="14" y="3.519230769230769" dy=".35em" text-anchor="start"
+                          style="stroke-width: 0; font-family: sans-serif; font-size: 12px; font-weight: 400; fill: rgb(0, 0, 0);">
+                        14000 Bergbaubetrieb
+                    </text>
+                </g>
+                <g class="node" transform="translate(595,868.9615384615385)">
+                    <rect height="7.038461538461538" width="8" id="r58" shape-rendering="crispEdges"
+                          style="fill: rgb(191, 90, 242); fill-opacity: 1; stroke-width: 0; stroke: rgb(93, 44, 118);">
+                        <title>15000 Tagebau, Grube, Steinbruch:
+                            1
+                        </title>
+                    </rect>
+                    <text x="14" y="3.519230769230769" dy=".35em" text-anchor="start"
+                          style="stroke-width: 0; font-family: sans-serif; font-size: 12px; font-weight: 400; fill: rgb(0, 0, 0);">
+                        15000 Tagebau, Grube, Steinbruch
+                    </text>
+                </g>
+                <g class="node" transform="translate(198.33333333333334,229.74275622754803)">
+                    <rect height="204.1153846153846" width="8" id="r59" shape-rendering="crispEdges"
+                          style="fill: rgb(255, 0, 0); fill-opacity: 1; stroke-width: 0; stroke: rgb(124, 0, 0);">
+                        <title>Verbrauchte Fläche:
+                            29
+                        </title>
+                    </rect>
+                    <text x="14" y="102.0576923076923" dy=".35em" text-anchor="start"
+                          style="stroke-width: 0; font-family: sans-serif; font-size: 12px; font-weight: 400; fill: rgb(0, 0, 0);">
+                        Verbrauchte Fläche
+                    </text>
+                </g>
+                <g class="node" transform="translate(198.33333333333334,490.9928448027075)">
+                    <rect height="161.8846153846154" width="8" id="r60" shape-rendering="crispEdges"
+                          style="fill: rgb(0, 255, 0); fill-opacity: 1; stroke-width: 0; stroke: rgb(0, 124, 0);">
+                        <title>Unverbrauchte Fläche:
+                            23
+                        </title>
+                    </rect>
+                    <text x="14" y="80.9423076923077" dy=".35em" text-anchor="start"
+                          style="stroke-width: 0; font-family: sans-serif; font-size: 12px; font-weight: 400; fill: rgb(0, 0, 0);">
+                        Unverbrauchte Fläche
+                    </text>
+                </g>
+                <g class="node" transform="translate(0,255.01464016780508)">
+                    <rect height="366" width="8" id="r61" shape-rendering="crispEdges"
+                          style="fill: rgb(49, 130, 189); fill-opacity: 1; stroke-width: 0; stroke: rgb(24, 63, 92);">
+                        <title>Gesamtfläche:
+                            52
+                        </title>
+                    </rect>
+                    <text x="14" y="183" dy=".35em" text-anchor="start"
+                          style="stroke-width: 0; font-family: sans-serif; font-size: 12px; font-weight: 400; fill: rgb(0, 0, 0);">
+                        Gesamtfläche
+                    </text>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
