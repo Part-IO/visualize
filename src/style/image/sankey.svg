@@ -1,5 +1,5 @@
 <svg id="sankey_svg" width="100%" viewBox="0 0 900 900" xmlns="http://www.w3.org/2000/svg" version="1.1">
-    <title>Your Diagram Title
+    <title>Kategorisierung
     </title><!-- Generated with SankeyMATIC on Sun Jan 23 2022 00:23:13 GMT+0100 (Mitteleuropäische Normalzeit)-->
     <g>
         <rect width="100%" height="100%" fill="transparent"></rect>
@@ -8,427 +8,427 @@
                 <path class="link"
                       d="M8,357.0723324754974C103.16666666666667,357.0723324754974 103.16666666666667,331.8004485352403 198.33333333333334,331.8004485352403"
                       style="fill: none; stroke-width: 204.115; stroke: rgb(49, 130, 189); stroke-opacity: 0.4;">
-                    <title>Gesamtfläche &#8594; Verbrauchte Fläche:
+                    <title>Gesamtfläche -> Verbrauchte Fläche:
                         29
                     </title>
                 </path>
                 <path class="link"
                       d="M8,540.0723324754974C103.16666666666667,540.0723324754974 103.16666666666667,571.9351524950152 198.33333333333334,571.9351524950152"
                       style="fill: none; stroke-width: 161.885; stroke: rgb(49, 130, 189); stroke-opacity: 0.4;">
-                    <title>Gesamtfläche &#8594; Unverbrauchte Fläche:
+                    <title>Gesamtfläche -> Unverbrauchte Fläche:
                         23
                     </title>
                 </path>
                 <path class="link"
                       d="M206.33333333333334,547.3005371103998C301.5,547.3005371103998 301.5,569.3393099541041 396.6666666666667,569.3393099541041"
                       style="fill: none; stroke-width: 112.615; stroke: rgb(0, 255, 0); stroke-opacity: 0.4;">
-                    <title>Unverbrauchte Fläche &#8594; Natur:
+                    <title>Unverbrauchte Fläche -> Natur:
                         16
                     </title>
                 </path>
                 <path class="link"
                       d="M206.33333333333334,342.35814084293264C301.5,342.35814084293264 301.5,321.26759533777164 396.6666666666667,321.26759533777164"
                       style="fill: none; stroke-width: 70.3846; stroke: rgb(255, 0, 0); stroke-opacity: 0.4;">
-                    <title>Verbrauchte Fläche &#8594; Sonstiges:
+                    <title>Verbrauchte Fläche -> Sonstiges:
                         10
                     </title>
                 </path>
                 <path class="link"
                       d="M206.33333333333334,275.492756227548C301.5,275.492756227548 301.5,227.5580773858221 396.6666666666667,227.5580773858221"
                       style="fill: none; stroke-width: 63.3462; stroke: rgb(255, 0, 0); stroke-opacity: 0.4;">
-                    <title>Verbrauchte Fläche &#8594; Industrie/Gewerbe:
+                    <title>Verbrauchte Fläche -> Industrie/Gewerbe:
                         9
                     </title>
                 </path>
                 <path class="link"
                       d="M206.33333333333334,405.70429468908645C301.5,405.70429468908645 301.5,410.0450333975133 396.6666666666667,410.0450333975133"
                       style="fill: none; stroke-width: 56.3077; stroke: rgb(255, 0, 0); stroke-opacity: 0.4;">
-                    <title>Verbrauchte Fläche &#8594; Verkehrsflächen:
+                    <title>Verbrauchte Fläche -> Verkehrsflächen:
                         8
                     </title>
                 </path>
                 <path class="link"
                       d="M206.33333333333334,617.6851524950152C301.5,617.6851524950152 301.5,667.9809077982616 396.6666666666667,667.9809077982616"
                       style="fill: none; stroke-width: 28.1538; stroke: rgb(0, 255, 0); stroke-opacity: 0.4;">
-                    <title>Unverbrauchte Fläche &#8594; Wasser:
+                    <title>Unverbrauchte Fläche -> Wasser:
                         4
                     </title>
                 </path>
                 <path class="link"
                       d="M206.33333333333334,642.3197678796306C301.5,642.3197678796306 301.5,702.6155231828769 396.6666666666667,702.6155231828769"
                       style="fill: none; stroke-width: 21.1154; stroke: rgb(0, 255, 0); stroke-opacity: 0.4;">
-                    <title>Unverbrauchte Fläche &#8594; Bergbau:
+                    <title>Unverbrauchte Fläche -> Bergbau:
                         3
                     </title>
                 </path>
                 <path class="link"
                       d="M206.33333333333334,236.78121776600958C301.5,236.78121776600958 301.5,173.30519857153553 396.6666666666667,173.30519857153553"
                       style="fill: none; stroke-width: 14.0769; stroke: rgb(255, 0, 0); stroke-opacity: 0.4;">
-                    <title>Verbrauchte Fläche &#8594; Wohnfläche:
+                    <title>Verbrauchte Fläche -> Wohnfläche:
                         2
                     </title>
                 </path>
                 <path class="link"
                       d="M404.6666666666667,169.78596780230475C499.83333333333337,169.78596780230475 499.83333333333337,3.519230769230357 595,3.519230769230357"
                       style="fill: none; stroke-width: 7.03846; stroke: rgb(255, 55, 95); stroke-opacity: 0.4;">
-                    <title>Wohnfläche &#8594; Wohnen:
+                    <title>Wohnfläche -> Wohnen:
                         1
                     </title>
                 </path>
                 <path class="link"
                       d="M404.6666666666667,176.8244293407663C499.83333333333337,176.8244293407663 499.83333333333337,20.55769230769189 595,20.55769230769189"
                       style="fill: none; stroke-width: 7.03846; stroke: rgb(255, 55, 95); stroke-opacity: 0.4;">
-                    <title>Wohnfläche &#8594; 11000 Wohnbaufläche:
+                    <title>Wohnfläche -> 11000 Wohnbaufläche:
                         1
                     </title>
                 </path>
                 <path class="link"
                       d="M404.6666666666667,199.40423123197593C499.83333333333337,199.40423123197593 499.83333333333337,37.596153846153406 595,37.596153846153406"
                       style="fill: none; stroke-width: 7.03846; stroke: rgb(255, 159, 10); stroke-opacity: 0.4;">
-                    <title>Industrie/Gewerbe &#8594; Gewerbe, Industrie:
+                    <title>Industrie/Gewerbe -> Gewerbe, Industrie:
                         1
                     </title>
                 </path>
                 <path class="link"
                       d="M404.6666666666667,206.44269277043747C499.83333333333337,206.44269277043747 499.83333333333337,54.63461538461495 595,54.63461538461495"
                       style="fill: none; stroke-width: 7.03846; stroke: rgb(255, 159, 10); stroke-opacity: 0.4;">
-                    <title>Industrie/Gewerbe &#8594; Betriebsfläche (ohne Abbauland):
+                    <title>Industrie/Gewerbe -> Betriebsfläche (ohne Abbauland):
                         1
                     </title>
                 </path>
                 <path class="link"
                       d="M404.6666666666667,213.481154308899C499.83333333333337,213.481154308899 499.83333333333337,71.67307692307651 595,71.67307692307651"
                       style="fill: none; stroke-width: 7.03846; stroke: rgb(255, 159, 10); stroke-opacity: 0.4;">
-                    <title>Industrie/Gewerbe &#8594; Flächen anderer Nutzung (ohne Unland, Friedhof):
+                    <title>Industrie/Gewerbe -> Flächen anderer Nutzung (ohne Unland, Friedhof):
                         1
                     </title>
                 </path>
                 <path class="link"
                       d="M404.6666666666667,220.51961584736054C499.83333333333337,220.51961584736054 499.83333333333337,88.71153846153805 595,88.71153846153805"
                       style="fill: none; stroke-width: 7.03846; stroke: rgb(255, 159, 10); stroke-opacity: 0.4;">
-                    <title>Industrie/Gewerbe &#8594; 12100 Industrie und Gewerbe:
+                    <title>Industrie/Gewerbe -> 12100 Industrie und Gewerbe:
                         1
                     </title>
                 </path>
                 <path class="link"
                       d="M404.6666666666667,227.5580773858221C499.83333333333337,227.5580773858221 499.83333333333337,105.7499999999996 595,105.7499999999996"
                       style="fill: none; stroke-width: 7.03846; stroke: rgb(255, 159, 10); stroke-opacity: 0.4;">
-                    <title>Industrie/Gewerbe &#8594; 12200 Handel und Dienstleistung:
+                    <title>Industrie/Gewerbe -> 12200 Handel und Dienstleistung:
                         1
                     </title>
                 </path>
                 <path class="link"
                       d="M404.6666666666667,234.5965389242836C499.83333333333337,234.5965389242836 499.83333333333337,122.78846153846115 595,122.78846153846115"
                       style="fill: none; stroke-width: 7.03846; stroke: rgb(255, 159, 10); stroke-opacity: 0.4;">
-                    <title>Industrie/Gewerbe &#8594; 12300 Versorgungsanlage:
+                    <title>Industrie/Gewerbe -> 12300 Versorgungsanlage:
                         1
                     </title>
                 </path>
                 <path class="link"
                       d="M404.6666666666667,241.63500046274515C499.83333333333337,241.63500046274515 499.83333333333337,139.8269230769227 595,139.8269230769227"
                       style="fill: none; stroke-width: 7.03846; stroke: rgb(255, 159, 10); stroke-opacity: 0.4;">
-                    <title>Industrie/Gewerbe &#8594; 12400 Entsorgung:
+                    <title>Industrie/Gewerbe -> 12400 Entsorgung:
                         1
                     </title>
                 </path>
                 <path class="link"
                       d="M404.6666666666667,248.6734620012067C499.83333333333337,248.6734620012067 499.83333333333337,156.86538461538424 595,156.86538461538424"
                       style="fill: none; stroke-width: 7.03846; stroke: rgb(255, 159, 10); stroke-opacity: 0.4;">
-                    <title>Industrie/Gewerbe &#8594; 13000 Halde:
+                    <title>Industrie/Gewerbe -> 13000 Halde:
                         1
                     </title>
                 </path>
                 <path class="link"
                       d="M404.6666666666667,255.71192353966825C499.83333333333337,255.71192353966825 499.83333333333337,173.9038461538458 595,173.9038461538458"
                       style="fill: none; stroke-width: 7.03846; stroke: rgb(255, 159, 10); stroke-opacity: 0.4;">
-                    <title>Industrie/Gewerbe &#8594; 17000 Fläche besonderer funktionaler Prägung:
+                    <title>Industrie/Gewerbe -> 17000 Fläche besonderer funktionaler Prägung:
                         1
                     </title>
                 </path>
                 <path class="link"
                       d="M404.6666666666667,289.59451841469473C499.83333333333337,289.59451841469473 499.83333333333337,190.94230769230734 595,190.94230769230734"
                       style="fill: none; stroke-width: 7.03846; stroke: rgb(255, 214, 10); stroke-opacity: 0.4;">
-                    <title>Sonstiges &#8594; Grünanlage:
+                    <title>Sonstiges -> Grünanlage:
                         1
                     </title>
                 </path>
                 <path class="link"
                       d="M404.6666666666667,296.6329799531563C499.83333333333337,296.6329799531563 499.83333333333337,207.98076923076889 595,207.98076923076889"
                       style="fill: none; stroke-width: 7.03846; stroke: rgb(255, 214, 10); stroke-opacity: 0.4;">
-                    <title>Sonstiges &#8594; Friedhof:
+                    <title>Sonstiges -> Friedhof:
                         1
                     </title>
                 </path>
                 <path class="link"
                       d="M404.6666666666667,303.6714414916178C499.83333333333337,303.6714414916178 499.83333333333337,225.01923076923043 595,225.01923076923043"
                       style="fill: none; stroke-width: 7.03846; stroke: rgb(255, 214, 10); stroke-opacity: 0.4;">
-                    <title>Sonstiges &#8594; sonstige Erholungsfläche:
+                    <title>Sonstiges -> sonstige Erholungsfläche:
                         1
                     </title>
                 </path>
                 <path class="link"
                       d="M404.6666666666667,310.7099030300794C499.83333333333337,310.7099030300794 499.83333333333337,242.05769230769198 595,242.05769230769198"
                       style="fill: none; stroke-width: 7.03846; stroke: rgb(255, 214, 10); stroke-opacity: 0.4;">
-                    <title>Sonstiges &#8594; sonstige Gebäude- und Freifläche:
+                    <title>Sonstiges -> sonstige Gebäude- und Freifläche:
                         1
                     </title>
                 </path>
                 <path class="link"
                       d="M404.6666666666667,317.74836456854086C499.83333333333337,317.74836456854086 499.83333333333337,259.0961538461535 595,259.0961538461535"
                       style="fill: none; stroke-width: 7.03846; stroke: rgb(255, 214, 10); stroke-opacity: 0.4;">
-                    <title>Sonstiges &#8594; 16000 Fläche gemischter Nutzung:
+                    <title>Sonstiges -> 16000 Fläche gemischter Nutzung:
                         1
                     </title>
                 </path>
                 <path class="link"
                       d="M404.6666666666667,324.7868261070024C499.83333333333337,324.7868261070024 499.83333333333337,276.1346153846151 595,276.1346153846151"
                       style="fill: none; stroke-width: 7.03846; stroke: rgb(255, 214, 10); stroke-opacity: 0.4;">
-                    <title>Sonstiges &#8594; 18100 Sportanlage:
+                    <title>Sonstiges -> 18100 Sportanlage:
                         1
                     </title>
                 </path>
                 <path class="link"
                       d="M404.6666666666667,331.82528764546396C499.83333333333337,331.82528764546396 499.83333333333337,293.1730769230766 595,293.1730769230766"
                       style="fill: none; stroke-width: 7.03846; stroke: rgb(255, 214, 10); stroke-opacity: 0.4;">
-                    <title>Sonstiges &#8594; 18200 Freizeitanlage:
+                    <title>Sonstiges -> 18200 Freizeitanlage:
                         1
                     </title>
                 </path>
                 <path class="link"
                       d="M404.6666666666667,338.8637491839255C499.83333333333337,338.8637491839255 499.83333333333337,310.21153846153817 595,310.21153846153817"
                       style="fill: none; stroke-width: 7.03846; stroke: rgb(255, 214, 10); stroke-opacity: 0.4;">
-                    <title>Sonstiges &#8594; 18300 Erholungsfläche:
+                    <title>Sonstiges -> 18300 Erholungsfläche:
                         1
                     </title>
                 </path>
                 <path class="link"
                       d="M404.6666666666667,345.90221072238705C499.83333333333337,345.90221072238705 499.83333333333337,327.2499999999997 595,327.2499999999997"
                       style="fill: none; stroke-width: 7.03846; stroke: rgb(255, 214, 10); stroke-opacity: 0.4;">
-                    <title>Sonstiges &#8594; 18400 Grünanlage:
+                    <title>Sonstiges -> 18400 Grünanlage:
                         1
                     </title>
                 </path>
                 <path class="link"
                       d="M404.6666666666667,352.9406722608486C499.83333333333337,352.9406722608486 499.83333333333337,344.28846153846126 595,344.28846153846126"
                       style="fill: none; stroke-width: 7.03846; stroke: rgb(255, 214, 10); stroke-opacity: 0.4;">
-                    <title>Sonstiges &#8594; 19000 Friedhof:
+                    <title>Sonstiges -> 19000 Friedhof:
                         1
                     </title>
                 </path>
                 <path class="link"
                       d="M404.6666666666667,385.41041801289794C499.83333333333337,385.41041801289794 499.83333333333337,361.3269230769228 595,361.3269230769228"
                       style="fill: none; stroke-width: 7.03846; stroke: rgb(142, 142, 147); stroke-opacity: 0.4;">
-                    <title>Verkehrsflächen &#8594; Straße, Weg, Platz:
+                    <title>Verkehrsflächen -> Straße, Weg, Platz:
                         1
                     </title>
                 </path>
                 <path class="link"
                       d="M404.6666666666667,392.4488795513595C499.83333333333337,392.4488795513595 499.83333333333337,378.36538461538436 595,378.36538461538436"
                       style="fill: none; stroke-width: 7.03846; stroke: rgb(142, 142, 147); stroke-opacity: 0.4;">
-                    <title>Verkehrsflächen &#8594; sonstige Verkehrsfläche:
+                    <title>Verkehrsflächen -> sonstige Verkehrsfläche:
                         1
                     </title>
                 </path>
                 <path class="link"
                       d="M404.6666666666667,399.48734108982103C499.83333333333337,399.48734108982103 499.83333333333337,395.4038461538459 595,395.4038461538459"
                       style="fill: none; stroke-width: 7.03846; stroke: rgb(142, 142, 147); stroke-opacity: 0.4;">
-                    <title>Verkehrsflächen &#8594; 21000 Straßenverkehr:
+                    <title>Verkehrsflächen -> 21000 Straßenverkehr:
                         1
                     </title>
                 </path>
                 <path class="link"
                       d="M404.6666666666667,406.5258026282825C499.83333333333337,406.5258026282825 499.83333333333337,412.44230769230745 595,412.44230769230745"
                       style="fill: none; stroke-width: 7.03846; stroke: rgb(142, 142, 147); stroke-opacity: 0.4;">
-                    <title>Verkehrsflächen &#8594; 22000 Weg:
+                    <title>Verkehrsflächen -> 22000 Weg:
                         1
                     </title>
                 </path>
                 <path class="link"
                       d="M404.6666666666667,413.56426416674407C499.83333333333337,413.56426416674407 499.83333333333337,429.480769230769 595,429.480769230769"
                       style="fill: none; stroke-width: 7.03846; stroke: rgb(142, 142, 147); stroke-opacity: 0.4;">
-                    <title>Verkehrsflächen &#8594; 23000 Platz:
+                    <title>Verkehrsflächen -> 23000 Platz:
                         1
                     </title>
                 </path>
                 <path class="link"
                       d="M404.6666666666667,420.6027257052056C499.83333333333337,420.6027257052056 499.83333333333337,446.51923076923055 595,446.51923076923055"
                       style="fill: none; stroke-width: 7.03846; stroke: rgb(142, 142, 147); stroke-opacity: 0.4;">
-                    <title>Verkehrsflächen &#8594; 24000 Bahnverkehr:
+                    <title>Verkehrsflächen -> 24000 Bahnverkehr:
                         1
                     </title>
                 </path>
                 <path class="link"
                       d="M404.6666666666667,427.64118724366716C499.83333333333337,427.64118724366716 499.83333333333337,463.5576923076921 595,463.5576923076921"
                       style="fill: none; stroke-width: 7.03846; stroke: rgb(142, 142, 147); stroke-opacity: 0.4;">
-                    <title>Verkehrsflächen &#8594; 25000 Flugverkehr:
+                    <title>Verkehrsflächen -> 25000 Flugverkehr:
                         1
                     </title>
                 </path>
                 <path class="link"
                       d="M404.6666666666667,434.6796487821287C499.83333333333337,434.6796487821287 499.83333333333337,480.59615384615364 595,480.59615384615364"
                       style="fill: none; stroke-width: 7.03846; stroke: rgb(142, 142, 147); stroke-opacity: 0.4;">
-                    <title>Verkehrsflächen &#8594; 26000 Schiffsverkehr:
+                    <title>Verkehrsflächen -> 26000 Schiffsverkehr:
                         1
                     </title>
                 </path>
                 <path class="link"
                       d="M404.6666666666667,516.5508484156426C499.83333333333337,516.5508484156426 499.83333333333337,497.6346153846152 595,497.6346153846152"
                       style="fill: none; stroke-width: 7.03846; stroke: rgb(48, 209, 88); stroke-opacity: 0.4;">
-                    <title>Natur &#8594; Moor:
+                    <title>Natur -> Moor:
                         1
                     </title>
                 </path>
                 <path class="link"
                       d="M404.6666666666667,523.5893099541041C499.83333333333337,523.5893099541041 499.83333333333337,514.6730769230767 595,514.6730769230767"
                       style="fill: none; stroke-width: 7.03846; stroke: rgb(48, 209, 88); stroke-opacity: 0.4;">
-                    <title>Natur &#8594; Landwirtschaftsfläche (ohne Moor, Heide):
+                    <title>Natur -> Landwirtschaftsfläche (ohne Moor, Heide):
                         1
                     </title>
                 </path>
                 <path class="link"
                       d="M404.6666666666667,530.6277714925657C499.83333333333337,530.6277714925657 499.83333333333337,531.7115384615382 595,531.7115384615382"
                       style="fill: none; stroke-width: 7.03846; stroke: rgb(48, 209, 88); stroke-opacity: 0.4;">
-                    <title>Natur &#8594; Heide:
+                    <title>Natur -> Heide:
                         1
                     </title>
                 </path>
                 <path class="link"
                       d="M404.6666666666667,537.6662330310272C499.83333333333337,537.6662330310272 499.83333333333337,548.7499999999998 595,548.7499999999998"
                       style="fill: none; stroke-width: 7.03846; stroke: rgb(48, 209, 88); stroke-opacity: 0.4;">
-                    <title>Natur &#8594; Waldfläche:
+                    <title>Natur -> Waldfläche:
                         1
                     </title>
                 </path>
                 <path class="link"
                       d="M404.6666666666667,544.7046945694888C499.83333333333337,544.7046945694888 499.83333333333337,565.7884615384613 595,565.7884615384613"
                       style="fill: none; stroke-width: 7.03846; stroke: rgb(48, 209, 88); stroke-opacity: 0.4;">
-                    <title>Natur &#8594; Unland:
+                    <title>Natur -> Unland:
                         1
                     </title>
                 </path>
                 <path class="link"
                       d="M404.6666666666667,551.7431561079503C499.83333333333337,551.7431561079503 499.83333333333337,582.8269230769229 595,582.8269230769229"
                       style="fill: none; stroke-width: 7.03846; stroke: rgb(48, 209, 88); stroke-opacity: 0.4;">
-                    <title>Natur &#8594; 31100 Ackerland:
+                    <title>Natur -> 31100 Ackerland:
                         1
                     </title>
                 </path>
                 <path class="link"
                       d="M404.6666666666667,558.7816176464119C499.83333333333337,558.7816176464119 499.83333333333337,599.8653846153844 595,599.8653846153844"
                       style="fill: none; stroke-width: 7.03846; stroke: rgb(48, 209, 88); stroke-opacity: 0.4;">
-                    <title>Natur &#8594; 31200 Grünland:
+                    <title>Natur -> 31200 Grünland:
                         1
                     </title>
                 </path>
                 <path class="link"
                       d="M404.6666666666667,565.8200791848733C499.83333333333337,565.8200791848733 499.83333333333337,616.903846153846 595,616.903846153846"
                       style="fill: none; stroke-width: 7.03846; stroke: rgb(48, 209, 88); stroke-opacity: 0.4;">
-                    <title>Natur &#8594; 31300 Gartenland:
+                    <title>Natur -> 31300 Gartenland:
                         1
                     </title>
                 </path>
                 <path class="link"
                       d="M404.6666666666667,572.8585407233348C499.83333333333337,572.8585407233348 499.83333333333337,633.9423076923075 595,633.9423076923075"
                       style="fill: none; stroke-width: 7.03846; stroke: rgb(48, 209, 88); stroke-opacity: 0.4;">
-                    <title>Natur &#8594; 31400 Weingarten:
+                    <title>Natur -> 31400 Weingarten:
                         1
                     </title>
                 </path>
                 <path class="link"
                       d="M404.6666666666667,579.8970022617964C499.83333333333337,579.8970022617964 499.83333333333337,650.980769230769 595,650.980769230769"
                       style="fill: none; stroke-width: 7.03846; stroke: rgb(48, 209, 88); stroke-opacity: 0.4;">
-                    <title>Natur &#8594; 31500 Obstplantage:
+                    <title>Natur -> 31500 Obstplantage:
                         1
                     </title>
                 </path>
                 <path class="link"
                       d="M404.6666666666667,586.9354638002579C499.83333333333337,586.9354638002579 499.83333333333337,668.0192307692306 595,668.0192307692306"
                       style="fill: none; stroke-width: 7.03846; stroke: rgb(48, 209, 88); stroke-opacity: 0.4;">
-                    <title>Natur &#8594; 32000 Wald:
+                    <title>Natur -> 32000 Wald:
                         1
                     </title>
                 </path>
                 <path class="link"
                       d="M404.6666666666667,593.9739253387195C499.83333333333337,593.9739253387195 499.83333333333337,685.0576923076922 595,685.0576923076922"
                       style="fill: none; stroke-width: 7.03846; stroke: rgb(48, 209, 88); stroke-opacity: 0.4;">
-                    <title>Natur &#8594; 33000 Gehölz:
+                    <title>Natur -> 33000 Gehölz:
                         1
                     </title>
                 </path>
                 <path class="link"
                       d="M404.6666666666667,601.012386877181C499.83333333333337,601.012386877181 499.83333333333337,702.0961538461537 595,702.0961538461537"
                       style="fill: none; stroke-width: 7.03846; stroke: rgb(48, 209, 88); stroke-opacity: 0.4;">
-                    <title>Natur &#8594; 34000 Heide:
+                    <title>Natur -> 34000 Heide:
                         1
                     </title>
                 </path>
                 <path class="link"
                       d="M404.6666666666667,608.0508484156426C499.83333333333337,608.0508484156426 499.83333333333337,719.1346153846152 595,719.1346153846152"
                       style="fill: none; stroke-width: 7.03846; stroke: rgb(48, 209, 88); stroke-opacity: 0.4;">
-                    <title>Natur &#8594; 35000 Moor:
+                    <title>Natur -> 35000 Moor:
                         1
                     </title>
                 </path>
                 <path class="link"
                       d="M404.6666666666667,615.0893099541041C499.83333333333337,615.0893099541041 499.83333333333337,736.1730769230768 595,736.1730769230768"
                       style="fill: none; stroke-width: 7.03846; stroke: rgb(48, 209, 88); stroke-opacity: 0.4;">
-                    <title>Natur &#8594; 36000 Sumpf:
+                    <title>Natur -> 36000 Sumpf:
                         1
                     </title>
                 </path>
                 <path class="link"
                       d="M404.6666666666667,622.1277714925657C499.83333333333337,622.1277714925657 499.83333333333337,753.2115384615383 595,753.2115384615383"
                       style="fill: none; stroke-width: 7.03846; stroke: rgb(48, 209, 88); stroke-opacity: 0.4;">
-                    <title>Natur &#8594; 37000 Unland, Vegetationslose Fläche:
+                    <title>Natur -> 37000 Unland, Vegetationslose Fläche:
                         1
                     </title>
                 </path>
                 <path class="link"
                       d="M404.6666666666667,657.4232154905692C499.83333333333337,657.4232154905692 499.83333333333337,770.2499999999999 595,770.2499999999999"
                       style="fill: none; stroke-width: 7.03846; stroke: rgb(10, 132, 255); stroke-opacity: 0.4;">
-                    <title>Wasser &#8594; Wasserfläche:
+                    <title>Wasser -> Wasserfläche:
                         1
                     </title>
                 </path>
                 <path class="link"
                       d="M404.6666666666667,664.4616770290307C499.83333333333337,664.4616770290307 499.83333333333337,787.2884615384614 595,787.2884615384614"
                       style="fill: none; stroke-width: 7.03846; stroke: rgb(10, 132, 255); stroke-opacity: 0.4;">
-                    <title>Wasser &#8594; 42000 Hafenbecken:
+                    <title>Wasser -> 42000 Hafenbecken:
                         1
                     </title>
                 </path>
                 <path class="link"
                       d="M404.6666666666667,671.5001385674923C499.83333333333337,671.5001385674923 499.83333333333337,804.326923076923 595,804.326923076923"
                       style="fill: none; stroke-width: 7.03846; stroke: rgb(10, 132, 255); stroke-opacity: 0.4;">
-                    <title>Wasser &#8594; 41000 Fließgewässer:
+                    <title>Wasser -> 41000 Fließgewässer:
                         1
                     </title>
                 </path>
                 <path class="link"
                       d="M404.6666666666667,678.5386001059538C499.83333333333337,678.5386001059538 499.83333333333337,821.3653846153845 595,821.3653846153845"
                       style="fill: none; stroke-width: 7.03846; stroke: rgb(10, 132, 255); stroke-opacity: 0.4;">
-                    <title>Wasser &#8594; 43000 Stehendes Gewässer:
+                    <title>Wasser -> 43000 Stehendes Gewässer:
                         1
                     </title>
                 </path>
                 <path class="link"
                       d="M404.6666666666667,695.5770616444154C499.83333333333337,695.5770616444154 499.83333333333337,838.4038461538461 595,838.4038461538461"
                       style="fill: none; stroke-width: 7.03846; stroke: rgb(191, 90, 242); stroke-opacity: 0.4;">
-                    <title>Bergbau &#8594; Abbauland:
+                    <title>Bergbau -> Abbauland:
                         1
                     </title>
                 </path>
                 <path class="link"
                       d="M404.6666666666667,702.6155231828769C499.83333333333337,702.6155231828769 499.83333333333337,855.4423076923076 595,855.4423076923076"
                       style="fill: none; stroke-width: 7.03846; stroke: rgb(191, 90, 242); stroke-opacity: 0.4;">
-                    <title>Bergbau &#8594; 14000 Bergbaubetrieb:
+                    <title>Bergbau -> 14000 Bergbaubetrieb:
                         1
                     </title>
                 </path>
                 <path class="link"
                       d="M404.6666666666667,709.6539847213385C499.83333333333337,709.6539847213385 499.83333333333337,872.4807692307692 595,872.4807692307692"
                       style="fill: none; stroke-width: 7.03846; stroke: rgb(191, 90, 242); stroke-opacity: 0.4;">
-                    <title>Bergbau &#8594; 15000 Tagebau, Grube, Steinbruch:
+                    <title>Bergbau -> 15000 Tagebau, Grube, Steinbruch:
                         1
                     </title>
                 </path>
