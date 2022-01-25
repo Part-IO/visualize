@@ -1,9 +1,10 @@
 import { useMemo } from "react";
 import Chart from "react-apexcharts";
 import { ApexOptions } from "apexcharts";
-import { IData, longNameMap } from "../utils/Helper";
+import { IData } from "../utils/Helper";
 import RBDataYear from "../data/RBYear.json";
 import LKDataYear from "../data/LKYear.json";
+import { longNameMap } from "../utils/LookUp";
 
 const StackedBarComponent = ({
     getYear,
@@ -47,6 +48,7 @@ const StackedBarComponent = ({
                 "var(--color-gray-1)",
                 "var(--color-green)",
                 "var(--color-blue)",
+                "var(--color-purple)",
             ],
             chart: {
                 toolbar: {
@@ -65,7 +67,7 @@ const StackedBarComponent = ({
                     },
                     dynamicAnimation: {
                         enabled: true,
-                        speed: 150,
+                        speed: 350,
                     },
                 },
                 background: "rgba(0,0,0,0)",

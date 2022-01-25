@@ -1,6 +1,6 @@
 /*Color scheme*/
 :root {
-    --duration: 0.5s;
+    --duration: 0.2s;
     --timing: ease;
     --color-gray-1: rgb(142, 142, 147); /* Tarnsport */
     --color-gray-2: rgb(174, 174, 178);
@@ -109,6 +109,17 @@ body {
 
 ::-webkit-scrollbar {
     display: none;
+}
+
+* {
+    -webkit-transition: color var(--duration) var(--timing),
+        background-color var(--duration) var(--timing) background var(--duration) var(--timing);
+    -moz-transition: color var(--duration) var(--timing),
+        background-color var(--duration) var(--timing) background var(--duration) var(--timing);
+    -o-transition: color var(--duration) var(--timing),
+        background-color var(--duration) var(--timing) background var(--duration) var(--timing);
+    transition: color var(--duration) var(--timing),
+        background-color var(--duration) var(--timing) background var(--duration) var(--timing);
 }
 
 code {
