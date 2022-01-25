@@ -1,6 +1,6 @@
 import Chart from "react-apexcharts";
 import { ApexOptions } from "apexcharts";
-import { useMemo } from "react";
+import { Dispatch, SetStateAction, useMemo } from "react";
 import data from "../data/data.json";
 import { ICLickedLK } from "./MainComponent";
 import { IDataEntry } from "../utils/Helper";
@@ -11,12 +11,14 @@ const LineGraphComponent = ({
     isDark,
     handleModalClick,
     handleModalClick2,
+    setCurrentYear,
 }: {
     getClickedLK: ICLickedLK;
     getCurrentYear: number;
     isDark: boolean;
     handleModalClick: () => void;
     handleModalClick2: () => void;
+    setCurrentYear: Dispatch<SetStateAction<number>>;
 }): JSX.Element => {
     const getSelectedData = useMemo(() => {
         return data.filter((entry: IDataEntry) => entry.AGS == parseInt(getClickedLK.AGS));
@@ -53,9 +55,11 @@ const LineGraphComponent = ({
                 },
                 background: "rgba(0,0,0,0)",
                 events: {
+                    markerClick: (event, chartContext, config) => {
+                        const date = new Date(chartContext.data.twoDSeriesX[config.dataPointIndex]).getFullYear();
+                        setCurrentYear(Math.round(date / 4) * 4);
+                    },
                     click: (e) => {
-                        console.log('"' + e.target.innerHTML + '"');
-                        // The extra spaces are deliberate to discern the two annotations
                         if (e.target.innerHTML === " ⚠ ") {
                             handleModalClick2();
                         } else if (e.target.innerHTML === "⚠") {
@@ -183,7 +187,7 @@ const LineGraphComponent = ({
                 mode: isDark ? "dark" : "light",
             },
         };
-    }, [getCurrentYear, isDark, handleModalClick, handleModalClick2]);
+    }, [getCurrentYear, isDark, handleModalClick, handleModalClick2, setCurrentYear]);
 
     return <Chart options={options} series={usedAreaSeries} type="line" height={"100%"} width={"100%"} />;
 };
