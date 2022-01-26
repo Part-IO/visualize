@@ -51,9 +51,17 @@ const WelcomeComponent = (): JSX.Element => {
                 titleContainerRef.current.style.color = "rgb(28, 28, 30)";
             }
 
+            const titleHeight = WD.height * 0.15;
+            const subTitleHeight = WD.height * 0.05;
             titleContainerRef.current.style.top = `${resize({ num: relPos, minVal: 10, maxVal: 100 })}%`;
-            subTitleRef.current.style.fontSize = `${resize({ num: 5 - relPos / 25, minVal: 1.5 })}vh`;
-            titleRef.current.style.fontSize = `${resize({ num: 15 - relPos / 8, minVal: 4 })}vh`;
+            subTitleRef.current.style.fontSize = `${resize({
+                num: subTitleHeight - ((subTitleHeight - 16) / 100) * relPos,
+                minVal: 16,
+            })}px`;
+            titleRef.current.style.fontSize = `${resize({
+                num: titleHeight - ((titleHeight - 45) / 100) * relPos,
+                minVal: 45,
+            })}px`;
             quoteRef.current.style.opacity = `${100 - relPos * 3}%`;
             mouseRef.current.style.opacity = `${100 - relPos * 2}%`;
             (document.getElementById("required-links") as HTMLDivElement).style.opacity = `${100 - relPos}%`;

@@ -1,5 +1,5 @@
 .header-button-container {
-    margin-right: 20px;
+    margin: 0 20px;
     position: relative;
     display: flex;
     float: right;
@@ -7,7 +7,7 @@
     height: 80px;
     justify-content: space-between;
     align-items: center;
-    width: 270px;
+    min-width: 270px;
 
     .switch-theme-button {
         display: inline-block;
@@ -38,6 +38,11 @@
         cursor: pointer;
         text-align: center;
         font-family: "Liberation Mono", monospace;
+
+        &:before {
+            content: "i";
+            margin: auto;
+        }
 
         &:hover {
             background: var(--color-black);

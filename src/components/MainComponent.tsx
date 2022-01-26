@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useLayoutEffect, useMemo, useState } from "react";
 import DistrictStepComponent from "./DistrictStepComponent";
 import "../style/MainComponent.scss";
 import TimeLineComponent from "./TimeLineComponent";
@@ -91,6 +91,27 @@ const MainComponent = ({ isDark, isAbsolute }: { isDark: boolean; isAbsolute: bo
             document.body.style.overflow = "unset";
         }
     });
+
+    function useWindowSize() {
+        const [size, setSize] = useState([0, 0]);
+        useLayoutEffect(() => {
+            function updateSize() {
+                setSize([window.innerWidth, window.innerHeight]);
+            }
+
+            window.addEventListener("resize", updateSize);
+            updateSize();
+            return () => window.removeEventListener("resize", updateSize);
+        }, []);
+        return size;
+    }
+
+    function ShowWindowDimensions() {
+        const windowSize = useWindowSize();
+        return windowSize;
+    }
+
+    ShowWindowDimensions();
 
     const textValue: JSX.Element = (
         <>

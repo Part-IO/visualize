@@ -20,10 +20,10 @@ const HeaderButtons = ({
 
     useEffect(() => {
         const mapContainer = document.getElementById("right_content_container");
-        if (mapContainer && headerButtonContainer.current) {
-            const containerWidth = mapContainer.offsetWidth;
-            headerButtonContainer.current.style.width = `${containerWidth > 270 ? containerWidth : 270}px`;
-        }
+        const containerWidth = (mapContainer as HTMLDivElement).offsetWidth;
+        (headerButtonContainer.current as HTMLDivElement).style.width = `${
+            containerWidth > 270 ? containerWidth : 270
+        }px`;
     }, [width, height]);
 
     const switchOptions = [
@@ -55,9 +55,7 @@ const HeaderButtons = ({
                         selectionIndicatorMargin={-0.7}
                     />
                 </div>
-                <button onClick={() => setShowPopup(true)} className={"data-info-button"}>
-                    i
-                </button>
+                <button onClick={() => setShowPopup(true)} className={"data-info-button"} />
                 <DarkModeSwitch
                     checked={isDark}
                     onChange={setIsDark}

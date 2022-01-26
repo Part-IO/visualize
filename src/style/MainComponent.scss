@@ -7,13 +7,12 @@
         justify-content: space-between;
         display: flex;
         width: 100%;
-        height: 82%;
+        height: calc(100% - 160px);
 
         .district {
             flex-basis: 7.5%;
             margin-right: 20px;
             position: sticky;
-            height: 100%;
             display: flex;
         }
 
@@ -30,7 +29,7 @@
 
             .main-view-title {
                 flex: 1 1 auto;
-                margin: 1vw;
+                margin: 8px;
                 display: inline-flex;
                 justify-content: center;
 
@@ -48,8 +47,8 @@
             .main-view-bar {
                 display: inline-block;
                 top: 0;
-                height: 75vh;
-                width: calc(100% - 1vw);
+                height: calc(100% - 50px);
+                width: calc(100% - 8px);
 
                 .apexcharts-yaxis-label {
                     font-size: 12px;
@@ -67,7 +66,6 @@
         .graphic {
             margin: 0 20px;
             flex-basis: 25%;
-            height: 100%;
             position: sticky;
             display: flex;
             flex-direction: column;
@@ -158,6 +156,7 @@
 
                 .line-chart-label-warn {
                     cursor: pointer;
+                    font-size: 3vh;
                 }
             }
         }
