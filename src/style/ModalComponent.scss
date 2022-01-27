@@ -26,6 +26,7 @@
     margin: 30vh auto auto auto;
     border-radius: 5px 5px 5px 5px;
     filter: blur(0) !important;
+    width: 80%;
 }
 
 .popup-module p {
@@ -42,6 +43,13 @@
     color: var(--color-black);
     z-index: 0;
     text-align: center;
+    text-justify: auto;
+    text-justify-trim: auto;
+    word-wrap: break-word;
+    -webkit-hyphens: auto;
+    -moz-hyphens: auto;
+    -ms-hyphens: auto;
+    hyphens: auto;
 }
 
 .popup-module .text {
@@ -134,21 +142,21 @@
     text-align: center;
     position: absolute;
     left: 22px;
-    top: -33px;
+    top: -45px;
     transform: rotate(20deg);
     color: var(--color-white);
-    font-size: 5em;
+    font-size: 88px;
 }
 
 .popup-module.danger .popup-icon:before {
     content: "!";
     text-align: center;
     position: absolute;
-    left: 20px;
-    top: -30px;
+    left: 22px;
+    top: -45px;
     transform: rotate(20deg);
     color: var(--color-white);
-    font-size: 5em;
+    font-size: 88px;
 }
 
 /* Popup info settings */

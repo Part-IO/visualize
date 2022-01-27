@@ -77,12 +77,14 @@ const MainComponent = ({ isDark, isAbsolute }: { isDark: boolean; isAbsolute: bo
     useEffect(() => {
         if (modalState || modalState2) {
             document.body.style.overflow = "hidden";
+            document.body.style.touchAction = "none";
             (document.getElementById("main-component") as HTMLDivElement).style.filter = "blur(5px)";
             (document.getElementById("welcome-container") as HTMLDivElement).style.filter = "blur(5px)";
             (document.getElementById("header-button-container") as HTMLDivElement).style.filter = "blur(5px)";
             (document.getElementById("image-author") as HTMLDivElement).style.filter = "blur(5px)";
             (document.getElementById("required-links") as HTMLDivElement).style.filter = "blur(5px)";
         } else {
+            document.body.style.touchAction = "unset";
             (document.getElementById("main-component") as HTMLDivElement).style.filter = "none";
             (document.getElementById("welcome-container") as HTMLDivElement).style.filter = "none";
             (document.getElementById("header-button-container") as HTMLDivElement).style.filter = "none";
