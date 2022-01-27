@@ -67,6 +67,7 @@
     -moz-hyphens: auto;
     -ms-hyphens: auto;
     hyphens: auto;
+    border-radius: 5px;
 }
 
 .popup-module .btn-wrap {
@@ -185,28 +186,23 @@
 
     0% {
         opacity: 0;
-        -webkit-transform: translate(0, -3000px);
         transform: translate(0, -3000px);
     }
 
     60% {
         opacity: 1;
-        -webkit-transform: translate(0, 25px);
         transform: translate(0, 25px);
     }
 
     75% {
-        -webkit-transform: translate(0, -10px);
         transform: translate(0, -10px);
     }
 
     90% {
-        -webkit-transform: translate(0, 5px);
         transform: translate(0, 5px);
     }
 
     to {
-        -webkit-transform: translate(0, 0);
         transform: translate(0, 0);
     }
 }

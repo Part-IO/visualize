@@ -1,5 +1,5 @@
 import "../style/ModalComponent.scss";
-import { useEffect, useRef } from "react";
+import { CSSProperties, useEffect, useRef } from "react";
 
 const ModalComponent = ({
     show,
@@ -9,6 +9,8 @@ const ModalComponent = ({
     button,
     modalType,
     closeButton,
+    bodyStyle,
+    wrapperStyle,
 }: {
     show: boolean;
     modalType: string;
@@ -17,6 +19,8 @@ const ModalComponent = ({
     content: JSX.Element;
     button?: JSX.Element;
     closeButton?: boolean;
+    bodyStyle?: CSSProperties;
+    wrapperStyle?: CSSProperties;
 }): JSX.Element => {
     const modalRef = useRef(null);
 
@@ -41,8 +45,8 @@ const ModalComponent = ({
     return (
         <>
             {show && (
-                <div className={modalClass}>
-                    <div className={"popup-body bounceInDown"} ref={modalRef}>
+                <div className={modalClass} style={wrapperStyle}>
+                    <div className={"popup-body bounceInDown"} style={bodyStyle} ref={modalRef}>
                         <div className={"popup-icon"} />
                         <div className={"title"}>{title}</div>
                         <div className={"text"}>{content}</div>

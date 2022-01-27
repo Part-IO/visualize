@@ -145,6 +145,7 @@ const TimeLineComponent = ({
                         if (index === 0) {
                             return (
                                 <div
+                                    key={index}
                                     id={value.toString()}
                                     className={"current"}
                                     onClick={() => {
@@ -152,19 +153,24 @@ const TimeLineComponent = ({
                                         setYear(value);
                                     }}
                                 >
-                                    <p style={{ left: "16px" }}>{value}</p>
+                                    <p key={index} style={{ left: "16px" }}>
+                                        {value}
+                                    </p>
                                 </div>
                             );
                         } else {
                             return (
                                 <div
+                                    key={index}
                                     id={value.toString()}
                                     onClick={() => {
                                         setPlayState(false);
                                         setYear(value);
                                     }}
                                 >
-                                    <p style={index === 10 ? { right: "16px" } : {}}>{value}</p>
+                                    <p key={index} style={index === 10 ? { right: "16px" } : {}}>
+                                        {value}
+                                    </p>
                                 </div>
                             );
                         }

@@ -10,7 +10,8 @@
         height: 20px;
         top: -6px;
         border-color: transparent transparent transparent var(--color-black);
-        transition: 100ms all ease;
+        transition: 100ms ease;
+        transition-property: border-bottom-width, border-top-width;
         will-change: border-width;
         cursor: pointer;
         margin: auto 0;
@@ -80,12 +81,13 @@
                         background: $current-color;
                         padding: $bullet-radius * 2.5 2px;
                         transform: translateY(-30%) translateX(-50%);
-                        transition: all 0.2s 0.15s cubic-bezier(0.175, 0.885, 0.32, 2);
+                        transition: 0.2s 0.15s cubic-bezier(0.175, 0.885, 0.32, 2);
+                        transition-property: padding-top, padding-left, padding-right, padding-top, transform;
                     }
 
                     &:after {
                         width: 0;
-                        transition: all 0.2s ease-out;
+                        transition: width 0.2s ease-out;
                     }
 
                     ~ div {
@@ -112,7 +114,7 @@
                     position: absolute;
                     top: -$gap;
                     transform: translateX(-50%) translateY(-35%);
-                    transition: all 0.2s ease;
+                    transition: padding 0.2s ease;
                     left: $gap/1.1;
                     cursor: pointer;
                     pointer-events: all;
@@ -129,7 +131,7 @@
                     left: $gap/1.1;
                     width: 101%;
                     height: $line-thick;
-                    transition: all 0.2s ease;
+                    transition: width 0.2s ease;
                 }
             }
         }

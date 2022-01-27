@@ -54,6 +54,12 @@
                     font-size: 12px;
                     fill: var(--color-black);
                 }
+
+                .apexcharts-canvas {
+                    -webkit-user-select: none;
+                    -moz-user-select: none;
+                    user-select: none;
+                }
             }
 
             .main-view-graph {
@@ -95,6 +101,18 @@
                         background-color: var(--color-gray-5);
                         opacity: 0.8;
                         color: var(--color-black);
+                    }
+
+                    .leaflet-overlay-pane svg {
+                        -webkit-user-select: none;
+                        -moz-user-select: none;
+                        user-select: none;
+                    }
+
+                    .leaflet-touch .leaflet-control-layers,
+                    .leaflet-touch .leaflet-bar {
+                        -webkit-background-clip: padding-box;
+                        background-clip: padding-box;
                     }
                 }
             }

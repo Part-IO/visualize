@@ -29,8 +29,8 @@
         position: relative;
         float: right;
         font-weight: 800;
-        height: 24px;
-        width: 24px;
+        height: 25px;
+        width: 25px;
         background-color: var(--color-white);
         color: var(--color-black);
         border-radius: 50%;
@@ -38,11 +38,6 @@
         cursor: pointer;
         text-align: center;
         font-family: "Liberation Mono", monospace;
-
-        &:before {
-            content: "i";
-            margin: auto;
-        }
 
         &:hover {
             background: var(--color-black);

@@ -63,7 +63,6 @@ const InteractiveMap = ({
                     padding: [10, 10],
                     easeLinearity: 0.1,
                 });
-                geoJsonRef.current?.bringToFront();
             } else if (geoJsonRef.current?.getLayerId(layer).toString() === getDistrict) {
                 layer.fire("click");
             }
@@ -76,9 +75,7 @@ const InteractiveMap = ({
     const colorize = useCallback(
         (feature, baseData: IData) => {
             const AGS: number = parseInt(feature.properties.AGS);
-
             const percentage = Math.round(baseData[AGS][0].used_area_percent * 100);
-
             return {
                 fillColor: redColors[Math.trunc(percentage) - 1],
                 fillOpacity: 1,
@@ -134,9 +131,7 @@ const InteractiveMap = ({
             dataList.set(firstAGS, geoJsonLKLayer);
         });
         layerListLK.current = dataList;
-
-        if (currentAGS.current !== undefined) renderLKMap(currentAGS.current);
-    }, [getDataRB, getDataLK, getLKGeoJson, setClickedLK, colorize, renderLKMap]);
+    });
 
     const onEachFeature = (feature: Feature, layer): void => {
         layer._leaflet_id = feature.properties?.GEN;
@@ -147,7 +142,6 @@ const InteractiveMap = ({
                     GEN: feature.properties?.GEN,
                     AGS: feature.properties?.AGS,
                 });
-                geoJsonRef.current?.resetStyle();
 
                 map.flyToBounds(event.target.getBounds(), {
                     duration: 0.5,
@@ -158,7 +152,6 @@ const InteractiveMap = ({
                 setDistrict(feature.properties?.GEN);
                 renderLKMap(parseInt(feature.properties?.AGS));
                 currentAGS.current = parseInt(feature.properties?.AGS);
-                event.target.bringToBack();
             },
         });
     };

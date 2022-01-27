@@ -58,7 +58,8 @@
                 color: var(--color-black);
             }
 
-            p {
+            p,
+            ul {
                 margin-bottom: 10px;
                 //color: var(--color-gray-inverted-2);
                 color: var(--color-black);
@@ -81,7 +82,6 @@
 
         .content {
             opacity: 1;
-            transition: all 300ms ease-in-out 500ms;
         }
 
         @keyframes popupAppearAnimation {
@@ -107,7 +107,6 @@
 
         .content {
             opacity: 1;
-            transition: all 300ms ease-in-out 500ms;
         }
 
         @keyframes popupDisappearAnimation {

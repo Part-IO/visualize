@@ -47,7 +47,8 @@
                     &:before {
                         background: $current-color;
                         padding: $bullet-radius * 2;
-                        transition: all 0.2s 0.15s cubic-bezier(0.175, 0.885, 0.32, 2);
+                        transition: 0.2s 0.15s cubic-bezier(0.175, 0.885, 0.32, 2);
+                        transition-property: padding, transform;
                     }
 
                     &:after {

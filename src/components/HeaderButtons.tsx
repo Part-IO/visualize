@@ -55,7 +55,9 @@ const HeaderButtons = ({
                         selectionIndicatorMargin={-0.7}
                     />
                 </div>
-                <button onClick={() => setShowPopup(true)} className={"data-info-button"} />
+                <button onClick={() => setShowPopup(true)} className={"data-info-button"}>
+                    i
+                </button>
                 <DarkModeSwitch
                     checked={isDark}
                     onChange={setIsDark}

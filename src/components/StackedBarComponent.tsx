@@ -1,7 +1,7 @@
 import { useMemo } from "react";
 import Chart from "react-apexcharts";
 import { ApexOptions } from "apexcharts";
-import { IData } from "../utils/Helper";
+import { IDataEntry } from "../utils/Helper";
 import RBDataYear from "../data/RBYear.json";
 import LKDataYear from "../data/LKYear.json";
 import { longNameMap } from "../utils/LookUp";
@@ -17,17 +17,10 @@ const StackedBarComponent = ({
     isAbsolute: boolean;
     isDark: boolean;
 }): JSX.Element => {
-    const getDataRB: IData = useMemo(() => {
-        return RBDataYear[`31.12.${getYear}`].reduce((obj, item) => Object.assign(obj, { [item.AGS]: [item] }), {});
-    }, [getYear]);
-    const getDataLK: IData = useMemo(() => {
-        return LKDataYear[`31.12.${getYear}`].reduce((obj, item) => Object.assign(obj, { [item.AGS]: [item] }), {});
-    }, [getYear]);
-
     const selectedLK = useMemo(() => {
         let sLK;
-        const data = Object.values(getDataRB).flat(1);
-        const dataLK = Object.values(getDataLK).flat(1);
+        const data = RBDataYear[`31.12.${getYear}`];
+        const dataLK = LKDataYear[`31.12.${getYear}`];
         if (getDistrict == "Bayern") {
             sLK = data;
         } else {
@@ -38,8 +31,13 @@ const StackedBarComponent = ({
             });
         }
         return sLK;
-    }, [getDataRB, getDataLK, getDistrict]);
+    }, [getYear, getDistrict]);
+
     const options: ApexOptions = useMemo(() => {
+        const notRoundedMax = Math.max(...selectedLK.map((entry) => entry.total));
+        const factor = Math.pow(10, Math.ceil(Math.log10(notRoundedMax) - 2));
+        const roundedMax = Math.ceil(notRoundedMax / factor) * factor;
+
         return {
             colors: [
                 "var(--color-pink)",
@@ -60,14 +58,14 @@ const StackedBarComponent = ({
                 animations: {
                     enabled: true,
                     easing: "easeinout",
-                    speed: 350,
+                    speed: 250,
                     animateGradually: {
-                        enabled: false,
-                        //delay: 150,
+                        enabled: true,
+                        delay: 100,
                     },
                     dynamicAnimation: {
                         enabled: true,
-                        speed: 350,
+                        speed: 250,
                     },
                 },
                 background: "rgba(0,0,0,0)",
@@ -84,6 +82,13 @@ const StackedBarComponent = ({
                     formatter: function (value) {
                         return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
                     },
+                },
+                max: isAbsolute ? 100 : roundedMax,
+            },
+            yaxis: {
+                labels: {
+                    minWidth: 140,
+                    maxWidth: 140,
                 },
             },
             plotOptions: {
@@ -164,7 +169,7 @@ const StackedBarComponent = ({
         return [
             {
                 name: "Wohnen",
-                data: selectedLK.map((lkEntry) => lkEntry.living),
+                data: selectedLK.map((lkEntry: IDataEntry) => lkEntry.living),
             },
             {
                 name: "Industrie/Gewerbe",

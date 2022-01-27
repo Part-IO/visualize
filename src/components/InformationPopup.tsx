@@ -87,38 +87,37 @@ const InformationPopup = ({
             <div className={"content-image"}>{isDark ? <SankeyDark /> : <Sankey />}</div>
             <div className={"content-text"}>
                 <h1>Quellenangaben</h1>
-                <p>
-                    <ul>
-                        <li>
-                            <a href="https://www.statistikdaten.bayern.de/genesis//online?operation=table&code=33111-201r&bypass=true&levelindex=0&levelid=1638273244475#abreadcrumb">
-                                Bayrisches Landesamt für Statistik - GENESIS-Online Tabelle 33111-201r
-                            </a>
-                        </li>
-                        <li>
-                            <a
-                                href="
+
+                <ul>
+                    <li>
+                        <a href="https://www.statistikdaten.bayern.de/genesis//online?operation=table&code=33111-201r&bypass=true&levelindex=0&levelid=1638273244475#abreadcrumb">
+                            Bayrisches Landesamt für Statistik - GENESIS-Online Tabelle 33111-201r
+                        </a>
+                    </li>
+                    <li>
+                        <a
+                            href="
                             https://www.statistikdaten.bayern.de/genesis//online?operation=table&code=33111-001r&bypass=true&levelindex=0&levelid=1638273260896#abreadcrumb"
-                            >
-                                Bayrisches Landesamt für Statistik - GENESIS-Online Tabelle 33111-201r
-                            </a>
-                        </li>
-                        <li>
-                            <a href="https://gdz.bkg.bund.de/index.php/default/open-data/verwaltungsgebiete-1-250-000-ebenen-stand-31-12-vg250-ebenen-31-12.html">
-                                Bundesamt für Kartographie und Geodäsie - Verwaltungsgebiete 1:250 000 (Ebenen), Stand
-                                31.12. (VG250 31.12.)
-                            </a>
-                        </li>
-                        <li>
-                            <a href="https://www.fontsquirrel.com/license/liberation-mono">
-                                2010 Google Corporation with Reserved Font Arimo, Tinos and Cousine; 2012 Red Hat, Inc.
-                                with Reserved Font Name Liberation - Liberation Mono
-                            </a>
-                        </li>
-                        <li>
-                            <a href="https://feathericons.com/">Feather Icons</a>
-                        </li>
-                    </ul>
-                </p>
+                        >
+                            Bayrisches Landesamt für Statistik - GENESIS-Online Tabelle 33111-201r
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://gdz.bkg.bund.de/index.php/default/open-data/verwaltungsgebiete-1-250-000-ebenen-stand-31-12-vg250-ebenen-31-12.html">
+                            Bundesamt für Kartographie und Geodäsie - Verwaltungsgebiete 1:250 000 (Ebenen), Stand
+                            31.12. (VG250 31.12.)
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.fontsquirrel.com/license/liberation-mono">
+                            2010 Google Corporation with Reserved Font Arimo, Tinos and Cousine; 2012 Red Hat, Inc. with
+                            Reserved Font Name Liberation - Liberation Mono
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://feathericons.com/">Feather Icons</a>
+                    </li>
+                </ul>
             </div>
         </PopupComponent>
     );
