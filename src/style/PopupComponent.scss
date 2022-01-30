@@ -52,6 +52,11 @@
             max-width: 900px;
             display: block;
             overflow-y: scroll !important;
+            -ms-overflow-style: none; /* IE and Edge */
+            scrollbar-width: none; /* Firefox */
+            &::-webkit-scrollbar {
+                display: none;
+            }
 
             h1 {
                 font-size: 40px;
