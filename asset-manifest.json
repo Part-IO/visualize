@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/visualize/static/css/main.b35b0de9.css",
-    "main.js": "/visualize/static/js/main.34960409.js",
+    "main.css": "/visualize/static/css/main.50171bd7.css",
+    "main.js": "/visualize/static/js/main.9704305b.js",
     "static/media/frauenkirche.jpg": "/visualize/static/media/frauenkirche.4b96e6bf9c6cb57d0f9b.jpg",
     "static/media/sankey-dark.svg": "/visualize/static/media/sankey-dark.9e50cef91d5f1e0c67307cd4e7458e68.svg",
     "static/media/sankey.svg": "/visualize/static/media/sankey.b1b351e45f8f167b376894064773cf90.svg",
@@ -11,11 +11,11 @@
     "static/media/LiberationMono-Regular-webfont.woff": "/visualize/static/media/LiberationMono-Regular-webfont.b6705bc63b0a64afa09a.woff",
     "static/media/quotation-right-mark-svgrepo-com.svg": "/visualize/static/media/quotation-right-mark-svgrepo-com.c88a2e8c3e05366877b8.svg",
     "index.html": "/visualize/index.html",
-    "main.b35b0de9.css.map": "/visualize/static/css/main.b35b0de9.css.map",
-    "main.34960409.js.map": "/visualize/static/js/main.34960409.js.map"
+    "main.50171bd7.css.map": "/visualize/static/css/main.50171bd7.css.map",
+    "main.9704305b.js.map": "/visualize/static/js/main.9704305b.js.map"
   },
   "entrypoints": [
-    "static/css/main.b35b0de9.css",
-    "static/js/main.34960409.js"
+    "static/css/main.50171bd7.css",
+    "static/js/main.9704305b.js"
   ]
 }
