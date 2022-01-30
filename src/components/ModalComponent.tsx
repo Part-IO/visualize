@@ -24,10 +24,12 @@ const ModalComponent = ({
 }): JSX.Element => {
     const modalRef = useRef(null);
 
+    /**
+     * handles mouse clicks made outside the modal
+     */
     useEffect(() => {
         if (handleModalClick) {
             const checkIfClickedOutside = (e) => {
-                // close modal if you click outside
                 if (show && modalRef.current && !(modalRef.current as HTMLElement).contains(e.target)) {
                     handleModalClick();
                 }
@@ -40,12 +42,10 @@ const ModalComponent = ({
         }
     }, [show, handleModalClick]);
 
-    const modalClass = "popup-module popup-wrap " + modalType + " show";
-
     return (
         <>
             {show && (
-                <div className={modalClass} style={wrapperStyle}>
+                <div className={`popup-module popup-wrap ${modalType} show`} style={wrapperStyle}>
                     <div className={"popup-body bounceInDown"} style={bodyStyle} ref={modalRef}>
                         <div className={"popup-icon"} />
                         <div className={"title"}>{title}</div>

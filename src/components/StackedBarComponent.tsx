@@ -1,7 +1,6 @@
 import { useMemo } from "react";
 import Chart from "react-apexcharts";
 import { ApexOptions } from "apexcharts";
-import { IDataEntry } from "../utils/Helper";
 import RBDataYear from "../data/RBYear.json";
 import LKDataYear from "../data/LKYear.json";
 import { longNameMap } from "../utils/LookUp";
@@ -60,8 +59,7 @@ const StackedBarComponent = ({
                     easing: "easeinout",
                     speed: 250,
                     animateGradually: {
-                        enabled: true,
-                        delay: 100,
+                        enabled: false,
                     },
                     dynamicAnimation: {
                         enabled: true,
@@ -121,22 +119,17 @@ const StackedBarComponent = ({
             },
             tooltip: {
                 y: {
-                    formatter: (val, opts) => {
+                    formatter(val, opts) {
                         let sumArea = 0;
-                        for (let i = 0; i <= 4; i++) {
-                            sumArea = sumArea + opts.series[i][opts.dataPointIndex];
-                        }
-                        if (isAbsolute) {
-                            const value = `${Math.round(val)} ha (${(((val as number) / sumArea) * 100).toFixed(1)} %)`;
-                            return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
-                        } else {
-                            const value = `${Math.round(val)} ha (${(((val as number) / sumArea) * 100).toFixed(1)} %)`;
-                            return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
-                        }
+                        opts.series.forEach((entry) => (sumArea += entry[opts.dataPointIndex]));
+                        const value = `${Math.round(val)} ha (${(((val as number) / sumArea) * 100).toFixed(1)} %)`;
+                        return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
                     },
                 },
                 x: {
-                    formatter: (seriesName) => longNameMap.get(seriesName),
+                    formatter(seriesName) {
+                        return longNameMap.get(seriesName.toString()) as string;
+                    },
                 },
             },
             responsive: [
@@ -166,34 +159,38 @@ const StackedBarComponent = ({
         };
     }, [selectedLK, isAbsolute, isDark, getDistrict]);
     const series = useMemo(() => {
+        const transposedSelectedLK = Object.fromEntries(
+            Object.keys(selectedLK[0]).map((key) => [key, selectedLK.map((o) => o[key])])
+        );
+
         return [
             {
                 name: "Wohnen",
-                data: selectedLK.map((lkEntry: IDataEntry) => lkEntry.living),
+                data: transposedSelectedLK.living,
             },
             {
                 name: "Industrie/Gewerbe",
-                data: selectedLK.map((lkEntry) => lkEntry.industry),
+                data: transposedSelectedLK.industry,
             },
             {
                 name: "Sonstiges",
-                data: selectedLK.map((lkEntry) => lkEntry.misc_industry_living),
+                data: transposedSelectedLK.misc_industry_living,
             },
             {
                 name: "Verkehrsflächen",
-                data: selectedLK.map((lkEntry) => lkEntry.transport_infrastructure),
+                data: transposedSelectedLK.transport_infrastructure,
             },
             {
                 name: "Natur",
-                data: selectedLK.map((lkEntry) => lkEntry.nature),
+                data: transposedSelectedLK.nature,
             },
             {
                 name: "Wasser",
-                data: selectedLK.map((lkEntry) => lkEntry.water),
+                data: transposedSelectedLK.water,
             },
             {
                 name: "Bergbau",
-                data: selectedLK.map((lkEntry) => lkEntry.mining),
+                data: transposedSelectedLK.mining,
             },
         ];
     }, [selectedLK]);

@@ -1,7 +1,7 @@
 import MainComponent from "./components/MainComponent";
 import WelcomeComponent from "./components/WelcomeComponent";
 import useLocalStorage from "use-local-storage";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import ModalComponent from "./components/ModalComponent";
 import { useMediaQuery } from "react-responsive";
 import HeaderButtons from "./components/HeaderButtons";
@@ -11,26 +11,24 @@ function App(): JSX.Element {
     const defaultDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
     const [isDark, setIsDark] = useLocalStorage("darkMode", defaultDark);
     const [isAbsolute, setIsAbsolute] = useState<boolean>(false);
-    const [isMobile, setIsMobile] = useState<boolean>(true);
     const { width, height }: IWindowDimension = useWindowDimensions();
 
     const isSmartphone = useMediaQuery({ maxWidth: 760 });
     const isTablet = useMediaQuery({ minWidth: 760 });
     const isPortrait = useMediaQuery({ orientation: "portrait" });
 
-    useEffect(() => {
+    /**
+     * If the website detects a smartphone or tablet in portrait mode, a modal is displayed
+     * indicating that the page should be visited on a desktop or tablet in landscape mode.
+     */
+
+    const isMobile = useMemo(() => {
         const height1610 = (width / 16) * 10;
         const height43 = (width / 4) * 3;
-        if (
-            isSmartphone ||
-            (isTablet && isPortrait) ||
-            !(height > 650 || (height1610 <= height && height <= height43))
-        ) {
-            setIsMobile(true);
-        } else {
-            setIsMobile(false);
-        }
-    }, [setIsMobile, isSmartphone, isPortrait, isTablet, width, height]);
+        return (
+            isSmartphone || (isTablet && isPortrait) || !(height > 650 || (height1610 <= height && height <= height43))
+        );
+    }, [isSmartphone, isPortrait, isTablet, width, height]);
 
     useEffect(() => {
         const welcomeContainer = document.getElementById("welcome-container");

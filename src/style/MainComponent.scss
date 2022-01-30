@@ -82,6 +82,8 @@
                 margin-bottom: 8px;
                 height: 47%;
                 width: 100%;
+                display: inline-block;
+                box-sizing: border-box;
 
                 .map-container {
                     height: 100%;
@@ -89,6 +91,8 @@
                     border: 2px solid var(--color-gray-4);
                     border-radius: 4px;
                     background-color: var(--color-white);
+                    display: inline-block;
+                    box-sizing: border-box;
 
                     .leaflet-control-zoom-in,
                     .leaflet-control-zoom-out {

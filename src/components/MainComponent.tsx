@@ -7,9 +7,12 @@ import TextTransition, { presets } from "react-text-transition";
 import ModalComponent from "./ModalComponent";
 import LineGraphComponent from "./LineGraphComponent";
 import StackedBarComponent from "./StackedBarComponent";
-import { colord } from "colord";
+import { colord, extend } from "colord";
 import data from "../data/data.json";
 import { IDataEntry } from "../utils/Helper";
+import mixPlugin from "colord/plugins/mix";
+
+extend([mixPlugin]);
 
 export interface ICLickedLK {
     BEZ: string;
@@ -28,8 +31,6 @@ const MainComponent = ({ isDark, isAbsolute }: { isDark: boolean; isAbsolute: bo
         return data.find((entry: IDataEntry) => entry.AGS == parseInt(getClickedLK.AGS))?.municipality_short || "";
     }, [getClickedLK]);
 
-    const [, setShortLKName] = useState<string>("Bayern");
-
     const colors: { color: string; percent: number }[] = [
         {
             color: "rgb(255,255,255)",
@@ -45,7 +46,11 @@ const MainComponent = ({ isDark, isAbsolute }: { isDark: boolean; isAbsolute: bo
         },
     ];
 
-    const percToColor = (percentage: number) => {
+    /**
+     * Calculate the color range for the legend and the map
+     * @param percentage
+     */
+    const percentageToColor = (percentage: number) => {
         let c1 = colors[0];
         let c2 = colors[1];
 
@@ -63,9 +68,7 @@ const MainComponent = ({ isDark, isAbsolute }: { isDark: boolean; isAbsolute: bo
         return color1.mix(color2, ratio).toHex();
     };
 
-    const redColors = Array.from(Array(101).keys()).map(percToColor);
-
-    useEffect(() => {}, [setShortLKName]);
+    const redColors = Array.from(Array(101).keys()).map(percentageToColor);
 
     const handleModalClick = (): void => {
         setModalState((prevState) => !prevState);
@@ -74,6 +77,9 @@ const MainComponent = ({ isDark, isAbsolute }: { isDark: boolean; isAbsolute: bo
         setModalState2((prevState) => !prevState);
     };
 
+    /**
+     * If modal is open blur background and disable scroll
+     */
     useEffect(() => {
         if (modalState || modalState2) {
             document.body.style.overflow = "hidden";
@@ -94,6 +100,11 @@ const MainComponent = ({ isDark, isAbsolute }: { isDark: boolean; isAbsolute: bo
         }
     });
 
+    /**
+     * Dirty solution:
+     * Trigger rerender if User tile the window
+     * For example: undock the window from fullscreen -> align the window on the left side and fill the half screen
+     */
     function useWindowSize() {
         const [size, setSize] = useState([0, 0]);
         useLayoutEffect(() => {

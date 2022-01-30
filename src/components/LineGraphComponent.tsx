@@ -24,6 +24,9 @@ const LineGraphComponent = ({
         return data.filter((entry: IDataEntry) => entry.AGS == parseInt(getClickedLK.AGS));
     }, [getClickedLK]);
 
+    /**
+     * calculate the used Area for every year
+     */
     const usedAreaSeries = useMemo(() => {
         const usedAreaData = getSelectedData.map((entry: IDataEntry) => {
             const [day, month, year] = entry.date.split(".");
@@ -81,7 +84,6 @@ const LineGraphComponent = ({
                             borderWidth: 0,
                             offsetY: -10,
                             style: {
-                                fontSize: "30px",
                                 fontFamily: "Liberation Mono",
                                 color: "var(--color-yellow)",
                                 background: "rgba(0,0,0,0)",
@@ -101,7 +103,6 @@ const LineGraphComponent = ({
                             borderWidth: 0,
                             offsetY: -10,
                             style: {
-                                fontSize: "30px",
                                 fontFamily: "Liberation Mono",
                                 color: "var(--color-yellow)",
                                 background: "rgba(0,0,0,0)",

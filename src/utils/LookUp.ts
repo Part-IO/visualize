@@ -1,105 +1,106 @@
-export const longNameMap = new Map();
-longNameMap.set("Aichach-Friedberg", "Aichach-Friedberg (Lkr)");
-longNameMap.set("Altötting", "Altötting (Lkr)");
-longNameMap.set("Amberg", "Amberg (Krfr.St)");
-longNameMap.set("Amberg-S. Lkr.", "Amberg-Sulzbach (Lkr)");
-longNameMap.set("Ansbach", "Ansbach (Krfr.St)");
-longNameMap.set("Ansbach Lkr.", "Ansbach (Lkr)");
-longNameMap.set("Aschaffenburg", "Aschaffenburg (Krfr.St)");
-longNameMap.set("Aschaffenb. Lkr.", "Aschaffenburg (Lkr)");
-longNameMap.set("Augsburg", "Augsburg (Krfr.St)");
-longNameMap.set("Augsburg Lkr.", "Augsburg (Lkr)");
-longNameMap.set("Bad Kissingen", "Bad Kissingen (Lkr)");
-longNameMap.set("Bad Tölz-W.", "Bad Tölz-Wolfratshausen (Lkr)");
-longNameMap.set("Bamberg", "Bamberg (Krfr.St)");
-longNameMap.set("Bamberg Lkr.", "Bamberg (Lkr)");
-longNameMap.set("Bayern", "Bayern");
-longNameMap.set("Bayreuth", "Bayreuth (Krfr.St)");
-longNameMap.set("Bayreuth Lkr.", "Bayreuth (Lkr)");
-longNameMap.set("Berchtesg. Land", "Berchtesgadener Land (Lkr)");
-longNameMap.set("Cham", "Cham (Lkr)");
-longNameMap.set("Coburg", "Coburg (Krfr.St)");
-longNameMap.set("Coburg Lkr.", "Coburg (Lkr)");
-longNameMap.set("Dachau", "Dachau (Lkr)");
-longNameMap.set("Deggendorf", "Deggendorf (Lkr)");
-longNameMap.set("Dillingen a.d.D.", "Dillingen a.d.Donau (Lkr)");
-longNameMap.set("Dingolfing-L.", "Dingolfing-Landau (Lkr)");
-longNameMap.set("Donau-Ries", "Donau-Ries (Lkr)");
-longNameMap.set("Ebersberg", "Ebersberg (Lkr)");
-longNameMap.set("Eichstätt", "Eichstätt (Lkr)");
-longNameMap.set("Erding", "Erding (Lkr)");
-longNameMap.set("Erlangen", "Erlangen (Krfr.St)");
-longNameMap.set("Erlangen-H. Lkr.", "Erlangen-Höchstadt (Lkr)");
-longNameMap.set("Forchheim", "Forchheim (Lkr)");
-longNameMap.set("Freising", "Freising (Lkr)");
-longNameMap.set("Freyung-G.", "Freyung-Grafenau (Lkr)");
-longNameMap.set("Fürstenfeldb.", "Fürstenfeldbruck (Lkr)");
-longNameMap.set("Fürth", "Fürth (Krfr.St)");
-longNameMap.set("Fürth Lkr.", "Fürth (Lkr)");
-longNameMap.set("Garmisch-P.", "Garmisch-Partenkirchen (Lkr)");
-longNameMap.set("Günzburg", "Günzburg (Lkr)");
-longNameMap.set("Haßberge", "Haßberge (Lkr)");
-longNameMap.set("Hof", "Hof (Krfr.St)");
-longNameMap.set("Hof Lkr.", "Hof (Lkr)");
-longNameMap.set("Ingolstadt", "Ingolstadt (Krfr.St)");
-longNameMap.set("Kaufbeuren", "Kaufbeuren (Krfr.St)");
-longNameMap.set("Kelheim", "Kelheim (Lkr)");
-longNameMap.set("Kempten (A.)", "Kempten (Allgäu) (Krfr.St)");
-longNameMap.set("Kitzingen", "Kitzingen (Lkr)");
-longNameMap.set("Kronach", "Kronach (Lkr)");
-longNameMap.set("Kulmbach", "Kulmbach (Lkr)");
-longNameMap.set("Landsberg a.L.", "Landsberg am Lech (Lkr)");
-longNameMap.set("Landshut", "Landshut (Krfr.St)");
-longNameMap.set("Landshut Lkr.", "Landshut (Lkr)");
-longNameMap.set("Lichtenfels", "Lichtenfels (Lkr)");
-longNameMap.set("Lindau (B.)", "Lindau (Bodensee) (Lkr)");
-longNameMap.set("Main-Spessart", "Main-Spessart (Lkr)");
-longNameMap.set("Memmingen", "Memmingen (Krfr.St)");
-longNameMap.set("Miesbach", "Miesbach (Lkr)");
-longNameMap.set("Miltenberg", "Miltenberg (Lkr)");
-longNameMap.set("Mittelfranken", "Mittelfranken");
-longNameMap.set("Mühldorf a.Inn", "Mühldorf a.Inn (Lkr)");
-longNameMap.set("München Lkr.", "München (Lkr)");
-longNameMap.set("München", "München, Landeshauptstadt");
-longNameMap.set("Neu-Ulm", "Neu-Ulm (Lkr)");
-longNameMap.set("Neuburg-S.", "Neuburg-Schrobenhausen (Lkr)");
-longNameMap.set("Neumarkt i.d.O.", "Neumarkt i.d.OPf. (Lkr)");
-longNameMap.set("Neustadt a.d.A.-B.W.", "Neustadt a.d.Aisch-Bad Windsheim (Lkr)");
-longNameMap.set("Neustadt a.d.W.", "Neustadt a.d.Waldnaab (Lkr)");
-longNameMap.set("Niederbayern", "Niederbayern");
-longNameMap.set("Nürnberg", "Nürnberg (Krfr.St)");
-longNameMap.set("Nürnberger L. Lkr.", "Nürnberger Land (Lkr)");
-longNameMap.set("Oberallgäu", "Oberallgäu (Lkr)");
-longNameMap.set("Oberbayern", "Oberbayern");
-longNameMap.set("Oberfranken", "Oberfranken");
-longNameMap.set("Oberpfalz", "Oberpfalz");
-longNameMap.set("Ostallgäu", "Ostallgäu (Lkr)");
-longNameMap.set("Passau", "Passau (Krfr.St)");
-longNameMap.set("Passau Lkr.", "Passau (Lkr)");
-longNameMap.set("Pfaffenh. a.d.I.", "Pfaffenhofen a.d.Ilm (Lkr)");
-longNameMap.set("Regen", "Regen (Lkr)");
-longNameMap.set("Regensburg", "Regensburg (Krfr.St)");
-longNameMap.set("Regensb. Lkr.", "Regensburg (Lkr)");
-longNameMap.set("Rhön-Grabfeld", "Rhön-Grabfeld (Lkr)");
-longNameMap.set("Rosenheim", "Rosenheim (Krfr.St)");
-longNameMap.set("Rosenheim Lkr.", "Rosenheim (Lkr)");
-longNameMap.set("Roth", "Roth (Lkr)");
-longNameMap.set("Rottal-Inn", "Rottal-Inn (Lkr)");
-longNameMap.set("Schwabach", "Schwabach (Krfr.St)");
-longNameMap.set("Schwaben", "Schwaben");
-longNameMap.set("Schwandorf", "Schwandorf (Lkr)");
-longNameMap.set("Schweinfurt", "Schweinfurt (Krfr.St)");
-longNameMap.set("Schweinf. Lkr.", "Schweinfurt (Lkr)");
-longNameMap.set("Starnberg", "Starnberg (Lkr)");
-longNameMap.set("Straubing", "Straubing (Krfr.St)");
-longNameMap.set("Straubing-B. Lkr.", "Straubing-Bogen (Lkr)");
-longNameMap.set("Tirschenreuth", "Tirschenreuth (Lkr)");
-longNameMap.set("Traunstein", "Traunstein (Lkr)");
-longNameMap.set("Unterallgäu", "Unterallgäu (Lkr)");
-longNameMap.set("Unterfranken", "Unterfranken");
-longNameMap.set("Weiden i.d.O.", "Weiden i.d.OPf. (Krfr.St)");
-longNameMap.set("Weilheim-Sch.", "Weilheim-Schongau (Lkr)");
-longNameMap.set("Weißenburg-G.", "Weißenburg-Gunzenhausen (Lkr)");
-longNameMap.set("Wunsiedel i.F.", "Wunsiedel i.Fichtelgebirge (Lkr)");
-longNameMap.set("Würzburg", "Würzburg (Krfr.St)");
-longNameMap.set("Würzburg Lkr.", "Würzburg (Lkr)");
+export const longNameMap = new Map([
+    ["Aichach-Friedberg", "Aichach-Friedberg (Lkr)"],
+    ["Altötting", "Altötting (Lkr)"],
+    ["Amberg", "Amberg (Krfr.St)"],
+    ["Amberg-S. Lkr.", "Amberg-Sulzbach (Lkr)"],
+    ["Ansbach", "Ansbach (Krfr.St)"],
+    ["Ansbach Lkr.", "Ansbach (Lkr)"],
+    ["Aschaffenburg", "Aschaffenburg (Krfr.St)"],
+    ["Aschaffenb. Lkr.", "Aschaffenburg (Lkr)"],
+    ["Augsburg", "Augsburg (Krfr.St)"],
+    ["Augsburg Lkr.", "Augsburg (Lkr)"],
+    ["Bad Kissingen", "Bad Kissingen (Lkr)"],
+    ["Bad Tölz-W.", "Bad Tölz-Wolfratshausen (Lkr)"],
+    ["Bamberg", "Bamberg (Krfr.St)"],
+    ["Bamberg Lkr.", "Bamberg (Lkr)"],
+    ["Bayern", "Bayern"],
+    ["Bayreuth", "Bayreuth (Krfr.St)"],
+    ["Bayreuth Lkr.", "Bayreuth (Lkr)"],
+    ["Berchtesg. Land", "Berchtesgadener Land (Lkr)"],
+    ["Cham", "Cham (Lkr)"],
+    ["Coburg", "Coburg (Krfr.St)"],
+    ["Coburg Lkr.", "Coburg (Lkr)"],
+    ["Dachau", "Dachau (Lkr)"],
+    ["Deggendorf", "Deggendorf (Lkr)"],
+    ["Dillingen a.d.D.", "Dillingen a.d.Donau (Lkr)"],
+    ["Dingolfing-L.", "Dingolfing-Landau (Lkr)"],
+    ["Donau-Ries", "Donau-Ries (Lkr)"],
+    ["Ebersberg", "Ebersberg (Lkr)"],
+    ["Eichstätt", "Eichstätt (Lkr)"],
+    ["Erding", "Erding (Lkr)"],
+    ["Erlangen", "Erlangen (Krfr.St)"],
+    ["Erlangen-H. Lkr.", "Erlangen-Höchstadt (Lkr)"],
+    ["Forchheim", "Forchheim (Lkr)"],
+    ["Freising", "Freising (Lkr)"],
+    ["Freyung-G.", "Freyung-Grafenau (Lkr)"],
+    ["Fürstenfeldb.", "Fürstenfeldbruck (Lkr)"],
+    ["Fürth", "Fürth (Krfr.St)"],
+    ["Fürth Lkr.", "Fürth (Lkr)"],
+    ["Garmisch-P.", "Garmisch-Partenkirchen (Lkr)"],
+    ["Günzburg", "Günzburg (Lkr)"],
+    ["Haßberge", "Haßberge (Lkr)"],
+    ["Hof", "Hof (Krfr.St)"],
+    ["Hof Lkr.", "Hof (Lkr)"],
+    ["Ingolstadt", "Ingolstadt (Krfr.St)"],
+    ["Kaufbeuren", "Kaufbeuren (Krfr.St)"],
+    ["Kelheim", "Kelheim (Lkr)"],
+    ["Kempten (A.)", "Kempten (Allgäu) (Krfr.St)"],
+    ["Kitzingen", "Kitzingen (Lkr)"],
+    ["Kronach", "Kronach (Lkr)"],
+    ["Kulmbach", "Kulmbach (Lkr)"],
+    ["Landsberg a.L.", "Landsberg am Lech (Lkr)"],
+    ["Landshut", "Landshut (Krfr.St)"],
+    ["Landshut Lkr.", "Landshut (Lkr)"],
+    ["Lichtenfels", "Lichtenfels (Lkr)"],
+    ["Lindau (B.)", "Lindau (Bodensee) (Lkr)"],
+    ["Main-Spessart", "Main-Spessart (Lkr)"],
+    ["Memmingen", "Memmingen (Krfr.St)"],
+    ["Miesbach", "Miesbach (Lkr)"],
+    ["Miltenberg", "Miltenberg (Lkr)"],
+    ["Mittelfranken", "Mittelfranken"],
+    ["Mühldorf a.Inn", "Mühldorf a.Inn (Lkr)"],
+    ["München Lkr.", "München (Lkr)"],
+    ["München", "München, Landeshauptstadt"],
+    ["Neu-Ulm", "Neu-Ulm (Lkr)"],
+    ["Neuburg-S.", "Neuburg-Schrobenhausen (Lkr)"],
+    ["Neumarkt i.d.O.", "Neumarkt i.d.OPf. (Lkr)"],
+    ["Neustadt a.d.A.-B.W.", "Neustadt a.d.Aisch-Bad Windsheim (Lkr)"],
+    ["Neustadt a.d.W.", "Neustadt a.d.Waldnaab (Lkr)"],
+    ["Niederbayern", "Niederbayern"],
+    ["Nürnberg", "Nürnberg (Krfr.St)"],
+    ["Nürnberger L. Lkr.", "Nürnberger Land (Lkr)"],
+    ["Oberallgäu", "Oberallgäu (Lkr)"],
+    ["Oberbayern", "Oberbayern"],
+    ["Oberfranken", "Oberfranken"],
+    ["Oberpfalz", "Oberpfalz"],
+    ["Ostallgäu", "Ostallgäu (Lkr)"],
+    ["Passau", "Passau (Krfr.St)"],
+    ["Passau Lkr.", "Passau (Lkr)"],
+    ["Pfaffenh. a.d.I.", "Pfaffenhofen a.d.Ilm (Lkr)"],
+    ["Regen", "Regen (Lkr)"],
+    ["Regensburg", "Regensburg (Krfr.St)"],
+    ["Regensb. Lkr.", "Regensburg (Lkr)"],
+    ["Rhön-Grabfeld", "Rhön-Grabfeld (Lkr)"],
+    ["Rosenheim", "Rosenheim (Krfr.St)"],
+    ["Rosenheim Lkr.", "Rosenheim (Lkr)"],
+    ["Roth", "Roth (Lkr)"],
+    ["Rottal-Inn", "Rottal-Inn (Lkr)"],
+    ["Schwabach", "Schwabach (Krfr.St)"],
+    ["Schwaben", "Schwaben"],
+    ["Schwandorf", "Schwandorf (Lkr)"],
+    ["Schweinfurt", "Schweinfurt (Krfr.St)"],
+    ["Schweinf. Lkr.", "Schweinfurt (Lkr)"],
+    ["Starnberg", "Starnberg (Lkr)"],
+    ["Straubing", "Straubing (Krfr.St)"],
+    ["Straubing-B. Lkr.", "Straubing-Bogen (Lkr)"],
+    ["Tirschenreuth", "Tirschenreuth (Lkr)"],
+    ["Traunstein", "Traunstein (Lkr)"],
+    ["Unterallgäu", "Unterallgäu (Lkr)"],
+    ["Unterfranken", "Unterfranken"],
+    ["Weiden i.d.O.", "Weiden i.d.OPf. (Krfr.St)"],
+    ["Weilheim-Sch.", "Weilheim-Schongau (Lkr)"],
+    ["Weißenburg-G.", "Weißenburg-Gunzenhausen (Lkr)"],
+    ["Wunsiedel i.F.", "Wunsiedel i.Fichtelgebirge (Lkr)"],
+    ["Würzburg", "Würzburg (Krfr.St)"],
+    ["Würzburg Lkr.", "Würzburg (Lkr)"],
+]);

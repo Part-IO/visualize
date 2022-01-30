@@ -9,6 +9,10 @@ const DistrictStepComponent = ({
     getDistrict: string;
     setDistrict: Dispatch<SetStateAction<string>>;
 }): JSX.Element => {
+    /**
+     * Update view if the user click on a district at the left district-bar
+     */
+
     useEffect(() => {
         const progressElement: HTMLDivElement = document.querySelector(".progress") as HTMLDivElement;
         const label: HTMLDivElement = progressElement.querySelector(".left") as HTMLDivElement;
@@ -27,18 +31,6 @@ const DistrictStepComponent = ({
                 .forEach((e) => e.classList.add("prev"));
         }
     }, [getDistrict]);
-
-    useEffect(() => {
-        const progressElement: HTMLDivElement = document.querySelector(".progress") as HTMLDivElement;
-        const label: HTMLDivElement = progressElement.querySelector(".left") as HTMLDivElement;
-        const steps: HTMLDivElement[] = [...(label.childNodes as NodeListOf<HTMLDivElement>)];
-
-        steps.forEach((element: HTMLDivElement) =>
-            element.addEventListener("click", () => {
-                setDistrict(element.id);
-            })
-        );
-    });
 
     return (
         <div className={"outer"}>

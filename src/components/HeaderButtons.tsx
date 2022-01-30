@@ -18,6 +18,9 @@ const HeaderButtons = ({
     const headerButtonContainer = useRef<HTMLDivElement>(null);
     const { width, height } = useWindowDimensions();
 
+    /**
+     * Fit the width of the Header-buttons equal to the right container
+     */
     useEffect(() => {
         const mapContainer = document.getElementById("right_content_container");
         const containerWidth = (mapContainer as HTMLDivElement).offsetWidth;

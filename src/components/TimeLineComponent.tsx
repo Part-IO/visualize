@@ -1,5 +1,5 @@
 import "../style/TimeLineComponent.scss";
-import { CSSProperties, Dispatch, SetStateAction, useEffect, useMemo, useRef, useState } from "react";
+import { Dispatch, SetStateAction, useEffect, useRef, useState } from "react";
 import { prevAll, years } from "../utils/Helper";
 import WarnSymbol from "./WarnSymbol";
 import useWindowDimensions from "../hooks/useWindowDimensions";
@@ -39,10 +39,9 @@ const TimeLineComponent = ({
         }
     }, [getYear]);
 
-    const playButtonClick = (): void => {
-        setPlayState((prevState) => !prevState);
-    };
-
+    /**
+     * set the correct size to align below the main bar chart component
+     */
     useEffect(() => {
         const districtLeft = document.getElementById("district_left");
         if (playButtonRef.current && districtLeft) {
@@ -51,6 +50,9 @@ const TimeLineComponent = ({
         }
     }, [width]);
 
+    /**
+     * Start the animation if a user press the play button
+     */
     useEffect(() => {
         if (getYear < 2020) {
             const animation = setTimeout(() => playState && setYear(getYear + 4), 2e3);
@@ -60,54 +62,12 @@ const TimeLineComponent = ({
         }
     }, [playState, getYear, setYear]);
 
-    const warnStyle = useMemo(() => {
-        if (isDark) {
-            return {
-                top: "-0.7em",
-                position: "relative",
-                left: "82%",
-                zIndex: "200000",
-                fill: "var(--color-white)",
-            };
-        } else {
-            return {
-                top: "-0.7em",
-                position: "relative",
-                left: "82%",
-                zIndex: "200000",
-                fill: "var(--color-yellow)",
-                stroke: "var(--color-black)",
-            };
-        }
-    }, [isDark]);
-
-    const warnStyle2 = useMemo(() => {
-        if (isDark) {
-            return {
-                top: "-0.7em",
-                position: "relative",
-                left: "33%",
-                zIndex: "200000",
-                fill: "var(--color-white)",
-            };
-        } else {
-            return {
-                top: "-0.7em",
-                position: "relative",
-                left: "33%",
-                zIndex: "200000",
-                fill: "var(--color-yellow)",
-                stroke: "var(--color-black)",
-            };
-        }
-    }, [isDark]);
-
     return (
         <div className={"timeline-outer"}>
             <button
                 className={playState ? "play-button pause" : "play-button"}
                 id={"playButton"}
-                onClick={playButtonClick}
+                onClick={() => setPlayState((prevState) => !prevState)}
                 disabled={getYear === 2020}
                 ref={playButtonRef}
                 style={
@@ -127,13 +87,27 @@ const TimeLineComponent = ({
                     <WarnSymbol
                         onClick={handleModalClick}
                         size={24}
-                        style={warnStyle as CSSProperties}
+                        style={{
+                            top: "-0.7em",
+                            position: "relative",
+                            left: "82%",
+                            zIndex: "20",
+                            fill: isDark ? "var(--color-white)" : "var(--color-yellow)",
+                            stroke: isDark ? "var(--color-yellow)" : "var(--color-black)",
+                        }}
                         color={"var(--color-yellow)"}
                     />
                     <WarnSymbol
                         onClick={handleModalClick2}
                         size={24}
-                        style={warnStyle2 as CSSProperties}
+                        style={{
+                            top: "-0.7em",
+                            position: "relative",
+                            left: "33%",
+                            zIndex: "20",
+                            fill: isDark ? "var(--color-white)" : "var(--color-yellow)",
+                            stroke: isDark ? "var(--color-yellow)" : "var(--color-black)",
+                        }}
                         color={"var(--color-yellow)"}
                     />
 
