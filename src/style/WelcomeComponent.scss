@@ -7,7 +7,6 @@
     .welcome-background {
         background-image: url("../data/frauenkirche.jpg");
         background-size: cover;
-        background-attachment: fixed;
         filter: blur(10px);
         position: relative;
         width: 100%;
@@ -24,6 +23,8 @@
             left: 50%;
             transform: translateX(-50%);
             z-index: 3;
+            max-width: 100vw;
+            overflow-y: hidden;
 
             .title {
                 font-family: "DejaVu Serif", serif;
@@ -86,7 +87,7 @@
         .text {
             color: rgb(28, 28, 30);
             text-align: center;
-            font-size: 1.9vh;
+            font-size: 18px;
             margin: 1vh;
         }
 
@@ -94,7 +95,7 @@
             color: rgb(28, 28, 30);
             font-style: italic;
             text-align: right;
-            font-size: 1.3vh;
+            font-size: 16px;
         }
     }
 
