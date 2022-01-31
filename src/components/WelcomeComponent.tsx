@@ -43,7 +43,11 @@ const WelcomeComponent = (): JSX.Element => {
             // get relative scroll position
             const relPos = (100 / WD.height) * scrollPosition;
             if (backgroundRef.current) {
-                backgroundRef.current.style.filter = `blur(${Math.trunc(relPos / 10)}px)`;
+                if (relPos < 100) {
+                    backgroundRef.current.style.filter = `blur(${Math.trunc(relPos / 10)}px)`;
+                } else {
+                    backgroundRef.current.style.filter = `blur(0px)`;
+                }
             }
             if (
                 titleRef.current &&
