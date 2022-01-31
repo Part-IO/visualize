@@ -8,7 +8,7 @@
     //background: var(--color-gray-5);
     background: var(--color-white);
     overflow: hidden;
-    z-index: 200001;
+    z-index: 20000;
     border: 0 solid var(--color-black);
     font-family: "Liberation Mono", monospace;
     -webkit-hyphens: auto;
@@ -24,8 +24,8 @@
         width: calc(100% - 60px);
         height: calc(100% - 60px);
         overflow-y: auto;
-        display: flex;
-        flex-direction: column;
+        display: block;
+        text-align: center;
         align-items: center;
 
         .popup-close-btn {
@@ -51,6 +51,7 @@
             height: auto;
             max-width: 900px;
             display: block;
+            margin: auto;
             overflow-y: scroll !important;
             -ms-overflow-style: none; /* IE and Edge */
             scrollbar-width: none; /* Firefox */
@@ -59,13 +60,14 @@
             }
 
             h1 {
-                font-size: 40px;
-                margin: 20px 0;
+                font-size: 32px;
+                margin: 30px 0 0 0;
                 color: var(--color-black);
             }
 
             p,
             ul {
+                font-size: 16px;
                 margin-bottom: 10px;
                 //color: var(--color-gray-inverted-2);
                 color: var(--color-black);
@@ -80,11 +82,12 @@
             max-width: 900px;
             height: auto;
             display: block;
+            margin: auto;
         }
     }
 
     &.active {
-        animation: popupAppearAnimation 500ms ease-in-out forwards;
+        animation: popupAppearAnimation 400ms ease-in-out forwards;
 
         .content {
             opacity: 1;
@@ -109,7 +112,7 @@
     }
 
     &.inactive {
-        animation: popupDisappearAnimation 500ms ease-in-out forwards;
+        animation: popupDisappearAnimation 400ms ease-in-out forwards;
 
         .content {
             opacity: 1;

@@ -29,6 +29,10 @@ const HeaderButtons = ({
         }px`;
     }, [width, height]);
 
+    useEffect(() => {
+        document.body.style.overflowY = !showPopup ? "unset" : "hidden";
+    }, [showPopup]);
+
     const switchOptions = [
         {
             label: "Absolut",
