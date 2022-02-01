@@ -26,7 +26,7 @@ Before opening a merge request please run the commands `yarn lint` and `yarn pre
 
 ## 📖 Sources 
 
-- Landingpage backgroundimage: Franz Wanner 
+- Landingpage image: Franz Wanner 
 - [Favicon](https://www.stmi.bayern.de/assets/stmi/suv/bayern/oea_staatsflagge-rautenflagge_pdf.pdf)
 - [Census data]( https://www.statistikdaten.bayern.de/genesis//online?operation=table&code=12411-003r&bypass=true&levelindex=0&levelid=1638273219379#abreadcrumb)
 - [Area data 1]( https://www.statistikdaten.bayern.de/genesis//online?operation=table&code=33111-201r&bypass=true&levelindex=0&levelid=1638273244475#abreadcrumb) / [Area data 2]( https://www.statistikdaten.bayern.de/genesis//online?operation=table&code=33111-001r&bypass=true&levelindex=0&levelid=1638273260896#abreadcrumb)
